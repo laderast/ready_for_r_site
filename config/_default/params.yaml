@@ -37,7 +37,7 @@ font_size: "L"
 site_type: "Course"
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description: "Understand and apply image processing techniques to microscopy images"
+description: "Learn how to visualize, wrangle, and do statistics on data using the Tidyverse"
 
 # Display a logo in navigation bar rather than title (optional).
 #   To enable, place an image in `static/img/` and reference its filename below. To disable, set the value to "".
@@ -74,7 +74,7 @@ privacy_pack: false
 # Enable visitors to edit pages?
 #   `repo` defines the repository URL. `editable` defines which page types can be edited.
 edit_page:
-  repo_url: 'https://github.com/laderast/stats_for_neuroscientists'
+  repo_url: 'https://github.com/laderast/rboot_ohsu_site'
   content_dir: ''
   repo_branch: master
   editable:
@@ -103,13 +103,13 @@ instructor:
 #  appointment_url: https://calendly.com/andrewheiss/meeting/
 
 course:
-  number: "NEUS 643"
+  number: "BMI 507"
   semester: "Spring 2020"
-  days: "Tuesday/Thursday"
-  time: "1:00–2:00 PM"
+  days: "TBA"
+  time: "TBA"
   location: "Online"
   dates: "March 31 – June 2, 2020"
-  github: "laderast/stats_for_neuroscientists"
+  github: "laderast/rboot_ohsu_site"
   copyrightYear: "2020"
 
 university: 
@@ -117,8 +117,8 @@ university:
   url: "https://www.ohsu.edu"
 
 school:
-  name: Neuroscience Graduate Program
-  url: "https://www.ohsu.edu/school-of-medicine/neuroscience-graduate-program"
+  name: Medical Informatics and Clinical Epidemiology
+  url: "https://www.ohsu.edu/dmice"
 
 
 ############################
