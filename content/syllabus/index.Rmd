@@ -18,28 +18,32 @@ library(pander)
 
 ## Course Description
 
-This course is meant to be a gentle introduction to using R/Rstudio in your daily work. It aims to teach useful skills (visualization, data loading, data filtering and manipulation, simple statistics) that students can immediately use in their work. It is not meant to be a substitute for a full programming course or a full course in statistics. In the end, students will apply these skills to a final project. 
+This course is meant to be a gentle introduction to using R/Rstudio in your daily work. It aims to teach useful skills (visualization, data loading, data filtering and manipulation, simple statistics) that students can immediately use in their work. No prerequisites or previous experience required.
+
+It is not meant to be a substitute for a full programming course or a full course in statistics. In the end, students will apply these skills to a final project. 
 
 ## Credit Hours
 
-2 credit hours. 
+1 credit hour. 
 
 ## Learning Objectives
 
-1.  **Learn** and **execute** the basic steps of image analysis in R.
-2.  **Assess** whether image processing algorithms are working correctly.
-3.  **Understand** basic spatial statistics and how to **assess** null models of spatial data.
-4.  **Execute** and **Interpret** basic spatial statistics on data that are involved with fluoresence microscopy analysis.
+1. **Understand** and **utilize** **R/RStudio**.
+2. **Understand** basic data types and data structures in R.
+3. **Familiarize** and **load** data files (Excel, Comma Separated Value files) into R/Rstudio, with tips on formatting.
+4. **Visualize** datasets using **ggplot2** and understand how to build basic plots using **ggplot2** syntax.
+5. **Filter** and **format** data in R for use with various routines.
+6. **Execute** and **Interpret** some basic statistics in R.
 
 ## Course Website
 
 All course information will be available here:
 
-https://stats4neuro.netlify.com/
+https://ready4r.netlify.com/
 
-Course discussions will be done in the class Slack Workspace. Invites will be sent before class.
+Course discussions will be done in the BioData Club slack workspace. Invites will be sent before class.
 
-https://neus643.slack.com
+https://biodata-club.slack.com
 
 Lab Assignments will be done in the class RStudio.cloud workspace. Students should register at https://RStudio.cloud before the lab. Link to join the workspace will be sent out before the first lab.
 
