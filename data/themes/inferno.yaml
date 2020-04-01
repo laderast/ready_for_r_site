@@ -5,17 +5,17 @@ name: "Inferno"
 light: true
 
 # Primary
-primary: "#456355"
+primary: "#141227"
 
 # Links
-link: "#456355"
+link: "#141227"
 link_hover: "#FCD16B"
 
 # Menu
 menu_primary: "#fff"
-menu_text: "#456355"
+menu_text: "#141227"
 menu_text_active: "#FCD16B"
-menu_title: "#494949"
+menu_title: "#141227"
 
 # Home sections
 home_section_odd: "rgb(255, 255, 255)"

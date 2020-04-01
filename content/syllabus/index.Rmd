@@ -18,8 +18,7 @@ library(pander)
 
 ## Course Description
 
-This course is a gentle introduction to statistical concepts that are relevant to image processing. We will cover steps of the image processing workflow on cellular images, culminating in simple spatial
-analysis on cellular structures in the image. No previous background in statistics is required. The focus of this course is not on programming, but on assessing image processing workflows and understanding their impact on downstream analysis. To do this, we will take a lab notebook approach to image processing, comparing the effect of different methods on each step of the image processing workflow.
+This course is meant to be a gentle introduction to using R/Rstudio in your daily work. It aims to teach useful skills (visualization, data loading, data filtering and manipulation, simple statistics) that students can immediately use in their work. It is not meant to be a substitute for a full programming course or a full course in statistics. In the end, students will apply these skills to a final project. 
 
 ## Credit Hours
 
@@ -63,8 +62,8 @@ laderast@ohsu.edu
 
 ### Teaching Assistant
 
-Samantha Papdakis  
-papadaks@ohsu.edu
+Aaron Coyner
+coyner@ohsu.edu
 
 ## Code of Conduct
 
@@ -79,19 +78,12 @@ If you are disruptive to class learning or disparaging to other students, I may 
 
 We will be drawing on the following online textbooks during class and labs.
 
-*Analyzing fluorescence microscopy images with ImageJ*. Pete Bankhead.
-<https://petebankhead.gitbooks.io/imagej-intro/content/>
-
-*Modern Statistics for Modern Biologists*. Susan Holmes and Wolfgang
-Huber. <http://web.stanford.edu/class/bios221/book/>
-
 *Getting Used to R, RStudio, and RMarkdown*. Chester Ismay.
 <https://ismayc.github.io/rbasics-book/>
 
-
 ## Words of Encouragement
 
-> This was adopted from Andrew Heiss. Thanks!
+> This was adopted from Andrew Heiss. Thanks, Andrew!
 
 I *promise* you can succeed in this class.
 
@@ -118,9 +110,8 @@ Classes will be recorded, but please do not use this as an excuse to miss class.
 
 Grades will be based on the following:
 
-- In class discussion 15%
-- Midterm 20%
-- Homework (from labs) 45%
+- In class activities 30%
+- Assignments (from labs) 20%
 - Final Project 20%
 
 This course will be graded on a Pass/Fail Basis. Pass is defined as a grade of at least 70%.

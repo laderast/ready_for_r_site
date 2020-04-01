@@ -1,6 +1,6 @@
-baseurl: https://stats_for_neuroscientists.netlify.com/
+baseurl: https://ready4r.netlify.com/
 defaultContentLanguage: en
-title: "Stats for Neuroscientists"
+title: "Ready for R"
 theme: "hugo-academic"
 
 
