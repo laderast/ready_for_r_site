@@ -1,4 +1,4 @@
-# Stats for Neuroscientists
+# R-Bootcamp @ OHSU
 
 ## Theme
 
