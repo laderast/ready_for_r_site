@@ -1,7 +1,7 @@
 baseurl: https://stats_for_neuroscientists.netlify.com/
 defaultContentLanguage: en
 title: "Stats for Neuroscientists"
-theme: hugo-academic
+theme: "hugo-academic"
 
 
 # ------------------
