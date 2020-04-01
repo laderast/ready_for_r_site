@@ -17,4 +17,4 @@ design:
 
 {{< courseinfo >}}
 
-{{< figure src="/img/data-science-workflow" alt="Course map" >}}
+{{< figure src="/img/data-science-workflow.png" alt="Course map" >}}
