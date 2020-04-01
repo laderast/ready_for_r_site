@@ -1,0 +1,45 @@
+---
+title: "Week 3: Image Thresholding"
+subtitle: "NEUS"
+author: "Ted Laderas"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: center, middle
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+# Image Thresholding
+
+---
+# Learning Objectives
+
+- **Select** a *region of interest* in an image
+- **Select** an *image threshold* to *binarize* an image
+- Apply *Otsu's method* to select a threshold on an image
+- Apply *erosion* and *dilation* to a binarized image
+
+---
+# Glossary
+
+- *Region of Interest* - Part of an image where you want the analysis to concentrate on
+- *Binarized image* - an image whose intensities have been reduced to two values: 0 and 1.
+- *Threshold* - a cutoff determined from a histogram. Those values that are above the cutoff become 1, and those below become 2
+- *erosion* - reduce 
+- *dilation* - 
+- *adaptive thresholding*
+- *watershed thresholding*
+
+---
+# Reading:
+
+Please read these sections before the lab.
+
+- [Detection By Thresholding](https://petebankhead.gitbooks.io/imagej-intro/content/chapters/thresholding/thresholding.html)
+- [Binary Images](https://petebankhead.gitbooks.io/imagej-intro/content/chapters/binary/binary.html)

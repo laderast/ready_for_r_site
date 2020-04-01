@@ -1,0 +1,32 @@
+---
+title: "Image Segmentation 1: Finding Nuclei"
+subtitle: "NEUS643: Week 4"
+author: "Ted Laderas"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: center, middle
+# Where are those nuclei?
+
+---
+# Learning Objectives
+
+- **Learn** and **apply** *segmentation* algorithms to detect objects in an image
+- **Understand** and **correct** for issues that may affect segmentation of an image
+- **Use** a distance transform to find the centers of a detected object
+
+---
+# Starting point: Binarized image
+
+
+---
+# Finding the center of an object: Distance Transform
+
+- Very special transform that calcluates
+

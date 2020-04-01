@@ -1,0 +1,16 @@
+---
+title: "Schedule"
+slug: schedule
+---
+
+Here's your roadmap for the quarter!
+
+- <i class="fas fa-book-reader"></i> Readings are supplemental to each lecture session
+- <i class="fas fa-laptop-code"></i> Assignments are due by **11:59 PM** on the day they are due
+- <i class="fas fa-chalkboard-teacher"></i> Class materials (slides, in-class activities, etc.) will be added on the day of class
+
+Please note that this schedule is tentative. I want us to learn concepts, rather than have a lot of material.
+
+---
+
+`r blogdown::shortcode("schedule")`

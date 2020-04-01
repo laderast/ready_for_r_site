@@ -1,0 +1,18 @@
+---
+title: "Introduction to R/RStudio and Images"
+linktitle: "1: Introduction to R/RStudio and Images"
+date: "2020-01-15"
+read_date: "2020-01-15"
+menu:
+  reading:
+    parent: Readings
+    weight: 1
+type: docs
+---
+
+## Required
+
+- [R and RStudio Basics](https://ismayc.github.io/rbasics-book/3-rstudiobasics.html) - make sure to watch the videos.
+- [Images and Pixels](https://petebankhead.gitbooks.io/imagej-intro/content/chapters/images_and_pixels/images_and_pixels.html)
+- [Types and Bit Depths](https://petebankhead.gitbooks.io/imagej-intro/content/chapters/bit_depths/bit_depths.html)
+

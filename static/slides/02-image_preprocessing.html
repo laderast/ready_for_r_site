@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduction to Image Preprocessing</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ted Laderas" />
+    <meta name="date" content="2020-03-31" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to Image Preprocessing
+### Ted Laderas
+### 2020-03-31
+
+---
+
+
+
+
+# Sharing Session
+
+- For 10 minutes a class, we'll discuss assignments
+
+---
+# Learning Objectives
+
+- **Learn** about *histograms* and **use** them to understand the distribution of values in an image
+- **Learn** about *numerical transformations* on image data and how to **apply** them to images
+- **Learn** about *log transformation* and **assess** its effect on image data
+- Learn about *filtering* and *denoising* images
+
+---
+# Glossary
+
+- **transformation** - performing a numeric operation on the pixel values of an image
+- **global** transformations - an operation that is applied to all of the pixel values at once. Also known as **point operations**.
+- **local transformations** - an operation that is applied one pixel at a time, usually dependent on the *neighborhood* of this pixel. 
+- **filtering** - a specific type of *local transformation* that uses a pixel value and the value of its neighboring pixels
+- **neighborhood** - an area of pixels that is centered around one pixel. The smallest neighborhood is 3 pixels by 3 pixels = 9 pixels total, which form a "moat" around the center pixel.
+
+---
+# What are some problems with Microscope Images?
+
+- Noise (often from Exposure)
+- Uneven Illumination
+- Overexposure
+
+---
+# First Do No Harm
+
+- Do as little as possible to images when preprocessing them.
+- Be Transparent and share your workflow
+
+---
+# Histograms
+
+.pull-left[image]
+
+.pull-right[histogram]
+
+---
+# Point Operations on Image
+
+- Image too dark - try adding a value to the image
+- 
+
+---
+# Normalization
+
+- Scale depth of image to fit minimums and maximums of image
+
+.pull-left[]
+
+.pull-right[]
+
+---
+# Compare Histograms
+
+.pull-left[]
+
+.pull-right[]
+
+---
+# Log Transformation
+
+- Sometimes we want to change the skewedness of an image's histogram
+- Emphasize lower values, de-emphasize smaller values
+
+---
+# Masking
+
+- We can use multiplication using a mask to remove irrelevant featres. 
+
+---
+# Noise in fluoresence microscopy
+
+- Noise around an object can affect the *shape*, or *border* of the object that is detected
+- We'll investigate the sources of noise further later
+- Can affect the area that is measured for the object
+- Can we fix this? Yes, we can, with *filters*!
+
+---
+# Filtering using a mean filter
+
+.pull-left[
+- Applying an operation using values around a pixel, or the pixel neighborhood
+- Take all nine values in a neighborhood, multiply by 1/9, and then add them
+- The "1/9" is known as a weight
+]
+
+.pull-right[
+  ![](image/week2/mean_filter.png)
+]
+
+
+
+---
+# Smoothing our image out
+
+![](image/week2/applying_filter.png)
+---
+# What about the edges?
+
+.pull-right[
+![](image/week2/borders.png)
+]
+
+---
+# Variations: Median Filtering
+
+.pull-left[
+- Sort all values, and return the center value
+- "ignores" extreme values in a neighborhood.
+]
+
+.pull-right[
+  ![](image/week2/median_filtering.png)
+]
+
+---
+# Mean vs Median: One ignores the "extreme" values
+
+![](image/week2/median_vs_mean.png)
+
+---
+# Variations: Gaussian Filters
+
+- Neighborhood and its weight are defined by 2-D *gaussian* functions around a point
+- Avoids "blockiness"
+
+.pull-right[
+   ![](image/week2/gaussian_filter.png)
+]
+
+---
+# What about Photoshop?
+
+- Almost all effects in photoshop are global or local manipulations on an image.
+
+
+---
+# Take home points
+
+- We can transform images with either **global** or **local** operations
+- **Global operations**: transforming the data, including addition, subtraction, and scaling, or normalizing the data 
+- We assess the effects of *global operations* by looking at the histogram
+- **Local operations**: filtering, including mean filtering, median filtering, and gaussian filtering
+- We assess the effects of local operations by examining the image and seeing the effect of the filter on downstream operations
+- Neighborhoods define which pixel values we incorporate into a local operation
+
+---
+# Reading
+
+Please read these sections before the lab.
+
+- [Processing and Analysis](https://petebankhead.gitbooks.io/imagej-intro/content/chapters/processing_and_analysis/processing_and_analysis.html)
+- [Point Operations](https://petebankhead.gitbooks.io/imagej-intro/content/chapters/point_operations/point_operations.html)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

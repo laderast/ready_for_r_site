@@ -1,0 +1,49 @@
+---
+title: "Lecture: Introduction to Rstudio and Images"
+linktitle: "1. Introduction to RStudio and Images"
+date: "2020-03-31"
+class_date: "2020-03-31"
+output:
+  blogdown::html_page:
+    toc: true
+menu:
+  class:
+    parent: Class sessions
+    weight: 1
+type: docs
+weight: 1
+# pdf: 
+# thumb: 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Slides
+
+### Class Introduction
+
+Open the class introduction slides in a separate window: <a href="https://stats4neuro.netlify.com/slides/01-introduction_slides#1" target="_blank">https://stats4neuro.netlify.com/slides/01-introduction_slides#1</a>
+
+```{r echo=FALSE}
+knitr::include_url('https://stats4neuro.netlify.com/slides/01-introduction_slides#1')
+```
+
+### Introduction to Images
+
+Open these slides in a separate window: <a href="https://stats4neuro.netlify.com/slides/01-introduction_to_images#1" target="_blank">https://stats4neuro.netlify.com/slides/01-introduction_to_images#1</a>
+
+To view my speaker notes, press "p".
+
+```{r echo=FALSE}
+knitr::include_url('https://stats4neuro.netlify.com/slides/01-introduction_to_images#1')
+``````
+
+### Post-Class
+
+Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.
+
+- Clearest Point: What was the most clear part of the lecture?
+- Muddiest Point: What was the most unclear part of the lecture to you?
+- Anything Else: Is there something you'd like me to know?
+
+https://ohsu.ca1.qualtrics.com/jfe/form/SV_e99ek34B878dGap

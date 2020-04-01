@@ -1,0 +1,307 @@
+---
+title: "NEUS630 Introduction"
+subtitle: "Stats For Neuroscientists"
+author: "Ted Laderas"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+mono_light(
+  base_color = "midnightblue",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Droid Mono"),
+  link_color = "deepskyblue1",
+  text_font_size = "28px"
+)
+```
+
+class: center, middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+# Welcome
+
+---
+# Ted Laderas, PhD 
+
+.pull-left[
+- Assistant Professor, Division of Bioinformatics and Computational Biology, Department of Medical Informatics and Clinical Epidemiology 
+- Bioinformatics/Computational Biology
+- Interactive Visualization
+- Certified RStudio Instructor 
+- Co-founder of [BioData Club](http://biodata-club.github.io)]
+
+.pull-right[<img src="image/week1/ted.jpg" width = 500>]
+
+---
+# Class Facilitator/TA
+
+- Meet Sam Papadakis from the Fair Lab
+- She will be helping me faciliate online sessions
+
+---
+# Introduction Overview
+
+- Introduction to Zoom
+- Learning Objectives
+- Class Logistics
+
+---
+# First of All
+
+- This is a brand new course
+- Let's support each other
+    - Be gentle with each other
+- I expect to make many mistakes
+    - I don't mind you pointing them out, but be gentle
+    - You can end up as a collaborator!
+
+---
+# Tour of Zoom
+
+- We'll be using zoom for our classes
+- Let's do a quick guided tour
+
+---
+
+<iframe width="1000" height = "600" src="https://www.youtube.com/embed/5iap0Ffl5Lg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+# Letting me Know
+
+When we're doing the activity, use the hands up in Zoom to indicate that you're finished.
+
+If you have questions, please ask them in chat.
+
+---
+# Let's Try Out Chat
+
+Open the chat window (if we are in full screen, press the escape key, and then click on the chat icon)
+
+<img src="image/week1/zoom_chat.jpg" width = 800>
+
+Type in Chat:
+
+- Your Name
+- Your Year
+- What you hope to learn from this course
+
+---
+# Rules for Interaction
+
+During Lectures:
+
+- Post questions in Chat
+    - Sam will interrupt me to make sure these questions are answered
+- Post answers to questions in chat
+- We'll learn Hack.md for taking collaborative notes next lecture
+
+---
+# Rules for Interaction
+
+During Labs:
+
+- Work within your breakout group to solve 
+- Share screens to talk about issues
+- We'll pop in to each discussion group to help you out
+
+---
+# Sharing Your Screen
+
+<img src = "image/week1/screen sharing.jpg" width = 800>
+
+---
+# Breakout Rooms
+
+- I'll divide the class into breakout rooms for discussion and labs
+- I'll ask each room for a summary
+
+---
+# Let's try the Breakout Rooms
+
+- Let's try it (3 minutes)
+- Icebreaker: What is your favorite all purpose condiment (such as salsa, ketchup, or chile oil?) and why?
+
+---
+# Zoom Recordings/Attendance
+
+- I will record each session and post it as soon it is ready
+- I will pause recording for breakout rooms (that won't be recorded)
+
+---
+class: center, middle
+
+# Let's look at the website:
+## http://stats4neuro.netlify.com
+
+---
+class: center, middle
+
+# Class Logistics
+
+---
+# The Course This Year
+
+- We will be covering some basic statistics in this course
+- I advise you to also take CONJ 620
+- I will try to limit the math, but there will be a little bit
+
+---
+# Learning Objectives
+
+By the end of this course you will be able to:
+
+- **Learn** and **execute** the basic steps of image analysis in R
+- **Assess** whether image processing algorithms are working correctly
+- **Understand** basic statistics and what it can help us with
+- **Execute** and **Interpret** basic spatial statistics on data that are involved with fluoresence microscopy analysis
+
+---
+# My Approach to Teaching
+
+I think students learn the best when they're actually looking and thinking about data.
+
+This means we will be looking at lots of data.
+
+---
+# Social Learning and Labs
+
+I also think that we learn best when we are discussing data together.
+
+---
+class:center, middle
+# This is a Safe Space to Ask Questions
+
+---
+# Code of Conduct
+
+This class is governed by the [BioData Club Code of Conduct](https://biodata-club.github.io/code_of_conduct/).
+
+This class is meant to be a psychologically safe space where it's ok to ask questions.
+
+I want to normalize your own curiosity and fuel your desire to learn more.
+
+If you are disruptive to class learning or disparaging to other students, I may mute you for the day.
+
+---
+# Class Slack
+
+I have created a class Slack here: http://neus643.slack.com - the invite link should have been sent out.
+
+I will try to answer questions there when I can. We'll take a tour of class next week.
+
+If you have a question, please ask it in a public channel, rather than a private message, so it can benefit everyone.
+
+- [Slack 101 Videos](https://slack.com/resources/slack-101)
+
+---
+# Class Attendance Policy
+
+Please try to attend class. 
+
+There is a post-class survey that will be posted. Please fill it out, as it counts as attendance.
+
+---
+# Office Hours
+
+I will be available for office hours/drop in time 2 Hours a week (Sam will be available once a week). You're free to sign in to the Zoom Room and work on homework at this time.
+
+When is good link: http://whenisgood.net/rretq92
+
+Highlight all times that work for you.
+
+---
+# One Note about Scheduling
+
+I only work 4 days a week. I'm not available on Wednesdays.
+
+---
+# Class Assignments
+
+Class Assignments will be done in RStudio Notebooks (more during lab)
+
+Assignments will be submitted through Sakai. 
+
+We will do our best to return it to you by the following Monday.
+
+---
+# Why R?
+
+R is an extremely powerful language for **statistical modeling**, machine learning, data manipulation, and visualization.
+
+It's a *hub* language in that you can access many different kinds of systems (TensorFlow, Databases, Apache Spark) without needing to know other languages.
+
+---
+# This is Not a Programming Course
+
+Most of the assignments will have you assessing the *impact* of a method on image data. 
+
+We'll use some simple tools to do this.
+
+The writing is the most important part of these assignments, not the coding. 
+
+I want to see you thinking and observing about the data.
+
+---
+# R is Not Easy
+
+- Learning R can be a difficult, but rewarding process
+- Be patient with yourself, don't beat yourself up
+- We'll try to make it a fun process for you
+
+---
+# R-Bootcamp
+
+I am also teaching a 1 credit course this term called the R-Bootcamp that starts the week of April 6.
+
+The focus is more on visualization, data wrangling, and simple statistics.
+
+There should be an announcement sent out this week.
+
+---
+# Grading Breakdown
+
+Class is Pass/Fail
+
+- In class discussion 15%
+- Midterm 20%
+- Homework (from labs) 45%
+- Final Project 20%
+
+---
+# Format of Class
+
+- "Lecture Days"
+    - Discussion of Previous Week (15 min)
+    - Lectures (45 min)
+
+- "Lab Days"
+    - In-Class Labs (1 hr)
+
+- Office Hours (2 hrs/week)
+
+---
+# R and RStudio
+
+- In-class labs and assignments will be done with [RStudio.cloud](http://rstudio.cloud)
+- We'll take a guided tour of RStudio Cloud next class
+- Invite to the class workspace will be sent out before Thursday
+- Links to the Labs will be sent out day of class via Sakai
+- Submissions of notebooks will be via Sakai (we will talk about this)
+
+---
+class: center, middle
+
+# Any Questions?

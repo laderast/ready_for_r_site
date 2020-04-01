@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>NEUS630 Introduction</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ted Laderas" />
+    <meta name="date" content="2020-03-31" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# NEUS630 Introduction
+## Stats For Neuroscientists
+### Ted Laderas
+### 2020-03-31
+
+---
+
+
+
+
+class: center, middle
+
+
+# Welcome
+
+---
+# Ted Laderas, PhD 
+
+.pull-left[
+- Assistant Professor, Division of Bioinformatics and Computational Biology, Department of Medical Informatics and Clinical Epidemiology 
+- Bioinformatics/Computational Biology
+- Interactive Visualization
+- Certified RStudio Instructor 
+- Co-founder of [BioData Club](http://biodata-club.github.io)]
+
+.pull-right[&lt;img src="image/week1/ted.jpg" width = 500&gt;]
+
+---
+# Class Facilitator/TA
+
+- Meet Sam Papadakis from the Fair Lab
+- She will be helping me faciliate online sessions
+
+---
+# Introduction Overview
+
+- Introduction to Zoom
+- Learning Objectives
+- Class Logistics
+
+---
+# First of All
+
+- This is a brand new course
+- Let's support each other
+    - Be gentle with each other
+- I expect to make many mistakes
+    - I don't mind you pointing them out, but be gentle
+    - You can end up as a collaborator!
+
+---
+# Tour of Zoom
+
+- We'll be using zoom for our classes
+- Let's do a quick guided tour
+
+---
+
+&lt;iframe width="1000" height = "600" src="https://www.youtube.com/embed/5iap0Ffl5Lg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+# Letting me Know
+
+When we're doing the activity, use the hands up in Zoom to indicate that you're finished.
+
+If you have questions, please ask them in chat.
+
+---
+# Let's Try Out Chat
+
+Open the chat window (if we are in full screen, press the escape key, and then click on the chat icon)
+
+&lt;img src="image/week1/zoom_chat.jpg" width = 800&gt;
+
+Type in Chat:
+
+- Your Name
+- Your Year
+- What you hope to learn from this course
+
+---
+# Rules for Interaction
+
+During Lectures:
+
+- Post questions in Chat
+    - Sam will interrupt me to make sure these questions are answered
+- Post answers to questions in chat
+- We'll learn Hack.md for taking collaborative notes next lecture
+
+---
+# Rules for Interaction
+
+During Labs:
+
+- Work within your breakout group to solve 
+- Share screens to talk about issues
+- We'll pop in to each discussion group to help you out
+
+---
+# Sharing Your Screen
+
+&lt;img src = "image/week1/screen sharing.jpg" width = 800&gt;
+
+---
+# Breakout Rooms
+
+- I'll divide the class into breakout rooms for discussion and labs
+- I'll ask each room for a summary
+
+---
+# Let's try the Breakout Rooms
+
+- Let's try it (3 minutes)
+- Icebreaker: What is your favorite all purpose condiment (such as salsa, ketchup, or chile oil?) and why?
+
+---
+# Zoom Recordings/Attendance
+
+- I will record each session and post it as soon it is ready
+- I will pause recording for breakout rooms (that won't be recorded)
+
+---
+class: center, middle
+
+# Let's look at the website:
+## http://stats4neuro.netlify.com
+
+---
+class: center, middle
+
+# Class Logistics
+
+---
+# The Course This Year
+
+- We will be covering some basic statistics in this course
+- I advise you to also take CONJ 620
+- I will try to limit the math, but there will be a little bit
+
+---
+# Learning Objectives
+
+By the end of this course you will be able to:
+
+- **Learn** and **execute** the basic steps of image analysis in R
+- **Assess** whether image processing algorithms are working correctly
+- **Understand** basic statistics and what it can help us with
+- **Execute** and **Interpret** basic spatial statistics on data that are involved with fluoresence microscopy analysis
+
+---
+# My Approach to Teaching
+
+I think students learn the best when they're actually looking and thinking about data.
+
+This means we will be looking at lots of data.
+
+---
+# Social Learning and Labs
+
+I also think that we learn best when we are discussing data together.
+
+---
+class:center, middle
+# This is a Safe Space to Ask Questions
+
+---
+# Code of Conduct
+
+This class is governed by the [BioData Club Code of Conduct](https://biodata-club.github.io/code_of_conduct/).
+
+This class is meant to be a psychologically safe space where it's ok to ask questions.
+
+I want to normalize your own curiosity and fuel your desire to learn more.
+
+If you are disruptive to class learning or disparaging to other students, I may mute you for the day.
+
+---
+# Class Slack
+
+I have created a class Slack here: http://neus643.slack.com - the invite link should have been sent out.
+
+I will try to answer questions there when I can. We'll take a tour of class next week.
+
+If you have a question, please ask it in a public channel, rather than a private message, so it can benefit everyone.
+
+- [Slack 101 Videos](https://slack.com/resources/slack-101)
+
+---
+# Class Attendance Policy
+
+Please try to attend class. 
+
+There is a post-class survey that will be posted. Please fill it out, as it counts as attendance.
+
+---
+# Office Hours
+
+I will be available for office hours/drop in time 2 Hours a week (Sam will be available once a week). You're free to sign in to the Zoom Room and work on homework at this time.
+
+When is good link: http://whenisgood.net/rretq92
+
+Highlight all times that work for you.
+
+---
+# One Note about Scheduling
+
+I only work 4 days a week. I'm not available on Wednesdays.
+
+---
+# Class Assignments
+
+Class Assignments will be done in RStudio Notebooks (more during lab)
+
+Assignments will be submitted through Sakai. 
+
+We will do our best to return it to you by the following Monday.
+
+---
+# Why R?
+
+R is an extremely powerful language for **statistical modeling**, machine learning, data manipulation, and visualization.
+
+It's a *hub* language in that you can access many different kinds of systems (TensorFlow, Databases, Apache Spark) without needing to know other languages.
+
+---
+# This is Not a Programming Course
+
+Most of the assignments will have you assessing the *impact* of a method on image data. 
+
+We'll use some simple tools to do this.
+
+The writing is the most important part of these assignments, not the coding. 
+
+I want to see you thinking and observing about the data.
+
+---
+# R is Not Easy
+
+- Learning R can be a difficult, but rewarding process
+- Be patient with yourself, don't beat yourself up
+- We'll try to make it a fun process for you
+
+---
+# R-Bootcamp
+
+I am also teaching a 1 credit course this term called the R-Bootcamp that starts the week of April 6.
+
+The focus is more on visualization, data wrangling, and simple statistics.
+
+There should be an announcement sent out this week.
+
+---
+# Grading Breakdown
+
+Class is Pass/Fail
+
+- In class discussion 15%
+- Midterm 20%
+- Homework (from labs) 45%
+- Final Project 20%
+
+---
+# Format of Class
+
+- "Lecture Days"
+    - Discussion of Previous Week (15 min)
+    - Lectures (45 min)
+
+- "Lab Days"
+    - In-Class Labs (1 hr)
+
+- Office Hours (2 hrs/week)
+
+---
+# R and RStudio
+
+- In-class labs and assignments will be done with [RStudio.cloud](http://rstudio.cloud)
+- We'll take a guided tour of RStudio Cloud next class
+- Invite to the class workspace will be sent out before Thursday
+- Links to the Labs will be sent out day of class via Sakai
+- Submissions of notebooks will be via Sakai (we will talk about this)
+
+---
+class: center, middle
+
+# Any Questions?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
