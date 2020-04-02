@@ -7,10 +7,10 @@ lessons:
     #reading: ""
     #class: "03-class"
 
-  - title: '<span class="fake-header-table">Learning the Tidyverse</span>'
+  - title: '<span class="fake-header-table">Learning the `Tidyverse`</span>'
     header: True
 
-  - title: "**Lecture/Lab 2: Loading Data, data.frames, and Visualization with ggplot2 Part 1**"
+  - title: "**Lecture/Lab 2: Loading Data, data.frames, and Visualization with `ggplot2` Part 1**"
     date: "April 14"
     
   - title: "**Drop in Lab time/Finish Notebook 2**"
@@ -19,10 +19,10 @@ lessons:
   - title: "**Notebooks 1 and 2 due**"
     date: "April 21"
 
-  - title: "**Lecture/Lab 3: Visualization using ggplot2 part 2, Filtering, Sorting, and Selecting data using dplyr**"
+  - title: "**Lecture/Lab 3: Visualization using `ggplot2` part 2, Filtering, Sorting, and Selecting data using `dplyr`**"
     date: "April 28"
     
-  - title: "Lecture/Lab 4: Mutating and Summarizing data using dplyr**"
+  - title: "Lecture/Lab 4: Mutating and Summarizing data using `dplyr`**"
     date: "May 5"
     
   - title: "**Drop in Lab time/Finish Notebook 4**"
