@@ -115,7 +115,7 @@ Classes will be recorded, but please do not use this as an excuse to miss class.
 Grades will be based on the following:
 
 - In class activities 30%
-- Assignments (from labs) 20%
+- Assignments (from labs) 50%
 - Final Project 20%
 
 This course will be graded on a Pass/Fail Basis. Pass is defined as a grade of at least 70%.
