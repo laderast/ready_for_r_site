@@ -1,57 +1,38 @@
 lessons:
-  - title: '<span class="fake-header-table">Part 1: Image Processing</span>'
+  - title: '<span class="fake-header-table">Getting to Know R/RStudio</span>'
     header: True
 
-  - title: '**Lecture 1: Introduction to R/Loading Images**'
-    date: "March 31"
-    reading: "01-reading"
-    class: "01-class"
-
-  - title: '**Lab 1: Intro to RStudio/Loading Images**'
-    date: "April 2"
-    assignment: "01-problem-set"
-
-  - title: "Notebook 1 Due"
-    date: "April 9"
-
-  - title: '**Lecture 2: Image Operations/Filtering Images**'
+  - title: '**Lecture/Lab 1: RStudio, Functions, Objects, and Data Types**'
     date: "April 7"
-    reading: "03-reading"
-    class: "03-class"
+    #reading: ""
+    #class: "03-class"
 
-  - title: '**Lab 2: Image Operations/Filtering Images**'
-    date: "April 9"
-    assignment: "02-problem-set"
+  - title: '<span class="fake-header-table">Learning the Tidyverse</span>'
+    header: True
 
-  - title: "**Notebook 2 due**"
-    date: "April 16"
-
-  - title: "**Lecture 3: Binarizing Images**"
+  - title: "**Lecture/Lab 2: Loading Data, data.frames, and Visualization with ggplot2 Part 1**"
     date: "April 14"
     
-  - title: "**Lab 3: Binarizing Image Lab**"
-    date: "April 16"
-
-  - title: "**Notebook 2 due**"
-    date: "April 23"
-
-  - title: "**Lecture 4: Image Segmentation Part 1: Identifying Nuclei**"
+  - title: "**Drop in Lab time/Finish Notebook 2**"
     date: "April 21"
-    
-  - title: "**Lab 4: Image Segmentation Part 1**"
-    date: "April 23"
 
-  - title: "**Lecture 5: Image Segmentation Part 2: Cell Bodies**"
+  - title: "**Notebooks 1 and 2 due**"
+    date: "April 21"
+
+  - title: "**Lecture/Lab 3: Visualization using ggplot2 part 2, Filtering, Sorting, and Selecting data using dplyr**"
     date: "April 28"
     
-  - title: "**Lab 5: Image Segmentation Part 2**"
-    date: "April 30"
-
-  - title: '<span class="fake-header-table">Part 2: Spatial Statistics</span>'
-    header: true
-
-  - title: "**Lecture: Introduction to Statistical Concepts**"
+  - title: "Lecture/Lab 4: Mutating and Summarizing data using dplyr**"
     date: "May 5"
-
-  - title: "**Lecture: Introduction to Visual Inference**"
-    date: "May 7"
+    
+  - title: "**Drop in Lab time/Finish Notebook 4**"
+    date: "May 12"
+    
+  - title: "**Notebooks 3 and 4 due**"
+    date: "May 17"
+    
+  - title: "Lecture/Lab 5: Stats and Modeling Using `broom`"
+    date: "May 24"
+    
+  - title: "Final Project Assigned"
+    date: "May 24"
