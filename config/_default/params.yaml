@@ -105,10 +105,10 @@ instructor:
 course:
   number: "BMI 507"
   semester: "Spring 2020"
-  days: "TBA"
-  time: "TBA"
+  days: "Thursdays"
+  time: "10 - 11:30 AM"
   location: "Online"
-  dates: "March 31 – June 2, 2020"
+  dates: "April 9 – June 2, 2020"
   github: "laderast/rboot_ohsu_site"
   copyrightYear: "2020"
 
