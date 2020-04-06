@@ -1,4 +1,4 @@
-# R-Bootcamp @ OHSU
+# Ready For R
 
 ## Theme
 
