@@ -22,7 +22,7 @@ lessons:
   - title: "**Lecture/Lab 3: Visualization using `ggplot2` part 2, Filtering, Sorting, and Selecting data using `dplyr`**"
     date: "April 28"
     
-  - title: "Lecture/Lab 4: Mutating and Summarizing data using `dplyr`**"
+  - title: "**Lecture/Lab 4: Mutating and Summarizing data using `dplyr`**"
     date: "May 5"
     
   - title: "**Drop in Lab time/Finish Notebook 4**"
@@ -31,8 +31,9 @@ lessons:
   - title: "**Notebooks 3 and 4 due**"
     date: "May 17"
     
-  - title: "Lecture/Lab 5: Stats and Modeling Using `broom`"
+  - title: "**Lecture/Lab 5: Stats and Modeling Using `broom`**"
     date: "May 24"
     
   - title: "Final Project Assigned"
     date: "May 24"
+    
