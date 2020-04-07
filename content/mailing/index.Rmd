@@ -11,4 +11,32 @@ output:
 If you're external to OHSU, but you want access to the Ready for R course materials, please join our mailing list. We will update you when material and videos become available.
 
  <form style="border:1px solid #ccc;padding:3px;text-align:center;" action="https://tinyletter.com/ready4r" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/ready4r', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"><p><label for="tlemail">Enter your email address</label></p><p><input type="text" style="width:140px" name="email" id="tlemail" /></p><input type="hidden" value="1" name="embed"/><input type="submit" value="Subscribe" /><p><a href="https://tinyletter.com" target="_blank">powered by TinyLetter</a></p></form>
-         
+ 
+## Course Material Distribution
+ 
+Here are some logistics about the online course for external folks.
+
+This is an experiment, so please be patient with me and with yourself. I know that a lot of you really want to learn R, but please know that I am only one person. But I want to help you learn.
+
+This course is based on a course I am giving at Oregon Health & Science University (OHSU). That course is only open to OHSU students. I will be trying to share as much of the course materials as I can.
+
+1. **Code of Conduct**. This class is governed by the BioData Club Code of Conduct: https://biodata-club.github.io/code_of_conduct/  This class is meant to be a psychologically safe space where it’s ok to ask questions. I want to normalize your own curiosity and fuel your desire to learn more. If you are disruptive to class learning or disparaging to other students, I may mute you from the Slack for the day. I am very serious about this.
+
+2. **Website**. Most of you have found the website. If not, it is here: https://ready4r.netlify.com. I will be posting readings and responses to questions there. It's not quite completely ready yet, be patient.
+
+You can read about the course learning objectives here: https://ready4r.netlify.com/syllabus/
+
+3. **RStudio Cloud**. The course will be deployed via RStudio.Cloud. RStudio Cloud is a web-based instance of R/RStudio that you can use for free and that I use for teaching. You can sign up here: https://rstudio.cloud. Later this week I will send an invite to the mailing list to join the Ready for R RStudio Cloud workspace.
+
+4. **Video Releases**. I will be trying to release videos of each class the weekend after the OHSU class (the first class is April 9). Please be aware that I am just one person and that I will try to get these out as fast as I can.
+
+5. **Slack Workspace**. I will be sending invites later this week to a slack workspace. I will do my best to field questions and answers there. However, please be aware that I am only one person. The R for Data Science community is a great place to ask questions: https://www.rfordatasci.com/ 
+
+6. **Alternatives**. This is not the only intro to R course out there. There is another course that I suggest: David Keyes' R for the Rest of Us course: https://rfortherestofus.com/ 
+
+David is a great instructor, and his course is free and excellent. In fact, I suggest that you take a look at his material if you need another reference or things are confusing. 
+
+Jessica Minnier and I have also co-authored the R-Bootcamp, which this material is based on. We'll be covering very similar bases, but this is a self-paced option for those who want it. I do recommend at least sitting in on the first session of Ready for R before starting it: https://r-bootcamp.netlify.com/
+
+Thanks again for your interest and I'll do my best to help you in your journey to learning R.
+
