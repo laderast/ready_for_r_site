@@ -8,14 +8,14 @@ main:
   - name: Mailing List
     url: /mailing/
     weight: 7
-#  - name: Readings
-#    url: /reading/
+  - name: Readings
+    url: /reading/
 #    weight: 3
 #  - name: Assignments
 #    url: /assignment/
 #    weight: 4
-#  - name: Classes
-#    url: /class/
+  - name: Classes
+    url: /class/
 #    weight: 5
 #  - name: RStudio.cloud
 #    url: https://rstudio.cloud/
