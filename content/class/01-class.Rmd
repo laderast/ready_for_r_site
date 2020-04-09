@@ -1,8 +1,8 @@
 ---
-title: "Lecture: Introduction to Rstudio and Images"
-linktitle: "1. Introduction to RStudio and Images"
-date: "2020-03-31"
-class_date: "2020-03-31"
+title: "Part 1: Introduction to R/RStudio"
+linktitle: "1. Introduction to R/RStudio"
+date: "2020-04-09"
+class_date: "2020-04-09"
 output:
   blogdown::html_page:
     toc: true
@@ -22,28 +22,19 @@ editor_options:
 
 ### Class Introduction
 
-Open the class introduction slides in a separate window: <a href="https://stats4neuro.netlify.com/slides/01-introduction_slides#1" target="_blank">https://stats4neuro.netlify.com/slides/01-introduction_slides#1</a>
+Open the class introduction slides in a separate window: <a href="https://ready4r.netlify.com/slides/01-introduction_slides#1" target="_blank">https://ready4r.netlify.com/slides/01-introduction_slides#1</a>
 
 ```{r echo=FALSE}
-knitr::include_url('https://stats4neuro.netlify.com/slides/01-introduction_slides#1')
+knitr::include_url('https://ready4r.netlify.com/slides/01-introduction_slides#1')
 ```
 
-### Introduction to Images
+### Post-Class Survey
 
-Open these slides in a separate window: <a href="https://stats4neuro.netlify.com/slides/01-introduction_to_images#1" target="_blank">https://stats4neuro.netlify.com/slides/01-introduction_to_images#1</a>
+Please fill out the following survey and we will discuss the results during the next class. All responses will be anonymous. Remember, filling this out counts as attendance.
 
-To view my speaker notes, press "p".
-
-```{r echo=FALSE}
-knitr::include_url('https://stats4neuro.netlify.com/slides/01-introduction_to_images#1')
-``````
-
-### Post-Class
-
-Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.
-
+- Pace
 - Clearest Point: What was the most clear part of the lecture?
 - Muddiest Point: What was the most unclear part of the lecture to you?
 - Anything Else: Is there something you'd like me to know?
 
-https://ohsu.ca1.qualtrics.com/jfe/form/SV_e99ek34B878dGap
+https://ohsu.ca1.qualtrics.com/jfe/form/SV_6nc1ZLFMmRoE7nn

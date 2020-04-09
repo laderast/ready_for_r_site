@@ -4,8 +4,8 @@ lessons:
 
   - title: '**Lecture/Lab 1: RStudio, Functions, Objects, and Data Types**'
     date: "April 9"
-    #reading: ""
-    #class: "03-class"
+    reading: "01-reading"
+    class: "01-class"
 
   - title: '<span class="fake-header-table">Learning the `Tidyverse`</span>'
     header: True

@@ -1,6 +1,6 @@
 ---
-title: "Introduction to R/RStudio and Images"
-linktitle: "1: Introduction to R/RStudio and Images"
+title: "Introduction to R/RStudio"
+linktitle: "1: Introduction to R/RStudio"
 date: "2020-01-15"
 read_date: "2020-01-15"
 menu:
@@ -13,6 +13,7 @@ type: docs
 ## Required
 
 - [R and RStudio Basics](https://ismayc.github.io/rbasics-book/3-rstudiobasics.html) - make sure to watch the videos.
-- [Images and Pixels](https://petebankhead.gitbooks.io/imagej-intro/content/chapters/images_and_pixels/images_and_pixels.html)
-- [Types and Bit Depths](https://petebankhead.gitbooks.io/imagej-intro/content/chapters/bit_depths/bit_depths.html)
 
+## Practice
+
+- In the Part 1 RStudio project, there is a document called "Practicing with Swirl" which will point you to how to run an interactive tutorial in RStudio to reinforce concepts in the lab.
