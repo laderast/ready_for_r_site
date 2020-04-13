@@ -2,7 +2,9 @@
 title: "Dear Ted"
 author: "Ted Laderas"
 date: "4/9/2020"
-output: html_document
+output: 
+  html_document:
+    toc: true
 params: 
   survey_name: "BMI 507 Ready for R"
   week: "Week 1"
@@ -42,7 +44,7 @@ lab_survey_external <- fetch_survey(survey_id, verbose=TRUE) %>%
 
 ```
 
-## Dear Ted (External)
+# Dear Ted (External)
 
 ```{r}
 lab_survey_external %>% 
