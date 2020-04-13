@@ -2852,22 +2852,27 @@ lab_survey_ohsu &lt;- fetch_survey(survey_id, verbose=TRUE) %&gt;%
 ##   Q7_1 = col_double()
 ## )</code></pre>
 <pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre><code>## Warning in infer_data_types(data, surveyID): The &#39;StartDate&#39;, &#39;EndDate&#39; and &#39;RecordedDate&#39; variables were converted without passing
+## a specific timezone. If you like to set these timestamps to your own timezone, please
+## visit https://www.qualtrics.com/support/survey-platform/getting-started/managing-your-account/
+## (under &#39;User Settings&#39;). See https://api.qualtrics.com/docs/dates-and-times for more
+## information about how the Qualtrics API handles dates and times.</code></pre>
 </div>
 <div id="muddiest-points" class="section level2">
 <h2>Muddiest points</h2>
 <pre class="r"><code>lab_survey_ohsu %&gt;% 
   select(muddiest_points) %&gt;% 
   DT::datatable(options=opts)</code></pre>
-<div id="htmlwidget-25233f783095bf55f732" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-25233f783095bf55f732">{"x":{"filter":"none","data":[["1","2","3","4","5"],["I'm not a programmer person so the concept of a programming environment is pretty mystifying.  That said, it doesn't stop me from applying what you're teaching us, so no real worries there.","The challenges since I lost where we were and had to back track all of the time to see where the instructor was.","na.omit",null,"everything was clear! I do know basic Python so these types of concepts are not completely new to me"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>muddiest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4e9cbc3ca8622fcb0370" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4e9cbc3ca8622fcb0370">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],["I'm not a programmer person so the concept of a programming environment is pretty mystifying.  That said, it doesn't stop me from applying what you're teaching us, so no real worries there.","The challenges since I lost where we were and had to back track all of the time to see where the instructor was.","na.omit",null,"everything was clear! I do know basic Python so these types of concepts are not completely new to me","folder organization; projects vs notebooks?"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>muddiest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="clearest-points" class="section level2">
 <h2>Clearest Points</h2>
 <pre class="r"><code>lab_survey_ohsu %&gt;%
   select(clearest_points) %&gt;%
   DT::datatable(options=opts)</code></pre>
-<div id="htmlwidget-9a8b12a7b9229cd56b44" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9a8b12a7b9229cd56b44">{"x":{"filter":"none","data":[["1","2","3","4","5"],["It was all very clear.","When we started performing the challenges because I have to have two things open--Zoom and R Studio--it is difficult to see what the instructor is doing and follow along.","Creating vectors","Almost all of it was pretty clear to me","what objects are and how to work with them in R"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>clearest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e2e32802dc4a0bf21415" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e2e32802dc4a0bf21415">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],["It was all very clear.","When we started performing the challenges because I have to have two things open--Zoom and R Studio--it is difficult to see what the instructor is doing and follow along.","Creating vectors","Almost all of it was pretty clear to me","what objects are and how to work with them in R","using base packages R"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>clearest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="get-external-students" class="section level1">
 <h1>Get External Students</h1>
@@ -2880,16 +2885,16 @@ lab_survey_ohsu &lt;- fetch_survey(survey_id, verbose=TRUE) %&gt;%
 <pre class="r"><code>lab_survey_external %&gt;% 
   select(muddiest_points) %&gt;% 
   DT::datatable(options=opts)</code></pre>
-<div id="htmlwidget-645facead039e5304706" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-645facead039e5304706">{"x":{"filter":"none","data":[["1"],[null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>muddiest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-bee4c6401d3cdb703665" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bee4c6401d3cdb703665">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[null,"all explained well","No point was unclear for me","None","None","none"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>muddiest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="clearest-points-external" class="section level2">
 <h2>Clearest Points (External)</h2>
 <pre class="r"><code>lab_survey_external %&gt;%
   select(clearest_points) %&gt;%
   DT::datatable(options=opts)</code></pre>
-<div id="htmlwidget-d76d3bbdf2bfd47ae2b6" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d76d3bbdf2bfd47ae2b6">{"x":{"filter":"none","data":[["1"],[null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>clearest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-88eea4d182ab17718e55" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-88eea4d182ab17718e55">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[null,"vectors and data types","Everything was clear, but \"fell into place\" once we got into functions/assigning objects","All the labs were clear","RStudio-cloud introduction. Loved the cheatsheets","almost everything was very clear"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>clearest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
