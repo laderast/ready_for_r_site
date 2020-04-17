@@ -12,12 +12,14 @@ lessons:
 
   - title: "**Lecture/Lab 2: Loading Data, data.frames, and Visualization with `ggplot2` Part 1**"
     date: "April 16"
+    class: "02-class"
+    reading: "02-reading"
     
   - title: "**Drop in Lab time/Finish Notebook 2**"
     date: "April 23"
 
   - title: "**Notebooks 1 and 2 due**"
-    date: "April 23"
+    date: "April 24"
 
   - title: "**Lecture/Lab 3: Visualization using `ggplot2` part 2, Filtering, Sorting, and Selecting data using `dplyr`**"
     date: "April 30"

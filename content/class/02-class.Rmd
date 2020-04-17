@@ -1,0 +1,48 @@
+---
+title: "Part 2: Loading Data, data.frames, and ggplot2"
+linktitle: "2. Loading Data, data.frames, and ggplot2"
+date: "2020-04-16"
+class_date: "2020-04-16"
+output:
+  blogdown::html_page:
+    toc: true
+menu:
+  class:
+    parent: Class sessions
+    weight: 1
+type: docs
+weight: 1
+# pdf: 
+# thumb: 
+editor_options: 
+  chunk_output_type: console
+---
+
+### Post-Class Survey
+
+Please fill out the following survey and we will discuss the results during the next class. All responses will be anonymous. Remember, filling this out counts as attendance.
+
+- Pace
+- Clearest Point: What was the most clear part of the lecture?
+- Muddiest Point: What was the most unclear part of the lecture to you?
+- Anything Else: Is there something you'd like me to know?
+
+https://ohsu.ca1.qualtrics.com/jfe/form/SV_6nc1ZLFMmRoE7nn
+
+### Muddiest Points
+
+> I'm not a programmer person so the concept of a programming environment is pretty mystifying. That said, it doesn't stop me from applying what you're teaching us, so no real worries there.
+
+Stick with it!
+
+> The challenges since I lost where we were and had to back track all of the time to see where the instructor was.
+
+Ok, I will do my best to announce which section we are on in the notebook.
+
+> na.omit
+
+We wil get to that today.
+	
+>	folder organization; projects vs notebooks?
+
+We will talk about that today.

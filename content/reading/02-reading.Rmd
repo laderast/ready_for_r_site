@@ -1,0 +1,29 @@
+---
+title: "Introduction to R/RStudio"
+linktitle: "1: Introduction to R/RStudio"
+date: "2020-01-15"
+read_date: "2020-01-15"
+menu:
+  reading:
+    parent: Readings
+    weight: 1
+type: docs
+---
+
+## Suggested Reading
+
+Nick Tierney's [RMarkdown for Scientists](https://rmd4sci.njtierney.com) is an excellent resource for understanding RMarkdown. We'll be drawing on it for more classes.
+
+For right now, I'd like you to look over the Workflow section: 
+
+https://rmd4sci.njtierney.com/workflow.html
+
+And the *Using RMarkdown* section:
+
+https://rmd4sci.njtierney.com/using-rmarkdown.html
+
+## Practice your ggplot2 skills
+
+After this lecture, you now know enough to get started in the interactive R-Bootcamp. You can start with chapter 1:
+
+https://r-bootcamp.netlify.com/chapter1
