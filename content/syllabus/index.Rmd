@@ -9,9 +9,6 @@ output:
 ---
 
 ```{r load-libraries, message=FALSE, warning=FALSE, include=FALSE}
-library(dplyr)
-library(tibble)
-library(pander)
 ```
 
 `r blogdown::shortcode("courseinfo")`
