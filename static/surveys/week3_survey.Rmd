@@ -1,5 +1,5 @@
 ---
-title: "Ready for R Part 2"
+title: "Ready for R Part 3"
 author: "Ted Laderas"
 date: "`r Sys.Date()`"
 output: 
@@ -7,7 +7,7 @@ output:
     toc: true
 params: 
   survey_name: "BMI 507 Ready for R"
-  week: "Week 2"
+  week: "Week 3"
 ---
 
 ```{r setup, include=FALSE}
