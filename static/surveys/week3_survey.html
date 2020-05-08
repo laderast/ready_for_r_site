@@ -11,7 +11,7 @@
 
 <meta name="author" content="Ted Laderas" />
 
-<meta name="date" content="2020-05-05" />
+<meta name="date" content="2020-05-08" />
 
 <title>Ready for R Part 3</title>
 
@@ -2817,7 +2817,7 @@ summary {
 
 <h1 class="title toc-ignore">Ready for R Part 3</h1>
 <h4 class="author">Ted Laderas</h4>
-<h4 class="date">2020-05-05</h4>
+<h4 class="date">2020-05-08</h4>
 
 </div>
 
@@ -2875,16 +2875,16 @@ lab_survey_ohsu &lt;- fetch_survey(survey_id, verbose=TRUE) %&gt;%
 <pre class="r"><code>lab_survey_ohsu %&gt;% 
   select(muddiest_points) %&gt;% 
   DT::datatable(options=opts)</code></pre>
-<div id="htmlwidget-bf1f58dbf23caac3c4b2" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bf1f58dbf23caac3c4b2">{"x":{"filter":"none","data":[[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>muddiest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c92a6249a113dcbf61f7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c92a6249a113dcbf61f7">{"x":{"filter":"none","data":[[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>muddiest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="clearest-points" class="section level2">
 <h2>Clearest Points</h2>
 <pre class="r"><code>lab_survey_ohsu %&gt;%
   select(clearest_points) %&gt;%
   DT::datatable(options=opts)</code></pre>
-<div id="htmlwidget-aaba44e63e68086ee2f4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-aaba44e63e68086ee2f4">{"x":{"filter":"none","data":[[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>clearest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8c20724fd5a8d21cf4e7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8c20724fd5a8d21cf4e7">{"x":{"filter":"none","data":[[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>clearest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="get-external-students" class="section level1">
 <h1>Get External Students</h1>
@@ -2897,16 +2897,16 @@ lab_survey_ohsu &lt;- fetch_survey(survey_id, verbose=TRUE) %&gt;%
 <pre class="r"><code>lab_survey_external %&gt;% 
   select(muddiest_points) %&gt;% 
   DT::datatable(options=opts)</code></pre>
-<div id="htmlwidget-7c8460d2e33b981aaaf6" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7c8460d2e33b981aaaf6">{"x":{"filter":"none","data":[["1","2"],["\"summarize\" appears at the Rbootcamp exercises but is not included in the Rmd","nothing"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>muddiest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a4193c684ce713d74cd7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a4193c684ce713d74cd7">{"x":{"filter":"none","data":[["1","2","3","4"],["\"summarize\" appears at the Rbootcamp exercises but is not included in the Rmd","nothing","facet","Use of theme"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>muddiest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="clearest-points-external" class="section level2">
 <h2>Clearest Points (External)</h2>
 <pre class="r"><code>lab_survey_external %&gt;%
   select(clearest_points) %&gt;%
   DT::datatable(options=opts)</code></pre>
-<div id="htmlwidget-b6253405bd85a4d79543" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b6253405bd85a4d79543">{"x":{"filter":"none","data":[["1","2"],["the pipe!! thanks, this is the first time I get to understand %&gt;%","all"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>clearest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fd90883d102d8966e1d8" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fd90883d102d8966e1d8">{"x":{"filter":"none","data":[["1","2","3","4"],["the pipe!! thanks, this is the first time I get to understand %&gt;%","all","Filter, ggplot, dyplyr, pipe","Use of + and %&gt;%"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>clearest_points<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":100,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
