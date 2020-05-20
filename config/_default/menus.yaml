@@ -17,9 +17,9 @@ main:
     url: /mailing/
     weight: 7
 #    weight: 5
-#  - name: RStudio.cloud
-#    url: https://rstudio.cloud/
-#    weight: 7
+  - name: Reference
+    url: /labbook/
+    weight: 8
 #assignment:
 #  - name: Assignments
 #    weight: 1
