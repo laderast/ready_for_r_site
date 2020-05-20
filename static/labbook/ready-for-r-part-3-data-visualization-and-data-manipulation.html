@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Ready for R Part 3: Data Visualization and Data Manipulation | Ready for R: Notebook Reference</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Ready for R Part 3: Data Visualization and Data Manipulation | Ready for R: Notebook Reference" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="laderast/ready_for_r_site" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Ready for R Part 3: Data Visualization and Data Manipulation | Ready for R: Notebook Reference" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Ted Laderas" />
+
+
+<meta name="date" content="2020-05-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"/>
+<link rel="next" href="part-4-mutate-group-bysummarize.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Ready for R Reference</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.1</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html"><i class="fa fa-check"></i><b>2</b> Ready for R Part 1: Functions and Objects</a><ul>
+<li class="chapter" data-level="2.1" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#before-you-get-started"><i class="fa fa-check"></i><b>2.1</b> Before you get Started</a></li>
+<li class="chapter" data-level="2.2" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#welcome-to-ready-for-r"><i class="fa fa-check"></i><b>2.2</b> Welcome to Ready for R!</a></li>
+<li class="chapter" data-level="2.3" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#learning-objectives"><i class="fa fa-check"></i><b>2.3</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.4" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#code-blocks"><i class="fa fa-check"></i><b>2.4</b> Code Blocks</a></li>
+<li class="chapter" data-level="2.5" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#using-functions"><i class="fa fa-check"></i><b>2.5</b> Using Functions</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#challenge-1"><i class="fa fa-check"></i><b>2.5.1</b> <strong>Challenge 1:</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#assigning-objects"><i class="fa fa-check"></i><b>2.6</b> Assigning objects</a></li>
+<li class="chapter" data-level="2.7" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#challenge-2"><i class="fa fa-check"></i><b>2.7</b> <strong>Challenge 2:</strong></a></li>
+<li class="chapter" data-level="2.8" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#vectors"><i class="fa fa-check"></i><b>2.8</b> Vectors</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#challenge-3"><i class="fa fa-check"></i><b>2.8.1</b> <strong>Challenge 3:</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#data-types-and-vectors"><i class="fa fa-check"></i><b>2.9</b> Data types and Vectors</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#challenge-4"><i class="fa fa-check"></i><b>2.9.1</b> <strong>Challenge 4:</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#manipulating-vectors"><i class="fa fa-check"></i><b>2.10</b> Manipulating vectors</a></li>
+<li class="chapter" data-level="2.11" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#missing-data"><i class="fa fa-check"></i><b>2.11</b> Missing data</a><ul>
+<li class="chapter" data-level="2.11.1" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#challenge"><i class="fa fa-check"></i><b>2.11.1</b> <strong>Challenge:</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.12" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#wrapping-up"><i class="fa fa-check"></i><b>2.12</b> Wrapping up</a></li>
+<li class="chapter" data-level="2.13" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#homework"><i class="fa fa-check"></i><b>2.13</b> Homework</a><ul>
+<li class="chapter" data-level="2.13.1" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#object-manipulation"><i class="fa fa-check"></i><b>2.13.1</b> 1. Object manipulation</a></li>
+<li class="chapter" data-level="2.13.2" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#vector-manipulation-character-data"><i class="fa fa-check"></i><b>2.13.2</b> 2. Vector manipulation (character data):</a></li>
+</ul></li>
+<li class="chapter" data-level="2.14" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#vector-manipulation-numerical-data"><i class="fa fa-check"></i><b>2.14</b> 3. Vector manipulation (numerical data):</a></li>
+<li class="chapter" data-level="2.15" data-path="ready-for-r-part-1-functions-and-objects.html"><a href="ready-for-r-part-1-functions-and-objects.html#submitting-your-homework"><i class="fa fa-check"></i><b>2.15</b> Submitting your homework</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Introduction to R, Part 2: <code>data.frame</code>s, Reading Data, visualizing data with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#before-you-get-started-1"><i class="fa fa-check"></i><b>3.1</b> Before you get started</a></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#learning-objectives-1"><i class="fa fa-check"></i><b>3.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#a-note-about-base-r-versus-the-tidyverse"><i class="fa fa-check"></i><b>3.3</b> A note about Base R versus the Tidyverse</a></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#importing-spreadsheet-style-data-into-r"><i class="fa fa-check"></i><b>3.4</b> Importing spreadsheet-style data into R</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#a-good-place-to-put-your-data"><i class="fa fa-check"></i><b>3.4.1</b> A good place to put your data</a></li>
+<li class="chapter" data-level="3.4.2" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#loading-our-excel-file"><i class="fa fa-check"></i><b>3.4.2</b> Loading our excel file</a></li>
+<li class="chapter" data-level="3.4.3" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#challenge-1-5-minutes"><i class="fa fa-check"></i><b>3.4.3</b> Challenge 1 (5 minutes)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#notes-on-the-data"><i class="fa fa-check"></i><b>3.5</b> Notes on the Data</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#challenge-2-5-minutes"><i class="fa fa-check"></i><b>3.5.1</b> Challenge 2 (5 minutes):</a></li>
+<li class="chapter" data-level="3.5.2" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#tips-on-formating-your-excel-file-for-r"><i class="fa fa-check"></i><b>3.5.2</b> Tips on Formating your excel file for R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#data.frames"><i class="fa fa-check"></i><b>3.6</b> <code>data.frame</code>s</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#data.frames---how-do-they-work"><i class="fa fa-check"></i><b>3.6.1</b> <code>data.frame</code>s - How do they Work?</a></li>
+<li class="chapter" data-level="3.6.2" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#column-names"><i class="fa fa-check"></i><b>3.6.2</b> Column Names</a></li>
+<li class="chapter" data-level="3.6.3" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#okay-whats-really-in-it"><i class="fa fa-check"></i><b>3.6.3</b> Okay, What’s really in it?</a></li>
+<li class="chapter" data-level="3.6.4" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#summarizing-our-data"><i class="fa fa-check"></i><b>3.6.4</b> Summarizing our Data</a></li>
+<li class="chapter" data-level="3.6.5" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#introducing-ggplot2"><i class="fa fa-check"></i><b>3.6.5</b> Introducing <code>ggplot2</code></a></li>
+<li class="chapter" data-level="3.6.6" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#working-towards-a-graph"><i class="fa fa-check"></i><b>3.6.6</b> Working Towards a Graph</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#ggplot2-a-grammar-of-graphics"><i class="fa fa-check"></i><b>3.7</b> <code>ggplot2</code>: A Grammar of Graphics</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#learning-to-read-ggplot2-code"><i class="fa fa-check"></i><b>3.7.1</b> Learning to read <code>ggplot2</code> code</a></li>
+<li class="chapter" data-level="3.7.2" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#challenge-5"><i class="fa fa-check"></i><b>3.7.2</b> Challenge</a></li>
+<li class="chapter" data-level="3.7.3" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#simple-arithmetic"><i class="fa fa-check"></i><b>3.7.3</b> Simple arithmetic</a></li>
+<li class="chapter" data-level="3.7.4" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#color"><i class="fa fa-check"></i><b>3.7.4</b> Color</a></li>
+<li class="chapter" data-level="3.7.5" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#titles"><i class="fa fa-check"></i><b>3.7.5</b> Titles</a></li>
+<li class="chapter" data-level="3.7.6" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#changing-the-axis-labels"><i class="fa fa-check"></i><b>3.7.6</b> Changing the Axis Labels</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#what-you-learned-today"><i class="fa fa-check"></i><b>3.8</b> What you learned today:</a></li>
+<li class="chapter" data-level="3.9" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#practice"><i class="fa fa-check"></i><b>3.9</b> Practice</a></li>
+<li class="chapter" data-level="3.10" data-path="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html"><a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html#assignment-10-points"><i class="fa fa-check"></i><b>3.10</b> Assignment (10 points)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><i class="fa fa-check"></i><b>4</b> Ready for R Part 3: Data Visualization and Data Manipulation</a><ul>
+<li class="chapter" data-level="4.1" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#learning-objectives-2"><i class="fa fa-check"></i><b>4.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#getting-set-up"><i class="fa fa-check"></i><b>4.2</b> Getting set up</a></li>
+<li class="chapter" data-level="4.3" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#more-about-ggplot2"><i class="fa fa-check"></i><b>4.3</b> More about <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#customizing-a-scatterplot"><i class="fa fa-check"></i><b>4.3.1</b> Customizing a Scatterplot</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#changing-visual-properties-using-built-in-themes"><i class="fa fa-check"></i><b>4.3.2</b> Changing visual properties using built in themes</a></li>
+<li class="chapter" data-level="4.3.3" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#using-theme-to-customize"><i class="fa fa-check"></i><b>4.3.3</b> Using <code>theme()</code> to customize</a></li>
+<li class="chapter" data-level="4.3.4" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#saving-your-work"><i class="fa fa-check"></i><b>4.3.4</b> Saving your work</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#brief-aside-categorical-data-factors"><i class="fa fa-check"></i><b>4.4</b> Brief Aside: Categorical Data (<code>factor</code>s)</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#levels-of-a-factor"><i class="fa fa-check"></i><b>4.4.1</b> Levels of a Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#back-to-ggplot2-boxplots"><i class="fa fa-check"></i><b>4.5</b> Back to <code>ggplot2</code>: Boxplots</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#faceting-our-boxplot"><i class="fa fa-check"></i><b>4.5.1</b> Faceting our boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#further-learning"><i class="fa fa-check"></i><b>4.6</b> Further learning</a></li>
+<li class="chapter" data-level="4.7" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#data-manipulation-using-dplyr"><i class="fa fa-check"></i><b>4.7</b> Data Manipulation using <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.7.1" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#introducing-the-pipe"><i class="fa fa-check"></i><b>4.7.1</b> Introducing the pipe (<code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="4.7.2" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#the-difference-between-and"><i class="fa fa-check"></i><b>4.7.2</b> The difference between <code>+</code> and <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="4.7.3" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#sorting-data-frames-using-arrange"><i class="fa fa-check"></i><b>4.7.3</b> Sorting Data Frames using <code>arrange()</code></a></li>
+<li class="chapter" data-level="4.7.4" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#filtering-our-data"><i class="fa fa-check"></i><b>4.7.4</b> <code>filter()</code>ing our data</a></li>
+<li class="chapter" data-level="4.7.5" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#filtering-requires-a-little-logic"><i class="fa fa-check"></i><b>4.7.5</b> Filtering requires a little logic</a></li>
+<li class="chapter" data-level="4.7.6" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#more-about-comparison-and-logical-operators"><i class="fa fa-check"></i><b>4.7.6</b> More about Comparison and Logical Operators</a></li>
+<li class="chapter" data-level="4.7.7" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#selecting-columns-using-select"><i class="fa fa-check"></i><b>4.7.7</b> Selecting columns using <code>select()</code></a></li>
+<li class="chapter" data-level="4.7.8" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#the-difference-between-filter-and-select"><i class="fa fa-check"></i><b>4.7.8</b> The difference between <code>filter()</code> and <code>select()</code></a></li>
+<li class="chapter" data-level="4.7.9" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#saving-our-results"><i class="fa fa-check"></i><b>4.7.9</b> Saving our results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#what-you-learned-today-1"><i class="fa fa-check"></i><b>4.8</b> What you learned today</a></li>
+<li class="chapter" data-level="4.9" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#practice-1"><i class="fa fa-check"></i><b>4.9</b> Practice</a></li>
+<li class="chapter" data-level="4.10" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#acknowledgements-1"><i class="fa fa-check"></i><b>4.10</b> Acknowledgements</a></li>
+<li class="chapter" data-level="4.11" data-path="ready-for-r-part-3-data-visualization-and-data-manipulation.html"><a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html#assignment-3"><i class="fa fa-check"></i><b>4.11</b> Assignment 3</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html"><i class="fa fa-check"></i><b>5</b> Part 4: <code>mutate()</code>, <code>group_by()/summarize()</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#learning-objectives-3"><i class="fa fa-check"></i><b>5.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#getting-set-up-1"><i class="fa fa-check"></i><b>5.2</b> Getting set up</a></li>
+<li class="chapter" data-level="5.3" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#mutate---a-confusing-name-a-powerful-dplyr-verb"><i class="fa fa-check"></i><b>5.3</b> <code>mutate()</code> - A confusing name, a powerful <code>dplyr</code> verb</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#using-mutate-to-calculate-a-new-variable-based-on-other-variables"><i class="fa fa-check"></i><b>5.3.1</b> Using <code>mutate</code> to calculate a new variable based on other variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#your-turn"><i class="fa fa-check"></i><b>5.3.2</b> Your Turn</a></li>
+<li class="chapter" data-level="5.3.3" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#using-mutate-to-make-our-character-variables-into-factors"><i class="fa fa-check"></i><b>5.3.3</b> Using <code>mutate</code> to make our <code>character</code> variables into <code>factors</code></a></li>
+<li class="chapter" data-level="5.3.4" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#using-mutate-to-make-a-continuous-variable-categorical-using-case_when"><i class="fa fa-check"></i><b>5.3.4</b> Using <code>mutate</code> to make a continuous variable categorical using <code>case_when</code></a></li>
+<li class="chapter" data-level="5.3.5" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#your-turn-1"><i class="fa fa-check"></i><b>5.3.5</b> Your Turn</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#group_bysummarize"><i class="fa fa-check"></i><b>5.4</b> <code>group_by()/summarize()</code></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#summarize"><i class="fa fa-check"></i><b>5.4.1</b> <code>summarize()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#group_bysummarize-1"><i class="fa fa-check"></i><b>5.4.2</b> <code>group_by()/summarize()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#group_bysummarize-to-calculate-mean-and-standard-deviation-values"><i class="fa fa-check"></i><b>5.4.3</b> <code>group_by()/summarize</code> to calculate mean and standard deviation values</a></li>
+<li class="chapter" data-level="5.4.4" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#group_by-to-count-things"><i class="fa fa-check"></i><b>5.4.4</b> <code>group_by()</code> to <code>count()</code> things</a></li>
+<li class="chapter" data-level="5.4.5" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#your-turn-2"><i class="fa fa-check"></i><b>5.4.5</b> Your Turn</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#standardizing-variable-names-clean_names"><i class="fa fa-check"></i><b>5.5</b> Standardizing variable names: <code>clean_names()</code></a></li>
+<li class="chapter" data-level="5.6" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#assignment-4"><i class="fa fa-check"></i><b>5.6</b> Assignment 4</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ready for R: Notebook Reference</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ready-for-r-part-3-data-visualization-and-data-manipulation" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Ready for R Part 3: Data Visualization and Data Manipulation</h1>
+<div id="learning-objectives-2" class="section level2">
+<h2><span class="header-section-number">4.1</span> Learning Objectives</h2>
+<ul>
+<li>create and modify scatterplots and boxplots</li>
+<li>split figures into multiple panels using <code>facet_wrap()</code></li>
+<li>customize your plots using built in <code>theme()</code>s</li>
+<li>Sort by a variable in a dataset using <code>arrange()</code></li>
+<li>Select variables in a dataset using <code>select()</code></li>
+<li>Filter a dataset using the <code>filter()</code> function</li>
+</ul>
+</div>
+<div id="getting-set-up" class="section level2">
+<h2><span class="header-section-number">4.2</span> Getting set up</h2>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="co"># load library</span></a>
+<a class="sourceLine" id="cb94-2" title="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb94-3" title="3"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb94-4" title="4"><span class="kw">library</span>(here)</a>
+<a class="sourceLine" id="cb94-5" title="5"></a>
+<a class="sourceLine" id="cb94-6" title="6">smoke_complete &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="kw">here</span>(<span class="st">&quot;data/smoke_complete.xlsx&quot;</span>), </a>
+<a class="sourceLine" id="cb94-7" title="7">                             <span class="dt">sheet=</span><span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb94-8" title="8">                             <span class="dt">na=</span><span class="st">&quot;NA&quot;</span>)</a>
+<a class="sourceLine" id="cb94-9" title="9"></a>
+<a class="sourceLine" id="cb94-10" title="10"></a>
+<a class="sourceLine" id="cb94-11" title="11"><span class="co">#remove some columns - we&#39;ll talk about this later</span></a>
+<a class="sourceLine" id="cb94-12" title="12">smoke_complete &lt;-<span class="st"> </span>smoke_complete <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb94-13" title="13"><span class="st">  </span><span class="kw">select</span>(age_at_diagnosis, tumor_stage,</a>
+<a class="sourceLine" id="cb94-14" title="14">         cigarettes_per_day, gender, </a>
+<a class="sourceLine" id="cb94-15" title="15">         vital_status, disease)</a></code></pre></div>
+</div>
+<div id="more-about-ggplot2" class="section level2">
+<h2><span class="header-section-number">4.3</span> More about <code>ggplot2</code></h2>
+<div id="customizing-a-scatterplot" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Customizing a Scatterplot</h3>
+<p>Now that we have the data generally displayed the way we’d like, we can start to customize a plot.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">our_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(smoke_complete) <span class="op">+</span></a>
+<a class="sourceLine" id="cb95-2" title="2"></a>
+<a class="sourceLine" id="cb95-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> age_at_diagnosis, </a>
+<a class="sourceLine" id="cb95-4" title="4">      <span class="dt">y =</span> cigarettes_per_day, </a>
+<a class="sourceLine" id="cb95-5" title="5">      <span class="dt">color =</span> disease) <span class="op">+</span></a>
+<a class="sourceLine" id="cb95-6" title="6"><span class="st">  </span></a>
+<a class="sourceLine" id="cb95-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb95-8" title="8"><span class="st">  </span></a>
+<a class="sourceLine" id="cb95-9" title="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Cigarettes per Day versus Age at Diagnosis&quot;</span>,</a>
+<a class="sourceLine" id="cb95-10" title="10">       <span class="dt">x =</span> <span class="st">&quot;Age at Diagnosis&quot;</span>,</a>
+<a class="sourceLine" id="cb95-11" title="11">       <span class="dt">y =</span> <span class="st">&quot;Cigarettes Smoked per Day&quot;</span>)</a>
+<a class="sourceLine" id="cb95-12" title="12">  </a>
+<a class="sourceLine" id="cb95-13" title="13">our_plot</a></code></pre></div>
+<p><img src="03-part3_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="changing-visual-properties-using-built-in-themes" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Changing visual properties using built in themes</h3>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1">our_plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb96-2" title="2"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
+<p><img src="03-part3_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>A complete list of pre-set themes is available <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here</a>,
+and we’ll cover ways to customize our own themes later in this lesson.</p>
+</div>
+<div id="using-theme-to-customize" class="section level3">
+<h3><span class="header-section-number">4.3.3</span> Using <code>theme()</code> to customize</h3>
+<p>Adding the <code>theme()</code> function will let us customize our plot further.</p>
+<p>There are a few arguments that are really helpful to modify:</p>
+<ul>
+<li><code>axis.title</code></li>
+<li><code>axis.title.x</code></li>
+<li><code>axis.title.y</code></li>
+<li>(The labels for the axes)</li>
+<li><code>legend.position</code> (Placing the legend, including removing it)</li>
+</ul>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">our_plot <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb97-2" title="2"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb97-3" title="3"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>))</a></code></pre></div>
+<p><img src="03-part3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1">our_plot <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb98-2" title="2"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb98-3" title="3"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<p><img src="03-part3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="saving-your-work" class="section level3">
+<h3><span class="header-section-number">4.3.4</span> Saving your work</h3>
+<p>After you’re satisfied with a plot, it’s likely you’d want to share it with other people or include in a manuscript or report.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="co"># save plot to file</span></a>
+<a class="sourceLine" id="cb99-2" title="2"><span class="kw">ggsave</span>(<span class="st">&quot;awesomePlot.jpg&quot;</span>, <span class="dt">width =</span> <span class="dv">10</span>, <span class="dt">height =</span> <span class="dv">10</span>, <span class="dt">dpi =</span> <span class="dv">300</span>)</a></code></pre></div>
+<p>This automatically saves the last plot for which code was executed. This command interprets the file format for export using the file suffix you specify. The other arguments dictate the size (<code>width</code> and <code>height</code>) and resolution (<code>dpi</code>).</p>
+</div>
+</div>
+<div id="brief-aside-categorical-data-factors" class="section level2">
+<h2><span class="header-section-number">4.4</span> Brief Aside: Categorical Data (<code>factor</code>s)</h2>
+<p>One data type that we haven’t yet looked at are <code>factor</code>s - factors are how R represents <em>categorical data</em>.</p>
+<p>For the most part, you can use <code>character</code> and <code>factors</code> interchangably for categorical data.</p>
+<p>However, there is one main difference. <code>factor</code>s define the permissible values in a vector with an argument called <code>levels</code>. They also define the order in which these values are displayed.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1">character_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Dog&quot;</span>, <span class="st">&quot;Dog&quot;</span>, <span class="st">&quot;Cat&quot;</span>, <span class="st">&quot;Mouse&quot;</span>)</a>
+<a class="sourceLine" id="cb100-2" title="2"><span class="kw">table</span>(character_vector)</a></code></pre></div>
+<pre><code>## character_vector
+##   Cat   Dog Mouse 
+##     1     2     1</code></pre>
+<p>You can make a character vector into a factor vector by using the <code>factor()</code> function, and supplying an argument called <code>levels</code>.</p>
+<div id="levels-of-a-factor" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Levels of a Factor</h3>
+<p>The <code>levels</code> of a factor are the permissible values in a <code>factor</code>. The order of the values in a factor also control the order in which the values appear in tables and on the axes in a plot.</p>
+<p>So, you can control the order of the categories in a factor by specifying the order of the categories in the <code>levels</code> argument.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1">factor_vector &lt;-<span class="st"> </span><span class="kw">factor</span>(character_vector, </a>
+<a class="sourceLine" id="cb102-2" title="2">                        <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Dog&quot;</span>, <span class="st">&quot;Cat&quot;</span>, <span class="st">&quot;Mouse&quot;</span>))</a>
+<a class="sourceLine" id="cb102-3" title="3"></a>
+<a class="sourceLine" id="cb102-4" title="4"><span class="kw">table</span>(factor_vector)</a></code></pre></div>
+<pre><code>## factor_vector
+##   Dog   Cat Mouse 
+##     2     1     1</code></pre>
+<p>This ordering is the main reason to use <code>factors</code>. We will revisit this again in Part 4 when we learn how to manipulate the data type of a variable in a <code>data.frame</code>.</p>
+</div>
+</div>
+<div id="back-to-ggplot2-boxplots" class="section level2">
+<h2><span class="header-section-number">4.5</span> Back to <code>ggplot2</code>: Boxplots</h2>
+<p>Boxplots compare the distribution of a quantitative variable among categories.</p>
+<p>Remember, <code>vital_status</code> is a <code>character</code> vector, but we’re not too worried about the implicit order of the categories, so we can use it as is in our boxplot.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="co"># creating a boxplot</span></a>
+<a class="sourceLine" id="cb104-2" title="2"></a>
+<a class="sourceLine" id="cb104-3" title="3"><span class="kw">ggplot</span>(smoke_complete) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-4" title="4"><span class="st">  </span></a>
+<a class="sourceLine" id="cb104-5" title="5"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> vital_status, <span class="dt">y =</span> cigarettes_per_day) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-6" title="6"><span class="st">  </span></a>
+<a class="sourceLine" id="cb104-7" title="7"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="03-part3_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>The main differences from the scatterplots we created earlier are the <code>geom</code> type and the variables plotted.</p>
+<p>We can change the color similarly to scatterplots. However, we map to <code>fill</code> and not <code>color</code>:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="co"># adding color</span></a>
+<a class="sourceLine" id="cb105-2" title="2"><span class="kw">ggplot</span>(smoke_complete) <span class="op">+</span></a>
+<a class="sourceLine" id="cb105-3" title="3"><span class="st">  </span></a>
+<a class="sourceLine" id="cb105-4" title="4"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> vital_status, </a>
+<a class="sourceLine" id="cb105-5" title="5">      <span class="dt">y =</span> cigarettes_per_day, </a>
+<a class="sourceLine" id="cb105-6" title="6">      <span class="dt">fill =</span> vital_status) <span class="op">+</span></a>
+<a class="sourceLine" id="cb105-7" title="7"><span class="st">  </span></a>
+<a class="sourceLine" id="cb105-8" title="8"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="03-part3_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div id="faceting-our-boxplot" class="section level3">
+<h3><span class="header-section-number">4.5.1</span> Faceting our boxplot</h3>
+<p>One of the most powerful ways to change a visualization is by <em>faceting</em>. We can make multiple plots using another categorical variable.</p>
+<p>To do this, we have to add the <code>facet_wrap()</code> command to our plot. We need to specify the variable to <code>facet_wrap</code> - <code>disease</code> by using the <code>vars()</code> function to specify it as a variable.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="co"># adding color</span></a>
+<a class="sourceLine" id="cb106-2" title="2"><span class="kw">ggplot</span>(smoke_complete) <span class="op">+</span></a>
+<a class="sourceLine" id="cb106-3" title="3"><span class="st">  </span></a>
+<a class="sourceLine" id="cb106-4" title="4"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> vital_status, </a>
+<a class="sourceLine" id="cb106-5" title="5">      <span class="dt">y =</span> cigarettes_per_day, </a>
+<a class="sourceLine" id="cb106-6" title="6">      <span class="dt">fill =</span> vital_status) <span class="op">+</span></a>
+<a class="sourceLine" id="cb106-7" title="7"><span class="st">  </span></a>
+<a class="sourceLine" id="cb106-8" title="8"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb106-9" title="9"><span class="st">  </span></a>
+<a class="sourceLine" id="cb106-10" title="10"><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">20</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb106-11" title="11"><span class="st">  </span></a>
+<a class="sourceLine" id="cb106-12" title="12"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="kw">vars</span>(disease))</a></code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="03-part3_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Don’t forget to look at the help documentation (e.g., <code>?facet_wrap</code>) to learn more about additional ways to customize your plots!</p>
+</div>
+</div>
+<div id="further-learning" class="section level2">
+<h2><span class="header-section-number">4.6</span> Further learning</h2>
+<p>If you are interested in learning more about ggplot:
+- Documentation for all <code>ggplot</code> features is available <a href="https://ggplot2.tidyverse.org">here</a>.
+- RStudio also publishes a <a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf">ggplot cheat sheet</a> that is really handy!</p>
+</div>
+<div id="data-manipulation-using-dplyr" class="section level2">
+<h2><span class="header-section-number">4.7</span> Data Manipulation using <code>dplyr</code></h2>
+<p>What we have learned is pretty great overall for plotting. But there are a lot of other things we can do with <code>data.frame</code>s!</p>
+<p>We’re going to talk about another tidyverse package: <code>dplyr</code>. <code>dplyr</code> is your all-purpose toolbox for filtering, summarizing, and transforming data.</p>
+<p>The nice thing about <code>dplyr</code> is that it is focused on verbs that do things to your data.</p>
+<p>We’ll focus on the following verbs:</p>
+<ul>
+<li><code>arrange()</code> - sorting a <code>data.frame</code> by a variable</li>
+<li><code>filter()</code> - subsetting a <code>data.frame</code> by criteria</li>
+<li><code>select()</code> - returning only a few columns from our <code>data.frame</code></li>
+<li><code>group_by()/summarize()</code> - summarizing our data.frame, such as counting and computing means</li>
+<li><code>mutate()</code> - transforming variables in our data</li>
+<li><code>%&gt;%</code> - the pipe character, which lets us join our verbs together in a <em>pipeline</em>.</li>
+</ul>
+<div id="introducing-the-pipe" class="section level3">
+<h3><span class="header-section-number">4.7.1</span> Introducing the pipe (<code>%&gt;%</code>)</h3>
+<p>Often times, we want to do multiple operations on our data and in a specific order.</p>
+<p>For example, I might want to do the following:</p>
+<p><em>Take</em> my dataset <code>smoke_complete</code> <strong>and then</strong>
+<em>Sort</em> it by <code>cigarettes_per_day</code> <strong>and then</strong>
+<em>filter</em> to have only <code>males</code> from the data.</p>
+<p>The pipe (<code>%&gt;%</code>) function acts like the <strong>and then</strong>:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co"># Take my dataset smoke complete **and then**</span></a>
+<a class="sourceLine" id="cb108-2" title="2">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb108-3" title="3"><span class="st">  </span></a>
+<a class="sourceLine" id="cb108-4" title="4"><span class="co">#sort it by cigarettes_per day **and then**</span></a>
+<a class="sourceLine" id="cb108-5" title="5"><span class="st">  </span><span class="kw">arrange</span>(cigarettes_per_day) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb108-6" title="6"></a>
+<a class="sourceLine" id="cb108-7" title="7"><span class="co">#filter it to only have males</span></a>
+<a class="sourceLine" id="cb108-8" title="8"><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> &quot;male&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 786 x 6
+##    age_at_diagnosis tumor_stage cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            18051 stage iii              0.00822 male   dead         BLCA   
+##  2            29288 stage iii              0.0548  male   dead         BLCA   
+##  3            18983 stage ii               0.0822  male   dead         BLCA   
+##  4            22632 stage iiia             0.110   male   dead         LUSC   
+##  5            20632 stage iib              0.110   male   alive        LUSC   
+##  6            25579 stage iii              0.110   male   dead         BLCA   
+##  7            22632 stage iiia             0.110   male   dead         LUSC   
+##  8            20632 stage iib              0.110   male   alive        LUSC   
+##  9            23156 stage i                0.137   male   dead         LUSC   
+## 10            13867 stage ii               0.137   male   alive        BLCA   
+## # ... with 776 more rows</code></pre>
+<p>You can think of a pipe as putting the output of one step as an input of another. These two statements are equivalent:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb110-2" title="2"><span class="st">  </span><span class="kw">arrange</span>(cigarettes_per_day)</a></code></pre></div>
+<pre><code>## # A tibble: 1,152 x 6
+##    age_at_diagnosis tumor_stage  cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            18051 stage iii               0.00822 male   dead         BLCA   
+##  2            19847 not reported            0.0110  female alive        CESC   
+##  3            14225 not reported            0.0219  female dead         CESC   
+##  4            31258 not reported            0.0312  female alive        CESC   
+##  5            16429 stage iii               0.0548  female dead         LUSC   
+##  6            27449 stage ii                0.0548  female dead         LUSC   
+##  7            29288 stage iii               0.0548  male   dead         BLCA   
+##  8            15965 not reported            0.0548  female alive        CESC   
+##  9            17465 not reported            0.0548  female dead         CESC   
+## 10            15849 not reported            0.0548  female alive        CESC   
+## # ... with 1,142 more rows</code></pre>
+<p>and</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="kw">arrange</span>(smoke_complete, cigarettes_per_day)</a></code></pre></div>
+<pre><code>## # A tibble: 1,152 x 6
+##    age_at_diagnosis tumor_stage  cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            18051 stage iii               0.00822 male   dead         BLCA   
+##  2            19847 not reported            0.0110  female alive        CESC   
+##  3            14225 not reported            0.0219  female dead         CESC   
+##  4            31258 not reported            0.0312  female alive        CESC   
+##  5            16429 stage iii               0.0548  female dead         LUSC   
+##  6            27449 stage ii                0.0548  female dead         LUSC   
+##  7            29288 stage iii               0.0548  male   dead         BLCA   
+##  8            15965 not reported            0.0548  female alive        CESC   
+##  9            17465 not reported            0.0548  female dead         CESC   
+## 10            15849 not reported            0.0548  female alive        CESC   
+## # ... with 1,142 more rows</code></pre>
+<p>One big advantage of the pipe is that you can build your processing line by line.</p>
+<p>In practice, as I work, I will often pipe things into <code>View()</code> to confirm I did things correctly:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb114-2" title="2"><span class="st">  </span><span class="kw">arrange</span>(cigarettes_per_day) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb114-3" title="3"><span class="st">  </span><span class="kw">View</span>()</a></code></pre></div>
+</div>
+<div id="the-difference-between-and" class="section level3">
+<h3><span class="header-section-number">4.7.2</span> The difference between <code>+</code> and <code>%&gt;%</code></h3>
+<p>Remember that <code>+</code> is for <code>ggplot2</code> and that <code>%&gt;%</code> is for <code>dplyr</code>. To keep them distinct and avoid confusion, separate our your data processing and your plotting:</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1">arranged_smokers &lt;-<span class="st"> </span>smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb115-2" title="2"><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> &quot;male&quot;</span>)</a>
+<a class="sourceLine" id="cb115-3" title="3"></a>
+<a class="sourceLine" id="cb115-4" title="4"><span class="kw">ggplot</span>(<span class="dt">data=</span>arranged_smokers) <span class="op">+</span></a>
+<a class="sourceLine" id="cb115-5" title="5"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> cigarettes_per_day) <span class="op">+</span></a>
+<a class="sourceLine" id="cb115-6" title="6"><span class="st">  </span><span class="kw">geom_histogram</span>()</a></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="03-part3_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="sorting-data-frames-using-arrange" class="section level3">
+<h3><span class="header-section-number">4.7.3</span> Sorting Data Frames using <code>arrange()</code></h3>
+<p>Ok, we already have encountered <code>arrange()</code>. It’s a function that lets us sort a <code>data.frame</code> by a variable.</p>
+<p>By default, it sorts in <em>ascending</em> order:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1">smoke_complete <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb117-2" title="2"><span class="st">  </span><span class="kw">arrange</span>(cigarettes_per_day)</a></code></pre></div>
+<pre><code>## # A tibble: 1,152 x 6
+##    age_at_diagnosis tumor_stage  cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            18051 stage iii               0.00822 male   dead         BLCA   
+##  2            19847 not reported            0.0110  female alive        CESC   
+##  3            14225 not reported            0.0219  female dead         CESC   
+##  4            31258 not reported            0.0312  female alive        CESC   
+##  5            16429 stage iii               0.0548  female dead         LUSC   
+##  6            27449 stage ii                0.0548  female dead         LUSC   
+##  7            29288 stage iii               0.0548  male   dead         BLCA   
+##  8            15965 not reported            0.0548  female alive        CESC   
+##  9            17465 not reported            0.0548  female dead         CESC   
+## 10            15849 not reported            0.0548  female alive        CESC   
+## # ... with 1,142 more rows</code></pre>
+<p>To sort by descending order, you need to wrap the variable in the <code>desc()</code> function:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb119-2" title="2"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(cigarettes_per_day))</a></code></pre></div>
+<pre><code>## # A tibble: 1,152 x 6
+##    age_at_diagnosis tumor_stage cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            17635 stage iv                 40    male   dead         BLCA   
+##  2            27708 stage ia                 13.2  male   dead         LUSC   
+##  3            27708 stage ia                 13.2  male   dead         LUSC   
+##  4            24477 stage ia                 11.0  male   dead         LUSC   
+##  5            24477 stage ia                 11.0  male   dead         LUSC   
+##  6            24713 stage iiia               10.5  male   dead         LUSC   
+##  7            24713 stage iiia               10.5  male   dead         LUSC   
+##  8            25646 stage ib                  9.86 male   alive        LUSC   
+##  9            25646 stage ib                  9.86 male   alive        LUSC   
+## 10            25506 stage ib                  8.88 male   alive        LUSC   
+## # ... with 1,142 more rows</code></pre>
+<p>You can also arrange by multiple variables.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb121-2" title="2"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(cigarettes_per_day),</a>
+<a class="sourceLine" id="cb121-3" title="3">          tumor_stage)</a></code></pre></div>
+<pre><code>## # A tibble: 1,152 x 6
+##    age_at_diagnosis tumor_stage cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            17635 stage iv                 40    male   dead         BLCA   
+##  2            27708 stage ia                 13.2  male   dead         LUSC   
+##  3            27708 stage ia                 13.2  male   dead         LUSC   
+##  4            24477 stage ia                 11.0  male   dead         LUSC   
+##  5            24477 stage ia                 11.0  male   dead         LUSC   
+##  6            24713 stage iiia               10.5  male   dead         LUSC   
+##  7            24713 stage iiia               10.5  male   dead         LUSC   
+##  8            25646 stage ib                  9.86 male   alive        LUSC   
+##  9            25646 stage ib                  9.86 male   alive        LUSC   
+## 10            25506 stage ib                  8.88 male   alive        LUSC   
+## # ... with 1,142 more rows</code></pre>
+<p>Note that order of variables in <code>arrange()</code> matters!</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb123-2" title="2"><span class="st">  </span><span class="kw">arrange</span>(</a>
+<a class="sourceLine" id="cb123-3" title="3">    tumor_stage,</a>
+<a class="sourceLine" id="cb123-4" title="4">    <span class="kw">desc</span>(cigarettes_per_day)</a>
+<a class="sourceLine" id="cb123-5" title="5">          )</a></code></pre></div>
+<pre><code>## # A tibble: 1,152 x 6
+##    age_at_diagnosis tumor_stage  cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            25220 not reported               3.12 female alive        CESC   
+##  2            28873 not reported               3.07 female dead         CESC   
+##  3            18773 not reported               2.90 female alive        CESC   
+##  4            16231 not reported               2.85 female dead         CESC   
+##  5            24059 not reported               2.74 female dead         CESC   
+##  6            20302 not reported               2.74 female alive        CESC   
+##  7            28826 not reported               2.47 male   dead         LUSC   
+##  8            28826 not reported               2.47 male   dead         LUSC   
+##  9            21520 not reported               2.19 female dead         CESC   
+## 10            20207 not reported               2.19 female alive        CESC   
+## # ... with 1,142 more rows</code></pre>
+</div>
+<div id="filtering-our-data" class="section level3">
+<h3><span class="header-section-number">4.7.4</span> <code>filter()</code>ing our data</h3>
+<p><code>filter()</code> is an extremely powerful function. It lets us subset our data according to specific criteria.</p>
+<p>Let’s filter on a <code>numeric</code> variable, <code>cigarettes_per_day</code>:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb125-2" title="2"><span class="st">  </span><span class="kw">filter</span>(cigarettes_per_day <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 1,151 x 6
+##    age_at_diagnosis tumor_stage cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            24477 stage ia                 11.0  male   dead         LUSC   
+##  2            26615 stage ib                  2.19 male   dead         LUSC   
+##  3            28171 stage ib                  1.64 female dead         LUSC   
+##  4            27154 stage ia                  1.10 male   alive        LUSC   
+##  5            23370 stage iiia                2.74 female alive        LUSC   
+##  6            19025 stage ib                  1.37 male   dead         LUSC   
+##  7            26938 stage iv                  1.37 male   dead         LUSC   
+##  8            28430 stage ib                  1.64 male   dead         LUSC   
+##  9            30435 stage iib                 2.19 male   dead         LUSC   
+## 10            24019 stage iv                  1.37 male   dead         LUSC   
+## # ... with 1,141 more rows</code></pre>
+<p>We can also filter on a category. But that does require us to know the values of that categorical variable.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb127-2" title="2"><span class="st">  </span><span class="kw">filter</span>(tumor_stage <span class="op">==</span><span class="st"> &quot;stage iv&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 91 x 6
+##    age_at_diagnosis tumor_stage cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            26938 stage iv                  1.37 male   dead         LUSC   
+##  2            24019 stage iv                  1.37 male   dead         LUSC   
+##  3            24624 stage iv                  2.74 male   dead         LUSC   
+##  4            27455 stage iv                  3.56 male   dead         LUSC   
+##  5            25688 stage iv                  2.41 male   alive        LUSC   
+##  6            25286 stage iv                  2.74 male   dead         LUSC   
+##  7            23323 stage iv                  3.78 male   dead         BLCA   
+##  8            24428 stage iv                  3.40 male   dead         BLCA   
+##  9            22271 stage iv                  2.19 male   alive        BLCA   
+## 10            23927 stage iv                  1.32 male   dead         BLCA   
+## # ... with 81 more rows</code></pre>
+</div>
+<div id="filtering-requires-a-little-logic" class="section level3">
+<h3><span class="header-section-number">4.7.5</span> Filtering requires a little logic</h3>
+<p>We can chain multiple criteria using the <code>&amp;</code> (AND) or <code>|</code> (OR) operators. But we need to review a little logic before we do this.</p>
+<p>If I wanted to return patients who were</p>
+<p><code>male</code> <strong>and</strong> <code>stage iv</code>,</p>
+<p>I would want use an <code>&amp;</code> to chain these criteria together:</p>
+<pre><code>gender == &quot;male&quot; &amp; tumor_stage == &quot;stage_iv&quot;</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb130-2" title="2"><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> &quot;male&quot;</span> <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb130-3" title="3"><span class="st">           </span>tumor_stage <span class="op">==</span><span class="st"> &quot;stage iv&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 75 x 6
+##    age_at_diagnosis tumor_stage cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            26938 stage iv                  1.37 male   dead         LUSC   
+##  2            24019 stage iv                  1.37 male   dead         LUSC   
+##  3            24624 stage iv                  2.74 male   dead         LUSC   
+##  4            27455 stage iv                  3.56 male   dead         LUSC   
+##  5            25688 stage iv                  2.41 male   alive        LUSC   
+##  6            25286 stage iv                  2.74 male   dead         LUSC   
+##  7            23323 stage iv                  3.78 male   dead         BLCA   
+##  8            24428 stage iv                  3.40 male   dead         BLCA   
+##  9            22271 stage iv                  2.19 male   alive        BLCA   
+## 10            23927 stage iv                  1.32 male   dead         BLCA   
+## # ... with 65 more rows</code></pre>
+<p>If I wanted patients who were</p>
+<p><code>male</code> <strong>or</strong> <code>stage iv</code></p>
+<p>I would use an <code>|</code> to chain these criteria together.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb132-2" title="2"><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> &quot;male&quot;</span> <span class="op">|</span></a>
+<a class="sourceLine" id="cb132-3" title="3"><span class="st">           </span>tumor_stage <span class="op">==</span><span class="st"> &quot;stage iv&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 802 x 6
+##    age_at_diagnosis tumor_stage cigarettes_per_day gender vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;  
+##  1            24477 stage ia                 11.0  male   dead         LUSC   
+##  2            26615 stage ib                  2.19 male   dead         LUSC   
+##  3            27154 stage ia                  1.10 male   alive        LUSC   
+##  4            19025 stage ib                  1.37 male   dead         LUSC   
+##  5            26938 stage iv                  1.37 male   dead         LUSC   
+##  6            28430 stage ib                  1.64 male   dead         LUSC   
+##  7            30435 stage iib                 2.19 male   dead         LUSC   
+##  8            24019 stage iv                  1.37 male   dead         LUSC   
+##  9            26813 stage iib                 2.74 male   alive        LUSC   
+## 10            23972 stage ib                  2.19 male   alive        LUSC   
+## # ... with 792 more rows</code></pre>
+<p>Think about it: which of the above two code blocks will return a larger number of patients?</p>
+</div>
+<div id="more-about-comparison-and-logical-operators" class="section level3">
+<h3><span class="header-section-number">4.7.6</span> More about Comparison and Logical Operators</h3>
+<p>This is a useful reference for all the different operators (both logical and comparison) that you can use: <a href="https://www.datamentor.io/r-programming/operator/" class="uri">https://www.datamentor.io/r-programming/operator/</a></p>
+</div>
+<div id="selecting-columns-using-select" class="section level3">
+<h3><span class="header-section-number">4.7.7</span> Selecting columns using <code>select()</code></h3>
+<p>The final verb we’ll look at is <code>select()</code>. It allows us to select variables from our dataset:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb134-2" title="2"><span class="st">  </span><span class="kw">select</span>(gender, tumor_stage)</a></code></pre></div>
+<pre><code>## # A tibble: 1,152 x 2
+##    gender tumor_stage
+##    &lt;chr&gt;  &lt;chr&gt;      
+##  1 male   stage ia   
+##  2 male   stage ib   
+##  3 female stage ib   
+##  4 male   stage ia   
+##  5 female stage iiia 
+##  6 male   stage ib   
+##  7 male   stage iv   
+##  8 male   stage ib   
+##  9 male   stage iib  
+## 10 male   stage iv   
+## # ... with 1,142 more rows</code></pre>
+<p>If we want to select everything <em>but</em> one variable, we can use a <code>-</code> in front of that variable.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb136-2" title="2"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>gender)</a></code></pre></div>
+<pre><code>## # A tibble: 1,152 x 5
+##    age_at_diagnosis tumor_stage cigarettes_per_day vital_status disease
+##               &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;  
+##  1            24477 stage ia                 11.0  dead         LUSC   
+##  2            26615 stage ib                  2.19 dead         LUSC   
+##  3            28171 stage ib                  1.64 dead         LUSC   
+##  4            27154 stage ia                  1.10 alive        LUSC   
+##  5            23370 stage iiia                2.74 alive        LUSC   
+##  6            19025 stage ib                  1.37 dead         LUSC   
+##  7            26938 stage iv                  1.37 dead         LUSC   
+##  8            28430 stage ib                  1.64 dead         LUSC   
+##  9            30435 stage iib                 2.19 dead         LUSC   
+## 10            24019 stage iv                  1.37 dead         LUSC   
+## # ... with 1,142 more rows</code></pre>
+</div>
+<div id="the-difference-between-filter-and-select" class="section level3">
+<h3><span class="header-section-number">4.7.8</span> The difference between <code>filter()</code> and <code>select()</code></h3>
+<p>One thing to keep in mind is that:</p>
+<p><code>filter()</code> works on rows, and
+<code>select()</code> works on columns</p>
+<p>Keep that in mind!</p>
+</div>
+<div id="saving-our-results" class="section level3">
+<h3><span class="header-section-number">4.7.9</span> Saving our results</h3>
+<p>Let’s save our processed data in the <code>data/</code> directory. We’ll save it as a <code>csv</code> file, which is short for <em>comma separated value</em>. This is a file type that can be easily imported into excel.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1">processed_data &lt;-<span class="st"> </span>smoke_complete <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb138-2" title="2"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>gender) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb138-3" title="3"><span class="st">  </span><span class="kw">filter</span>(cigarettes_per_day <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb138-4" title="4"></a>
+<a class="sourceLine" id="cb138-5" title="5"><span class="kw">write_excel_csv</span>(<span class="dt">x =</span> processed_data,</a>
+<a class="sourceLine" id="cb138-6" title="6">                <span class="dt">path =</span> <span class="st">&quot;data/processed_data.csv&quot;</span>)</a></code></pre></div>
+</div>
+</div>
+<div id="what-you-learned-today-1" class="section level2">
+<h2><span class="header-section-number">4.8</span> What you learned today</h2>
+<ul>
+<li>customizing <code>ggplots</code> using <code>theme()</code></li>
+<li>making boxplots</li>
+<li>faceting plots</li>
+<li>a little bit about factors</li>
+<li>pipes</li>
+<li><code>arrange()</code></li>
+<li><code>filter()</code></li>
+<li><code>select()</code></li>
+</ul>
+</div>
+<div id="practice-1" class="section level2">
+<h2><span class="header-section-number">4.9</span> Practice</h2>
+<p>Try out chapters 2 and 3 in the R-Bootcamp:</p>
+<p><a href="https://r-bootcamp.netlify.app/chapter2" class="uri">https://r-bootcamp.netlify.app/chapter2</a>
+<a href="https://r-bootcamp.netlify.app/chapter3" class="uri">https://r-bootcamp.netlify.app/chapter3</a></p>
+</div>
+<div id="acknowledgements-1" class="section level2">
+<h2><span class="header-section-number">4.10</span> Acknowledgements</h2>
+<p>This notebook was adapted from material from Kate Hertweck and <a href="https://fredhutch.io" class="uri">https://fredhutch.io</a> and from the R-Bootcamp by Ted Laderas and Jessica Minnier.</p>
+</div>
+<div id="assignment-3" class="section level2">
+<h2><span class="header-section-number">4.11</span> Assignment 3</h2>
+<ol style="list-style-type: decimal">
+<li>Load the <code>smoke_complete</code> dataset from the <code>data</code> folder. Use <code>filter()</code> to subset those patients who have</li>
+</ol>
+<p>disease == “LUSC”</p>
+<p>then save the results to an object called <code>lusc_smokers</code>:</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1">smoke_complete &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/smoke_complete.xlsx&quot;</span>, <span class="dt">sheet =</span><span class="dv">1</span>, <span class="dt">na=</span> <span class="st">&quot;NA&quot;</span>)</a></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Sort <code>lusc_smokers</code> by decreasing <code>tumor_stage</code>:</p></li>
+<li><p>For <code>lusc_smokers</code>, make a boxplot where y = cigarettes_per_day and x = tumor_stage.</p></li>
+<li><p>Modify your plot to facet by <code>gender</code>:</p></li>
+<li><p>Subset <code>smoke_complete</code> to a different set of patients, such as gender == “female”.</p></li>
+</ol>
+<p>Make a new faceted plot, this time a scatterplot. You’re free to choose two numeric variables of interest to plot from <code>smoke_complete</code>.</p>
+<p>Color your plot by <code>disease</code> and facet by <code>vital_status</code>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-r-part-2-data-frames-reading-data-visualizing-data-with-ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="part-4-mutate-group-bysummarize.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-part3.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ready-for-r.pdf", "ready-for-r.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
