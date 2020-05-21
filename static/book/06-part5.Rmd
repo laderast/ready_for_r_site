@@ -37,6 +37,7 @@ smoke_1 <- read_excel(here('data/smoke_1.xlsx'),
                       sheet=1, 
                       na="NA")
 
+smoke_1 <- smoke_1[1:5,]
 smoke_1
 ```
 
@@ -45,6 +46,7 @@ smoke_2 <- read_excel(here('data/smoke_2.xlsx'),
                       sheet=1, 
                       na="NA")
 
+smoke_2 <- smoke_2[1:5,]
 smoke_2
 ```
 
@@ -53,10 +55,11 @@ smoke_3 <- read_excel(here('data/smoke_3.xlsx'),
                       sheet=1, 
                       na="NA")
 
+smoke_3 <- smoke_3[1:5,]
 smoke_3
 ```
 
-## Binding two tables together
+### Binding two tables together
 
 How can you combine  datasets from individual labs? Enter `bind_rows()`...
 
@@ -134,7 +137,7 @@ In the example above, we don't keep row 3 in table x or row 4 in table y.
 
 
 
-## Joining Syntax
+### Joining Syntax
 
 Keeping these terms in mind, let's look at the syntax for joining two tables together.
 
@@ -170,7 +173,7 @@ We start with our *left* table, `table_x`. The main difference is that we don't 
 
 
 
-## Left Joins
+### Left Joins
 
 ![](image/left-join.gif)
 

@@ -77,24 +77,19 @@ smoke_1 <- read_excel(here('data/smoke_1.xlsx'),
                       sheet=1, 
                       na="NA")
 
+smoke_1 <- smoke_1[1:5,]
 smoke_1
 ```
 
 ```
-## # A tibble: 549 x 5
-##    primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
-##    <chr>             <chr>                  <dbl> <chr>        <chr>     
-##  1 C34.1             stage ia               24477 dead         8070/3    
-##  2 C34.1             stage ib               26615 dead         8070/3    
-##  3 C34.3             stage ib               28171 dead         8070/3    
-##  4 C34.1             stage ia               27154 alive        8083/3    
-##  5 C34.1             stage iiia             23370 alive        8070/3    
-##  6 C34.3             stage ib               19025 dead         8070/3    
-##  7 C34.3             stage iv               26938 dead         8070/3    
-##  8 C34.1             stage ib               28430 dead         8070/3    
-##  9 C34.1             stage iib              30435 dead         8070/3    
-## 10 C34.9             stage iv               24019 dead         8070/3    
-## # ... with 539 more rows
+## # A tibble: 5 x 5
+##   primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
+##   <chr>             <chr>                  <dbl> <chr>        <chr>     
+## 1 C34.1             stage ia               24477 dead         8070/3    
+## 2 C34.1             stage ib               26615 dead         8070/3    
+## 3 C34.3             stage ib               28171 dead         8070/3    
+## 4 C34.1             stage ia               27154 alive        8083/3    
+## 5 C34.1             stage iiia             23370 alive        8070/3
 ```
 
 
@@ -103,24 +98,19 @@ smoke_2 <- read_excel(here('data/smoke_2.xlsx'),
                       sheet=1, 
                       na="NA")
 
+smoke_2 <- smoke_2[1:5,]
 smoke_2
 ```
 
 ```
-## # A tibble: 603 x 5
-##    primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
-##    <chr>             <chr>                  <dbl> <chr>        <chr>     
-##  1 C67.9             stage iv               17682 alive        8120/3    
-##  2 C67.9             stage ii               19776 alive        8120/3    
-##  3 C67.9             stage iii              23631 alive        8120/3    
-##  4 C67.9             stage iv               26546 dead         8120/3    
-##  5 C67.9             stage iii              24534 dead         8120/3    
-##  6 C67.9             stage iv               25134 dead         8120/3    
-##  7 C67.2             stage iii              26527 alive        8120/3    
-##  8 C67.3             stage ii               24343 alive        8120/3    
-##  9 C67.9             stage iv               27684 dead         8120/3    
-## 10 C67.2             stage iv               27049 alive        8120/3    
-## # ... with 593 more rows
+## # A tibble: 5 x 5
+##   primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
+##   <chr>             <chr>                  <dbl> <chr>        <chr>     
+## 1 C67.9             stage iv               17682 alive        8120/3    
+## 2 C67.9             stage ii               19776 alive        8120/3    
+## 3 C67.9             stage iii              23631 alive        8120/3    
+## 4 C67.9             stage iv               26546 dead         8120/3    
+## 5 C67.9             stage iii              24534 dead         8120/3
 ```
 
 
@@ -129,27 +119,22 @@ smoke_3 <- read_excel(here('data/smoke_3.xlsx'),
                       sheet=1, 
                       na="NA")
 
+smoke_3 <- smoke_3[1:5,]
 smoke_3
 ```
 
 ```
-## # A tibble: 603 x 5
-##    VITAL_STATUS `Age at Diagnosis` tumorStage Morphology primary_diagnosis
-##    <chr>                     <dbl> <chr>      <chr>      <chr>            
-##  1 alive                     17682 stage iv   8120/3     C67.9            
-##  2 alive                     19776 stage ii   8120/3     C67.9            
-##  3 alive                     23631 stage iii  8120/3     C67.9            
-##  4 dead                      26546 stage iv   8120/3     C67.9            
-##  5 dead                      24534 stage iii  8120/3     C67.9            
-##  6 dead                      25134 stage iv   8120/3     C67.9            
-##  7 alive                     26527 stage iii  8120/3     C67.2            
-##  8 alive                     24343 stage ii   8120/3     C67.3            
-##  9 dead                      27684 stage iv   8120/3     C67.9            
-## 10 alive                     27049 stage iv   8120/3     C67.2            
-## # ... with 593 more rows
+## # A tibble: 5 x 5
+##   VITAL_STATUS `Age at Diagnosis` tumorStage Morphology primary_diagnosis
+##   <chr>                     <dbl> <chr>      <chr>      <chr>            
+## 1 alive                     17682 stage iv   8120/3     C67.9            
+## 2 alive                     19776 stage ii   8120/3     C67.9            
+## 3 alive                     23631 stage iii  8120/3     C67.9            
+## 4 dead                      26546 stage iv   8120/3     C67.9            
+## 5 dead                      24534 stage iii  8120/3     C67.9
 ```
 
-## Binding two tables together
+### Binding two tables together
 
 How can you combine  datasets from individual labs? Enter `bind_rows()`...
 
@@ -159,7 +144,7 @@ smoke_1 %>% bind_rows(smoke_2)
 ```
 
 ```
-## # A tibble: 1,152 x 5
+## # A tibble: 10 x 5
 ##    primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
 ##    <chr>             <chr>                  <dbl> <chr>        <chr>     
 ##  1 C34.1             stage ia               24477 dead         8070/3    
@@ -167,12 +152,11 @@ smoke_1 %>% bind_rows(smoke_2)
 ##  3 C34.3             stage ib               28171 dead         8070/3    
 ##  4 C34.1             stage ia               27154 alive        8083/3    
 ##  5 C34.1             stage iiia             23370 alive        8070/3    
-##  6 C34.3             stage ib               19025 dead         8070/3    
-##  7 C34.3             stage iv               26938 dead         8070/3    
-##  8 C34.1             stage ib               28430 dead         8070/3    
-##  9 C34.1             stage iib              30435 dead         8070/3    
-## 10 C34.9             stage iv               24019 dead         8070/3    
-## # ... with 1,142 more rows
+##  6 C67.9             stage iv               17682 alive        8120/3    
+##  7 C67.9             stage ii               19776 alive        8120/3    
+##  8 C67.9             stage iii              23631 alive        8120/3    
+##  9 C67.9             stage iv               26546 dead         8120/3    
+## 10 C67.9             stage iii              24534 dead         8120/3
 ```
 
 `bind_rows()` allows you to append one dataset to the bottom of another dataset. We can see that `smoke_1` contained 549 rows and `smoke_2` contained 603 rows. After using `bind_rows()`, we now have a single dataset containing 1152 rows.
@@ -247,7 +231,7 @@ In the example above, we don't keep row 3 in table x or row 4 in table y.
 
 
 
-## Joining Syntax
+### Joining Syntax
 
 Keeping these terms in mind, let's look at the syntax for joining two tables together.
 
@@ -283,7 +267,7 @@ We start with our *left* table, `table_x`. The main difference is that we don't 
 
 
 
-## Left Joins
+### Left Joins
 
 ![](image/left-join.gif)
 
