@@ -49,7 +49,7 @@ library(readxl)
 knitr::include_graphics(here("image/project2.JPG"))
 ```
 
-<img src="C:/Code/rboot_ohsu_site/static/book/image/project2.JPG" width="1024" />
+<img src="C:/Code/ready_for_r_site/static/book/image/project2.JPG" width="1024" />
 
 
 Once you have your notebook open, let's talk about its location. It is located where the `project.rproj` file. The location of this file (also called an "RProject" file) is always considered the `root` directory of the project. 
@@ -422,7 +422,7 @@ Click the button below to load up the graphic.
 knitr::include_graphics(here("image/ggplot2_exploratory.png"))
 ```
 
-<img src="C:/Code/rboot_ohsu_site/static/book/image/ggplot2_exploratory.png" width="1024" />
+<img src="C:/Code/ready_for_r_site/static/book/image/ggplot2_exploratory.png" width="1024" />
 
 
 Now that we've loaded our data as a `data.frame`, we can begin to start doing things with it.
@@ -440,7 +440,7 @@ We're going to work towards the following graph today:
 knitr::include_graphics(here("image/days_to_last_followup.png"))
 ```
 
-<img src="C:/Code/rboot_ohsu_site/static/book/image/days_to_last_followup.png" width="1050" />
+<img src="C:/Code/ready_for_r_site/static/book/image/days_to_last_followup.png" width="1050" />
 
 
 
