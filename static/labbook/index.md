@@ -1,7 +1,7 @@
 --- 
 title: "Ready for R: Notebook Reference"
 author: "Ted Laderas"
-date: "2020-05-20"
+date: "2020-05-21"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book

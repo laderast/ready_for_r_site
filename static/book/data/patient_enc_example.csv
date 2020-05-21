@@ -1,0 +1,201 @@
+patientid,Event_ID,outcome,Admit_date,Admit_source
+1,108,SNF,1/1/2014,Emergency Room
+1,109,SNF,1/13/2014,Transfer
+2,1333,Discharged Home,1/1/2014,Clinic
+3,71,SNF,1/1/2014,Transfer
+4,886,Discharged Home,1/1/2014,Emergency Room
+5,73,Discharged Home,1/1/2014,Emergency Room
+5,74,Discharged Home,1/16/2014,Emergency Room
+6,98,SNF,1/1/2014,Emergency Room
+6,99,SNF,1/19/2014,Transfer
+7,893,Rehab,1/1/2014,Emergency Room
+8,2556,SNF,1/1/2014,Transfer
+9,649,SNF,1/1/2014,Emergency Room
+10,979,SNF,1/1/2014,Emergency Room
+11,1815,SNF,1/1/2014,Transfer
+12,863,Discharged Home,1/1/2014,Emergency Room
+13,1663,SNF,1/1/2014,Transfer
+14,999,SNF,1/1/2014,Emergency Room
+15,1699,Discharged Home,1/1/2014,Clinic
+16,11,Rehab,1/1/2014,SNF
+17,587,SNF,1/1/2014,Transfer
+18,1868,SNF,1/1/2014,Emergency Room
+19,1570,Discharged Home,1/1/2014,Clinic
+20,1480,Discharged Home,1/1/2014,Clinic
+21,1180,SNF,1/1/2014,Transfer
+21,1181,SNF,3/4/2014,Transfer
+22,153,Discharged Home,1/1/2014,Clinic
+23,1920,SNF,1/1/2014,Transfer
+24,1154,Discharged Home,1/1/2014,Emergency Room
+25,187,Discharged Home,1/1/2014,Clinic
+26,126,Discharged Home,1/1/2014,Emergency Room
+26,127,Discharged Home,1/20/2014,Emergency Room
+27,766,Discharged Home,1/1/2014,Emergency Room
+28,1444,Discharged Home,1/1/2014,Clinic
+29,136,Discharged Home,1/1/2014,Clinic
+30,512,SNF,1/1/2014,Emergency Room
+31,1176,Discharged Home,1/1/2014,Clinic
+32,1275,Discharged Home,1/1/2014,Emergency Room
+32,1276,Discharged Home,1/11/2014,Emergency Room
+33,732,SNF,1/1/2014,Emergency Room
+34,191,Discharged Home,1/1/2014,Clinic
+35,2015,Discharged Home,1/1/2014,Emergency Room
+36,1233,Discharged Home,1/1/2014,Emergency Room
+37,2005,Discharged Home,1/1/2014,Emergency Room
+38,631,SNF,1/1/2014,Emergency Room
+38,632,SNF,1/11/2014,Transfer
+39,1206,Discharged Home,1/1/2014,Clinic
+40,356,Discharged Home,1/1/2014,Emergency Room
+41,769,Discharged Home,1/1/2014,Emergency Room
+42,1679,Rehab,1/1/2014,SNF
+42,1680,Rehab,1/26/2014,Transfer
+43,206,Discharged Home,1/1/2014,Emergency Room
+43,207,Discharged Home,1/19/2014,Emergency Room
+44,1135,Rehab,1/1/2014,Emergency Room
+45,430,SNF,1/1/2014,Transfer
+46,60,Rehab,1/1/2014,SNF
+47,1608,SNF,1/1/2014,Emergency Room
+48,1422,SNF,1/1/2014,Transfer
+49,540,SNF,1/1/2014,Transfer
+50,316,Discharged Home,1/1/2014,Emergency Room
+51,1174,SNF,1/1/2014,Transfer
+52,1000,SNF,1/1/2014,Emergency Room
+53,921,SNF,1/1/2014,Transfer
+53,922,SNF,1/27/2014,Transfer
+54,448,SNF,1/1/2014,Transfer
+55,1406,Discharged Home,1/1/2014,Emergency Room
+56,302,Rehab,1/1/2014,SNF
+57,2130,Rehab,1/1/2014,Emergency Room
+58,389,SNF,1/1/2014,Emergency Room
+58,390,SNF,1/31/2014,Transfer
+59,1097,Rehab,1/1/2014,SNF
+60,1844,SNF,1/1/2014,Emergency Room
+61,607,Discharged Home,1/1/2014,Emergency Room
+62,2661,SNF,1/1/2014,Transfer
+63,1804,Discharged Home,1/1/2014,Clinic
+63,1805,Discharged Home,1/12/2014,Emergency Room
+64,1263,SNF,1/1/2014,Emergency Room
+65,942,Discharged Home,1/1/2014,Clinic
+66,260,Discharged Home,1/1/2014,Emergency Room
+67,885,SNF,1/1/2014,Emergency Room
+68,306,SNF,1/1/2014,Transfer
+69,359,Discharged Home,1/1/2014,Emergency Room
+69,360,Discharged Home,2/5/2014,Emergency Room
+70,1575,SNF,1/1/2014,Transfer
+71,1626,Discharged Home,1/1/2014,Emergency Room
+71,1627,Discharged Home,1/20/2014,Emergency Room
+72,574,SNF,1/1/2014,Transfer
+73,1343,Discharged Home,1/1/2014,Clinic
+74,1490,SNF,1/1/2014,Emergency Room
+75,2619,Discharged Home,1/1/2014,Emergency Room
+76,552,Discharged Home,1/1/2014,Clinic
+76,553,Discharged Home,2/8/2014,Emergency Room
+77,125,Rehab,1/1/2014,Emergency Room
+78,719,Discharged Home,1/1/2014,Clinic
+79,1482,Discharged Home,1/1/2014,Clinic
+80,547,Discharged Home,1/1/2014,Clinic
+81,75,Discharged Home,1/1/2014,Emergency Room
+82,2398,Discharged Home,1/1/2014,Emergency Room
+83,334,Discharged Home,1/1/2014,Emergency Room
+84,671,SNF,1/1/2014,Transfer
+85,526,Rehab,1/1/2014,Emergency Room
+85,527,Rehab,1/10/2014,Transfer
+86,295,Discharged Home,1/1/2014,Clinic
+87,666,SNF,1/1/2014,Transfer
+88,294,SNF,1/1/2014,Transfer
+89,840,Rehab,1/1/2014,SNF
+90,1155,SNF,1/1/2014,Emergency Room
+91,1654,Discharged Home,1/1/2014,Clinic
+91,1655,Discharged Home,1/28/2014,Emergency Room
+92,957,SNF,1/1/2014,Transfer
+92,958,SNF,1/27/2014,Transfer
+93,556,Discharged Home,1/1/2014,Clinic
+94,120,Discharged Home,1/1/2014,Emergency Room
+95,1328,Rehab,1/1/2014,SNF
+96,6,Discharged Home,1/1/2014,Clinic
+97,800,SNF,1/1/2014,Transfer
+97,801,SNF,1/25/2014,Transfer
+98,973,Discharged Home,1/1/2014,Emergency Room
+99,2169,Discharged Home,1/1/2014,Clinic
+100,2873,Discharged Home,1/1/2014,Emergency Room
+101,2375,Discharged Home,1/1/2014,Emergency Room
+102,68,Discharged Home,1/1/2014,Clinic
+103,1101,Rehab,1/1/2014,SNF
+103,1102,Rehab,1/31/2014,Transfer
+104,1459,SNF,1/1/2014,Transfer
+105,994,SNF,1/1/2014,Emergency Room
+106,1281,Discharged Home,1/1/2014,Emergency Room
+107,1003,Discharged Home,1/1/2014,Emergency Room
+108,2013,SNF,1/1/2014,Emergency Room
+109,117,SNF,1/1/2014,Emergency Room
+110,1008,SNF,1/1/2014,Emergency Room
+111,1587,SNF,1/1/2014,Transfer
+112,266,SNF,1/1/2014,Transfer
+113,1562,Discharged Home,1/1/2014,Clinic
+114,832,Discharged Home,1/1/2014,Clinic
+114,833,Discharged Home,1/20/2014,Emergency Room
+115,498,Discharged Home,1/1/2014,Emergency Room
+116,1768,SNF,1/1/2014,Emergency Room
+117,1386,SNF,1/1/2014,Emergency Room
+118,1221,Discharged Home,1/1/2014,Clinic
+119,1671,Rehab,1/1/2014,SNF
+120,451,SNF,1/1/2014,Transfer
+121,637,Discharged Home,1/1/2014,Emergency Room
+121,638,Discharged Home,1/24/2014,Emergency Room
+122,1764,Discharged Home,1/1/2014,Emergency Room
+123,1394,Discharged Home,1/1/2014,Emergency Room
+124,974,SNF,1/1/2014,Emergency Room
+125,1568,SNF,1/1/2014,Transfer
+126,1237,Discharged Home,1/1/2014,Emergency Room
+126,1238,Discharged Home,3/20/2014,Emergency Room
+127,2143,SNF,1/1/2014,Emergency Room
+128,3139,Discharged Home,1/1/2014,Emergency Room
+129,1696,Discharged Home,1/1/2014,Clinic
+130,1284,SNF,1/1/2014,Emergency Room
+131,510,Discharged Home,1/1/2014,Emergency Room
+132,1182,Discharged Home,1/1/2014,Clinic
+133,982,SNF,1/1/2014,Emergency Room
+134,601,Rehab,1/1/2014,Emergency Room
+134,602,Rehab,1/16/2014,Transfer
+135,385,Discharged Home,1/1/2014,Emergency Room
+136,54,SNF,1/1/2014,Transfer
+137,1199,Rehab,1/1/2014,SNF
+138,1107,SNF,1/1/2014,Transfer
+139,676,SNF,1/1/2014,Transfer
+140,659,Discharged Home,1/1/2014,Emergency Room
+141,2002,SNF,1/1/2014,Emergency Room
+142,481,SNF,1/1/2014,Emergency Room
+143,1285,SNF,1/1/2014,Emergency Room
+144,140,Rehab,1/1/2014,SNF
+145,598,SNF,1/1/2014,Emergency Room
+146,2303,SNF,1/1/2014,Transfer
+146,2304,SNF,1/25/2014,Transfer
+147,2041,SNF,1/1/2014,Transfer
+148,1958,Discharged Home,1/1/2014,Clinic
+149,791,Discharged Home,1/1/2014,Clinic
+150,397,Discharged Home,1/1/2014,Clinic
+151,1942,Discharged Home,1/1/2014,Clinic
+152,1980,Discharged Home,1/1/2014,Emergency Room
+153,1579,SNF,1/1/2014,Transfer
+153,1580,SNF,1/24/2014,Transfer
+154,5,SNF,1/1/2014,Transfer
+155,107,Discharged Home,1/1/2014,Emergency Room
+156,470,Rehab,1/1/2014,Emergency Room
+156,471,Rehab,1/25/2014,Transfer
+157,874,Discharged Home,1/1/2014,Emergency Room
+158,1594,SNF,1/1/2014,Transfer
+159,315,Discharged Home,1/1/2014,Emergency Room
+160,739,Rehab,1/1/2014,Emergency Room
+161,1355,SNF,1/1/2014,Emergency Room
+162,519,SNF,1/1/2014,Emergency Room
+163,33,Discharged Home,1/1/2014,Clinic
+164,1100,SNF,1/1/2014,Transfer
+165,345,Discharged Home,1/1/2014,Emergency Room
+166,1128,SNF,1/1/2014,Emergency Room
+166,1129,SNF,1/7/2014,Transfer
+167,425,Discharged Home,1/1/2014,Clinic
+168,890,Discharged Home,1/1/2014,Emergency Room
+169,850,SNF,1/1/2014,Transfer
+169,851,SNF,1/13/2014,Transfer
+170,1254,Discharged Home,1/1/2014,Emergency Room
+171,384,Discharged Home,1/1/2014,Emergency Room

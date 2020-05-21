@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Part 4: mutate(), group_by()/summarize() | Ready for R: Notebook Reference</title>
+  <title>Chapter 6 More about Factors | Ready for R: Notebook Reference</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Part 4: mutate(), group_by()/summarize() | Ready for R: Notebook Reference" />
+  <meta property="og:title" content="Chapter 6 More about Factors | Ready for R: Notebook Reference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="laderast/ready_for_r_site" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Part 4: mutate(), group_by()/summarize() | Ready for R: Notebook Reference" />
+  <meta name="twitter:title" content="Chapter 6 More about Factors | Ready for R: Notebook Reference" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ready-for-r-part-3-data-visualization-and-data-manipulation.html"/>
-<link rel="next" href="more-about-factors.html"/>
+<link rel="prev" href="part-4-mutate-group-bysummarize.html"/>
+<link rel="next" href="part-5-doing-useful-things-with-multiple-tables.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -305,350 +305,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="part-4-mutate-group_bysummarize" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Part 4: <code>mutate()</code>, <code>group_by()/summarize()</code></h1>
-<div id="learning-objectives-3" class="section level2">
-<h2><span class="header-section-number">5.1</span> Learning Objectives</h2>
-<ul>
-<li><strong>Learn</strong> and apply <code>mutate()</code> to change the data type of a variable</li>
-<li><strong>Apply</strong> <code>mutate()</code> to calculate a new variable based on other variables in a <code>data.frame</code>.</li>
-<li><strong>Apply</strong> <code>case_when</code> in a <code>mutate()</code> statement to make a continuous variable categorical</li>
-<li><strong>Apply</strong> <code>group_by()/summarize()</code> as a pattern to get summary statistics, including counts, means, and standard deviations within a category.</li>
-<li><strong>Standardize</strong> variable names using <code>clean_names()</code></li>
-</ul>
+<div id="more-about-factors" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> More about Factors</h1>
+<p>This was part of a impromptu session learning about factors.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb172-2" title="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb172-3" title="3"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb172-4" title="4"><span class="kw">library</span>(janitor)</a>
+<a class="sourceLine" id="cb172-5" title="5"><span class="kw">library</span>(forcats)</a>
+<a class="sourceLine" id="cb172-6" title="6"></a>
+<a class="sourceLine" id="cb172-7" title="7">smoke_complete &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/smoke_complete.xlsx&quot;</span>, </a>
+<a class="sourceLine" id="cb172-8" title="8">                             <span class="dt">sheet=</span><span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb172-9" title="9">                             <span class="dt">na=</span><span class="st">&quot;NA&quot;</span>)</a></code></pre></div>
+<div id="making-a-factor-variable-out-of-disease" class="section level2">
+<h2><span class="header-section-number">6.1</span> Making a factor variable out of disease</h2>
+<p>We’re adding a fourth value, <code>BRCA</code> to our levels here.</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1">smoke_complete2 &lt;-<span class="st"> </span>smoke_complete <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb173-2" title="2"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">disease_factor =</span> </a>
+<a class="sourceLine" id="cb173-3" title="3">               <span class="kw">factor</span>(disease,</a>
+<a class="sourceLine" id="cb173-4" title="4">                      <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;LUSC&quot;</span>, <span class="st">&quot;CESC&quot;</span>, <span class="st">&quot;BLCA&quot;</span>, <span class="st">&quot;BRCA&quot;</span>)</a>
+<a class="sourceLine" id="cb173-5" title="5">                      )</a>
+<a class="sourceLine" id="cb173-6" title="6">           ) </a></code></pre></div>
 </div>
-<div id="getting-set-up-1" class="section level2">
-<h2><span class="header-section-number">5.2</span> Getting set up</h2>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="co"># load libraries</span></a>
-<a class="sourceLine" id="cb140-2" title="2"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb140-3" title="3"><span class="kw">library</span>(readxl)</a>
-<a class="sourceLine" id="cb140-4" title="4"><span class="kw">library</span>(janitor)</a>
-<a class="sourceLine" id="cb140-5" title="5"><span class="kw">library</span>(here)</a>
-<a class="sourceLine" id="cb140-6" title="6"></a>
-<a class="sourceLine" id="cb140-7" title="7">smoke_complete &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="kw">here</span>(<span class="st">&quot;data/smoke_complete.xlsx&quot;</span>), </a>
-<a class="sourceLine" id="cb140-8" title="8">                             <span class="dt">sheet=</span><span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb140-9" title="9">                             <span class="dt">na=</span><span class="st">&quot;NA&quot;</span>)</a></code></pre></div>
+<div id="using-the-character-variable" class="section level2">
+<h2><span class="header-section-number">6.2</span> Using the character variable</h2>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1"><span class="kw">ggplot</span>(smoke_complete2) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb174-2" title="2"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x=</span>disease, <span class="dt">y=</span>cigarettes_per_day) <span class="op">+</span></a>
+<a class="sourceLine" id="cb174-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="05-factors_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
-<div id="mutate---a-confusing-name-a-powerful-dplyr-verb" class="section level2">
-<h2><span class="header-section-number">5.3</span> <code>mutate()</code> - A confusing name, a powerful <code>dplyr</code> verb</h2>
-<p>So what is mutate? <code>mutate()</code> is one of the most useful <code>dplyr</code> verbs. You can use it to transform data (variables in your <code>data.frame</code>) and add it as a new variable into the data.frame.</p>
-<p>I tend to think of this much like adding a formula in Excel to calculate the value of a new column based on previous columns. You can do lots of things such as:</p>
-<ul>
-<li>subtract one column from another</li>
-<li>convert the units of one column to new units (such as days to years)</li>
-<li>change the capitalization of categories in a variable</li>
-<li>recode a continuous variable to be a categorical one</li>
-</ul>
-<div id="using-mutate-to-calculate-a-new-variable-based-on-other-variables" class="section level3">
-<h3><span class="header-section-number">5.3.1</span> Using <code>mutate</code> to calculate a new variable based on other variables</h3>
-<p>One use for <code>mutate</code> is to do Excel type calculations using other columns on the data. For instance, we might want to calcluate the sum of <code>age_at_diagnoses</code>and <code>days_to_death</code> to get the <code>age_at_death</code>.</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">smoke_complete <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb141-2" title="2"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">age_at_death =</span> age_at_diagnosis <span class="op">+</span><span class="st"> </span>days_to_death) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb141-3" title="3"><span class="st">    </span><span class="kw">glimpse</span>()</a></code></pre></div>
-<pre><code>## Rows: 1,152
-## Columns: 21
-## $ primary_diagnosis           &lt;chr&gt; &quot;C34.1&quot;, &quot;C34.1&quot;, &quot;C34.3&quot;, &quot;C34.1&quot;, &quot;C3...
-## $ tumor_stage                 &lt;chr&gt; &quot;stage ia&quot;, &quot;stage ib&quot;, &quot;stage ib&quot;, &quot;st...
-## $ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 1902...
-## $ vital_status                &lt;chr&gt; &quot;dead&quot;, &quot;dead&quot;, &quot;dead&quot;, &quot;alive&quot;, &quot;alive...
-## $ morphology                  &lt;chr&gt; &quot;8070/3&quot;, &quot;8070/3&quot;, &quot;8070/3&quot;, &quot;8083/3&quot;,...
-## $ days_to_death               &lt;dbl&gt; 371, 136, 2304, NA, NA, 345, 716, 2803,...
-## $ state                       &lt;chr&gt; &quot;live&quot;, &quot;live&quot;, &quot;live&quot;, &quot;live&quot;, &quot;live&quot;,...
-## $ tissue_or_organ_of_origin   &lt;chr&gt; &quot;C34.1&quot;, &quot;C34.1&quot;, &quot;C34.3&quot;, &quot;C34.1&quot;, &quot;C3...
-## $ days_to_birth               &lt;dbl&gt; -24477, -26615, -28171, -27154, -23370,...
-## $ site_of_resection_or_biopsy &lt;chr&gt; &quot;C34.1&quot;, &quot;C34.1&quot;, &quot;C34.3&quot;, &quot;C34.1&quot;, &quot;C3...
-## $ days_to_last_follow_up      &lt;dbl&gt; NA, NA, 2099, 3747, 3576, NA, NA, 1810,...
-## $ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095...
-## $ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26,...
-## $ gender                      &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;fema...
-## $ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 193...
-## $ race                        &lt;chr&gt; &quot;white&quot;, &quot;asian&quot;, &quot;white&quot;, &quot;white&quot;, &quot;no...
-## $ ethnicity                   &lt;chr&gt; &quot;not hispanic or latino&quot;, &quot;not hispanic...
-## $ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA,...
-## $ bcr_patient_barcode         &lt;chr&gt; &quot;TCGA-18-3406&quot;, &quot;TCGA-18-3407&quot;, &quot;TCGA-1...
-## $ disease                     &lt;chr&gt; &quot;LUSC&quot;, &quot;LUSC&quot;, &quot;LUSC&quot;, &quot;LUSC&quot;, &quot;LUSC&quot;,...
-## $ age_at_death                &lt;dbl&gt; 24848, 26751, 30475, NA, NA, 19370, 276...</code></pre>
+<div id="compare-to-the-factor-variable" class="section level2">
+<h2><span class="header-section-number">6.3</span> Compare to the factor variable</h2>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1"><span class="kw">ggplot</span>(smoke_complete2) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">x=</span>disease_factor, <span class="dt">y=</span>cigarettes_per_day) <span class="op">+</span></a>
+<a class="sourceLine" id="cb175-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="05-factors_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
-<div id="your-turn" class="section level3">
-<h3><span class="header-section-number">5.3.2</span> Your Turn</h3>
-<p>Create a variable called <code>cigarettes_total</code> by multiplying <code>cigarettes_per_day</code> by <code>-days_to_birth</code> below:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb143-2" title="2"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">cigarettes_total =</span> ) </a></code></pre></div>
+<div id="another-thing-about-factors" class="section level2">
+<h2><span class="header-section-number">6.4</span> Another thing about factors</h2>
+<p>Factor <code>levels</code> also specify the permissible values.</p>
+<p>In this example, <code>LUSC</code> and <code>BRCA</code> are the permissible values. We pass a character vector into them, and you can see those values (<code>BLCA</code>, <code>CESC</code>) are recoded as NAs</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">character_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;LUSC&quot;</span>, <span class="st">&quot;LUSC&quot;</span>, <span class="st">&quot;BRCA&quot;</span>, <span class="st">&quot;BLCA&quot;</span>, <span class="st">&quot;BRCA&quot;</span>, <span class="st">&quot;CESC&quot;</span>, <span class="st">&quot;CESC&quot;</span>)</a>
+<a class="sourceLine" id="cb176-2" title="2"></a>
+<a class="sourceLine" id="cb176-3" title="3">factor_vector &lt;-<span class="st"> </span><span class="kw">factor</span>(character_vector, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;LUSC&quot;</span>, <span class="st">&quot;BRCA&quot;</span>))</a>
+<a class="sourceLine" id="cb176-4" title="4"></a>
+<a class="sourceLine" id="cb176-5" title="5">factor_vector</a></code></pre></div>
+<pre><code>## [1] LUSC LUSC BRCA &lt;NA&gt; BRCA &lt;NA&gt; &lt;NA&gt;
+## Levels: LUSC BRCA</code></pre>
 </div>
-<div id="using-mutate-to-make-our-character-variables-into-factors" class="section level3">
-<h3><span class="header-section-number">5.3.3</span> Using <code>mutate</code> to make our <code>character</code> variables into <code>factors</code></h3>
-<p>Remember <code>factor</code>s? Well, we can use <code>mutate()</code> to make a <code>character</code> variable a <code>factor</code>.</p>
-<p>Let’s convert <code>gender</code> from <code>character</code> into <code>factor</code>. We’ll then pipe the output into <code>glimpse()</code> so you can see the variable types.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1">smoke_complete <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb144-2" title="2"><span class="st">    </span><span class="co">#reassign the gender variable to be a factor</span></a>
-<a class="sourceLine" id="cb144-3" title="3"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">factor</span>(gender)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb144-4" title="4"><span class="st">    </span><span class="kw">glimpse</span>()</a></code></pre></div>
-<pre><code>## Rows: 1,152
-## Columns: 20
-## $ primary_diagnosis           &lt;chr&gt; &quot;C34.1&quot;, &quot;C34.1&quot;, &quot;C34.3&quot;, &quot;C34.1&quot;, &quot;C3...
-## $ tumor_stage                 &lt;chr&gt; &quot;stage ia&quot;, &quot;stage ib&quot;, &quot;stage ib&quot;, &quot;st...
-## $ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 1902...
-## $ vital_status                &lt;chr&gt; &quot;dead&quot;, &quot;dead&quot;, &quot;dead&quot;, &quot;alive&quot;, &quot;alive...
-## $ morphology                  &lt;chr&gt; &quot;8070/3&quot;, &quot;8070/3&quot;, &quot;8070/3&quot;, &quot;8083/3&quot;,...
-## $ days_to_death               &lt;dbl&gt; 371, 136, 2304, NA, NA, 345, 716, 2803,...
-## $ state                       &lt;chr&gt; &quot;live&quot;, &quot;live&quot;, &quot;live&quot;, &quot;live&quot;, &quot;live&quot;,...
-## $ tissue_or_organ_of_origin   &lt;chr&gt; &quot;C34.1&quot;, &quot;C34.1&quot;, &quot;C34.3&quot;, &quot;C34.1&quot;, &quot;C3...
-## $ days_to_birth               &lt;dbl&gt; -24477, -26615, -28171, -27154, -23370,...
-## $ site_of_resection_or_biopsy &lt;chr&gt; &quot;C34.1&quot;, &quot;C34.1&quot;, &quot;C34.3&quot;, &quot;C34.1&quot;, &quot;C3...
-## $ days_to_last_follow_up      &lt;dbl&gt; NA, NA, 2099, 3747, 3576, NA, NA, 1810,...
-## $ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095...
-## $ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26,...
-## $ gender                      &lt;fct&gt; male, male, female, male, female, male,...
-## $ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 193...
-## $ race                        &lt;chr&gt; &quot;white&quot;, &quot;asian&quot;, &quot;white&quot;, &quot;white&quot;, &quot;no...
-## $ ethnicity                   &lt;chr&gt; &quot;not hispanic or latino&quot;, &quot;not hispanic...
-## $ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA,...
-## $ bcr_patient_barcode         &lt;chr&gt; &quot;TCGA-18-3406&quot;, &quot;TCGA-18-3407&quot;, &quot;TCGA-1...
-## $ disease                     &lt;chr&gt; &quot;LUSC&quot;, &quot;LUSC&quot;, &quot;LUSC&quot;, &quot;LUSC&quot;, &quot;LUSC&quot;,...</code></pre>
-<p>One thing to notice: we are doing something called <em>reassignment</em> here. We’re taking the previous values of our variable (<code>gender</code>), doing something to it (making it a <code>factor</code>), and then reassigning the variable <code>gender</code> to our fixed set of values.</p>
-<p>Remember when we wanted to decide the order of the categories in the factor? We can assign that order using the <code>levels</code> argument in <code>factor()</code>. To show the order, we can pipe the output into a command called <code>tabyl()</code>, from the <code>janitor</code> package, which is a <code>tidyverse</code> friendly version of <code>table()</code>.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1">smoke_complete <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb146-2" title="2"><span class="st">    </span><span class="co">#reassign the gender variable to be a factor</span></a>
-<a class="sourceLine" id="cb146-3" title="3"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">factor</span>(gender, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb146-4" title="4"><span class="st">    </span><span class="kw">tabyl</span>(gender)</a></code></pre></div>
-<pre><code>##  gender   n   percent
-##  female 366 0.3177083
-##    male 786 0.6822917</code></pre>
-<p>Notice that the <code>female</code> value goes before the <code>male</code>, which is what we wanted.</p>
+<div id="fct_rev---reversing-the-order-of-a-factor" class="section level2">
+<h2><span class="header-section-number">6.5</span> <code>fct_rev()</code> - reversing the order of a factor</h2>
+<p>Very useful when using factors on the y-axis, because the default ordering is first value at the bottom, rather than first value at the top.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="kw">library</span>(forcats)</a>
+<a class="sourceLine" id="cb178-2" title="2"></a>
+<a class="sourceLine" id="cb178-3" title="3"><span class="co">#fct_rev()</span></a>
+<a class="sourceLine" id="cb178-4" title="4"></a>
+<a class="sourceLine" id="cb178-5" title="5">smoke_complete3 &lt;-<span class="st"> </span>smoke_complete2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb178-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">disease_rev =</span> <span class="kw">fct_rev</span>(disease_factor))</a>
+<a class="sourceLine" id="cb178-7" title="7"></a>
+<a class="sourceLine" id="cb178-8" title="8"><span class="co">#show original factor</span></a>
+<a class="sourceLine" id="cb178-9" title="9"><span class="kw">ggplot</span>(smoke_complete3) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">y=</span>disease_factor, <span class="dt">x=</span>cigarettes_per_day) <span class="op">+</span></a>
+<a class="sourceLine" id="cb178-10" title="10"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="05-factors_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="co">#show factor with reversed order</span></a>
+<a class="sourceLine" id="cb179-2" title="2"><span class="kw">ggplot</span>(smoke_complete3) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">y=</span>disease_rev, <span class="dt">x=</span>cigarettes_per_day) <span class="op">+</span></a>
+<a class="sourceLine" id="cb179-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="05-factors_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 </div>
-<div id="using-mutate-to-make-a-continuous-variable-categorical-using-case_when" class="section level3">
-<h3><span class="header-section-number">5.3.4</span> Using <code>mutate</code> to make a continuous variable categorical using <code>case_when</code></h3>
-<p>Say we want to make the <code>cigarettes_per_day</code> into a categorical variable with the values:</p>
-<ul>
-<li>0-5 cigarettes/day</li>
-<li>6+ cigarettes/day</li>
-</ul>
-<p>How would we do that?</p>
-<p>Well, we need to follow the basic pattern for each of our categories:</p>
-<p><em>condition</em> ~ <em>category name</em></p>
-<p>The <em>left</em> side of the <code>~</code> is where we can specify how we define the *category&amp;.</p>
-<p>The <em>right</em> side of the <code>~</code> is where we can specify the <em>category name</em> (as a character).</p>
-<p>In the example below,</p>
-<p><code>cigarettes_per_day &lt;= 5</code> is our left side,
-and <code>0-5</code> is our right side (our category).</p>
-<p>We need to do this for each level in our category.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1">smoke_complete <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb148-2" title="2"><span class="st">    </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb148-3" title="3">        <span class="dt">cigarettes_category =</span> <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb148-4" title="4">            cigarettes_per_day <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span> <span class="op">~</span><span class="st"> &#39;0-5&#39;</span>,</a>
-<a class="sourceLine" id="cb148-5" title="5">            cigarettes_per_day <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">~</span><span class="st"> &#39;6+&#39;</span></a>
-<a class="sourceLine" id="cb148-6" title="6">            )</a>
-<a class="sourceLine" id="cb148-7" title="7">        ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb148-8" title="8"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">cigarettes_category =</span> </a>
-<a class="sourceLine" id="cb148-9" title="9">               <span class="kw">factor</span>(cigarettes_category,</a>
-<a class="sourceLine" id="cb148-10" title="10">                      <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;0-5&quot;</span>, <span class="st">&quot;6+&quot;</span>)</a>
-<a class="sourceLine" id="cb148-11" title="11">                      )</a>
-<a class="sourceLine" id="cb148-12" title="12">           ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb148-13" title="13"><span class="st">    </span><span class="kw">tabyl</span>(cigarettes_category)</a></code></pre></div>
-<pre><code>##  cigarettes_category    n    percent
-##                  0-5 1060 0.92013889
-##                   6+   92 0.07986111</code></pre>
+<div id="fct_reorder" class="section level2">
+<h2><span class="header-section-number">6.6</span> <code>fct_reorder()</code></h2>
+<p><code>fct_reorder()</code> lets you reorder factors by another <code>numeric</code> variable.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="kw">library</span>(forcats)</a>
+<a class="sourceLine" id="cb180-2" title="2"></a>
+<a class="sourceLine" id="cb180-3" title="3"><span class="co">#fct_rev()</span></a>
+<a class="sourceLine" id="cb180-4" title="4"></a>
+<a class="sourceLine" id="cb180-5" title="5">smoke_complete3 &lt;-<span class="st"> </span>smoke_complete2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb180-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">disease_reorder =</span> <span class="kw">fct_reorder</span>(disease_factor, cigarettes_per_day))</a>
+<a class="sourceLine" id="cb180-7" title="7"></a>
+<a class="sourceLine" id="cb180-8" title="8"><span class="kw">ggplot</span>(smoke_complete3) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">y=</span>disease_reorder, <span class="dt">x=</span>cigarettes_per_day) <span class="op">+</span></a>
+<a class="sourceLine" id="cb180-9" title="9"><span class="st">  </span><span class="kw">geom_jitter</span>()</a></code></pre></div>
+<p><img src="05-factors_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
-<div id="your-turn-1" class="section level3">
-<h3><span class="header-section-number">5.3.5</span> Your Turn</h3>
-<p>Modify the code below to recode <code>cigarettes_category</code> to have 3 levels:</p>
-<ul>
-<li><code>0-5</code></li>
-<li><code>6-10</code></li>
-<li><code>11+</code></li>
-</ul>
-<p>Hint: you’ll have to chain conditions with a <code>&amp;</code> to get the <code>6-10</code> category.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1">smoke_complete <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb150-2" title="2"><span class="st">    </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb150-3" title="3">        <span class="dt">cigarettes_category =</span> <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb150-4" title="4">            cigarettes_per_day <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span> <span class="op">~</span><span class="st"> &#39;0-5&#39;</span>,</a>
-<a class="sourceLine" id="cb150-5" title="5">            cigarettes_per_day <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">~</span><span class="st"> &#39;6+&#39;</span></a>
-<a class="sourceLine" id="cb150-6" title="6">            )</a>
-<a class="sourceLine" id="cb150-7" title="7">        ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb150-8" title="8"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">cigarettes_category =</span> </a>
-<a class="sourceLine" id="cb150-9" title="9">               <span class="kw">factor</span>(cigarettes_category,</a>
-<a class="sourceLine" id="cb150-10" title="10">                      <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;0-5&quot;</span>, <span class="st">&quot;6+&quot;</span>)</a>
-<a class="sourceLine" id="cb150-11" title="11">                      )</a>
-<a class="sourceLine" id="cb150-12" title="12">           ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb150-13" title="13"><span class="st">    </span><span class="kw">tabyl</span>(cigarettes_category)</a></code></pre></div>
-<pre><code>##  cigarettes_category    n    percent
-##                  0-5 1060 0.92013889
-##                   6+   92 0.07986111</code></pre>
+<div id="fct_collapse" class="section level2">
+<h2><span class="header-section-number">6.7</span> <code>fct_collapse</code></h2>
+<p><code>fct_collapse()</code> lets you collapse multiple categories into one category.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1">smoke_complete3 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb181-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">disease_collapse =</span> <span class="kw">fct_collapse</span>(</a>
+<a class="sourceLine" id="cb181-3" title="3">    disease_factor,</a>
+<a class="sourceLine" id="cb181-4" title="4">    <span class="dt">other =</span> <span class="kw">c</span>(<span class="st">&quot;BLCA&quot;</span>, <span class="st">&quot;CESC&quot;</span>),</a>
+<a class="sourceLine" id="cb181-5" title="5">    <span class="dt">LUSC =</span> <span class="kw">c</span>(<span class="st">&quot;LUSC&quot;</span>)</a>
+<a class="sourceLine" id="cb181-6" title="6">  )) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb181-7" title="7"><span class="st">  </span><span class="kw">tabyl</span>(disease_collapse)</a></code></pre></div>
+<pre><code>##  disease_collapse   n   percent
+##              LUSC 836 0.7256944
+##             other 316 0.2743056
+##              BRCA   0 0.0000000</code></pre>
 </div>
-</div>
-<div id="group_bysummarize" class="section level2">
-<h2><span class="header-section-number">5.4</span> <code>group_by()/summarize()</code></h2>
-<p>These verbs usually go together and allow you to produce summaries on your data.</p>
-<div id="summarize" class="section level3">
-<h3><span class="header-section-number">5.4.1</span> <code>summarize()</code></h3>
-<p>The <code>summarize()</code> verb produces summaries across your data.</p>
-<p>For example, if I wanted to find the average <code>cigarettes_per_day</code> across all my data, I’d do this:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb152-2" title="2"><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">average_cigarettes =</span> <span class="kw">mean</span>(cigarettes_per_day))</a></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
-##   average_cigarettes
-##                &lt;dbl&gt;
-## 1               2.61</code></pre>
-<p>What are the kinds of things that summarize is useful for?</p>
-<p>Useful functions (from <a href="https://dplyr.tidyverse.org/reference/summarise.html" class="uri">https://dplyr.tidyverse.org/reference/summarise.html</a>)</p>
-<ul>
-<li>Center: <code>mean()</code>, <code>median()</code></li>
-<li>Spread: <code>sd()</code> (standard deviation)</li>
-<li>Range: <code>min()</code>, <code>max()</code></li>
-<li>Position: <code>first()</code>, <code>last()</code>, <code>nth()</code></li>
-<li>Count: <code>n()</code>, <code>n_distinct()</code></li>
-</ul>
-<p>By itself, <code>summarize()</code> is ok. But it’s really combined with <code>group_by()</code> that it becomes extremely powerful.</p>
-</div>
-<div id="group_bysummarize-1" class="section level3">
-<h3><span class="header-section-number">5.4.2</span> <code>group_by()/summarize()</code></h3>
-<p>These two verbs always go together. <code>group_by()</code> doesn’t do anything by itself, output wise. But what it does is split our data frame into a number of smaller <code>data.frame</code>s split out by category. Then we use <code>summarize</code> to do some sort of summary calculation (such as counting or calculating the mean) on these smaller <code>data.frame</code>s:</p>
-<p>For example, if we want to calculate the mean <code>cigarettes_per_day</code> smoked between <code>male</code>s and <code>female</code>s, we’d do the following:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb154-2" title="2"><span class="st">   </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb154-3" title="3"><span class="st">   </span><span class="kw">summarize</span>(<span class="dt">mean_cigarettes =</span> <span class="kw">mean</span>(cigarettes_per_day))</a></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
-##   gender mean_cigarettes
-##   &lt;chr&gt;            &lt;dbl&gt;
-## 1 female            2.07
-## 2 male              2.86</code></pre>
-</div>
-<div id="group_bysummarize-to-calculate-mean-and-standard-deviation-values" class="section level3">
-<h3><span class="header-section-number">5.4.3</span> <code>group_by()/summarize</code> to calculate mean and standard deviation values</h3>
-<p>Below, we’ll calculate the average number of cigarettes smoked per day for males and females, and the standard deviation.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb156-2" title="2"><span class="st">    </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb156-3" title="3"><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(cigarettes_per_day), </a>
-<a class="sourceLine" id="cb156-4" title="4">              <span class="dt">sd =</span> <span class="kw">sd</span>(cigarettes_per_day))</a></code></pre></div>
-<pre><code>## # A tibble: 2 x 3
-##   gender  mean    sd
-##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1 female  2.07  1.53
-## 2 male    2.86  2.19</code></pre>
-</div>
-<div id="group_by-to-count-things" class="section level3">
-<h3><span class="header-section-number">5.4.4</span> <code>group_by()</code> to <code>count()</code> things</h3>
-<p>What if we want to know the number of subjects in our dataset with each type of <code>disease</code>? We can use the <code>n()</code> function.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb158-2" title="2"><span class="st">    </span><span class="kw">group_by</span>(disease) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb158-3" title="3"><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>())</a></code></pre></div>
-<pre><code>## # A tibble: 3 x 2
-##   disease count
-##   &lt;chr&gt;   &lt;int&gt;
-## 1 BLCA      224
-## 2 CESC       92
-## 3 LUSC      836</code></pre>
-</div>
-<div id="your-turn-2" class="section level3">
-<h3><span class="header-section-number">5.4.5</span> Your Turn</h3>
-<p>Use <code>group_by()/summarize()</code> to calculate the maximum cigarettes per day within each <code>disease</code> category.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1">smoke_complete <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb160-2" title="2"><span class="st">    </span><span class="kw">group_by</span>(<span class="op">------</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb160-3" title="3"><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">max_cigarettes =</span> <span class="op">-------</span>)</a></code></pre></div>
-</div>
-</div>
-<div id="standardizing-variable-names-clean_names" class="section level2">
-<h2><span class="header-section-number">5.5</span> Standardizing variable names: <code>clean_names()</code></h2>
-<p>The last package we’ll talk about today is the <code>janitor</code> package. This package adds some really useful functions for <em>cleaning</em> data.</p>
-<p>The one I use the most is called <code>clean_names()</code>. This will mutate column names into a standard format - all character values will be lowercase and spaces will be converted to underscores.</p>
-<p>The <code>smoke_complete</code> dataset has already had this function applied to it, but let’s create a smaller example dataset where this wouldn’t be the case.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1">smoke_bad_colnames &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/smoke_bad_colnames.csv&quot;</span>)</a></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   `primary diagnosis` = col_character(),
-##   `tumor Stage` = col_character(),
-##   `Age at Diagnosis` = col_double(),
-##   vitalSTATUS = col_character()
-## )</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1">smoke_bad_colnames</a></code></pre></div>
-<pre><code>## # A tibble: 1,152 x 4
-##    `primary diagnosis` `tumor Stage` `Age at Diagnosis` vitalSTATUS
-##    &lt;chr&gt;               &lt;chr&gt;                      &lt;dbl&gt; &lt;chr&gt;      
-##  1 C34.1               stage ia                   24477 dead       
-##  2 C34.1               stage ib                   26615 dead       
-##  3 C34.3               stage ib                   28171 dead       
-##  4 C34.1               stage ia                   27154 alive      
-##  5 C34.1               stage iiia                 23370 alive      
-##  6 C34.3               stage ib                   19025 dead       
-##  7 C34.3               stage iv                   26938 dead       
-##  8 C34.1               stage ib                   28430 dead       
-##  9 C34.1               stage iib                  30435 dead       
-## 10 C34.9               stage iv                   24019 dead       
-## # ... with 1,142 more rows</code></pre>
-<p>Ack! These column names have spaces, inconsistent capitalization, which make these difficult to work with.</p>
-<p>So let’s use <code>clean_names()</code> to fix this:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1">smoke_good_colnames &lt;-<span class="st"> </span>smoke_bad_colnames <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb165-2" title="2"><span class="st">    </span><span class="kw">clean_names</span>()</a>
-<a class="sourceLine" id="cb165-3" title="3"></a>
-<a class="sourceLine" id="cb165-4" title="4">smoke_good_colnames</a></code></pre></div>
-<pre><code>## # A tibble: 1,152 x 4
-##    primary_diagnosis tumor_stage age_at_diagnosis vital_status
-##    &lt;chr&gt;             &lt;chr&gt;                  &lt;dbl&gt; &lt;chr&gt;       
-##  1 C34.1             stage ia               24477 dead        
-##  2 C34.1             stage ib               26615 dead        
-##  3 C34.3             stage ib               28171 dead        
-##  4 C34.1             stage ia               27154 alive       
-##  5 C34.1             stage iiia             23370 alive       
-##  6 C34.3             stage ib               19025 dead        
-##  7 C34.3             stage iv               26938 dead        
-##  8 C34.1             stage ib               28430 dead        
-##  9 C34.1             stage iib              30435 dead        
-## 10 C34.9             stage iv               24019 dead        
-## # ... with 1,142 more rows</code></pre>
-<p>By default, <code>clean_names()</code> converts to snake case (spaces between words are replaced by an underscore <code>_</code>). <code>clean_names()</code> will help you standardize your dataset’s column names.</p>
-</div>
-<div id="assignment-4" class="section level2">
-<h2><span class="header-section-number">5.6</span> Assignment 4</h2>
-<ol style="list-style-type: decimal">
-<li><p>Load the <code>smoke_complete</code> dataset from the <code>data</code> folder.</p></li>
-<li><p>Determine which tissue/organ of origin occurs most frequently in <code>smoke_complete</code>. (Hint: use both <code>group_by()/summarize()</code> and <code>arrange()</code>.)</p></li>
-</ol>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1">smoke_complete <span class="op">%&gt;%</span></a></code></pre></div>
-<ol start="3" style="list-style-type: decimal">
-<li>Create a new dataset called <code>smoke_filtered</code> that only contains subjects with <code>tissue_or_organ_of_origin</code> of <code>C34.3</code>. Use <code>glimpse()</code> on <code>smoke_filtered</code>.</li>
-</ol>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1">smoke_filtered  &lt;-<span class="st"> </span>smoke_complete <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb168-2" title="2"><span class="st">    </span></a>
-<a class="sourceLine" id="cb168-3" title="3"></a>
-<a class="sourceLine" id="cb168-4" title="4"><span class="kw">glimpse</span>(smoke_filtered)</a></code></pre></div>
-<ol start="4" style="list-style-type: decimal">
-<li>For subjects in <code>smoke_filtered</code>, make a new variable called <code>age_years</code> by converting <code>age_at_diagnosis</code> from days to years.</li>
-</ol>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1">smoke_filtered &lt;-<span class="st"> </span>smoke_filtered <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb169-2" title="2"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">age_years =</span> _______ <span class="op">*</span><span class="st"> </span>_____)</a></code></pre></div>
-<ol start="4" style="list-style-type: decimal">
-<li>Make a new variable called <code>age_category</code> using <code>case_when()</code> from <code>age_years</code> in <code>smoke_filtered</code>.</li>
-</ol>
-<p>Make <code>age_category</code> a <code>factor</code> with the following levels:</p>
-<ul>
-<li><code>0-40</code> years old</li>
-<li><code>40-55</code> years old</li>
-<li><code>55-70</code> years old</li>
-<li><code>70+</code> years old</li>
-</ul>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1">smoke_filtered &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb170-2" title="2"><span class="st">    </span>smoke_filtered <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb170-3" title="3"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">age_category =</span> </a>
-<a class="sourceLine" id="cb170-4" title="4">               <span class="kw">case_when</span>(age_years <span class="op">&lt;=</span><span class="st"> </span><span class="dv">40</span> <span class="op">~</span><span class="st"> &quot;0-40&quot;</span>,</a>
-<a class="sourceLine" id="cb170-5" title="5">                         </a>
-<a class="sourceLine" id="cb170-6" title="6">                         </a>
-<a class="sourceLine" id="cb170-7" title="7">                         </a>
-<a class="sourceLine" id="cb170-8" title="8">                         )</a>
-<a class="sourceLine" id="cb170-9" title="9">           ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb170-10" title="10"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">age_category =</span> <span class="kw">factor</span>(age_category,</a>
-<a class="sourceLine" id="cb170-11" title="11">                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;0-40&quot;</span>,</a>
-<a class="sourceLine" id="cb170-12" title="12">                                            </a>
-<a class="sourceLine" id="cb170-13" title="13">                                            </a>
-<a class="sourceLine" id="cb170-14" title="14">                                            </a>
-<a class="sourceLine" id="cb170-15" title="15">                                            )</a>
-<a class="sourceLine" id="cb170-16" title="16">                                 )</a>
-<a class="sourceLine" id="cb170-17" title="17">           )</a></code></pre></div>
-<ol start="5" style="list-style-type: decimal">
-<li>Create a scatterplot using <code>geom_point()</code> demonstrating the correlation (if any) between the categorical variable <code>age_at_diagnosis</code> versus <code>cigarettes_per_day</code>.</li>
-</ol>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1"><span class="kw">ggplot</span>(smoke_complete) <span class="op">+</span></a>
-<a class="sourceLine" id="cb171-2" title="2"><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x =</span> , <span class="dt">y=</span> ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb171-3" title="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div id="other-really-useful-forcats-functions" class="section level2">
+<h2><span class="header-section-number">6.8</span> Other really useful <code>forcats</code> functions</h2>
+<p><code>fct_recode()</code> - lets you recode values manually.</p>
+<p><code>fct_other()</code> - lets you define what categories are in an <code>other</code> variable.</p>
 
 </div>
 </div>
@@ -657,8 +412,8 @@ and <code>0-5</code> is our right side (our category).</p>
           </div>
         </div>
       </div>
-<a href="ready-for-r-part-3-data-visualization-and-data-manipulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="more-about-factors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="part-4-mutate-group-bysummarize.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="part-5-doing-useful-things-with-multiple-tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -689,7 +444,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-part4.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-factors.Rmd",
 "text": "Edit"
 },
 "history": {
