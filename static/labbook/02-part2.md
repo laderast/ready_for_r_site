@@ -1,13 +1,7 @@
-# Introduction to R, Part 2: `data.frame`s, Reading Data, visualizing data with `ggplot2`
+# Part 2: `data.frame`s, Reading Data, visualizing data with `ggplot2`
 
 
 In this session, we'll continue our introduction to R by working with a large dataset that more closely resembles that which you may encounter while analyzing data for research.
-
-
-## Before you get started
-
-Remember to save this notebook under a new name, such as `part2_laderas.Rmd`.
-
 
 
 ## Learning Objectives
@@ -122,7 +116,7 @@ Now that we have the data imported and assigned to an object, we can take some t
 
 
 
-## Notes on the Data
+### Notes on the Data
 
 - These data are clinical cancer data from the [National Cancer Institute's Genomic Data Commons](https://gdc.cancer.gov), specifically from The Cancer Genome Atlas, or [TCGA](https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga).
 - Each row represents a patient, and each column represents information about demographics (race, age at diagnosis, etc) and disease (e.g., cancer type).
@@ -413,7 +407,7 @@ We will talk more about `factors` in the next lab.
 
 
 
-### Introducing `ggplot2`
+## Introducing `ggplot2`
 
 Click the button below to load up the graphic.
 
@@ -445,7 +439,7 @@ knitr::include_graphics(here("image/days_to_last_followup.png"))
 
 
 
-## `ggplot2`: A Grammar of Graphics
+### `ggplot2`: A Grammar of Graphics
 
 
 `ggplot2` is an extremely powerful software library for visualization. 
@@ -549,7 +543,7 @@ ggplot(data = brca_clinical) +
 
 ### Titles
 
-We can add more details to our graph. We can add a title using the `ggtitle()` function:
+We can add more details to our graph. We can add a title using the `labs()` function:
 
 
 ```r
@@ -561,7 +555,7 @@ ggplot(data = brca_clinical) +
   
   geom_point() +
   
-  ggtitle("Age versus Days to Last followup") 
+  labs(title="Age versus Days to Last followup") 
 ```
 
 ```

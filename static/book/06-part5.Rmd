@@ -84,8 +84,7 @@ Our column names are at least the same, but they're still out of order! If we ap
 
 ```{r}
 smoke_1 %>%
-    bind_rows(smoke_3_clean) %>%
-    View()
+    bind_rows(smoke_3_clean)
 ```
 
 Well look at that. `bind_rows()` takes care of the out-of-order columns for us!

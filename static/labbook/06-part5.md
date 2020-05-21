@@ -178,8 +178,23 @@ Our column names are at least the same, but they're still out of order! If we ap
 
 ```r
 smoke_1 %>%
-    bind_rows(smoke_3_clean) %>%
-    View()
+    bind_rows(smoke_3_clean)
+```
+
+```
+## # A tibble: 10 x 5
+##    primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
+##    <chr>             <chr>                  <dbl> <chr>        <chr>     
+##  1 C34.1             stage ia               24477 dead         8070/3    
+##  2 C34.1             stage ib               26615 dead         8070/3    
+##  3 C34.3             stage ib               28171 dead         8070/3    
+##  4 C34.1             stage ia               27154 alive        8083/3    
+##  5 C34.1             stage iiia             23370 alive        8070/3    
+##  6 C67.9             stage iv               17682 alive        8120/3    
+##  7 C67.9             stage ii               19776 alive        8120/3    
+##  8 C67.9             stage iii              23631 alive        8120/3    
+##  9 C67.9             stage iv               26546 dead         8120/3    
+## 10 C67.9             stage iii              24534 dead         8120/3
 ```
 
 Well look at that. `bind_rows()` takes care of the out-of-order columns for us!

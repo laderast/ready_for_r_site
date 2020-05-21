@@ -1,6 +1,6 @@
 --- 
 title: "Ready for R: Notebook Reference"
-author: "Ted Laderas"
+author: "Aaron Coyner and Ted Laderas"
 date: "2020-05-21"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -18,8 +18,8 @@ This is a searchable website that serves as a reference for the Ready for R cour
 
 ## Acknowledgements
 
-Written by Aaron Coyner and Ted Laderas.
-
-Based on the [Intro to R materials](https://github.com/fredhutchio/R_intro) from https://fredhutch.io (by Kate Hertweck) and the [R-Bootcamp](https://r-bootcamp.netlify.app)
+- Written by Aaron Coyner and Ted Laderas.
+- Based on the [Intro to R materials](https://github.com/fredhutchio/R_intro) from https://fredhutch.io (by Kate Hertweck) and the [R-Bootcamp](https://r-bootcamp.netlify.app)
+- Images gratefully used from [Allison Horst](https://github.com/allisonhorst/stats-illustrations) and [Garrick Aden-Buie](https://github.com/gadenbuie/tidyexplain)
 
 
