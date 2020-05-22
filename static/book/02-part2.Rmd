@@ -1,4 +1,4 @@
-# Part 2: `data.frame`s, Reading Data, visualizing data with `ggplot2`
+# Part 2: `data.frame`s, Reading Data, `ggplot2`
 
 
 In this session, we'll continue our introduction to R by working with a large dataset that more closely resembles that which you may encounter while analyzing data for research.

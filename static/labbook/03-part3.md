@@ -1,14 +1,14 @@
-# Ready for R Part 3: Data Visualization and Data Manipulation
+# Part 3: More Data Visualization and Data Manipulation
 
 
 ## Learning Objectives
 
-- create and modify scatterplots and boxplots
-- split figures into multiple panels using `facet_wrap()`
-- customize your plots using built in `theme()`s
-- Sort by a variable in a dataset using `arrange()`
-- Select variables in a dataset using `select()`
-- Filter a dataset using the `filter()` function
+- **Create** and **modify** scatterplots and boxplots
+- **Split** figures into multiple panels using `facet_wrap()`
+- **Customize** your plots using built in `theme()`s
+- **Sort** by a variable in a dataset using `arrange()`
+- **Select** variables in a dataset using `select()`
+- **Filter** a dataset using the `filter()` function
 
 
 

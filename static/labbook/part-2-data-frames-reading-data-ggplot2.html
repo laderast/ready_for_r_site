@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Part 2: data.frames, Reading Data, ggplot2 | Ready for R: Notebook Reference</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Part 2: data.frames, Reading Data, ggplot2 | Ready for R: Notebook Reference" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="laderast/ready_for_r_site" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Part 2: data.frames, Reading Data, ggplot2 | Ready for R: Notebook Reference" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Aaron Coyner and Ted Laderas" />
+
+
+<meta name="date" content="2020-05-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="part-1-functions-and-objects.html"/>
+<link rel="next" href="part-3-more-data-visualization-and-data-manipulation.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Ready for R Reference</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to Ready for R!</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introduction-to-this-gitbook"><i class="fa fa-check"></i><b>1.1</b> Introduction to this gitbook</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.2</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html"><i class="fa fa-check"></i><b>2</b> Part 1: Functions and Objects</a><ul>
+<li class="chapter" data-level="2.1" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#learning-objectives"><i class="fa fa-check"></i><b>2.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#an-intro-to-rrstudio"><i class="fa fa-check"></i><b>2.2</b> An Intro to R/RStudio</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#code-blocks"><i class="fa fa-check"></i><b>2.2.1</b> Code Blocks</a></li>
+<li class="chapter" data-level="2.2.2" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#using-functions"><i class="fa fa-check"></i><b>2.2.2</b> Using Functions</a></li>
+<li class="chapter" data-level="2.2.3" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#challenge-1"><i class="fa fa-check"></i><b>2.2.3</b> <strong>Challenge 1:</strong></a></li>
+<li class="chapter" data-level="2.2.4" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#assigning-objects"><i class="fa fa-check"></i><b>2.2.4</b> Assigning objects</a></li>
+<li class="chapter" data-level="2.2.5" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#challenge-2"><i class="fa fa-check"></i><b>2.2.5</b> <strong>Challenge 2:</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#vectors"><i class="fa fa-check"></i><b>2.3</b> Vectors</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#challenge-3"><i class="fa fa-check"></i><b>2.3.1</b> <strong>Challenge 3:</strong></a></li>
+<li class="chapter" data-level="2.3.2" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#data-types-and-vectors"><i class="fa fa-check"></i><b>2.3.2</b> Data types and Vectors</a></li>
+<li class="chapter" data-level="2.3.3" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#challenge-4"><i class="fa fa-check"></i><b>2.3.3</b> <strong>Challenge 4:</strong></a></li>
+<li class="chapter" data-level="2.3.4" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#manipulating-vectors"><i class="fa fa-check"></i><b>2.3.4</b> Manipulating vectors</a></li>
+<li class="chapter" data-level="2.3.5" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#missing-data"><i class="fa fa-check"></i><b>2.3.5</b> Missing data</a></li>
+<li class="chapter" data-level="2.3.6" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#challenge"><i class="fa fa-check"></i><b>2.3.6</b> <strong>Challenge:</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#wrapping-up"><i class="fa fa-check"></i><b>2.4</b> Wrapping up</a></li>
+<li class="chapter" data-level="2.5" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#assignment"><i class="fa fa-check"></i><b>2.5</b> Assignment</a></li>
+<li class="chapter" data-level="2.6" data-path="part-1-functions-and-objects.html"><a href="part-1-functions-and-objects.html#submitting-your-homework"><i class="fa fa-check"></i><b>2.6</b> Submitting your homework</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Part 2: <code>data.frame</code>s, Reading Data, <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="3.1" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#learning-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#a-note-about-base-r-versus-the-tidyverse"><i class="fa fa-check"></i><b>3.2</b> A note about Base R versus the Tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#importing-spreadsheet-style-data-into-r"><i class="fa fa-check"></i><b>3.3</b> Importing spreadsheet-style data into R</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#a-good-place-to-put-your-data"><i class="fa fa-check"></i><b>3.3.1</b> A good place to put your data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#loading-our-excel-file"><i class="fa fa-check"></i><b>3.3.2</b> Loading our excel file</a></li>
+<li class="chapter" data-level="3.3.3" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#challenge-1-5-minutes"><i class="fa fa-check"></i><b>3.3.3</b> Challenge 1 (5 minutes)</a></li>
+<li class="chapter" data-level="3.3.4" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#notes-on-the-data"><i class="fa fa-check"></i><b>3.3.4</b> Notes on the Data</a></li>
+<li class="chapter" data-level="3.3.5" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#challenge-2-5-minutes"><i class="fa fa-check"></i><b>3.3.5</b> Challenge 2 (5 minutes):</a></li>
+<li class="chapter" data-level="3.3.6" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#tips-on-formating-your-excel-file-for-r"><i class="fa fa-check"></i><b>3.3.6</b> Tips on Formating your excel file for R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#data.frames"><i class="fa fa-check"></i><b>3.4</b> <code>data.frame</code>s</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#data.frames---how-do-they-work"><i class="fa fa-check"></i><b>3.4.1</b> <code>data.frame</code>s - How do they Work?</a></li>
+<li class="chapter" data-level="3.4.2" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#column-names"><i class="fa fa-check"></i><b>3.4.2</b> Column Names</a></li>
+<li class="chapter" data-level="3.4.3" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#okay-whats-really-in-it"><i class="fa fa-check"></i><b>3.4.3</b> Okay, What’s really in it?</a></li>
+<li class="chapter" data-level="3.4.4" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#summarizing-our-data"><i class="fa fa-check"></i><b>3.4.4</b> Summarizing our Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#introducing-ggplot2"><i class="fa fa-check"></i><b>3.5</b> Introducing <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#working-towards-a-graph"><i class="fa fa-check"></i><b>3.5.1</b> Working Towards a Graph</a></li>
+<li class="chapter" data-level="3.5.2" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#ggplot2-a-grammar-of-graphics"><i class="fa fa-check"></i><b>3.5.2</b> <code>ggplot2</code>: A Grammar of Graphics</a></li>
+<li class="chapter" data-level="3.5.3" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#learning-to-read-ggplot2-code"><i class="fa fa-check"></i><b>3.5.3</b> Learning to read <code>ggplot2</code> code</a></li>
+<li class="chapter" data-level="3.5.4" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#challenge-5"><i class="fa fa-check"></i><b>3.5.4</b> Challenge</a></li>
+<li class="chapter" data-level="3.5.5" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#simple-arithmetic"><i class="fa fa-check"></i><b>3.5.5</b> Simple arithmetic</a></li>
+<li class="chapter" data-level="3.5.6" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#color"><i class="fa fa-check"></i><b>3.5.6</b> Color</a></li>
+<li class="chapter" data-level="3.5.7" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#titles"><i class="fa fa-check"></i><b>3.5.7</b> Titles</a></li>
+<li class="chapter" data-level="3.5.8" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#changing-the-axis-labels"><i class="fa fa-check"></i><b>3.5.8</b> Changing the Axis Labels</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#what-you-learned-today"><i class="fa fa-check"></i><b>3.6</b> What you learned today:</a></li>
+<li class="chapter" data-level="3.7" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#practice"><i class="fa fa-check"></i><b>3.7</b> Practice</a></li>
+<li class="chapter" data-level="3.8" data-path="part-2-data-frames-reading-data-ggplot2.html"><a href="part-2-data-frames-reading-data-ggplot2.html#assignment-10-points"><i class="fa fa-check"></i><b>3.8</b> Assignment (10 points)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html"><i class="fa fa-check"></i><b>4</b> Part 3: More Data Visualization and Data Manipulation</a><ul>
+<li class="chapter" data-level="4.1" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#learning-objectives-2"><i class="fa fa-check"></i><b>4.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#getting-set-up"><i class="fa fa-check"></i><b>4.2</b> Getting set up</a></li>
+<li class="chapter" data-level="4.3" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#more-about-ggplot2"><i class="fa fa-check"></i><b>4.3</b> More about <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#customizing-a-scatterplot"><i class="fa fa-check"></i><b>4.3.1</b> Customizing a Scatterplot</a></li>
+<li class="chapter" data-level="4.3.2" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#changing-visual-properties-using-built-in-themes"><i class="fa fa-check"></i><b>4.3.2</b> Changing visual properties using built in themes</a></li>
+<li class="chapter" data-level="4.3.3" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#using-theme-to-customize"><i class="fa fa-check"></i><b>4.3.3</b> Using <code>theme()</code> to customize</a></li>
+<li class="chapter" data-level="4.3.4" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#saving-your-work"><i class="fa fa-check"></i><b>4.3.4</b> Saving your work</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#brief-aside-categorical-data-factors"><i class="fa fa-check"></i><b>4.4</b> Brief Aside: Categorical Data (<code>factor</code>s)</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#levels-of-a-factor"><i class="fa fa-check"></i><b>4.4.1</b> Levels of a Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#back-to-ggplot2-boxplots"><i class="fa fa-check"></i><b>4.5</b> Back to <code>ggplot2</code>: Boxplots</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#faceting-our-boxplot"><i class="fa fa-check"></i><b>4.5.1</b> Faceting our boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#further-learning"><i class="fa fa-check"></i><b>4.6</b> Further learning</a></li>
+<li class="chapter" data-level="4.7" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#data-manipulation-using-dplyr"><i class="fa fa-check"></i><b>4.7</b> Data Manipulation using <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.7.1" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#introducing-the-pipe"><i class="fa fa-check"></i><b>4.7.1</b> Introducing the pipe (<code>%&gt;%</code>)</a></li>
+<li class="chapter" data-level="4.7.2" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#the-difference-between-and"><i class="fa fa-check"></i><b>4.7.2</b> The difference between <code>+</code> and <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="4.7.3" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#sorting-data-frames-using-arrange"><i class="fa fa-check"></i><b>4.7.3</b> Sorting Data Frames using <code>arrange()</code></a></li>
+<li class="chapter" data-level="4.7.4" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#filtering-our-data"><i class="fa fa-check"></i><b>4.7.4</b> <code>filter()</code>ing our data</a></li>
+<li class="chapter" data-level="4.7.5" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#filtering-requires-a-little-logic"><i class="fa fa-check"></i><b>4.7.5</b> Filtering requires a little logic</a></li>
+<li class="chapter" data-level="4.7.6" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#more-about-comparison-and-logical-operators"><i class="fa fa-check"></i><b>4.7.6</b> More about Comparison and Logical Operators</a></li>
+<li class="chapter" data-level="4.7.7" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#selecting-columns-using-select"><i class="fa fa-check"></i><b>4.7.7</b> Selecting columns using <code>select()</code></a></li>
+<li class="chapter" data-level="4.7.8" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#the-difference-between-filter-and-select"><i class="fa fa-check"></i><b>4.7.8</b> The difference between <code>filter()</code> and <code>select()</code></a></li>
+<li class="chapter" data-level="4.7.9" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#saving-our-results"><i class="fa fa-check"></i><b>4.7.9</b> Saving our results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#what-you-learned-today-1"><i class="fa fa-check"></i><b>4.8</b> What you learned today</a></li>
+<li class="chapter" data-level="4.9" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#practice-1"><i class="fa fa-check"></i><b>4.9</b> Practice</a></li>
+<li class="chapter" data-level="4.10" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#acknowledgements-1"><i class="fa fa-check"></i><b>4.10</b> Acknowledgements</a></li>
+<li class="chapter" data-level="4.11" data-path="part-3-more-data-visualization-and-data-manipulation.html"><a href="part-3-more-data-visualization-and-data-manipulation.html#assignment-3"><i class="fa fa-check"></i><b>4.11</b> Assignment 3</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html"><i class="fa fa-check"></i><b>5</b> Part 4: <code>mutate()</code>, <code>group_by()/summarize()</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#learning-objectives-3"><i class="fa fa-check"></i><b>5.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#getting-set-up-1"><i class="fa fa-check"></i><b>5.2</b> Getting set up</a></li>
+<li class="chapter" data-level="5.3" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#mutate---a-confusing-name-a-powerful-dplyr-verb"><i class="fa fa-check"></i><b>5.3</b> <code>mutate()</code> - A confusing name, a powerful <code>dplyr</code> verb</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#using-mutate-to-calculate-a-new-variable-based-on-other-variables"><i class="fa fa-check"></i><b>5.3.1</b> Using <code>mutate</code> to calculate a new variable based on other variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#your-turn"><i class="fa fa-check"></i><b>5.3.2</b> Your Turn</a></li>
+<li class="chapter" data-level="5.3.3" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#using-mutate-to-make-our-character-variables-into-factors"><i class="fa fa-check"></i><b>5.3.3</b> Using <code>mutate</code> to make our <code>character</code> variables into <code>factors</code></a></li>
+<li class="chapter" data-level="5.3.4" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#using-mutate-to-make-a-continuous-variable-categorical-using-case_when"><i class="fa fa-check"></i><b>5.3.4</b> Using <code>mutate</code> to make a continuous variable categorical using <code>case_when</code></a></li>
+<li class="chapter" data-level="5.3.5" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#your-turn-1"><i class="fa fa-check"></i><b>5.3.5</b> Your Turn</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#group_bysummarize"><i class="fa fa-check"></i><b>5.4</b> <code>group_by()/summarize()</code></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#summarize"><i class="fa fa-check"></i><b>5.4.1</b> <code>summarize()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#group_bysummarize-1"><i class="fa fa-check"></i><b>5.4.2</b> <code>group_by()/summarize()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#group_bysummarize-to-calculate-mean-and-standard-deviation-values"><i class="fa fa-check"></i><b>5.4.3</b> <code>group_by()/summarize</code> to calculate mean and standard deviation values</a></li>
+<li class="chapter" data-level="5.4.4" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#group_by-to-count-things"><i class="fa fa-check"></i><b>5.4.4</b> <code>group_by()</code> to <code>count()</code> things</a></li>
+<li class="chapter" data-level="5.4.5" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#your-turn-2"><i class="fa fa-check"></i><b>5.4.5</b> Your Turn</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#standardizing-variable-names-clean_names"><i class="fa fa-check"></i><b>5.5</b> Standardizing variable names: <code>clean_names()</code></a></li>
+<li class="chapter" data-level="5.6" data-path="part-4-mutate-group-bysummarize.html"><a href="part-4-mutate-group-bysummarize.html#assignment-4"><i class="fa fa-check"></i><b>5.6</b> Assignment 4</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="more-about-factors.html"><a href="more-about-factors.html"><i class="fa fa-check"></i><b>6</b> More about Factors</a><ul>
+<li class="chapter" data-level="6.1" data-path="more-about-factors.html"><a href="more-about-factors.html#making-a-factor-variable-out-of-disease"><i class="fa fa-check"></i><b>6.1</b> Making a factor variable out of disease</a></li>
+<li class="chapter" data-level="6.2" data-path="more-about-factors.html"><a href="more-about-factors.html#using-the-character-variable"><i class="fa fa-check"></i><b>6.2</b> Using the character variable</a></li>
+<li class="chapter" data-level="6.3" data-path="more-about-factors.html"><a href="more-about-factors.html#compare-to-the-factor-variable"><i class="fa fa-check"></i><b>6.3</b> Compare to the factor variable</a></li>
+<li class="chapter" data-level="6.4" data-path="more-about-factors.html"><a href="more-about-factors.html#another-thing-about-factors"><i class="fa fa-check"></i><b>6.4</b> Another thing about factors</a></li>
+<li class="chapter" data-level="6.5" data-path="more-about-factors.html"><a href="more-about-factors.html#fct_rev---reversing-the-order-of-a-factor"><i class="fa fa-check"></i><b>6.5</b> <code>fct_rev()</code> - reversing the order of a factor</a></li>
+<li class="chapter" data-level="6.6" data-path="more-about-factors.html"><a href="more-about-factors.html#fct_reorder"><i class="fa fa-check"></i><b>6.6</b> <code>fct_reorder()</code></a></li>
+<li class="chapter" data-level="6.7" data-path="more-about-factors.html"><a href="more-about-factors.html#fct_collapse"><i class="fa fa-check"></i><b>6.7</b> <code>fct_collapse</code></a></li>
+<li class="chapter" data-level="6.8" data-path="more-about-factors.html"><a href="more-about-factors.html#other-really-useful-forcats-functions"><i class="fa fa-check"></i><b>6.8</b> Other really useful <code>forcats</code> functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html"><i class="fa fa-check"></i><b>7</b> Part 5: Doing useful things with multiple tables</a><ul>
+<li class="chapter" data-level="7.1" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#remember"><i class="fa fa-check"></i><b>7.1</b> Remember</a></li>
+<li class="chapter" data-level="7.2" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#learning-objectives-4"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="7.3" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#getting-set-up-2"><i class="fa fa-check"></i><b>7.3</b> Getting set up</a></li>
+<li class="chapter" data-level="7.4" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#bind_rows"><i class="fa fa-check"></i><b>7.4</b> <code>bind_rows()</code></a><ul>
+<li class="chapter" data-level="7.4.1" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#motivation-for-bind_rows"><i class="fa fa-check"></i><b>7.4.1</b> Motivation for <code>bind_rows()</code></a></li>
+<li class="chapter" data-level="7.4.2" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#binding-two-tables-together"><i class="fa fa-check"></i><b>7.4.2</b> Binding two tables together</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#joining-tables"><i class="fa fa-check"></i><b>7.5</b> Joining Tables</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#motivation"><i class="fa fa-check"></i><b>7.5.1</b> Motivation</a></li>
+<li class="chapter" data-level="7.5.2" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#naming-conventions"><i class="fa fa-check"></i><b>7.5.2</b> Naming conventions</a></li>
+<li class="chapter" data-level="7.5.3" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#inner-joins"><i class="fa fa-check"></i><b>7.5.3</b> Inner Joins</a></li>
+<li class="chapter" data-level="7.5.4" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#joining-syntax"><i class="fa fa-check"></i><b>7.5.4</b> Joining Syntax</a></li>
+<li class="chapter" data-level="7.5.5" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#the-more-dplyr-way-to-do-joins"><i class="fa fa-check"></i><b>7.5.5</b> The more <code>dplyr</code> way to do joins</a></li>
+<li class="chapter" data-level="7.5.6" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#left-joins"><i class="fa fa-check"></i><b>7.5.6</b> Left Joins</a></li>
+<li class="chapter" data-level="7.5.7" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#lets-work-through-an-example"><i class="fa fa-check"></i><b>7.5.7</b> Let’s work through an example</a></li>
+<li class="chapter" data-level="7.5.8" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#your-turn-3"><i class="fa fa-check"></i><b>7.5.8</b> Your Turn</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#making-your-data-long-pivot_longer"><i class="fa fa-check"></i><b>7.6</b> Making your data long: <code>pivot_longer()</code></a><ul>
+<li class="chapter" data-level="7.6.1" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#however"><i class="fa fa-check"></i><b>7.6.1</b> However…</a></li>
+<li class="chapter" data-level="7.6.2" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#the-magic-of-pivot_longer"><i class="fa fa-check"></i><b>7.6.2</b> The magic of <code>pivot_longer()</code></a></li>
+<li class="chapter" data-level="7.6.3" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#doing-things-with-the-long-data"><i class="fa fa-check"></i><b>7.6.3</b> Doing things with the long data</a></li>
+<li class="chapter" data-level="7.6.4" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#pivot_wider-exists-too"><i class="fa fa-check"></i><b>7.6.4</b> <code>pivot_wider()</code> exists too!</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#assignment-1"><i class="fa fa-check"></i><b>7.7</b> Assignment</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ready for R: Notebook Reference</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="part-2-data.frames-reading-data-ggplot2" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Part 2: <code>data.frame</code>s, Reading Data, <code>ggplot2</code></h1>
+<p>In this session, we’ll continue our introduction to R by working with a large dataset that more closely resembles that which you may encounter while analyzing data for research.</p>
+<div id="learning-objectives-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Learning Objectives</h2>
+<p>By the end of this session, you should be able to:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Import</strong> spreadsheet-style data into R as a <code>data.frame</code>.</li>
+<li><strong>Understand</strong> properties of <code>data.frames</code>, especially variables.</li>
+<li><strong>Visualize</strong> <code>numeric</code> vectors in this dataset using <code>ggplot2</code></li>
+</ol>
+</div>
+<div id="a-note-about-base-r-versus-the-tidyverse" class="section level2">
+<h2><span class="header-section-number">3.2</span> A note about Base R versus the Tidyverse</h2>
+<p>For the remainder of this course, we’ll be focusing on using functions from the <a href="https://www.tidyverse.org/">tidyverse</a>.</p>
+<p>It is set up as a <em>library</em> - functions someone else wrote that are not built into R. We’ll use a few libraries in this course.</p>
+<p>The Tidyverse is essentially a library of libraries – each contains functions that are either essential for or <em>greatly</em> simplify the process of data manipulation and visualization for data scientists.</p>
+<p>We have already installed the <code>tidyverse</code> for you. For reading excel files, we need also load up an additional library called <code>readxl</code>.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="co">#load the required libraries</span></a>
+<a class="sourceLine" id="cb59-2" title="2"><span class="kw">library</span>(here)</a>
+<a class="sourceLine" id="cb59-3" title="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb59-4" title="4"><span class="kw">library</span>(readxl)</a></code></pre></div>
+</div>
+<div id="importing-spreadsheet-style-data-into-r" class="section level2">
+<h2><span class="header-section-number">3.3</span> Importing spreadsheet-style data into R</h2>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="kw">here</span>(<span class="st">&quot;image/project2.JPG&quot;</span>))</a></code></pre></div>
+<p><img src="image/project2.JPG" width="1024" /></p>
+<p>Once you have your notebook open, let’s talk about its location. It is located where the <code>project.rproj</code> file. The location of this file (also called an “RProject” file) is always considered the <code>root</code> directory of the project.</p>
+<p>It’s where you start from that determines the file directory path for loading data.</p>
+<p>Since this notebook, <code>part2.Rmd</code> is in the same folder as the <code>project.rproj</code> file, then when we need to refer to data files, it is <em>relative</em> to the root folder.</p>
+<p>When you’re starting out, it’s best to keep your RMarkdown notebooks and files in the <strong>root</strong> folder. It will help prevent you from dealing with a lot of headaches.</p>
+<div id="a-good-place-to-put-your-data" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> A good place to put your data</h3>
+<p>Take a look at the <code>data/</code> folder, and where the <code>tcga_clinical_data.xlsx</code> file is.</p>
+<p>In our notebook, how do we refer to that file name? Since we’re in the root, we can refer to it as</p>
+<p><code>data/tcga_clinical_data.xlsx</code></p>
+</div>
+<div id="loading-our-excel-file" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Loading our excel file</h3>
+<p>Now we can use a built-in function called <code>read_excel()</code> that will help us load our data into R:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1">brca_clinical &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="kw">here</span>(<span class="st">&quot;data/tcga_clinical_data.xlsx&quot;</span>),</a>
+<a class="sourceLine" id="cb61-2" title="2">                            <span class="dt">sheet =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb61-3" title="3">                            <span class="dt">skip =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb61-4" title="4">                            <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span></a>
+<a class="sourceLine" id="cb61-5" title="5">                            )</a></code></pre></div>
+<p>You can see the excel file here: <a href="https://docs.google.com/spreadsheets/d/1E6jmCB9nfeIJ_zlSH6HJCUmKwwcMTWwP0EwEcAHo0CU/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/1E6jmCB9nfeIJ_zlSH6HJCUmKwwcMTWwP0EwEcAHo0CU/edit?usp=sharing</a></p>
+<p>You should see <code>brca_clinical</code> appear in the Environment window on the upper right panel in RStudio. If you click on <code>brca_clinical</code> there, a new tab will appear next to your R script in the Source window.</p>
+<blockquote>
+<p>Clicking on the name of an object in the Environment window
+is a shortcut for running <code>View(brca_clinical)</code>;
+you’ll see this code appear in the Console after clicking.</p>
+</blockquote>
+</div>
+<div id="challenge-1-5-minutes" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Challenge 1 (5 minutes)</h3>
+<p>Take a look at the documentation for <code>read_excel()</code>. This is a package in the package <code>readxl</code>, which is installed as part of the <code>tidyverse</code>.</p>
+<ol style="list-style-type: decimal">
+<li>What does the <code>skip</code> argument do?</li>
+<li>Do we need to refer to a <code>sheet</code> within an excel file as a number, or can we refer to it as the sheet name instead?</li>
+<li>What does the <code>guess_max</code> argument do?</li>
+</ol>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">?read_excel</a></code></pre></div>
+<pre><code>## starting httpd help server ... done</code></pre>
+<p>[Your answers here]</p>
+<p>Now that we have the data imported and assigned to an object, we can take some time to explore the data we’ll be using for the rest of this course.</p>
+</div>
+<div id="notes-on-the-data" class="section level3">
+<h3><span class="header-section-number">3.3.4</span> Notes on the Data</h3>
+<ul>
+<li>These data are clinical cancer data from the <a href="https://gdc.cancer.gov">National Cancer Institute’s Genomic Data Commons</a>, specifically from The Cancer Genome Atlas, or <a href="https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga">TCGA</a>.</li>
+<li>Each row represents a patient, and each column represents information about demographics (race, age at diagnosis, etc) and disease (e.g., cancer type).</li>
+<li>The data were downloaded and aggregated using an R script, which you can view in the <a href="https://github.com/fredhutchio/R_intro/blob/master/0dataset.R">GitHub repository for this course</a>.</li>
+</ul>
+</div>
+<div id="challenge-2-5-minutes" class="section level3">
+<h3><span class="header-section-number">3.3.5</span> Challenge 2 (5 minutes):</h3>
+<p>Inspect, and import the following sheets from the <code>tcga_clinical_data.xlsx</code> excel file.</p>
+<p>Confirm that you have loaded them correctly by clicking on the objects in the <code>Environment</code> pane in the top right.</p>
+<ol style="list-style-type: decimal">
+<li>The <code>CESC</code> sheet. Save it as <code>cesc_clinical</code>.</li>
+<li>The <code>LUSC</code> sheet. Save it as <code>lusc_clinical</code>.</li>
+</ol>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co">#load cesc_clinical here</span></a>
+<a class="sourceLine" id="cb64-2" title="2"></a>
+<a class="sourceLine" id="cb64-3" title="3"><span class="co">#What should be the sheet argument?</span></a>
+<a class="sourceLine" id="cb64-4" title="4"></a>
+<a class="sourceLine" id="cb64-5" title="5"><span class="co">#do you need to skip a line?</span></a>
+<a class="sourceLine" id="cb64-6" title="6"></a>
+<a class="sourceLine" id="cb64-7" title="7">cesc_clinical &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/tcga_clinical_data.xlsx&quot;</span>,</a>
+<a class="sourceLine" id="cb64-8" title="8">                            <span class="dt">sheet =</span> ____, </a>
+<a class="sourceLine" id="cb64-9" title="9">                            <span class="dt">skip =</span> ___</a>
+<a class="sourceLine" id="cb64-10" title="10">                            <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span></a>
+<a class="sourceLine" id="cb64-11" title="11">                            )  </a>
+<a class="sourceLine" id="cb64-12" title="12"></a>
+<a class="sourceLine" id="cb64-13" title="13"><span class="co">#load lusc_clinical here</span></a>
+<a class="sourceLine" id="cb64-14" title="14"></a>
+<a class="sourceLine" id="cb64-15" title="15">lusc_clinical &lt;-<span class="st"> </span></a></code></pre></div>
+<p>Importing data can be tricky and frustrating. However, if you can’t get your data into R, you can’t do anything to analyze or visualize it. It’s worth understanding how to do it effectively to save you time and energy later.</p>
+<p>We will be covering loading in another format that you can export from many different software programs, the <em>comma separated value</em> format, or <code>csv</code> format in another section.</p>
+</div>
+<div id="tips-on-formating-your-excel-file-for-r" class="section level3">
+<h3><span class="header-section-number">3.3.6</span> Tips on Formating your excel file for R</h3>
+<p>Here are some tips on formatting your data to get it into R easier.</p>
+<p>Click on the code block below to load up a graphic.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;image/tidy-1.png&quot;</span>)</a></code></pre></div>
+<p><img src="image/tidy-1.png" width="960" /></p>
+<ol style="list-style-type: decimal">
+<li><strong>Tidy is Best</strong>. Try to format your spreadsheet where the columns correspond to variables you’re measuring, and a row corresponds to an observation.</li>
+</ol>
+<p>In our example:</p>
+<ul>
+<li>each row corresponds to a patient</li>
+<li>each column corresponds to a <em>variable</em> of clinical data</li>
+<li>each cell has a value</li>
+</ul>
+<p>We’ll be seeing that this format is called <strong>Tidy Data</strong>, and it lets us do all sorts of things in R successfully.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p><strong>Transpose is your Friend in Excel.</strong>* If your data isn’t in this format, no worries! You can copy it to a new sheet and use the transpose option when you’re pasting it, and then load that in.</p></li>
+<li><p><strong>Every column needs a name.</strong> Every one of your columns should be named at the top, and should begin with a letter. Numbers and special characters can cause errors in your data analysis pipeline.</p></li>
+<li><p><strong>Color information is hard to get into R</strong>. Avoid using color coding of cells if that is extra information attached to a cell. Instead, make the information the color is representing its own column.</p></li>
+<li><p><strong>Extra Lines are OK!</strong> Extra lines before the column header are ok, as you’ve seen. It’s sometimes better to have a “notes” sheet where you put extra information or, better yet, a data dictionary.</p></li>
+</ol>
+</div>
+</div>
+<div id="data.frames" class="section level2">
+<h2><span class="header-section-number">3.4</span> <code>data.frame</code>s</h2>
+<p>Now that we have data imported and available, we can start to inspect the data more closely. These data have been interpreted by R to be a data frame, which is a data structure (way of organizing data) that is analogous to tabular or spreadsheet style data.</p>
+<p>By definition, a <code>data.frame</code> is:</p>
+<p>a table made of vectors (columns) of all the same length. As we learned in our last session, a vector needs to include all of the same type of data (e.g., character, numeric).</p>
+<p>A <code>data.frame</code>, however, can include vectors (columns) of different data types. This makes them extremely versatile way of storing information.</p>
+<div id="data.frames---how-do-they-work" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> <code>data.frame</code>s - How do they Work?</h3>
+<p>To learn more about this data frame, we’ll first explore its dimensions:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co"># assess size of data frame</span></a>
+<a class="sourceLine" id="cb66-2" title="2"></a>
+<a class="sourceLine" id="cb66-3" title="3"><span class="kw">dim</span>(brca_clinical)</a></code></pre></div>
+<pre><code>## [1] 1095   16</code></pre>
+<p>This output reflects the number of rows, then the number of columns.</p>
+<p>We can also preview the content by showing the first few rows:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="co"># preview first few rows</span></a>
+<a class="sourceLine" id="cb68-2" title="2"></a>
+<a class="sourceLine" id="cb68-3" title="3"><span class="kw">head</span>(brca_clinical) </a></code></pre></div>
+<pre><code>## # A tibble: 6 x 16
+##   submitter_id primary_diagnos~ tumor_stage disease age_at_diagnosis
+##   &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
+## 1 TCGA-3C-AAAU C50.9            stage x     BRCA               20211
+## 2 TCGA-3C-AALI C50.9            stage iib   BRCA               18538
+## 3 TCGA-3C-AALJ C50.9            stage iib   BRCA               22848
+## 4 TCGA-3C-AALK C50.9            stage ia    BRCA               19074
+## 5 TCGA-4H-AAAK C50.9            stage iiia  BRCA               18371
+## 6 TCGA-5L-AAT0 C50.9            stage iia   BRCA               15393
+## # ... with 11 more variables: vital_status &lt;chr&gt;, morphology &lt;chr&gt;,
+## #   days_to_death &lt;dbl&gt;, days_to_birth &lt;dbl&gt;,
+## #   site_of_resection_or_biopsy &lt;chr&gt;, days_to_last_follow_up &lt;dbl&gt;,
+## #   gender &lt;chr&gt;, year_of_birth &lt;dbl&gt;, race &lt;chr&gt;, ethnicity &lt;chr&gt;,
+## #   year_of_death &lt;dbl&gt;</code></pre>
+</div>
+<div id="column-names" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Column Names</h3>
+<p>We often need to reference the names of <em>variables</em> (also known as columns) in our <code>data.frame</code>, so it’s useful to print only those to the screen:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="co"># view column names</span></a>
+<a class="sourceLine" id="cb70-2" title="2"></a>
+<a class="sourceLine" id="cb70-3" title="3"><span class="kw">colnames</span>(brca_clinical) </a></code></pre></div>
+<pre><code>##  [1] &quot;submitter_id&quot;                &quot;primary_diagnosis&quot;          
+##  [3] &quot;tumor_stage&quot;                 &quot;disease&quot;                    
+##  [5] &quot;age_at_diagnosis&quot;            &quot;vital_status&quot;               
+##  [7] &quot;morphology&quot;                  &quot;days_to_death&quot;              
+##  [9] &quot;days_to_birth&quot;               &quot;site_of_resection_or_biopsy&quot;
+## [11] &quot;days_to_last_follow_up&quot;      &quot;gender&quot;                     
+## [13] &quot;year_of_birth&quot;               &quot;race&quot;                       
+## [15] &quot;ethnicity&quot;                   &quot;year_of_death&quot;</code></pre>
+<p>It’s also possible to view row names using<code>rownames(brca_clinical)</code>, but our data only possess numbers for row names so it’s not very informative.</p>
+</div>
+<div id="okay-whats-really-in-it" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Okay, What’s really in it?</h3>
+<p>We can use <code>glimpse()</code> to provide a general overview of the object:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="co"># show overview of data.frame</span></a>
+<a class="sourceLine" id="cb72-2" title="2"></a>
+<a class="sourceLine" id="cb72-3" title="3"><span class="kw">glimpse</span>(brca_clinical) </a></code></pre></div>
+<pre><code>## Rows: 1,095
+## Columns: 16
+## $ submitter_id                &lt;chr&gt; &quot;TCGA-3C-AAAU&quot;, &quot;TCGA-3C-AALI&quot;, &quot;TCGA-3...
+## $ primary_diagnosis           &lt;chr&gt; &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C5...
+## $ tumor_stage                 &lt;chr&gt; &quot;stage x&quot;, &quot;stage iib&quot;, &quot;stage iib&quot;, &quot;s...
+## $ disease                     &lt;chr&gt; &quot;BRCA&quot;, &quot;BRCA&quot;, &quot;BRCA&quot;, &quot;BRCA&quot;, &quot;BRCA&quot;,...
+## $ age_at_diagnosis            &lt;dbl&gt; 20211, 18538, 22848, 19074, 18371, 1539...
+## $ vital_status                &lt;chr&gt; &quot;alive&quot;, &quot;alive&quot;, &quot;alive&quot;, &quot;alive&quot;, &quot;al...
+## $ morphology                  &lt;chr&gt; &quot;8520/3&quot;, &quot;8500/3&quot;, &quot;8500/3&quot;, &quot;8500/3&quot;,...
+## $ days_to_death               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ days_to_birth               &lt;dbl&gt; -20211, -18538, -22848, -19074, -18371,...
+## $ site_of_resection_or_biopsy &lt;chr&gt; &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C5...
+## $ days_to_last_follow_up      &lt;dbl&gt; 4047, 4005, 1474, 1448, 348, 1477, 1471...
+## $ gender                      &lt;chr&gt; &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;,...
+## $ year_of_birth               &lt;dbl&gt; 1949, 1953, 1949, 1959, 1963, 1968, 194...
+## $ race                        &lt;chr&gt; &quot;white&quot;, &quot;black or african american&quot;, &quot;...
+## $ ethnicity                   &lt;chr&gt; &quot;not hispanic or latino&quot;, &quot;not hispanic...
+## $ year_of_death               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...</code></pre>
+<p>The output provided by <code>glimpse()</code> includes:</p>
+<ul>
+<li>data structure: <code>data.frame</code></li>
+<li>dimensions:</li>
+<li>column-by-column information: each prefaced with a <code>$</code>, and includes the column name, data type (num, int, Factor)</li>
+</ul>
+<p>Identify the <code>numeric</code> variables (they are noted as <code>&lt;dbl&gt;</code> or <code>double</code>). What are they?</p>
+<p>Another useful command is <code>View()</code> - it will open up a spreadsheet like view of our <code>data_frame</code>. You can also view this by clicking on the <code>brca_clinical</code> object in the <code>Environment</code> pane in the top-right.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">View</span>(brca_clinical)</a></code></pre></div>
+</div>
+<div id="summarizing-our-data" class="section level3">
+<h3><span class="header-section-number">3.4.4</span> Summarizing our Data</h3>
+<p>Finally, we can also examine basic summary statistics for each column:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="co"># provide summary statistics for each column</span></a>
+<a class="sourceLine" id="cb75-2" title="2"><span class="kw">summary</span>(brca_clinical) </a></code></pre></div>
+<pre><code>##  submitter_id       primary_diagnosis  tumor_stage          disease         
+##  Length:1095        Length:1095        Length:1095        Length:1095       
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##                                                                             
+##  age_at_diagnosis vital_status        morphology        days_to_death   
+##  Min.   : 9706    Length:1095        Length:1095        Min.   : 116.0  
+##  1st Qu.:18032    Class :character   Class :character   1st Qu.: 689.2  
+##  Median :21562    Mode  :character   Mode  :character   Median :1223.0  
+##  Mean   :21587                                          Mean   :1643.0  
+##  3rd Qu.:24863                                          3rd Qu.:2370.0  
+##  Max.   :32872                                          Max.   :7455.0  
+##  NA&#39;s   :16                                             NA&#39;s   :945     
+##  days_to_birth    site_of_resection_or_biopsy days_to_last_follow_up
+##  Min.   :-32872   Length:1095                 Min.   : -31.0        
+##  1st Qu.:-24863   Class :character            1st Qu.: 434.2        
+##  Median :-21562   Mode  :character            Median : 760.5        
+##  Mean   :-21587                               Mean   :1187.2        
+##  3rd Qu.:-18032                               3rd Qu.:1583.2        
+##  Max.   : -9706                               Max.   :8605.0        
+##  NA&#39;s   :16                                   NA&#39;s   :105           
+##     gender          year_of_birth      race            ethnicity        
+##  Length:1095        Min.   :1902   Length:1095        Length:1095       
+##  Class :character   1st Qu.:1940   Class :character   Class :character  
+##  Mode  :character   Median :1950   Mode  :character   Mode  :character  
+##                     Mean   :1949                                        
+##                     3rd Qu.:1960                                        
+##                     Max.   :1984                                        
+##                     NA&#39;s   :1                                           
+##  year_of_death 
+##  Min.   :1992  
+##  1st Qu.:2001  
+##  Median :2005  
+##  Mean   :2004  
+##  3rd Qu.:2008  
+##  Max.   :2013  
+##  NA&#39;s   :991</code></pre>
+<p>For numeric data (such as <code>year_of_death</code>), this output includes common statistics like median and mean, as well as the number of rows (patients) with missing data (as <code>NA</code>).</p>
+<p>For <code>factor</code>s (also known as categorical variables), and <code>character</code> variables, such as <code>disease</code>, you’re given a count of the number of times the top six most frequent factors (categories) occur in the data frame.</p>
+<p>We will talk more about <code>factors</code> in the next lab.</p>
+</div>
+</div>
+<div id="introducing-ggplot2" class="section level2">
+<h2><span class="header-section-number">3.5</span> Introducing <code>ggplot2</code></h2>
+<p>Click the button below to load up the graphic.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="kw">here</span>(<span class="st">&quot;image/ggplot2_exploratory.png&quot;</span>))</a></code></pre></div>
+<p><img src="image/ggplot2_exploratory.png" width="1024" /></p>
+<p>Now that we’ve loaded our data as a <code>data.frame</code>, we can begin to start doing things with it.</p>
+<p>Let’s start with visualizing the data.</p>
+<div id="working-towards-a-graph" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> Working Towards a Graph</h3>
+<p>We’re going to work towards the following graph today:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="kw">here</span>(<span class="st">&quot;image/days_to_last_followup.png&quot;</span>))</a></code></pre></div>
+<p><img src="image/days_to_last_followup.png" width="1050" /></p>
+</div>
+<div id="ggplot2-a-grammar-of-graphics" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> <code>ggplot2</code>: A Grammar of Graphics</h3>
+<p><code>ggplot2</code> is an extremely powerful software library for visualization.</p>
+<p>The <code>gg</code> is short for Grammar of Graphics, which means that visualizations are expressed in a very specific way.</p>
+</div>
+<div id="learning-to-read-ggplot2-code" class="section level3">
+<h3><span class="header-section-number">3.5.3</span> Learning to read <code>ggplot2</code> code</h3>
+<p>A <code>ggplot2</code> graphic consists of a:</p>
+<ul>
+<li><code>mapping</code> of variables in <code>data</code> to</li>
+<li><code>aes()</code>thetic attributes of</li>
+<li><code>geom_</code>etric objects.</li>
+</ul>
+<p>In code, this is translated as:</p>
+<pre><code>#start the plot with ggplot()
+
+ggplot(data = brca_clinical) +   
+
+
+# make the mapping
+# map the x-axis to age_at_diagnosis
+
+      aes(
+          x = age_at_diagnosis, 
+          y = days_to_birth 
+          ) +
+
+# add the geometry
+  geom_point()</code></pre>
+<p>Things to note: we chain these three things together with <code>+</code> (plus sign). I tend to read the plus as <code>then</code>.</p>
+<p>[aes() function - mapping variables to visual properties of the graph]</p>
+</div>
+<div id="challenge-5" class="section level3">
+<h3><span class="header-section-number">3.5.4</span> Challenge</h3>
+<p>Based on the graph above, map the appropriate variables in <code>brca_clinical</code> to the x, and y aesthetics. Run your plot. Is it what you expected?</p>
+<p>What’s missing compared to the graph above?</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> brca_clinical) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-2" title="2"></a>
+<a class="sourceLine" id="cb80-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> _____ ,</a>
+<a class="sourceLine" id="cb80-4" title="4">      <span class="dt">y =</span> _____ ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-5" title="5"><span class="st">  </span></a>
+<a class="sourceLine" id="cb80-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+</div>
+<div id="simple-arithmetic" class="section level3">
+<h3><span class="header-section-number">3.5.5</span> Simple arithmetic</h3>
+<p>Huh. <code>age_at_diagnosis</code> is in days, not years. We can fix that by dividing it by 365:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> brca_clinical) <span class="op">+</span></a>
+<a class="sourceLine" id="cb81-2" title="2"></a>
+<a class="sourceLine" id="cb81-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> age_at_diagnosis <span class="op">/</span><span class="st"> </span><span class="dv">365</span> ,</a>
+<a class="sourceLine" id="cb81-4" title="4">      <span class="dt">y =</span> days_to_last_follow_up ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb81-5" title="5"><span class="st">  </span></a>
+<a class="sourceLine" id="cb81-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 120 rows containing missing values (geom_point).</code></pre>
+<p><img src="02-part2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="color" class="section level3">
+<h3><span class="header-section-number">3.5.6</span> Color</h3>
+<p>We can also map a <code>character</code> variable to our graph to color.</p>
+<p>Try mapping <code>gender</code> to color.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> brca_clinical) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-2" title="2"></a>
+<a class="sourceLine" id="cb83-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> age_at_diagnosis <span class="op">/</span><span class="st"> </span><span class="dv">365</span> ,</a>
+<a class="sourceLine" id="cb83-4" title="4">      <span class="dt">y =</span> days_to_last_follow_up,  </a>
+<a class="sourceLine" id="cb83-5" title="5">      <span class="dt">color =</span> _____) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-6" title="6"><span class="st">  </span></a>
+<a class="sourceLine" id="cb83-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() </a></code></pre></div>
+</div>
+<div id="titles" class="section level3">
+<h3><span class="header-section-number">3.5.7</span> Titles</h3>
+<p>We can add more details to our graph. We can add a title using the <code>labs()</code> function:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> brca_clinical) <span class="op">+</span></a>
+<a class="sourceLine" id="cb84-2" title="2"></a>
+<a class="sourceLine" id="cb84-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> age_at_diagnosis <span class="op">/</span><span class="st"> </span><span class="dv">365</span> ,</a>
+<a class="sourceLine" id="cb84-4" title="4">      <span class="dt">y =</span> days_to_last_follow_up,  </a>
+<a class="sourceLine" id="cb84-5" title="5">      <span class="dt">color =</span> gender) <span class="op">+</span></a>
+<a class="sourceLine" id="cb84-6" title="6"><span class="st">  </span></a>
+<a class="sourceLine" id="cb84-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb84-8" title="8"><span class="st">  </span></a>
+<a class="sourceLine" id="cb84-9" title="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Age versus Days to Last followup&quot;</span>) </a></code></pre></div>
+<pre><code>## Warning: Removed 120 rows containing missing values (geom_point).</code></pre>
+<p><img src="02-part2_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="changing-the-axis-labels" class="section level3">
+<h3><span class="header-section-number">3.5.8</span> Changing the Axis Labels</h3>
+<p>We can change the x-axis titles and the y-axis titles using the <code>xlab()</code> (short for x label) and <code>ylab()</code> functions:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> brca_clinical) <span class="op">+</span></a>
+<a class="sourceLine" id="cb86-2" title="2"></a>
+<a class="sourceLine" id="cb86-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> age_at_diagnosis <span class="op">/</span><span class="st"> </span><span class="dv">365</span> ,</a>
+<a class="sourceLine" id="cb86-4" title="4">      <span class="dt">y =</span> days_to_last_follow_up,  </a>
+<a class="sourceLine" id="cb86-5" title="5">      <span class="dt">color =</span> gender) <span class="op">+</span></a>
+<a class="sourceLine" id="cb86-6" title="6"><span class="st">  </span></a>
+<a class="sourceLine" id="cb86-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb86-8" title="8"><span class="st">  </span></a>
+<a class="sourceLine" id="cb86-9" title="9"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Age versus Days to Last followup&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb86-10" title="10"><span class="st">  </span></a>
+<a class="sourceLine" id="cb86-11" title="11"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age at Diagnosis (Years)&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb86-12" title="12"><span class="st">  </span></a>
+<a class="sourceLine" id="cb86-13" title="13"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Days to Follow Up&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 120 rows containing missing values (geom_point).</code></pre>
+<p><img src="02-part2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Now we’ve re-created the above plot! Let’s save it using <code>ggsave()</code>. <code>ggsave()</code> saves the last created plot to a file. We’ll save it as a <code>jpg</code> file. <code>ggsave()</code> is smart enough to know that we want to save it as a <code>jpg</code> from adding the extension <code>.jpg</code> to our filename.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">ggsave</span>(<span class="st">&quot;follow-up-plot.jpg&quot;</span>)</a></code></pre></div>
+<pre><code>## Saving 7 x 5 in image</code></pre>
+<pre><code>## Warning: Removed 120 rows containing missing values (geom_point).</code></pre>
+</div>
+</div>
+<div id="what-you-learned-today" class="section level2">
+<h2><span class="header-section-number">3.6</span> What you learned today:</h2>
+<ul>
+<li>Loading excel data and tips for formatting your data in excel</li>
+<li>Understanding basic properties of <code>data.frame</code>s</li>
+<li>The basics of the “grammar of graphics” with <code>ggplot2</code></li>
+</ul>
+</div>
+<div id="practice" class="section level2">
+<h2><span class="header-section-number">3.7</span> Practice</h2>
+<p>You can practice your <code>ggplot2</code> skills by taking the first chapter of the R-Bootcamp:</p>
+<p><a href="https://r-bootcamp.netlify.com/chapter1" class="uri">https://r-bootcamp.netlify.com/chapter1</a></p>
+</div>
+<div id="assignment-10-points" class="section level2">
+<h2><span class="header-section-number">3.8</span> Assignment (10 points)</h2>
+<p>Instructions: Turn your <code>.nb.html</code> file in with the following assignment finished. Make sure it is named <code>part2_LASTNAME.nb.html</code>, where <code>LASTNAME</code> is your last name, of course.</p>
+<ol style="list-style-type: decimal">
+<li>Load the <code>smoke_complete.xlsx</code> file into R using <code>read_excel</code>. You’ll need to take a look at it to make sure that your arguments are correct.</li>
+</ol>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">smoke_complete &lt;-<span class="st"> </span><span class="kw">read_excel</span>()</a></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Use <code>glimpse()</code> on <code>smoke_complete</code>. How many rows does the file have? How many variables does it have? What are the numeric variables in this dataset?</li>
+</ol>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="kw">glimpse</span>(smoke_complete)</a></code></pre></div>
+<p>[Put your answer here]</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Produce a scatter plot of <code>smoke_complete</code> using <code>geom_point()</code>, mapping these variables to the following aesthetics:</li>
+</ol>
+<p><code>year_of_birth</code> to the <code>x</code> aesthetic,
+<code>cigarettes_per_day</code> to the <code>y</code> aesthetic, and
+<code>gender</code> to the <code>color</code> aesthetic.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">ggplot</span>(smoke_complete, <span class="kw">aes</span>(<span class="dt">x =</span> ____,</a>
+<a class="sourceLine" id="cb93-2" title="2">                           <span class="dt">y =</span> ____,</a>
+<a class="sourceLine" id="cb93-3" title="3">                           <span class="dt">color =</span> ___)) <span class="op">+</span></a></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Pick two <code>numeric</code> variables, and a character variable in the dataset and produce a scatterplot by mapping them to <code>x</code>, <code>y</code>, and <code>color</code>. Add a title and change the x and y labels to make sense.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="part-1-functions-and-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="part-3-more-data-visualization-and-data-manipulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-part2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ready-for-r.pdf", "ready-for-r.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

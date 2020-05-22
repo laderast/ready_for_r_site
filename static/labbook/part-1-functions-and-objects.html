@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Part 5: Doing useful things with multiple tables | Ready for R: Notebook Reference</title>
+  <title>Chapter 2 Part 1: Functions and Objects | Ready for R: Notebook Reference</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Part 5: Doing useful things with multiple tables | Ready for R: Notebook Reference" />
+  <meta property="og:title" content="Chapter 2 Part 1: Functions and Objects | Ready for R: Notebook Reference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="laderast/ready_for_r_site" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Part 5: Doing useful things with multiple tables | Ready for R: Notebook Reference" />
+  <meta name="twitter:title" content="Chapter 2 Part 1: Functions and Objects | Ready for R: Notebook Reference" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="more-about-factors.html"/>
-
+<link rel="prev" href="index.html"/>
+<link rel="next" href="part-2-data-frames-reading-data-ggplot2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -295,381 +295,291 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="part-5-doing-useful-things-with-multiple-tables" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> Part 5: Doing useful things with multiple tables</h1>
-<div id="remember" class="section level2">
-<h2><span class="header-section-number">7.1</span> Remember</h2>
-<p>Save your own version before you do anything!</p>
-</div>
-<div id="learning-objectives-4" class="section level2">
-<h2><span class="header-section-number">7.2</span> Learning Objectives</h2>
-<ul>
-<li><strong>Learn</strong> and <strong>apply</strong> <code>bind_rows()</code> to combine rows from two or more datasets</li>
-<li><strong>Learn</strong> about the different kinds of joins and how they merge data</li>
-<li><strong>Apply</strong> <code>inner_join()</code> and <code>left_join()</code> to join tables on columns</li>
-<li><strong>Standardize</strong> variable names using <code>clean_names()</code></li>
-<li><strong>Utilize</strong> <code>pivot_longer()</code> to make a <em>wide</em> dataset <em>long</em></li>
-</ul>
-</div>
-<div id="getting-set-up-2" class="section level2">
-<h2><span class="header-section-number">7.3</span> Getting set up</h2>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## -- Attaching packages ------------------------- tidyverse 1.3.0 --</code></pre>
-<pre><code>## v ggplot2 3.3.0     v purrr   0.3.4
-## v tibble  3.0.1     v dplyr   0.8.5
-## v tidyr   1.1.0     v stringr 1.4.0
-## v readr   1.3.1     v forcats 0.5.0</code></pre>
-<pre><code>## -- Conflicts ---------------------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1"><span class="kw">library</span>(readxl)</a>
-<a class="sourceLine" id="cb187-2" title="2"><span class="kw">library</span>(janitor)</a></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;janitor&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     chisq.test, fisher.test</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="kw">library</span>(here)</a></code></pre></div>
-<pre><code>## here() starts at C:/Code/ready_for_r_site/static/book</code></pre>
-</div>
-<div id="bind_rows" class="section level2">
-<h2><span class="header-section-number">7.4</span> <code>bind_rows()</code></h2>
-<div id="motivation-for-bind_rows" class="section level3">
-<h3><span class="header-section-number">7.4.1</span> Motivation for <code>bind_rows()</code></h3>
-<p>Imagine that your lab is part of a large consortium studying the effects of smoking. As the lead data scientist, you’ve helped oversee the collection and documentation several observations for many variables of interest.</p>
-<p>Many labs within the consortium have accumulated data, and not all were following the guidelines you set for the tables.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1">smoke_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="kw">here</span>(<span class="st">&#39;data/smoke_1.xlsx&#39;</span>), </a>
-<a class="sourceLine" id="cb192-2" title="2">                      <span class="dt">sheet=</span><span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb192-3" title="3">                      <span class="dt">na=</span><span class="st">&quot;NA&quot;</span>)</a>
-<a class="sourceLine" id="cb192-4" title="4"></a>
-<a class="sourceLine" id="cb192-5" title="5">smoke_<span class="dv">1</span> &lt;-<span class="st"> </span>smoke_<span class="dv">1</span>[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,]</a>
-<a class="sourceLine" id="cb192-6" title="6">smoke_<span class="dv">1</span></a></code></pre></div>
-<pre><code>## # A tibble: 5 x 5
-##   primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
-##   &lt;chr&gt;             &lt;chr&gt;                  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;     
-## 1 C34.1             stage ia               24477 dead         8070/3    
-## 2 C34.1             stage ib               26615 dead         8070/3    
-## 3 C34.3             stage ib               28171 dead         8070/3    
-## 4 C34.1             stage ia               27154 alive        8083/3    
-## 5 C34.1             stage iiia             23370 alive        8070/3</code></pre>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1">smoke_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="kw">here</span>(<span class="st">&#39;data/smoke_2.xlsx&#39;</span>), </a>
-<a class="sourceLine" id="cb194-2" title="2">                      <span class="dt">sheet=</span><span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb194-3" title="3">                      <span class="dt">na=</span><span class="st">&quot;NA&quot;</span>)</a>
-<a class="sourceLine" id="cb194-4" title="4"></a>
-<a class="sourceLine" id="cb194-5" title="5">smoke_<span class="dv">2</span> &lt;-<span class="st"> </span>smoke_<span class="dv">2</span>[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,]</a>
-<a class="sourceLine" id="cb194-6" title="6">smoke_<span class="dv">2</span></a></code></pre></div>
-<pre><code>## # A tibble: 5 x 5
-##   primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
-##   &lt;chr&gt;             &lt;chr&gt;                  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;     
-## 1 C67.9             stage iv               17682 alive        8120/3    
-## 2 C67.9             stage ii               19776 alive        8120/3    
-## 3 C67.9             stage iii              23631 alive        8120/3    
-## 4 C67.9             stage iv               26546 dead         8120/3    
-## 5 C67.9             stage iii              24534 dead         8120/3</code></pre>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1">smoke_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="kw">here</span>(<span class="st">&#39;data/smoke_3.xlsx&#39;</span>), </a>
-<a class="sourceLine" id="cb196-2" title="2">                      <span class="dt">sheet=</span><span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb196-3" title="3">                      <span class="dt">na=</span><span class="st">&quot;NA&quot;</span>)</a>
-<a class="sourceLine" id="cb196-4" title="4"></a>
-<a class="sourceLine" id="cb196-5" title="5">smoke_<span class="dv">3</span> &lt;-<span class="st"> </span>smoke_<span class="dv">3</span>[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,]</a>
-<a class="sourceLine" id="cb196-6" title="6">smoke_<span class="dv">3</span></a></code></pre></div>
-<pre><code>## # A tibble: 5 x 5
-##   VITAL_STATUS `Age at Diagnosis` tumorStage Morphology primary_diagnosis
-##   &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;            
-## 1 alive                     17682 stage iv   8120/3     C67.9            
-## 2 alive                     19776 stage ii   8120/3     C67.9            
-## 3 alive                     23631 stage iii  8120/3     C67.9            
-## 4 dead                      26546 stage iv   8120/3     C67.9            
-## 5 dead                      24534 stage iii  8120/3     C67.9</code></pre>
-</div>
-<div id="binding-two-tables-together" class="section level3">
-<h3><span class="header-section-number">7.4.2</span> Binding two tables together</h3>
-<p>How can you combine datasets from individual labs? Enter <code>bind_rows()</code>…</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1">smoke_<span class="dv">1</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">bind_rows</span>(smoke_<span class="dv">2</span>)</a></code></pre></div>
-<pre><code>## # A tibble: 10 x 5
-##    primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
-##    &lt;chr&gt;             &lt;chr&gt;                  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;     
-##  1 C34.1             stage ia               24477 dead         8070/3    
-##  2 C34.1             stage ib               26615 dead         8070/3    
-##  3 C34.3             stage ib               28171 dead         8070/3    
-##  4 C34.1             stage ia               27154 alive        8083/3    
-##  5 C34.1             stage iiia             23370 alive        8070/3    
-##  6 C67.9             stage iv               17682 alive        8120/3    
-##  7 C67.9             stage ii               19776 alive        8120/3    
-##  8 C67.9             stage iii              23631 alive        8120/3    
-##  9 C67.9             stage iv               26546 dead         8120/3    
-## 10 C67.9             stage iii              24534 dead         8120/3</code></pre>
-<p><code>bind_rows()</code> allows you to append one dataset to the bottom of another dataset. We can see that <code>smoke_1</code> contained 549 rows and <code>smoke_2</code> contained 603 rows. After using <code>bind_rows()</code>, we now have a single dataset containing 1152 rows.</p>
-<p>That’s all pretty cool, until you meet a rogue lab. This lab almost seems as if they’ve gone out of their way to make things difficult. Rather than putting columns in the standard order specified, they’ve switched them around.</p>
-<p>Even worse, they’ve named the columns differently! If there are only a few columns, sure, we could manually fix this. But what if this was RNASeq data, with thousands of column names to fix?!</p>
-<p>Well, let’s remember we still have <code>clean_names()</code>. That can at least help us get the column names into the standard format.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1">smoke_<span class="dv">3</span>_clean &lt;-<span class="st"> </span>smoke_<span class="dv">3</span> <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb200-2" title="2"><span class="st">    </span><span class="kw">clean_names</span>()</a></code></pre></div>
-<p>Our column names are at least the same, but they’re still out of order! If we append <code>smoke_3_clean</code> to <code>smoke_1</code>, <code>vital_status</code> will be appened under <code>primary_diagnosis</code>, <code>age_at_diagnosis</code> will be appended under <code>tumor_stage</code>, and so on. Do we need to reorder the columns before we append them?</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1">smoke_<span class="dv">1</span> <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb201-2" title="2"><span class="st">    </span><span class="kw">bind_rows</span>(smoke_<span class="dv">3</span>_clean)</a></code></pre></div>
-<pre><code>## # A tibble: 10 x 5
-##    primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
-##    &lt;chr&gt;             &lt;chr&gt;                  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;     
-##  1 C34.1             stage ia               24477 dead         8070/3    
-##  2 C34.1             stage ib               26615 dead         8070/3    
-##  3 C34.3             stage ib               28171 dead         8070/3    
-##  4 C34.1             stage ia               27154 alive        8083/3    
-##  5 C34.1             stage iiia             23370 alive        8070/3    
-##  6 C67.9             stage iv               17682 alive        8120/3    
-##  7 C67.9             stage ii               19776 alive        8120/3    
-##  8 C67.9             stage iii              23631 alive        8120/3    
-##  9 C67.9             stage iv               26546 dead         8120/3    
-## 10 C67.9             stage iii              24534 dead         8120/3</code></pre>
-<p>Well look at that. <code>bind_rows()</code> takes care of the out-of-order columns for us!</p>
-</div>
-</div>
-<div id="joining-tables" class="section level2">
-<h2><span class="header-section-number">7.5</span> Joining Tables</h2>
-<div id="motivation" class="section level3">
-<h3><span class="header-section-number">7.5.1</span> Motivation</h3>
-<p>You have data on patients from two sources - one are labs, and they supply patient ids. The second source comes from an electronic medical record. How do you combine these two into a single table?</p>
-</div>
-<div id="naming-conventions" class="section level3">
-<h3><span class="header-section-number">7.5.2</span> Naming conventions</h3>
-<p><img src="image/original-dfs.png" />
-source: <a href="https://github.com/gadenbuie/tidyexplain" class="uri">https://github.com/gadenbuie/tidyexplain</a></p>
-<p>Before we talk about joins, we need to define some terms.</p>
-<p><code>left table</code> and <code>right table</code>: Whenever we join two tables, we will have</p>
-<ul>
-<li>a <em>left</em> table (in this case, the <code>x</code> table) and</li>
-<li>a <em>right</em> table (in this case, the <code>y</code> table).</li>
-</ul>
-<p><code>key</code>: In order to join the two tables, we have to somehow map the rows of our left table (<code>x</code>) with the rows of our other table (<code>y</code>). We do this by joining together rows with a common variable. In our case, we need to join rows based on the first column in both tables. The column that we join on is called a <em>key</em>.</p>
-<p><img src="image/original-dfs.png" />
-source: <a href="https://github.com/gadenbuie/tidyexplain" class="uri">https://github.com/gadenbuie/tidyexplain</a></p>
-<p>In the above example, we see that there is a row in <code>x</code> whose <em>key</em> is 2, and there is a row in <code>y</code> whose <em>key</em> is 2 as well. So it makes sense to join these two rows together.</p>
-<p>So, by matching the rows with identical keys, we can put together a table that incorporates information from both tables.</p>
-</div>
-<div id="inner-joins" class="section level3">
-<h3><span class="header-section-number">7.5.3</span> Inner Joins</h3>
-<p><img src="image/inner-join.gif" alt="Inner join animation" />
-source: <a href="https://github.com/gadenbuie/tidyexplain" class="uri">https://github.com/gadenbuie/tidyexplain</a></p>
-<p>With an inner join, we are matching rows based on our <em>key</em>. If there is not a match in both tables, we don’t include the row with that key.</p>
-<p>In the example above, we don’t keep row 3 in table x or row 4 in table y.</p>
-</div>
-<div id="joining-syntax" class="section level3">
-<h3><span class="header-section-number">7.5.4</span> Joining Syntax</h3>
-<p>Keeping these terms in mind, let’s look at the syntax for joining two tables together.</p>
-<pre><code>inner_join(table_x, table_y,
-          by = c(key_column_x = key_column_y)
-          )</code></pre>
-<p>If we just wanted to join the two tables, the above is enough. We first specify the left table (<code>table_x</code>), and the right table (<code>table_y</code>).</p>
-<p>Note the <code>by</code> argument. This is the argument where we specify which column in each table contains our key.</p>
-</div>
-<div id="the-more-dplyr-way-to-do-joins" class="section level3">
-<h3><span class="header-section-number">7.5.5</span> The more <code>dplyr</code> way to do joins</h3>
-<p>The more <code>dplyr</code> way to do joins is below:</p>
-<pre><code>#start with left table
-table_x %&gt;% 
-
-  #join left table with right table
-  inner_join(y = table_y, 
-  
-  #point out the key column in each table
-    by = c(key_column_x= key_column_y)
-    )</code></pre>
-<p>We start with our <em>left</em> table, <code>table_x</code>. The main difference is that we don’t need to specify the <code>x</code> argument in <code>inner_join()</code>, because we are piping <code>table_x</code> as the first argument of <code>inner_join()</code>.</p>
-</div>
-<div id="left-joins" class="section level3">
-<h3><span class="header-section-number">7.5.6</span> Left Joins</h3>
-<p><img src="image/left-join.gif" /></p>
-<p>Left joins are a little different. In a <em>left join</em>, we keep all the rows in the left table regardless of whether there is a match in the right table.</p>
-<p>In the example above, we keep row 3 in table x even though it doesn’t have a match in table y.</p>
-<p>Because there is no information from the right table, these rows will have an <code>NA</code>. That is, the information is missing for the columns that come from the right table.</p>
-</div>
-<div id="lets-work-through-an-example" class="section level3">
-<h3><span class="header-section-number">7.5.7</span> Let’s work through an example</h3>
-<p>Say we have a set of patients. We want to join their information with their labs, in particular a white blood cell count (a WBC).</p>
-<p>We also need to know whether there are patients in our set who haven’t gotten a CBC.</p>
-<p>Because the lab system isn’t part of the electronic health record, we’ll need to make a join on the patient table to the lab table.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1">patient_table &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/patient_example.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb205-2" title="2"></a>
-<a class="sourceLine" id="cb205-3" title="3">wbc_table &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/patient_example.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">2</span>)</a></code></pre></div>
-<p>Let’s look at <code>patient_table</code>, which we’ll use as our <em>left table</em>:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" title="1">patient_table</a></code></pre></div>
-<pre><code>## # A tibble: 4 x 4
-##   patient_id first_name last_name   age
-##        &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;dbl&gt;
-## 1       2333 Scarlet    O&#39;Hara       75
-## 2       7359 Neil       O&#39;Hara       30
-## 3       1414 Ivy        Lee          43
-## 4       8424 May        Lynne        14</code></pre>
-<p>Here is <code>wbc_table</code>, which we’ll use as our <em>right table</em>:</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" title="1">wbc_table</a></code></pre></div>
-<pre><code>## # A tibble: 4 x 2
-##   patient_id wbc_value
-##        &lt;dbl&gt;     &lt;dbl&gt;
-## 1       2333      5000
-## 2       7359     12000
-## 3       1414      6000
-## 4       4409      4000</code></pre>
-<p>Let’s do an <code>inner_join()</code>:</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" title="1">patient_table <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb210-2" title="2"><span class="st">  </span><span class="kw">inner_join</span>(<span class="dt">y =</span> wbc_table,</a>
-<a class="sourceLine" id="cb210-3" title="3">            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;patient_id&quot;</span> =<span class="st"> &quot;patient_id&quot;</span>))</a></code></pre></div>
-<pre><code>## # A tibble: 3 x 5
-##   patient_id first_name last_name   age wbc_value
-##        &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-## 1       2333 Scarlet    O&#39;Hara       75      5000
-## 2       7359 Neil       O&#39;Hara       30     12000
-## 3       1414 Ivy        Lee          43      6000</code></pre>
-</div>
-<div id="your-turn-3" class="section level3">
-<h3><span class="header-section-number">7.5.8</span> Your Turn</h3>
-<p>Modify the code below to do a <code>left_join()</code> on <code>patient_table</code> and <code>wbc_table</code>.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" title="1">patient_table <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb212-2" title="2"><span class="st">  </span><span class="kw">inner_join</span>(<span class="dt">y =</span> wbc_table,</a>
-<a class="sourceLine" id="cb212-3" title="3">            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;patient_id&quot;</span> =<span class="st"> &quot;patient_id&quot;</span>))</a></code></pre></div>
-<pre><code>## # A tibble: 3 x 5
-##   patient_id first_name last_name   age wbc_value
-##        &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-## 1       2333 Scarlet    O&#39;Hara       75      5000
-## 2       7359 Neil       O&#39;Hara       30     12000
-## 3       1414 Ivy        Lee          43      6000</code></pre>
-<p>Which patient in <code>patient_table</code> didn’t get a WBC?</p>
-</div>
-</div>
-<div id="making-your-data-long-pivot_longer" class="section level2">
-<h2><span class="header-section-number">7.6</span> Making your data long: <code>pivot_longer()</code></h2>
-<p><img src="image/tidyr-spread-gather.gif" /></p>
-<p>The last thing we’ll talk about is the difference between the <em>wide</em> data format and the <em>long</em> data format.</p>
-<p>A really common format in bioinformatics is the <em>expression matrix</em>.</p>
-<p>In an <em>expression matrix</em>,
-the <em>rows</em> correspond to different <em>genes</em> and
-the <em>columns</em> correspond to different <em>samples</em>.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1">expression_example &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/expression_example.xlsx&quot;</span>, <span class="dt">sheet=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb214-2" title="2"></a>
-<a class="sourceLine" id="cb214-3" title="3">expression_example</a></code></pre></div>
-<pre><code>## # A tibble: 4 x 5
-##   gene_symbol tcga_110 tcga_332 tcga_548 tcga_523
-##   &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-## 1 PTEN             4.1      5.6      2.2      2.1
-## 2 MTOR             5.6      6.6      3.1      3.2
-## 3 RKIP             1        1.4      1.2      1.2
-## 4 KCNJ9            2.3      1.1      0.5      0.2</code></pre>
-<div id="however" class="section level3">
-<h3><span class="header-section-number">7.6.1</span> However…</h3>
-<p>This format isn’t super useful for a lot of data manipulations.</p>
-<p>It’s because the columns correspond to samples, and this prevents us from plotting things like PTEN expression across the samples.</p>
-<p>This kind of data is in a format that is called <em>wide</em> format. What we need to do is collapse the numerical values into a single column.</p>
-</div>
-<div id="the-magic-of-pivot_longer" class="section level3">
-<h3><span class="header-section-number">7.6.2</span> The magic of <code>pivot_longer()</code></h3>
-<p><img src="image/tidyr-spread-gather.gif" /></p>
-<p><code>pivot_longer()</code> is the function that will let us make our <em>wide</em> data <em>long</em>.</p>
-<p>It takes three arguments</p>
-<ul>
-<li><p><code>cols</code> - the columns to collapse. We haven’t talked about <code>tidyselect</code> verbs, but there are a few that let you select columns based on naming criteria. Here we’re using the <code>starts_with()</code> selector to grab the columns that begin with <code>tcga</code></p></li>
-<li><p><code>names_to</code> - the name of the column where the labels will be consolidated to</p></li>
-<li><p><code>values_to</code> - the name of the column where the values in the columns in the wide data will be consolidated to.</p></li>
-</ul>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1">expression_long &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb216-2" title="2"><span class="st">  </span>expression_example <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb216-3" title="3"><span class="st">    </span><span class="kw">pivot_longer</span>(<span class="dt">cols=</span> <span class="kw">starts_with</span>(<span class="st">&quot;tcga&quot;</span>), </a>
-<a class="sourceLine" id="cb216-4" title="4">                 <span class="dt">names_to =</span> <span class="st">&quot;sample&quot;</span>, </a>
-<a class="sourceLine" id="cb216-5" title="5">                 <span class="dt">values_to =</span> <span class="st">&quot;expression&quot;</span>)</a>
-<a class="sourceLine" id="cb216-6" title="6"></a>
-<a class="sourceLine" id="cb216-7" title="7">expression_long</a></code></pre></div>
-<pre><code>## # A tibble: 16 x 3
-##    gene_symbol sample   expression
-##    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;
-##  1 PTEN        tcga_110        4.1
-##  2 PTEN        tcga_332        5.6
-##  3 PTEN        tcga_548        2.2
-##  4 PTEN        tcga_523        2.1
-##  5 MTOR        tcga_110        5.6
-##  6 MTOR        tcga_332        6.6
-##  7 MTOR        tcga_548        3.1
-##  8 MTOR        tcga_523        3.2
-##  9 RKIP        tcga_110        1  
-## 10 RKIP        tcga_332        1.4
-## 11 RKIP        tcga_548        1.2
-## 12 RKIP        tcga_523        1.2
-## 13 KCNJ9       tcga_110        2.3
-## 14 KCNJ9       tcga_332        1.1
-## 15 KCNJ9       tcga_548        0.5
-## 16 KCNJ9       tcga_523        0.2</code></pre>
-</div>
-<div id="doing-things-with-the-long-data" class="section level3">
-<h3><span class="header-section-number">7.6.3</span> Doing things with the long data</h3>
-<p>Now that we have our long data, we can do our usual kinds of plotting.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1"><span class="kw">ggplot</span>(expression_long) <span class="op">+</span></a>
-<a class="sourceLine" id="cb218-2" title="2"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x=</span>gene_symbol, <span class="dt">y=</span>expression, <span class="dt">fill=</span>gene_symbol) <span class="op">+</span></a>
-<a class="sourceLine" id="cb218-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
-<p><img src="06-part5_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
-<p>We can even make expression heatmaps with <code>geom_tile</code>.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" title="1"><span class="kw">ggplot</span>(expression_long) <span class="op">+</span></a>
-<a class="sourceLine" id="cb219-2" title="2"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x=</span>sample, <span class="dt">y=</span> gene_symbol, <span class="dt">fill=</span>expression) <span class="op">+</span></a>
-<a class="sourceLine" id="cb219-3" title="3"><span class="st">  </span><span class="kw">geom_tile</span>()</a></code></pre></div>
-<p><img src="06-part5_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-</div>
-<div id="pivot_wider-exists-too" class="section level3">
-<h3><span class="header-section-number">7.6.4</span> <code>pivot_wider()</code> exists too!</h3>
-<p>And part of your assignment will be to figure out how to use it.</p>
-</div>
-</div>
-<div id="assignment-1" class="section level2">
-<h2><span class="header-section-number">7.7</span> Assignment</h2>
+<div id="part-1-functions-and-objects" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Part 1: Functions and Objects</h1>
+<div id="learning-objectives" class="section level2">
+<h2><span class="header-section-number">2.1</span> Learning Objectives</h2>
+<p>By the end of this session, you should be able to:</p>
 <ol style="list-style-type: decimal">
-<li><p>Use <code>bind_rows()</code> to bind all three <code>smoke</code> datasets (<code>smoke_1</code>, <code>smoke_2</code>, and <code>smoke_3</code>) together. Hint: you’ll have to do two <code>bind_row()</code> operations.</p></li>
-<li><p>Take a look at the <code>patient</code> and <code>patient_encounter</code> tables loaded below.</p></li>
+<li><strong>Work</strong> within the RStudio interface to <strong>run</strong> R code in an RMarkdown notebook</li>
+<li><strong>Understand</strong> basic R syntax to <strong>use</strong> functions and <strong>assign</strong> values to objects</li>
+<li><strong>Create</strong> and <strong>manipulate</strong> vectors and <strong>understand</strong> how R deals with missing data</li>
 </ol>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1">patient &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/patient_example.csv&quot;</span>)</a></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   patient_id = col_double(),
-##   GENDER = col_character(),
-##   First_name = col_character(),
-##   Last_name = col_character(),
-##   status = col_double(),
-##   Insurance_ID = col_double(),
-##   race = col_double(),
-##   postalcode = col_double(),
-##   riskCat = col_character(),
-##   riskscore = col_double()
-## )</code></pre>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1">patient_encounter &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/patient_enc_example.csv&quot;</span>)</a></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   patientid = col_double(),
-##   Event_ID = col_double(),
-##   outcome = col_character(),
-##   Admit_date = col_character(),
-##   Admit_source = col_character()
-## )</code></pre>
-<p>How many rows does each table have?</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" title="1"><span class="kw">nrow</span>()</a>
-<a class="sourceLine" id="cb224-2" title="2"><span class="kw">nrow</span>()</a></code></pre></div>
-<p>Write a <code>inner_join()</code> and assign it to <code>inner_patient</code> with</p>
+</div>
+<div id="an-intro-to-rrstudio" class="section level2">
+<h2><span class="header-section-number">2.2</span> An Intro to R/RStudio</h2>
+<p>[Tour of R and R Notebooks]</p>
+<p><code>Help -&gt; Cheetsheets -&gt; RStudio IDE cheat sheet</code></p>
+<div id="code-blocks" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Code Blocks</h3>
+<p>Now that we have our notebook open, we’re ready to start.</p>
+<p>First thing of all, is the grey box below.</p>
+<p>[Play button]</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># basic math</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> </a></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<p>Let’s learn how to read this code block. Everything that starts with a <code>#</code> is called a <em>comment</em> and is not code that runs. It is useful for making notes for youself</p>
+<p>Below it is the actual code.</p>
+<p>Try this one out. It’s the same code as above, but with no spaces. Does it still run?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># same code as above, without spaces</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="dv">4</span><span class="op">+</span><span class="dv">5</span></a></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+</div>
+<div id="using-functions" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Using Functions</h3>
+<p>R includes functions for other types of math:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># using a function: rounding numbers</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">round</span>(<span class="fl">3.14</span>)</a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>[function names and arguments, syntax]</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># using a function with more arguments</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw">round</span>(<span class="fl">3.14</span>, <span class="dt">digits =</span> <span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1] 3.1</code></pre>
+<p>[getting help]</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">?round</a></code></pre></div>
+<p>[documentation and arguments]</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># can switch order of arguments</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw">round</span>(<span class="dt">digits =</span> <span class="dv">1</span>, <span class="dt">x =</span> <span class="fl">3.14</span>)</a></code></pre></div>
+<pre><code>## [1] 3.1</code></pre>
+<blockquote>
+<p>You may notice that boxes pop up as you type.
+These represent RStudio’s attempts to guess what you’re typing and share additional options.</p>
+</blockquote>
+</div>
+<div id="challenge-1" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> <strong>Challenge 1:</strong></h3>
+<p>What does the function <code>hist</code> do? What are its main arguments? How did you determine this?</p>
+</div>
+<div id="assigning-objects" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> Assigning objects</h3>
+<p>[objects and variables]</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># assigning value to an object</span></a>
+<a class="sourceLine" id="cb12-2" title="2">weight_kg &lt;-<span class="st"> </span><span class="dv">55</span></a></code></pre></div>
+<p>[assignment operator, object naming conventions]</p>
+<p>Now that the object has been assigned,
+we can reference that object by executing its name:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># recall object</span></a>
+<a class="sourceLine" id="cb13-2" title="2">weight_kg</a></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<p>[using a variable]</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># multiple an object (convert kg to lb)</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>weight_kg</a></code></pre></div>
+<pre><code>## [1] 121</code></pre>
+<p>[assigning a new variable]</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># assign weight conversion to object</span></a>
+<a class="sourceLine" id="cb17-2" title="2">weight_lb &lt;-<span class="st"> </span><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>weight_kg</a></code></pre></div>
+<p>[environment panel]</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># reassign new value to an object</span></a>
+<a class="sourceLine" id="cb18-2" title="2">weight_kg &lt;-<span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<p>[changing variable values]</p>
+<p>[objects that use other objects don’t change]</p>
+<blockquote>
+<p>You can think of the names of objects like sticky notes.
+You have the option to place the sticky note (name) on any value you choose.
+You can pick up the sticky note and place it on another value,
+but you need to explicitly tell R when you want values assigned to certain objects.</p>
+</blockquote>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># remove object</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="kw">remove</span>(weight_lb) </a></code></pre></div>
+<p>[removing objects]</p>
+<blockquote>
+<p>You can clear the entire environment using the button at the top of the Environment panel
+with a picture of a broom.
+This may seem extreme,
+but don’t worry!
+We can re-create all the work we’ve already done by executing each line of code again.</p>
+</blockquote>
+</div>
+<div id="challenge-2" class="section level3">
+<h3><span class="header-section-number">2.2.5</span> <strong>Challenge 2:</strong></h3>
+<p>What is the value of each item at each step? (Hint, you can see the value of an object by typing in the name of the object, such as with the <code>mass</code> line below.)</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>            <span class="co"># 1. mass?</span></a>
+<a class="sourceLine" id="cb20-2" title="2">mass</a></code></pre></div>
+<pre><code>## [1] 47.5</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">width  &lt;-<span class="st"> </span><span class="dv">122</span>             <span class="co"># 2. width?</span></a>
+<a class="sourceLine" id="cb22-2" title="2">mass &lt;-<span class="st"> </span>mass <span class="op">*</span><span class="st"> </span><span class="fl">2.0</span>      <span class="co"># 3. mass?</span></a>
+<a class="sourceLine" id="cb22-3" title="3">width  &lt;-<span class="st"> </span>width <span class="op">-</span><span class="st"> </span><span class="dv">20</span>        <span class="co">#4.  width?</span></a>
+<a class="sourceLine" id="cb22-4" title="4">mass_index &lt;-<span class="st"> </span>mass<span class="op">/</span>width  <span class="co"># 5. mass_index?</span></a></code></pre></div>
+<p>Make your answers here:</p>
+<ol style="list-style-type: decimal">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+</div>
+</div>
+<div id="vectors" class="section level2">
+<h2><span class="header-section-number">2.3</span> Vectors</h2>
+<p>[creating vectors]
+[c is for combine]</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># assign vector</span></a>
+<a class="sourceLine" id="cb23-2" title="2">ages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">55</span>, <span class="dv">60</span>, <span class="dv">65</span>) </a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="co"># recall vector</span></a>
+<a class="sourceLine" id="cb23-4" title="4">ages</a></code></pre></div>
+<pre><code>## [1] 50 55 60 65</code></pre>
+<p>[learning things about vectors]</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co"># how many things are in object?</span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">length</span>(ages)</a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># what type of object?</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="kw">class</span>(ages)</a></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># performing functions with vectors</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="kw">mean</span>(ages)</a></code></pre></div>
+<pre><code>## [1] 57.5</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">range</span>(ages)</a></code></pre></div>
+<pre><code>## [1] 50 65</code></pre>
+<p>[characters]</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># vector of body parts</span></a>
+<a class="sourceLine" id="cb33-2" title="2">organs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lung&quot;</span>, <span class="st">&quot;prostate&quot;</span>, <span class="st">&quot;breast&quot;</span>)</a></code></pre></div>
+<p>In this case,
+each word is encased in quotation marks,
+indicating these are character data,
+rather than object names.</p>
+<div id="challenge-3" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> <strong>Challenge 3:</strong></h3>
+<p>Please answer the following questions about <code>organs</code>:</p>
+<ol style="list-style-type: decimal">
+<li>How many values are in <code>organs</code>?</li>
+<li>What type of data is <code>organs</code>?</li>
+<li>get overview of <code>organs</code></li>
+</ol>
+<p>Answers here:</p>
+<ol style="list-style-type: decimal">
+<li></li>
+<li></li>
+<li></li>
+</ol>
+</div>
+<div id="data-types-and-vectors" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Data types and Vectors</h3>
 <ul>
-<li><code>patient</code> as the <em>left</em> table</li>
-<li><code>patient_encounter</code> as the <em>right</em> table</li>
-<li>joining on the approriate columns (look at the column names carefully!)</li>
+<li><strong>character</strong>: sometimes referred to as string data, tend to be surrounded by quotes</li>
+<li><strong>numeric</strong>: real or decimal numbers, sometimes referred to as “double”</li>
+<li>integer: a subset of numeric in which numbers are stored as integers</li>
+<li><strong>logical</strong>: Boolean data (TRUE and FALSE)</li>
+<li>complex: complex numbers with real and imaginary parts (e.g., 1 + 4i)</li>
+<li>raw: bytes of data (machine readable, but not human readable)</li>
 </ul>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1">inner_patient &lt;-<span class="st"> </span>patient <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb225-2" title="2"><span class="st">  </span><span class="kw">inner_join</span>(<span class="dt">y =</span> ____, <span class="dt">by =</span> <span class="kw">c</span>())</a>
-<a class="sourceLine" id="cb225-3" title="3"></a>
-<a class="sourceLine" id="cb225-4" title="4">inner_patient</a></code></pre></div>
-<p>How many rows does <code>inner_patient</code> have?</p>
-<p>Do a <code>left_join</code> of the two tables with the same criteria as above. Assign it to <code>left_patient</code>.</p>
-<p>Count the number of rows in <code>left_patient</code>. Is it what you expected?</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" title="1">left_patient &lt;-<span class="st"> </span>patient <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb226-2" title="2"><span class="st">  </span><span class="kw">left_join</span>()</a>
-<a class="sourceLine" id="cb226-3" title="3"></a>
-<a class="sourceLine" id="cb226-4" title="4"><span class="kw">nrow</span>(left_patient)</a></code></pre></div>
-<ol start="3" style="list-style-type: decimal">
-<li>Look up the documentation for <code>pivot_wider</code>. Transform <code>expression_longer</code> back to a <em>wide</em> format, but this time with <strong>columns</strong> as <em>genes</em> and <strong>rows</strong> as <em>samples</em>.</li>
+</div>
+<div id="challenge-4" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> <strong>Challenge 4:</strong></h3>
+<p>R tends to handle interpreting data types in the background of most operations.</p>
+<p>The following code is designed to cause some unexpected results in R.</p>
+<p>What is unusual about each of the following objects?</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">num_char &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&quot;a&quot;</span>)</a>
+<a class="sourceLine" id="cb34-2" title="2">num_logical &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb34-3" title="3">char_logical &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb34-4" title="4">tricky &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&quot;4&quot;</span>)</a></code></pre></div>
+</div>
+<div id="manipulating-vectors" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> Manipulating vectors</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="co"># add a value to end of vector</span></a>
+<a class="sourceLine" id="cb35-2" title="2">ages &lt;-<span class="st"> </span><span class="kw">c</span>(ages, <span class="dv">90</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co"># add value at the beginning</span></a>
+<a class="sourceLine" id="cb36-2" title="2">ages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">30</span>, ages)</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co"># extracting second value</span></a>
+<a class="sourceLine" id="cb37-2" title="2">organs[<span class="dv">2</span>] </a></code></pre></div>
+<pre><code>## [1] &quot;prostate&quot;</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># excluding second value</span></a>
+<a class="sourceLine" id="cb39-2" title="2">organs[<span class="op">-</span><span class="dv">2</span>] </a></code></pre></div>
+<pre><code>## [1] &quot;lung&quot;   &quot;breast&quot;</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># extracting first and third values</span></a>
+<a class="sourceLine" id="cb41-2" title="2">organs[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)] </a></code></pre></div>
+<pre><code>## [1] &quot;lung&quot;   &quot;breast&quot;</code></pre>
+</div>
+<div id="missing-data" class="section level3">
+<h3><span class="header-section-number">2.3.5</span> Missing data</h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co"># create a vector with missing data</span></a>
+<a class="sourceLine" id="cb43-2" title="2">heights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="ot">NA</span>, <span class="dv">6</span>)</a></code></pre></div>
+<p>[NA is not a character]</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co"># calculate mean and max on vector with missing data</span></a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="kw">mean</span>(heights)</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">max</span>(heights)</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>[ugh. na strikes again!]</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="co"># add argument to remove NA</span></a>
+<a class="sourceLine" id="cb48-2" title="2"><span class="kw">mean</span>(heights, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">max</span>(heights, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="co"># remove incomplete cases</span></a>
+<a class="sourceLine" id="cb52-2" title="2"><span class="kw">na.omit</span>(heights) </a></code></pre></div>
+<pre><code>## [1] 2 4 4 6
+## attr(,&quot;na.action&quot;)
+## [1] 4
+## attr(,&quot;class&quot;)
+## [1] &quot;omit&quot;</code></pre>
+</div>
+<div id="challenge" class="section level3">
+<h3><span class="header-section-number">2.3.6</span> <strong>Challenge:</strong></h3>
+<p>Complete the following tasks after creating this vector (Note: there are multiple solutions):
+(solutions <a href="solutions/class1_solutions.R">here</a>)</p>
+<ol style="list-style-type: decimal">
+<li>Remove NAs on <code>more_heights</code> (assign it to the object <code>more_heights_complete</code>)</li>
+<li>Calculate the <code>median()</code> of <code>more_heights_complete</code></li>
 </ol>
-<p>Hint: Always look at the examples in the documentation! They’ll help you.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1">expression_longer <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb227-2" title="2"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">id_cols =</span> ,</a>
-<a class="sourceLine" id="cb227-3" title="3">              <span class="dt">names_from =</span> ,</a>
-<a class="sourceLine" id="cb227-4" title="4">              values_from)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="co"># create vector</span></a>
+<a class="sourceLine" id="cb54-2" title="2">more_heights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">63</span>, <span class="dv">69</span>, <span class="dv">60</span>, <span class="dv">65</span>, <span class="ot">NA</span>, <span class="dv">68</span>, <span class="dv">61</span>, <span class="dv">70</span>, <span class="dv">61</span>, <span class="dv">59</span>, <span class="dv">64</span>, <span class="dv">69</span>, <span class="dv">63</span>, <span class="dv">63</span>, <span class="ot">NA</span>, <span class="dv">72</span>, <span class="dv">65</span>, <span class="dv">64</span>, <span class="dv">70</span>, <span class="dv">63</span>, <span class="dv">65</span>)</a>
+<a class="sourceLine" id="cb54-3" title="3"><span class="co"># remove NAs</span></a>
+<a class="sourceLine" id="cb54-4" title="4"></a>
+<a class="sourceLine" id="cb54-5" title="5"><span class="co"># calculate the median</span></a></code></pre></div>
+</div>
+</div>
+<div id="wrapping-up" class="section level2">
+<h2><span class="header-section-number">2.4</span> Wrapping up</h2>
+<p>[R/Rstudio]
+[objects]
+[data types]</p>
+</div>
+<div id="assignment" class="section level2">
+<h2><span class="header-section-number">2.5</span> Assignment</h2>
+<ol style="list-style-type: decimal">
+<li>Object manipulation</li>
+</ol>
+<p>Create an object called <code>agge</code> that contains your age in years. Then
+reassign the object to a new object called <code>age</code> (e.g., correct the typo). Then remove the previous object from your environment and then calculate your age in days</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="co">#create agge object</span></a>
+<a class="sourceLine" id="cb55-2" title="2"></a>
+<a class="sourceLine" id="cb55-3" title="3"><span class="co">#reassign agge value to age</span></a>
+<a class="sourceLine" id="cb55-4" title="4"></a>
+<a class="sourceLine" id="cb55-5" title="5"><span class="co">#remove agge object</span></a>
+<a class="sourceLine" id="cb55-6" title="6"></a>
+<a class="sourceLine" id="cb55-7" title="7"><span class="co">#Use math to calculate your age in days</span></a></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Vector manipulation (character data):</li>
+</ol>
+<p>Create a object called <code>buildings</code> representing a vector that contains four names of buildings on OHSU’s campus, including the building where you work (here’s a reference: <a href="https://www.ohsu.edu/visit/maps" class="uri">https://www.ohsu.edu/visit/maps</a>).</p>
+<p>Add <code>Portland, Oregon</code> to the beginning of the vector, and <code>Phys Plant</code> to the end of the vector</p>
+<p>subset the vector to show only the building in which you work.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="co">#create buildings object</span></a>
+<a class="sourceLine" id="cb56-2" title="2">buildings &lt;-<span class="st"> </span><span class="kw">c</span>()</a>
+<a class="sourceLine" id="cb56-3" title="3"></a>
+<a class="sourceLine" id="cb56-4" title="4"><span class="co">#Add &quot;Portland, Oregon&quot; to the beginning of buildings</span></a>
+<a class="sourceLine" id="cb56-5" title="5"></a>
+<a class="sourceLine" id="cb56-6" title="6"><span class="co">#Add &quot;Phys Plant&quot; to the end of buildings</span></a>
+<a class="sourceLine" id="cb56-7" title="7"></a>
+<a class="sourceLine" id="cb56-8" title="8"><span class="co">#subset buildings to show only your building</span></a>
+<a class="sourceLine" id="cb56-9" title="9">buildings[]</a></code></pre></div>
+<pre><code>## NULL</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Vector manipulation (numerical data):</li>
+</ol>
+<p>The following vector represents the number of vacation days possessed by various employees.</p>
+<p>How many employees are represented in the vector?</p>
+<p>How many vacation days total?</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1">vacation_days &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb58-2" title="2"></a>
+<a class="sourceLine" id="cb58-3" title="3"><span class="co">#how many employees are represented in the vector?</span></a>
+<a class="sourceLine" id="cb58-4" title="4"></a>
+<a class="sourceLine" id="cb58-5" title="5"><span class="co">#how many vacation days total?</span></a></code></pre></div>
+</div>
+<div id="submitting-your-homework" class="section level2">
+<h2><span class="header-section-number">2.6</span> Submitting your homework</h2>
+<p>Submit your <code>part1-FIRSTNAME-LASTNAME.nb.html</code> file in Sakai. To download it, click on the <code>More</code> gear icon, and click <strong>Export</strong> to download it to your computer.</p>
 
 </div>
 </div>
@@ -678,8 +588,8 @@ the <em>columns</em> correspond to different <em>samples</em>.</p>
           </div>
         </div>
       </div>
-<a href="more-about-factors.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="part-2-data-frames-reading-data-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -710,7 +620,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-part5.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-part1.Rmd",
 "text": "Edit"
 },
 "history": {

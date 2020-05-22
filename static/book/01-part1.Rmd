@@ -1,17 +1,4 @@
-# Ready for R Part 1: Functions and Objects
-
-## Before you get Started
-
-Please save a copy of this as `part1_FIRSTNAME_LASTNAME.Rmd` and work from that (where FIRSTNAME is your first name, and LASTNAME is your last name). This way, you'll have the original as a reference just in case.
-
-
-## Welcome to Ready for R!
-
-This course introduces you R by working through common tasks in data science: importing, manipulating, and visualizing data. 
-
-R is a statistical and programming computer language widely used for a variety of applications.
-
-Before proceeding with these training materials, please ensure you have an RStudio.cloud account and can see the workspace.
+# Part 1: Functions and Objects
 
 ## Learning Objectives
 
@@ -347,10 +334,10 @@ more_heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72
 
 
 
-## Homework
+## Assignment 
 
 
-### 1.  Object manipulation
+1.  Object manipulation
 
 Create an object called `agge` that contains your age in years. Then
 reassign the object to a new object called `age` (e.g., correct the typo). Then remove the previous object from your environment and then calculate your age in days
@@ -367,7 +354,7 @@ reassign the object to a new object called `age` (e.g., correct the typo). Then 
 ```
 
 
-### 2.  Vector manipulation (character data):
+2.  Vector manipulation (character data):
 
 Create a object called `buildings` representing a vector that contains four names of buildings on OHSU's campus, including the building where you work (here's a reference: https://www.ohsu.edu/visit/maps). 
 
@@ -389,7 +376,7 @@ buildings[]
 ```
 
 
-## 3. Vector manipulation (numerical data):
+3. Vector manipulation (numerical data):
 
 The following vector represents the number of vacation days possessed by various employees.
 
