@@ -1,11 +1,5 @@
 # Part 5: Doing useful things with multiple tables
 
-
-## Remember
-
-Save your own version before you do anything!
-
-
 ## Learning Objectives
 
 - **Learn** and **apply** `bind_rows()` to combine rows from two or more datasets
