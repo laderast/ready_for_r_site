@@ -1,4 +1,4 @@
-# Simple Statistics with `broom`
+# Part 6: Simple Statistics with `broom`
 
 
 ## Learning Objectives
