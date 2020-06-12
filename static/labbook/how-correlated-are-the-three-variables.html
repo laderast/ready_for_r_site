@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Part 1: Functions and Objects | Ready for R: Notebook Reference</title>
+  <title>Chapter 13 How Correlated are the Three Variables? | Ready for R: Notebook Reference</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Part 1: Functions and Objects | Ready for R: Notebook Reference" />
+  <meta property="og:title" content="Chapter 13 How Correlated are the Three Variables? | Ready for R: Notebook Reference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="laderast/ready_for_r_site" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Part 1: Functions and Objects | Ready for R: Notebook Reference" />
+  <meta name="twitter:title" content="Chapter 13 How Correlated are the Three Variables? | Ready for R: Notebook Reference" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="part-2-data-frames-reading-data-ggplot2.html"/>
+<link rel="prev" href="t-tests.html"/>
+<link rel="next" href="analysis-of-variance-anova-optional.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -274,33 +274,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.6" data-path="part-5-doing-useful-things-with-multiple-tables.html"><a href="part-5-doing-useful-things-with-multiple-tables.html#assignment-1"><i class="fa fa-check"></i><b>7.6</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html"><i class="fa fa-check"></i><b>8</b> Learning Objectives</a><ul>
-<li class="chapter" data-level="8.1" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#getting-help-on-errors"><i class="fa fa-check"></i><b>8.1</b> Getting Help on Errors</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#understanding-the-difference-between-warnings-and-errors"><i class="fa fa-check"></i><b>8.1.1</b> Understanding the difference between warnings and errors</a></li>
-<li class="chapter" data-level="8.1.2" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#googling-is-standard-practice-for-errors"><i class="fa fa-check"></i><b>8.1.2</b> Googling is StandaRd pRactice foR eRrors</a></li>
-<li class="chapter" data-level="8.1.3" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#where-do-i-ask-for-help"><i class="fa fa-check"></i><b>8.1.3</b> Where do I ask for help?</a></li>
+<li class="chapter" data-level="8" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html"><i class="fa fa-check"></i><b>8</b> Learning Objectives</a></li>
+<li class="chapter" data-level="9" data-path="getting-help-on-errors.html"><a href="getting-help-on-errors.html"><i class="fa fa-check"></i><b>9</b> Getting Help on Errors</a><ul>
+<li class="chapter" data-level="9.1" data-path="getting-help-on-errors.html"><a href="getting-help-on-errors.html#understanding-the-difference-between-warnings-and-errors"><i class="fa fa-check"></i><b>9.1</b> Understanding the difference between warnings and errors</a></li>
+<li class="chapter" data-level="9.2" data-path="getting-help-on-errors.html"><a href="getting-help-on-errors.html#googling-is-standard-practice-for-errors"><i class="fa fa-check"></i><b>9.2</b> Googling is StandaRd pRactice foR eRrors</a></li>
+<li class="chapter" data-level="9.3" data-path="getting-help-on-errors.html"><a href="getting-help-on-errors.html#where-do-i-ask-for-help"><i class="fa fa-check"></i><b>9.3</b> Where do I ask for help?</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#caveat-about-statistics"><i class="fa fa-check"></i><b>8.2</b> Caveat about statistics</a></li>
-<li class="chapter" data-level="8.3" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#introducing-tidymodels"><i class="fa fa-check"></i><b>8.3</b> Introducing <code>tidymodels</code></a></li>
-<li class="chapter" data-level="8.4" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#t-tests"><i class="fa fa-check"></i><b>8.4</b> T-tests</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#the-dataset"><i class="fa fa-check"></i><b>8.4.1</b> The Dataset</a></li>
-<li class="chapter" data-level="8.4.2" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#getting-set-up-3"><i class="fa fa-check"></i><b>8.4.2</b> Getting set up</a></li>
-<li class="chapter" data-level="8.4.3" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>8.4.3</b> Exploratory Data Analysis</a></li>
-<li class="chapter" data-level="8.4.4" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#t-test"><i class="fa fa-check"></i><b>8.4.4</b> t-test</a></li>
-<li class="chapter" data-level="8.4.5" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#your-turn-4"><i class="fa fa-check"></i><b>8.4.5</b> Your Turn</a></li>
+<li class="chapter" data-level="10" data-path="caveat-about-statistics.html"><a href="caveat-about-statistics.html"><i class="fa fa-check"></i><b>10</b> Caveat about statistics</a></li>
+<li class="chapter" data-level="11" data-path="introducing-tidymodels.html"><a href="introducing-tidymodels.html"><i class="fa fa-check"></i><b>11</b> Introducing <code>tidymodels</code></a></li>
+<li class="chapter" data-level="12" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>12</b> T-tests</a><ul>
+<li class="chapter" data-level="12.1" data-path="t-tests.html"><a href="t-tests.html#the-dataset"><i class="fa fa-check"></i><b>12.1</b> The Dataset</a></li>
+<li class="chapter" data-level="12.2" data-path="t-tests.html"><a href="t-tests.html#getting-set-up-3"><i class="fa fa-check"></i><b>12.2</b> Getting set up</a></li>
+<li class="chapter" data-level="12.3" data-path="t-tests.html"><a href="t-tests.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>12.3</b> Exploratory Data Analysis</a></li>
+<li class="chapter" data-level="12.4" data-path="t-tests.html"><a href="t-tests.html#t-test"><i class="fa fa-check"></i><b>12.4</b> t-Test</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="t-tests.html"><a href="t-tests.html#hypothesis-there-is-a-difference-in-mean-fat-mass-measurements-between-the-dxa-and-skin-fold-thickness-st-methods."><i class="fa fa-check"></i><b>12.4.1</b> HYPOTHESIS: There is a difference in mean fat mass measurements between the DXA and skin-fold thickness (ST) methods.</a></li>
+<li class="chapter" data-level="12.4.2" data-path="t-tests.html"><a href="t-tests.html#null-hypothesis-there-is-no-difference-in-mean-fat-mass-measurements-between-the-two-methods."><i class="fa fa-check"></i><b>12.4.2</b> NULL HYPOTHESIS: There is no difference in mean fat mass measurements between the two methods.</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#how-correlated-are-the-three-variables"><i class="fa fa-check"></i><b>8.5</b> How Correlated are the Three Variables?</a><ul>
-<li class="chapter" data-level="8.5.1" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#your-turn-5"><i class="fa fa-check"></i><b>8.5.1</b> Your Turn</a></li>
+<li class="chapter" data-level="12.5" data-path="t-tests.html"><a href="t-tests.html#your-turn-4"><i class="fa fa-check"></i><b>12.5</b> Your Turn</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#lets-build-a-simple-linear-model"><i class="fa fa-check"></i><b>8.6</b> Let’s build a simple linear model</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#adding-another-variable"><i class="fa fa-check"></i><b>8.6.1</b> Adding another variable</a></li>
-<li class="chapter" data-level="8.6.2" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#your-turn-6"><i class="fa fa-check"></i><b>8.6.2</b> Your Turn</a></li>
+<li class="chapter" data-level="13" data-path="how-correlated-are-the-three-variables.html"><a href="how-correlated-are-the-three-variables.html"><i class="fa fa-check"></i><b>13</b> How Correlated are the Three Variables?</a><ul>
+<li class="chapter" data-level="13.1" data-path="how-correlated-are-the-three-variables.html"><a href="how-correlated-are-the-three-variables.html#your-turn-5"><i class="fa fa-check"></i><b>13.1</b> Your Turn</a></li>
+<li class="chapter" data-level="13.2" data-path="how-correlated-are-the-three-variables.html"><a href="how-correlated-are-the-three-variables.html#lets-build-a-simple-linear-model"><i class="fa fa-check"></i><b>13.2</b> Let’s build a simple linear model</a></li>
+<li class="chapter" data-level="13.3" data-path="how-correlated-are-the-three-variables.html"><a href="how-correlated-are-the-three-variables.html#adding-another-variable"><i class="fa fa-check"></i><b>13.3</b> Adding another variable</a></li>
+<li class="chapter" data-level="13.4" data-path="how-correlated-are-the-three-variables.html"><a href="how-correlated-are-the-three-variables.html#your-turn-6"><i class="fa fa-check"></i><b>13.4</b> Your Turn</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#analysis-of-variance-anova-optional"><i class="fa fa-check"></i><b>8.7</b> Analysis of Variance (ANOVA) (Optional)</a><ul>
-<li class="chapter" data-level="8.7.1" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#post-hoc-tests"><i class="fa fa-check"></i><b>8.7.1</b> Post-hoc Tests</a></li>
-<li class="chapter" data-level="8.7.2" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#more-about-the-multiple-testing-problem"><i class="fa fa-check"></i><b>8.7.2</b> More about the Multiple Testing Problem</a></li>
-<li class="chapter" data-level="8.7.3" data-path="learning-objectives-5.html"><a href="learning-objectives-5.html#acknowledgements-2"><i class="fa fa-check"></i><b>8.7.3</b> Acknowledgements</a></li>
-</ul></li>
+<li class="chapter" data-level="14" data-path="analysis-of-variance-anova-optional.html"><a href="analysis-of-variance-anova-optional.html"><i class="fa fa-check"></i><b>14</b> Analysis of Variance (ANOVA) (Optional)</a><ul>
+<li class="chapter" data-level="14.1" data-path="analysis-of-variance-anova-optional.html"><a href="analysis-of-variance-anova-optional.html#post-hoc-tests"><i class="fa fa-check"></i><b>14.1</b> Post-hoc Tests</a></li>
+<li class="chapter" data-level="14.2" data-path="analysis-of-variance-anova-optional.html"><a href="analysis-of-variance-anova-optional.html#more-about-the-multiple-testing-problem"><i class="fa fa-check"></i><b>14.2</b> More about the Multiple Testing Problem</a></li>
+<li class="chapter" data-level="14.3" data-path="analysis-of-variance-anova-optional.html"><a href="analysis-of-variance-anova-optional.html#acknowledgements-2"><i class="fa fa-check"></i><b>14.3</b> Acknowledgements</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -322,292 +323,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="part-1-functions-and-objects" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Part 1: Functions and Objects</h1>
-<div id="learning-objectives" class="section level2">
-<h2><span class="header-section-number">2.1</span> Learning Objectives</h2>
-<p>By the end of this session, you should be able to:</p>
-<ol style="list-style-type: decimal">
-<li><strong>Work</strong> within the RStudio interface to <strong>run</strong> R code in an RMarkdown notebook</li>
-<li><strong>Understand</strong> basic R syntax to <strong>use</strong> functions and <strong>assign</strong> values to objects</li>
-<li><strong>Create</strong> and <strong>manipulate</strong> vectors and <strong>understand</strong> how R deals with missing data</li>
-</ol>
-</div>
-<div id="an-intro-to-rrstudio" class="section level2">
-<h2><span class="header-section-number">2.2</span> An Intro to R/RStudio</h2>
-<p>[Tour of R and R Notebooks]</p>
-<p><code>Help -&gt; Cheetsheets -&gt; RStudio IDE cheat sheet</code></p>
-<div id="code-blocks" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Code Blocks</h3>
-<p>Now that we have our notebook open, we’re ready to start.</p>
-<p>First thing of all, is the grey box below.</p>
-<p>[Play button]</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># basic math</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> </a></code></pre></div>
-<pre><code>## [1] 9</code></pre>
-<p>Let’s learn how to read this code block. Everything that starts with a <code>#</code> is called a <em>comment</em> and is not code that runs. It is useful for making notes for youself</p>
-<p>Below it is the actual code.</p>
-<p>Try this one out. It’s the same code as above, but with no spaces. Does it still run?</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># same code as above, without spaces</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="dv">4</span><span class="op">+</span><span class="dv">5</span></a></code></pre></div>
-<pre><code>## [1] 9</code></pre>
-</div>
-<div id="using-functions" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Using Functions</h3>
-<p>R includes functions for other types of math:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># using a function: rounding numbers</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="kw">round</span>(<span class="fl">3.14</span>)</a></code></pre></div>
-<pre><code>## [1] 3</code></pre>
-<p>[function names and arguments, syntax]</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># using a function with more arguments</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="kw">round</span>(<span class="fl">3.14</span>, <span class="dt">digits =</span> <span class="dv">1</span>)</a></code></pre></div>
-<pre><code>## [1] 3.1</code></pre>
-<p>[getting help]</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">?round</a></code></pre></div>
-<p>[documentation and arguments]</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># can switch order of arguments</span></a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="kw">round</span>(<span class="dt">digits =</span> <span class="dv">1</span>, <span class="dt">x =</span> <span class="fl">3.14</span>)</a></code></pre></div>
-<pre><code>## [1] 3.1</code></pre>
-<blockquote>
-<p>You may notice that boxes pop up as you type.
-These represent RStudio’s attempts to guess what you’re typing and share additional options.</p>
-</blockquote>
-</div>
-<div id="challenge-1" class="section level3">
-<h3><span class="header-section-number">2.2.3</span> <strong>Challenge 1:</strong></h3>
-<p>What does the function <code>hist</code> do? What are its main arguments? How did you determine this?</p>
-</div>
-<div id="assigning-objects" class="section level3">
-<h3><span class="header-section-number">2.2.4</span> Assigning objects</h3>
-<p>[objects and variables]</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># assigning value to an object</span></a>
-<a class="sourceLine" id="cb12-2" title="2">weight_kg &lt;-<span class="st"> </span><span class="dv">55</span></a></code></pre></div>
-<p>[assignment operator, object naming conventions]</p>
-<p>Now that the object has been assigned,
-we can reference that object by executing its name:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># recall object</span></a>
-<a class="sourceLine" id="cb13-2" title="2">weight_kg</a></code></pre></div>
-<pre><code>## [1] 55</code></pre>
-<p>[using a variable]</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># multiple an object (convert kg to lb)</span></a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>weight_kg</a></code></pre></div>
-<pre><code>## [1] 121</code></pre>
-<p>[assigning a new variable]</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># assign weight conversion to object</span></a>
-<a class="sourceLine" id="cb17-2" title="2">weight_lb &lt;-<span class="st"> </span><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>weight_kg</a></code></pre></div>
-<p>[environment panel]</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># reassign new value to an object</span></a>
-<a class="sourceLine" id="cb18-2" title="2">weight_kg &lt;-<span class="st"> </span><span class="dv">100</span></a></code></pre></div>
-<p>[changing variable values]</p>
-<p>[objects that use other objects don’t change]</p>
-<blockquote>
-<p>You can think of the names of objects like sticky notes.
-You have the option to place the sticky note (name) on any value you choose.
-You can pick up the sticky note and place it on another value,
-but you need to explicitly tell R when you want values assigned to certain objects.</p>
-</blockquote>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># remove object</span></a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="kw">remove</span>(weight_lb) </a></code></pre></div>
-<p>[removing objects]</p>
-<blockquote>
-<p>You can clear the entire environment using the button at the top of the Environment panel
-with a picture of a broom.
-This may seem extreme,
-but don’t worry!
-We can re-create all the work we’ve already done by executing each line of code again.</p>
-</blockquote>
-</div>
-<div id="challenge-2" class="section level3">
-<h3><span class="header-section-number">2.2.5</span> <strong>Challenge 2:</strong></h3>
-<p>What is the value of each item at each step? (Hint, you can see the value of an object by typing in the name of the object, such as with the <code>mass</code> line below.)</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>            <span class="co"># 1. mass?</span></a>
-<a class="sourceLine" id="cb20-2" title="2">mass</a></code></pre></div>
-<pre><code>## [1] 47.5</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">width  &lt;-<span class="st"> </span><span class="dv">122</span>             <span class="co"># 2. width?</span></a>
-<a class="sourceLine" id="cb22-2" title="2">mass &lt;-<span class="st"> </span>mass <span class="op">*</span><span class="st"> </span><span class="fl">2.0</span>      <span class="co"># 3. mass?</span></a>
-<a class="sourceLine" id="cb22-3" title="3">width  &lt;-<span class="st"> </span>width <span class="op">-</span><span class="st"> </span><span class="dv">20</span>        <span class="co">#4.  width?</span></a>
-<a class="sourceLine" id="cb22-4" title="4">mass_index &lt;-<span class="st"> </span>mass<span class="op">/</span>width  <span class="co"># 5. mass_index?</span></a></code></pre></div>
-<p>Make your answers here:</p>
-<ol style="list-style-type: decimal">
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ol>
-</div>
-</div>
-<div id="vectors" class="section level2">
-<h2><span class="header-section-number">2.3</span> Vectors</h2>
-<p>[creating vectors]
-[c is for combine]</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># assign vector</span></a>
-<a class="sourceLine" id="cb23-2" title="2">ages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">55</span>, <span class="dv">60</span>, <span class="dv">65</span>) </a>
-<a class="sourceLine" id="cb23-3" title="3"><span class="co"># recall vector</span></a>
-<a class="sourceLine" id="cb23-4" title="4">ages</a></code></pre></div>
-<pre><code>## [1] 50 55 60 65</code></pre>
-<p>[learning things about vectors]</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co"># how many things are in object?</span></a>
-<a class="sourceLine" id="cb25-2" title="2"><span class="kw">length</span>(ages)</a></code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># what type of object?</span></a>
-<a class="sourceLine" id="cb27-2" title="2"><span class="kw">class</span>(ages)</a></code></pre></div>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># performing functions with vectors</span></a>
-<a class="sourceLine" id="cb29-2" title="2"><span class="kw">mean</span>(ages)</a></code></pre></div>
-<pre><code>## [1] 57.5</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">range</span>(ages)</a></code></pre></div>
-<pre><code>## [1] 50 65</code></pre>
-<p>[characters]</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># vector of body parts</span></a>
-<a class="sourceLine" id="cb33-2" title="2">organs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lung&quot;</span>, <span class="st">&quot;prostate&quot;</span>, <span class="st">&quot;breast&quot;</span>)</a></code></pre></div>
-<p>In this case,
-each word is encased in quotation marks,
-indicating these are character data,
-rather than object names.</p>
-<div id="challenge-3" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> <strong>Challenge 3:</strong></h3>
-<p>Please answer the following questions about <code>organs</code>:</p>
-<ol style="list-style-type: decimal">
-<li>How many values are in <code>organs</code>?</li>
-<li>What type of data is <code>organs</code>?</li>
-<li>get overview of <code>organs</code></li>
-</ol>
-<p>Answers here:</p>
-<ol style="list-style-type: decimal">
-<li></li>
-<li></li>
-<li></li>
-</ol>
-</div>
-<div id="data-types-and-vectors" class="section level3">
-<h3><span class="header-section-number">2.3.2</span> Data types and Vectors</h3>
-<ul>
-<li><strong>character</strong>: sometimes referred to as string data, tend to be surrounded by quotes</li>
-<li><strong>numeric</strong>: real or decimal numbers, sometimes referred to as “double”</li>
-<li>integer: a subset of numeric in which numbers are stored as integers</li>
-<li><strong>logical</strong>: Boolean data (TRUE and FALSE)</li>
-<li>complex: complex numbers with real and imaginary parts (e.g., 1 + 4i)</li>
-<li>raw: bytes of data (machine readable, but not human readable)</li>
-</ul>
-</div>
-<div id="challenge-4" class="section level3">
-<h3><span class="header-section-number">2.3.3</span> <strong>Challenge 4:</strong></h3>
-<p>R tends to handle interpreting data types in the background of most operations.</p>
-<p>The following code is designed to cause some unexpected results in R.</p>
-<p>What is unusual about each of the following objects?</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">num_char &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&quot;a&quot;</span>)</a>
-<a class="sourceLine" id="cb34-2" title="2">num_logical &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb34-3" title="3">char_logical &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb34-4" title="4">tricky &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&quot;4&quot;</span>)</a></code></pre></div>
-</div>
-<div id="manipulating-vectors" class="section level3">
-<h3><span class="header-section-number">2.3.4</span> Manipulating vectors</h3>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="co"># add a value to end of vector</span></a>
-<a class="sourceLine" id="cb35-2" title="2">ages &lt;-<span class="st"> </span><span class="kw">c</span>(ages, <span class="dv">90</span>) </a></code></pre></div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co"># add value at the beginning</span></a>
-<a class="sourceLine" id="cb36-2" title="2">ages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">30</span>, ages)</a></code></pre></div>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co"># extracting second value</span></a>
-<a class="sourceLine" id="cb37-2" title="2">organs[<span class="dv">2</span>] </a></code></pre></div>
-<pre><code>## [1] &quot;prostate&quot;</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># excluding second value</span></a>
-<a class="sourceLine" id="cb39-2" title="2">organs[<span class="op">-</span><span class="dv">2</span>] </a></code></pre></div>
-<pre><code>## [1] &quot;lung&quot;   &quot;breast&quot;</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># extracting first and third values</span></a>
-<a class="sourceLine" id="cb41-2" title="2">organs[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)] </a></code></pre></div>
-<pre><code>## [1] &quot;lung&quot;   &quot;breast&quot;</code></pre>
-</div>
-<div id="missing-data" class="section level3">
-<h3><span class="header-section-number">2.3.5</span> Missing data</h3>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co"># create a vector with missing data</span></a>
-<a class="sourceLine" id="cb43-2" title="2">heights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="ot">NA</span>, <span class="dv">6</span>)</a></code></pre></div>
-<p>[NA is not a character]</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co"># calculate mean and max on vector with missing data</span></a>
-<a class="sourceLine" id="cb44-2" title="2"><span class="kw">mean</span>(heights)</a></code></pre></div>
-<pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">max</span>(heights)</a></code></pre></div>
-<pre><code>## [1] NA</code></pre>
-<p>[ugh. na strikes again!]</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="co"># add argument to remove NA</span></a>
-<a class="sourceLine" id="cb48-2" title="2"><span class="kw">mean</span>(heights, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">max</span>(heights, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="co"># remove incomplete cases</span></a>
-<a class="sourceLine" id="cb52-2" title="2"><span class="kw">na.omit</span>(heights) </a></code></pre></div>
-<pre><code>## [1] 2 4 4 6
-## attr(,&quot;na.action&quot;)
-## [1] 4
-## attr(,&quot;class&quot;)
-## [1] &quot;omit&quot;</code></pre>
-</div>
-<div id="challenge" class="section level3">
-<h3><span class="header-section-number">2.3.6</span> <strong>Challenge:</strong></h3>
-<p>Complete the following tasks after creating this vector (Note: there are multiple solutions):
-(solutions <a href="solutions/class1_solutions.R">here</a>)</p>
-<ol style="list-style-type: decimal">
-<li>Remove NAs on <code>more_heights</code> (assign it to the object <code>more_heights_complete</code>)</li>
-<li>Calculate the <code>median()</code> of <code>more_heights_complete</code></li>
-</ol>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="co"># create vector</span></a>
-<a class="sourceLine" id="cb54-2" title="2">more_heights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">63</span>, <span class="dv">69</span>, <span class="dv">60</span>, <span class="dv">65</span>, <span class="ot">NA</span>, <span class="dv">68</span>, <span class="dv">61</span>, <span class="dv">70</span>, <span class="dv">61</span>, <span class="dv">59</span>, <span class="dv">64</span>, <span class="dv">69</span>, <span class="dv">63</span>, <span class="dv">63</span>, <span class="ot">NA</span>, <span class="dv">72</span>, <span class="dv">65</span>, <span class="dv">64</span>, <span class="dv">70</span>, <span class="dv">63</span>, <span class="dv">65</span>)</a>
-<a class="sourceLine" id="cb54-3" title="3"><span class="co"># remove NAs</span></a>
-<a class="sourceLine" id="cb54-4" title="4"></a>
-<a class="sourceLine" id="cb54-5" title="5"><span class="co"># calculate the median</span></a></code></pre></div>
-</div>
-</div>
-<div id="wrapping-up" class="section level2">
-<h2><span class="header-section-number">2.4</span> Wrapping up</h2>
-<p>[R/Rstudio]
-[objects]
-[data types]</p>
-</div>
-<div id="assignment" class="section level2">
-<h2><span class="header-section-number">2.5</span> Assignment</h2>
-<ol style="list-style-type: decimal">
-<li>Object manipulation</li>
-</ol>
-<p>Create an object called <code>agge</code> that contains your age in years. Then
-reassign the object to a new object called <code>age</code> (e.g., correct the typo). Then remove the previous object from your environment and then calculate your age in days</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="co">#create agge object</span></a>
-<a class="sourceLine" id="cb55-2" title="2"></a>
-<a class="sourceLine" id="cb55-3" title="3"><span class="co">#reassign agge value to age</span></a>
-<a class="sourceLine" id="cb55-4" title="4"></a>
-<a class="sourceLine" id="cb55-5" title="5"><span class="co">#remove agge object</span></a>
-<a class="sourceLine" id="cb55-6" title="6"></a>
-<a class="sourceLine" id="cb55-7" title="7"><span class="co">#Use math to calculate your age in days</span></a></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>Vector manipulation (character data):</li>
-</ol>
-<p>Create a object called <code>buildings</code> representing a vector that contains four names of buildings on OHSU’s campus, including the building where you work (here’s a reference: <a href="https://www.ohsu.edu/visit/maps" class="uri">https://www.ohsu.edu/visit/maps</a>).</p>
-<p>Add <code>Portland, Oregon</code> to the beginning of the vector, and <code>Phys Plant</code> to the end of the vector</p>
-<p>subset the vector to show only the building in which you work.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="co">#create buildings object</span></a>
-<a class="sourceLine" id="cb56-2" title="2">buildings &lt;-<span class="st"> </span><span class="kw">c</span>()</a>
-<a class="sourceLine" id="cb56-3" title="3"></a>
-<a class="sourceLine" id="cb56-4" title="4"><span class="co">#Add &quot;Portland, Oregon&quot; to the beginning of buildings</span></a>
-<a class="sourceLine" id="cb56-5" title="5"></a>
-<a class="sourceLine" id="cb56-6" title="6"><span class="co">#Add &quot;Phys Plant&quot; to the end of buildings</span></a>
-<a class="sourceLine" id="cb56-7" title="7"></a>
-<a class="sourceLine" id="cb56-8" title="8"><span class="co">#subset buildings to show only your building</span></a>
-<a class="sourceLine" id="cb56-9" title="9">buildings[]</a></code></pre></div>
-<pre><code>## NULL</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Vector manipulation (numerical data):</li>
-</ol>
-<p>The following vector represents the number of vacation days possessed by various employees.</p>
-<p>How many employees are represented in the vector?</p>
-<p>How many vacation days total?</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1">vacation_days &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb58-2" title="2"></a>
-<a class="sourceLine" id="cb58-3" title="3"><span class="co">#how many employees are represented in the vector?</span></a>
-<a class="sourceLine" id="cb58-4" title="4"></a>
-<a class="sourceLine" id="cb58-5" title="5"><span class="co">#how many vacation days total?</span></a></code></pre></div>
-</div>
-<div id="submitting-your-homework" class="section level2">
-<h2><span class="header-section-number">2.6</span> Submitting your homework</h2>
-<p>Submit your <code>part1-FIRSTNAME-LASTNAME.nb.html</code> file in Sakai. To download it, click on the <code>More</code> gear icon, and click <strong>Export</strong> to download it to your computer.</p>
+<div id="how-correlated-are-the-three-variables" class="section level1">
+<h1><span class="header-section-number">Chapter 13</span> How Correlated are the Three Variables?</h1>
+<p>Another question we’d like to check is whether the measurements are correlated or not.</p>
+<p>That is, can we reliably predict <code>dxa</code> from <code>st</code>?</p>
+<p>Let’s generate a pairs plot, which can be a useful way of visualizing correlated variables.</p>
+<p>We can do this by using <code>ggpairs()</code>, which is in the <code>GGally</code> package (not part of the <code>tidyverse</code>):</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1">GGally<span class="op">::</span><span class="kw">ggpairs</span>(body_comp,  <span class="kw">aes</span>(<span class="dt">color=</span>gender))  </a></code></pre></div>
+<pre><code>## Warning in ggally_statistic(data = data, mapping = mapping, na.rm = na.rm, :
+## Removing 1 row that contained a missing value
 
+## Warning in ggally_statistic(data = data, mapping = mapping, na.rm = na.rm, :
+## Removing 1 row that contained a missing value</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).
+
+## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_density).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="07-part6_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>We can generate a scatterplot with a trend line using a geom called <code>geom_smooth()</code>.</p>
+<p>We need to add the arguments <code>method</code> and <code>se</code> (short for standard error).</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" title="1">body_comp <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb246-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb246-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x=</span>dxa, <span class="dt">y=</span>st) <span class="op">+</span></a>
+<a class="sourceLine" id="cb246-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb246-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="07-part6_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div id="your-turn-5" class="section level2">
+<h2><span class="header-section-number">13.1</span> Your Turn</h2>
+<p>Try setting <code>se</code> to <code>TRUE</code>. What does it add to the graph?</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" title="1">body_comp <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb248-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb248-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x=</span>dxa, <span class="dt">y=</span>st) <span class="op">+</span></a>
+<a class="sourceLine" id="cb248-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb248-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>( <span class="dt">se =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="07-part6_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="lets-build-a-simple-linear-model" class="section level2">
+<h2><span class="header-section-number">13.2</span> Let’s build a simple linear model</h2>
+<p>We’ve established that there is a correlation between <code>dxa</code> and <code>st</code>. Can we use <code>st</code> to predict <code>dxa</code>?</p>
+<p>y = ax + b</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1"><span class="kw">lm</span>(dxa <span class="op">~</span><span class="st"> </span>st, <span class="dt">data=</span>body_comp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb250-2" title="2"><span class="st">  </span><span class="kw">tidy</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)    0.275    0.215       1.28 2.05e- 1
+## 2 st             0.903    0.0367     24.6  3.17e-43</code></pre>
+<p>The predicted line through the data is:</p>
+<p>dxa = 0.295 + 0.903 * <code>st</code></p>
+</div>
+<div id="adding-another-variable" class="section level2">
+<h2><span class="header-section-number">13.3</span> Adding another variable</h2>
+<p>What if we included <code>gender</code> in our model? Our model can accept <code>factors</code> as inputs.</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" title="1">copy_number &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;2&quot;</span>)</a>
+<a class="sourceLine" id="cb252-2" title="2"></a>
+<a class="sourceLine" id="cb252-3" title="3"></a>
+<a class="sourceLine" id="cb252-4" title="4"><span class="kw">lm</span>(dxa <span class="op">~</span><span class="st"> </span>st <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data=</span>body_comp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb252-5" title="5"><span class="st">  </span><span class="kw">tidy</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)   0.0646    0.224      0.288 7.74e- 1
+## 2 st            0.888     0.0362    24.5   6.93e-43
+## 3 gender0       0.577     0.222      2.60  1.09e- 2</code></pre>
+<p>In this case, <code>gender</code> is a useful predictor of <code>dxa</code>, since the p-value is less than our threshold of 0.05.</p>
+<p>However, if we did use the equation, it would correspond to this equation:</p>
+<p><code>dxa</code> = 0.097 + 0.889 * <code>st</code> + 0.536 * <code>gender0</code></p>
+<p>The factor <code>gender</code> here is recoded as a “dummy” variable, and reading it is a little confusing. Note that it says <code>gender0</code> and not <code>gender</code>. That’s because it’s coding <code>gender</code> = 0 as 1 here, and 0, if gender is 1.</p>
+<p>Dummy variables are very confusing. <a href="http://www.sthda.com/english/articles/40-regression-analysis/163-regression-with-categorical-variables-dummy-coding-essentials-in-r/" class="uri">http://www.sthda.com/english/articles/40-regression-analysis/163-regression-with-categorical-variables-dummy-coding-essentials-in-r/</a></p>
+</div>
+<div id="your-turn-6" class="section level2">
+<h2><span class="header-section-number">13.4</span> Your Turn</h2>
+<p>Try adding <code>br</code> as a term in the model. How does it change the p-value of <code>st</code>?</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" title="1"><span class="kw">lm</span>(dxa <span class="op">~</span><span class="st"> </span>st <span class="op">+</span><span class="st"> </span>br, <span class="dt">data=</span>body_comp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb254-2" title="2"><span class="st">  </span><span class="kw">tidy</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)    0.111    0.208      0.532 5.96e- 1
+## 2 st             0.699    0.0683    10.2   5.78e-17
+## 3 br             0.213    0.0615     3.46  8.20e- 4</code></pre>
 </div>
 </div>
             </section>
@@ -615,8 +414,8 @@ reassign the object to a new object called <code>age</code> (e.g., correct the t
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="part-2-data-frames-reading-data-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="t-tests.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis-of-variance-anova-optional.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -647,7 +446,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-part1.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-part6.Rmd",
 "text": "Edit"
 },
 "history": {

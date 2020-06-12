@@ -1,7 +1,7 @@
 --- 
 title: "Ready for R: Notebook Reference"
 author: "Aaron Coyner and Ted Laderas"
-date: "2020-05-22"
+date: "2020-06-12"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book

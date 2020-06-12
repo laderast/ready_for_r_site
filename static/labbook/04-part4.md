@@ -308,6 +308,10 @@ smoke_complete %>%
 ```
 
 ```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
 ## # A tibble: 2 x 2
 ##   gender mean_cigarettes
 ##   <chr>            <dbl>
@@ -332,6 +336,10 @@ smoke_complete %>%
 ```
 
 ```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
 ## # A tibble: 2 x 3
 ##   gender  mean    sd
 ##   <chr>  <dbl> <dbl>
@@ -351,6 +359,10 @@ What if we want to know the number of subjects in our dataset with each type of 
 smoke_complete %>%
     group_by(disease) %>%
     summarize(count = n())
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ```
