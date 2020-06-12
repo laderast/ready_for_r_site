@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Part 2: data.frames, Reading Data, ggplot2 | Ready for R: Notebook Reference</title>
+  <title>Chapter 8 Simple Statistics with broom | Ready for R: Notebook Reference</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Part 2: data.frames, Reading Data, ggplot2 | Ready for R: Notebook Reference" />
+  <meta property="og:title" content="Chapter 8 Simple Statistics with broom | Ready for R: Notebook Reference" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="laderast/ready_for_r_site" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Part 2: data.frames, Reading Data, ggplot2 | Ready for R: Notebook Reference" />
+  <meta name="twitter:title" content="Chapter 8 Simple Statistics with broom | Ready for R: Notebook Reference" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="part-1-functions-and-objects.html"/>
-<link rel="next" href="part-3-more-data-visualization-and-data-manipulation.html"/>
+<link rel="prev" href="part-5-doing-useful-things-with-multiple-tables.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -323,420 +323,319 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="part-2-data.frames-reading-data-ggplot2" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Part 2: <code>data.frame</code>s, Reading Data, <code>ggplot2</code></h1>
-<p>In this session, we’ll continue our introduction to R by working with a large dataset that more closely resembles that which you may encounter while analyzing data for research.</p>
-<div id="learning-objectives-1" class="section level2">
-<h2><span class="header-section-number">3.1</span> Learning Objectives</h2>
-<p>By the end of this session, you should be able to:</p>
-<ol style="list-style-type: decimal">
-<li><strong>Import</strong> spreadsheet-style data into R as a <code>data.frame</code>.</li>
-<li><strong>Understand</strong> properties of <code>data.frames</code>, especially variables.</li>
-<li><strong>Visualize</strong> <code>numeric</code> vectors in this dataset using <code>ggplot2</code></li>
-</ol>
+<div id="simple-statistics-with-broom" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Simple Statistics with <code>broom</code></h1>
+<div id="learning-objectives-5" class="section level2">
+<h2><span class="header-section-number">8.1</span> Learning Objectives</h2>
+<ul>
+<li><strong>Learn</strong> about errors and warnings and where to ask for help</li>
+<li><strong>Learn</strong> some basic Exploratory Data Analysis techniques</li>
+<li><strong>Learn</strong> a basic analysis workflow for statistical modeling</li>
+<li><strong>Learn</strong> about <em>formulas</em> and how to specify models using them</li>
+<li><strong>Learn</strong> about t Tests and how to <strong>apply</strong> them to your dataset</li>
+<li><strong>Learn</strong> and <strong>apply</strong> linear regression models</li>
+<li><strong>Learn</strong> and <strong>apply</strong> Analysis of Variance (ANOVA)</li>
+</ul>
 </div>
-<div id="a-note-about-base-r-versus-the-tidyverse" class="section level2">
-<h2><span class="header-section-number">3.2</span> A note about Base R versus the Tidyverse</h2>
-<p>For the remainder of this course, we’ll be focusing on using functions from the <a href="https://www.tidyverse.org/">tidyverse</a>.</p>
-<p>It is set up as a <em>library</em> - functions someone else wrote that are not built into R. We’ll use a few libraries in this course.</p>
-<p>The Tidyverse is essentially a library of libraries – each contains functions that are either essential for or <em>greatly</em> simplify the process of data manipulation and visualization for data scientists.</p>
-<p>We have already installed the <code>tidyverse</code> for you. For reading excel files, we need also load up an additional library called <code>readxl</code>.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="co">#load the required libraries</span></a>
-<a class="sourceLine" id="cb59-2" title="2"><span class="kw">library</span>(here)</a>
-<a class="sourceLine" id="cb59-3" title="3"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb59-4" title="4"><span class="kw">library</span>(readxl)</a></code></pre></div>
+<div id="getting-help-on-errors" class="section level2">
+<h2><span class="header-section-number">8.2</span> Getting Help on Errors</h2>
+<div id="understanding-the-difference-between-warnings-and-errors" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Understanding the difference between warnings and errors</h3>
+<p>A <em>warning</em> is an indication that the data or arguments isn’t quite what the function expected.</p>
+<p>You can usually run the code, but you should be careful about it and verify the output.</p>
+<p>An <em>error</em> means that the code can’t execute at all given what you have given the function.</p>
+<p>Errors can be difficult to understand, which is why</p>
 </div>
-<div id="importing-spreadsheet-style-data-into-r" class="section level2">
-<h2><span class="header-section-number">3.3</span> Importing spreadsheet-style data into R</h2>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="kw">here</span>(<span class="st">&quot;image/project2.JPG&quot;</span>))</a></code></pre></div>
-<p><img src="image/project2.JPG" width="1024" /></p>
-<p>Once you have your notebook open, let’s talk about its location. It is located where the <code>project.rproj</code> file. The location of this file (also called an “RProject” file) is always considered the <code>root</code> directory of the project.</p>
-<p>It’s where you start from that determines the file directory path for loading data.</p>
-<p>Since this notebook, <code>part2.Rmd</code> is in the same folder as the <code>project.rproj</code> file, then when we need to refer to data files, it is <em>relative</em> to the root folder.</p>
-<p>When you’re starting out, it’s best to keep your RMarkdown notebooks and files in the <strong>root</strong> folder. It will help prevent you from dealing with a lot of headaches.</p>
-<div id="a-good-place-to-put-your-data" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> A good place to put your data</h3>
-<p>Take a look at the <code>data/</code> folder, and where the <code>tcga_clinical_data.xlsx</code> file is.</p>
-<p>In our notebook, how do we refer to that file name? Since we’re in the root, we can refer to it as</p>
-<p><code>data/tcga_clinical_data.xlsx</code></p>
+<div id="googling-is-standard-practice-for-errors" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> Googling is StandaRd pRactice foR eRrors</h3>
+<p>The first thing I do when I encounter an error is to search for the error. I usually start with Google.</p>
+<p>I don’t know everything, and the odds are that I made a mistake in understanding the documentation.</p>
+<p>There are some resources that I especially check (in order):</p>
+<ul>
+<li>RStudio Community (for <code>tidyverse</code>): <a href="https://community.rstudio.com/" class="uri">https://community.rstudio.com/</a></li>
+<li>Stack Overflow: <a href="http://stackoverflow.com/" class="uri">http://stackoverflow.com/</a></li>
+<li>Biostars (for Bioinformatics): <a href="https://www.biostars.org/" class="uri">https://www.biostars.org/</a></li>
+<li>The package’s github page (especially issues)</li>
+</ul>
 </div>
-<div id="loading-our-excel-file" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Loading our excel file</h3>
-<p>Now we can use a built-in function called <code>read_excel()</code> that will help us load our data into R:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1">brca_clinical &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="kw">here</span>(<span class="st">&quot;data/tcga_clinical_data.xlsx&quot;</span>),</a>
-<a class="sourceLine" id="cb61-2" title="2">                            <span class="dt">sheet =</span> <span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb61-3" title="3">                            <span class="dt">skip =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb61-4" title="4">                            <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span></a>
-<a class="sourceLine" id="cb61-5" title="5">                            )</a></code></pre></div>
-<p>You can see the excel file here: <a href="https://docs.google.com/spreadsheets/d/1E6jmCB9nfeIJ_zlSH6HJCUmKwwcMTWwP0EwEcAHo0CU/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/1E6jmCB9nfeIJ_zlSH6HJCUmKwwcMTWwP0EwEcAHo0CU/edit?usp=sharing</a></p>
-<p>You should see <code>brca_clinical</code> appear in the Environment window on the upper right panel in RStudio. If you click on <code>brca_clinical</code> there, a new tab will appear next to your R script in the Source window.</p>
+<div id="where-do-i-ask-for-help" class="section level3">
+<h3><span class="header-section-number">8.2.3</span> Where do I ask for help?</h3>
+<p>I’m trying to be as helpful as I can, but I can’t answer all of your questions.</p>
+<p>The following communities are extremely helpful to beginners:</p>
+<ul>
+<li>R for Data Science Community: <a href="https://r4ds.slack.com/" class="uri">https://r4ds.slack.com/</a></li>
+<li>RStudio Community: <a href="https://community.rstudio.com/" class="uri">https://community.rstudio.com/</a></li>
+</ul>
+</div>
+</div>
+<div id="caveat-about-statistics" class="section level2">
+<h2><span class="header-section-number">8.3</span> Caveat about statistics</h2>
+<p>This is not meant to be a comprehensive course in statistics. We want to show you some basic techniques, but you will need to dig further.</p>
+<p>Danielle Navarro’s Learning Statistics with R is excellent and talks much more about statistics: <a href="https://learningstatisticswithr.com/" class="uri">https://learningstatisticswithr.com/</a></p>
+</div>
+<div id="introducing-tidymodels" class="section level2">
+<h2><span class="header-section-number">8.4</span> Introducing <code>tidymodels</code></h2>
+<p>We will be using the <code>broom</code> package from the <code>tidymodels</code> set of packages to make the modeling easier to work with.</p>
+<p><code>tidymodels</code> attempts to unify all of the various modeling packages in a consistent interface.</p>
+<p><code>broom</code> works mostly with the output of models. One of the problems with R is that the many modeling packages are not consistent to work with. It can be just as difficult to get a p-value out of a model as it is to run it on some data! <code>broom</code> simpliflies this a lot.</p>
+<p>There are 3 main functions in <em>broom</em>:</p>
+<ul>
+<li><code>tidy()</code> - This is where you get most of the output you want, including <em>coefficients</em> and <em>p-values</em></li>
+<li><code>glance()</code> - additional measures on your model, including R-squared, log likelihood, and AIC/BIC</li>
+<li><code>augment()</code> - make predictions with your model using new data</li>
+</ul>
+<p>We will mostly use <code>tidy()</code> and <code>glance()</code> for right now.</p>
+</div>
+<div id="t-tests" class="section level2">
+<h2><span class="header-section-number">8.5</span> T-tests</h2>
+<div id="the-dataset" class="section level3">
+<h3><span class="header-section-number">8.5.1</span> The Dataset</h3>
+<p>A study by Goran et.al (1996) examined the accuracy of some widely used body-composition techniques for children using three different methods:</p>
+<ul>
+<li>dual-energy X-ray absorptiometry (<code>dxa</code>) technique,</li>
+<li>skin-fold thickness (<code>st</code>),</li>
+<li>bioelectric resistance (<code>br</code>).</li>
+</ul>
+<p>Subjects were children between 4 and 10 years old. Data were collected on 98 subjects (49 males and 49 females).</p>
+<p>One purpose of the study was to determine whether there was a difference in fat mass measurements using <code>DXA</code> (considered the gold standard method) compared to the skin-fold thickness method.</p>
+<p>We also wish to determine if <code>DXA</code> levels are significantly different between males and females.</p>
+</div>
+<div id="getting-set-up-3" class="section level3">
+<h3><span class="header-section-number">8.5.2</span> Getting set up</h3>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb231-2" title="2"><span class="kw">library</span>(broom)</a>
+<a class="sourceLine" id="cb231-3" title="3"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb231-4" title="4"><span class="kw">library</span>(janitor)</a>
+<a class="sourceLine" id="cb231-5" title="5"><span class="kw">library</span>(GGally)</a>
+<a class="sourceLine" id="cb231-6" title="6"><span class="kw">library</span>(broom)</a></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" title="1">body_comp &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/body_composition.csv&#39;</span>, <span class="dt">na=</span><span class="st">&quot;NA&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb232-2" title="2"><span class="st">  </span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb232-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">factor</span>(gender, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;0&quot;</span>)))</a>
+<a class="sourceLine" id="cb232-4" title="4"></a>
+<a class="sourceLine" id="cb232-5" title="5"><span class="kw">head</span>(body_comp)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##     dxa    st    br gender
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt; 
+## 1  3.65  4.55  4.26 1     
+## 2  3.92  2.82  6.09 0     
+## 3  7.53  3.89  5.12 0     
+## 4  6.24  5.49  8.04 0     
+## 5 10.6  10.5  14.2  0     
+## 6  9.58 11.2  12.4  0</code></pre>
+</div>
+<div id="exploratory-data-analysis" class="section level3">
+<h3><span class="header-section-number">8.5.3</span> Exploratory Data Analysis</h3>
+<p>Before we do any statistical tests on our data, we should first visualize it.</p>
+<p>Since our ultimate goal is to examine the differences between bodyfat measurement methods, let’s create boxplots that illustrate this difference, if any.</p>
+<p>Notice that the <code>aes()</code> for <code>ggplot()</code> only accepts one <code>x</code> value and one <code>y</code> value, but we have three columns we’d like to compare (<code>dxa</code>, <code>st</code>, <code>br</code>). So, we need to convert our data to long format using <code>pivot_longer()</code>.</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" title="1">body_comp_long &lt;-<span class="st"> </span>body_comp <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb234-2" title="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&#39;dxa&#39;</span>, <span class="st">&#39;st&#39;</span>, <span class="st">&#39;br&#39;</span>),</a>
+<a class="sourceLine" id="cb234-3" title="3">               <span class="dt">names_to =</span> <span class="st">&#39;method&#39;</span>,</a>
+<a class="sourceLine" id="cb234-4" title="4">               <span class="dt">values_to =</span> <span class="st">&#39;body_fat_percentage&#39;</span>) </a>
+<a class="sourceLine" id="cb234-5" title="5"></a>
+<a class="sourceLine" id="cb234-6" title="6"></a>
+<a class="sourceLine" id="cb234-7" title="7"><span class="kw">head</span>(body_comp_long)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   gender method body_fat_percentage
+##   &lt;fct&gt;  &lt;chr&gt;                &lt;dbl&gt;
+## 1 1      dxa                   3.65
+## 2 1      st                    4.55
+## 3 1      br                    4.26
+## 4 0      dxa                   3.92
+## 5 0      st                    2.82
+## 6 0      br                    6.09</code></pre>
+<p>Now that we’ve done that, we can set <code>x = method</code> and <code>y = body_fat_percentage</code>.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"><span class="kw">ggplot</span>(body_comp_long) <span class="op">+</span></a>
+<a class="sourceLine" id="cb236-2" title="2"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> method, <span class="dt">y =</span> body_fat_percentage, <span class="dt">fill =</span> method) <span class="op">+</span></a>
+<a class="sourceLine" id="cb236-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb236-4" title="4"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">color=</span><span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
+<p><img src="07-part6_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>It appears that our measurements are close to one another, but there are some noticable differences.</p>
+</div>
+<div id="t-test" class="section level3">
+<h3><span class="header-section-number">8.5.4</span> t-test</h3>
+<p>Briefly, a t-test should be used when examining whether the mean <strong>between two groups</strong> are similar This means that the measurements must be <strong>numeric</strong> (there are other tests for categorical data).</p>
+<p>The null hypothesis for a t-test is that the two means are equal, and the alternative is that they are not.</p>
 <blockquote>
-<p>Clicking on the name of an object in the Environment window
-is a shortcut for running <code>View(brca_clinical)</code>;
-you’ll see this code appear in the Console after clicking.</p>
+<p>One purpose of the study was to determine whether there was a difference in fat mass measurements using <code>dxa</code> (considered the gold standard method) compared to the skin-fold thickness method (<code>st</code>).</p>
 </blockquote>
+<p>Below, we will use a paired t-test. Paired simply means that each group (<code>dxa</code> and <code>st</code>) each contain measurements for the same subject on corresponding rows. If body fat measurements were collected using <code>dxa</code> for children in Group A and <code>st</code> for a separate set of children in Group B, then we would <em>not</em> use a paired t-test.</p>
+<blockquote>
+<p>HYPOTHESIS: There is a difference in mean fat mass measurements between the DXA and skin-fold thickness (ST) methods.</p>
+</blockquote>
+<blockquote>
+<p>NULL HYPOTHESIS: There is no difference in mean fat mass measurements between the two methods.</p>
+</blockquote>
+<p>We also need to set a significance threshold. We’ll set it at 0.05.</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" title="1">body_comp_dxa_st &lt;-<span class="st"> </span>body_comp_long <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb237-2" title="2"><span class="st">  </span><span class="kw">filter</span>(method <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dxa&quot;</span>, <span class="st">&quot;st&quot;</span>))</a>
+<a class="sourceLine" id="cb237-3" title="3"></a>
+<a class="sourceLine" id="cb237-4" title="4"></a>
+<a class="sourceLine" id="cb237-5" title="5">tidy_output2 &lt;-<span class="st"> </span><span class="kw">t.test</span>(body_comp<span class="op">$</span>dxa, body_comp<span class="op">$</span>st, <span class="dt">paired=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb237-6" title="6"><span class="st">  </span><span class="kw">tidy</span>()</a>
+<a class="sourceLine" id="cb237-7" title="7"></a>
+<a class="sourceLine" id="cb237-8" title="8">tidy_output &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb237-9" title="9"><span class="st">  </span><span class="kw">t.test</span>(body_fat_percentage <span class="op">~</span><span class="st"> </span>method, </a>
+<a class="sourceLine" id="cb237-10" title="10">        <span class="dt">paired=</span><span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb237-11" title="11">        <span class="dt">data=</span>body_comp_dxa_st) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb237-12" title="12"><span class="st">    </span><span class="kw">tidy</span>()</a>
+<a class="sourceLine" id="cb237-13" title="13"></a>
+<a class="sourceLine" id="cb237-14" title="14">tidy_output2</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 8
+##   estimate statistic p.value parameter conf.low conf.high method     alternative
+##      &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      
+## 1   -0.207     -1.78  0.0774        97   -0.438    0.0232 Paired t-~ two.sided</code></pre>
+<p>We see that <code>p.value</code> is equal to <code>~0.634</code>; this means <strong>we cannot reject the null hypothesis</strong> (i.e., the difference in body fat measurements between <code>dxa</code> and <code>st</code> are not statistically different from one another).</p>
 </div>
-<div id="challenge-1-5-minutes" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Challenge 1 (5 minutes)</h3>
-<p>Take a look at the documentation for <code>read_excel()</code>. This is a package in the package <code>readxl</code>, which is installed as part of the <code>tidyverse</code>.</p>
-<ol style="list-style-type: decimal">
-<li>What does the <code>skip</code> argument do?</li>
-<li>Do we need to refer to a <code>sheet</code> within an excel file as a number, or can we refer to it as the sheet name instead?</li>
-<li>What does the <code>guess_max</code> argument do?</li>
-</ol>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">?read_excel</a></code></pre></div>
-<pre><code>## starting httpd help server ... done</code></pre>
-<p>[Your answers here]</p>
-<p>Now that we have the data imported and assigned to an object, we can take some time to explore the data we’ll be using for the rest of this course.</p>
-</div>
-<div id="notes-on-the-data" class="section level3">
-<h3><span class="header-section-number">3.3.4</span> Notes on the Data</h3>
-<ul>
-<li>These data are clinical cancer data from the <a href="https://gdc.cancer.gov">National Cancer Institute’s Genomic Data Commons</a>, specifically from The Cancer Genome Atlas, or <a href="https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga">TCGA</a>.</li>
-<li>Each row represents a patient, and each column represents information about demographics (race, age at diagnosis, etc) and disease (e.g., cancer type).</li>
-<li>The data were downloaded and aggregated using an R script, which you can view in the <a href="https://github.com/fredhutchio/R_intro/blob/master/0dataset.R">GitHub repository for this course</a>.</li>
-</ul>
-</div>
-<div id="challenge-2-5-minutes" class="section level3">
-<h3><span class="header-section-number">3.3.5</span> Challenge 2 (5 minutes):</h3>
-<p>Inspect, and import the following sheets from the <code>tcga_clinical_data.xlsx</code> excel file.</p>
-<p>Confirm that you have loaded them correctly by clicking on the objects in the <code>Environment</code> pane in the top right.</p>
-<ol style="list-style-type: decimal">
-<li>The <code>CESC</code> sheet. Save it as <code>cesc_clinical</code>.</li>
-<li>The <code>LUSC</code> sheet. Save it as <code>lusc_clinical</code>.</li>
-</ol>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co">#load cesc_clinical here</span></a>
-<a class="sourceLine" id="cb64-2" title="2"></a>
-<a class="sourceLine" id="cb64-3" title="3"><span class="co">#What should be the sheet argument?</span></a>
-<a class="sourceLine" id="cb64-4" title="4"></a>
-<a class="sourceLine" id="cb64-5" title="5"><span class="co">#do you need to skip a line?</span></a>
-<a class="sourceLine" id="cb64-6" title="6"></a>
-<a class="sourceLine" id="cb64-7" title="7">cesc_clinical &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/tcga_clinical_data.xlsx&quot;</span>,</a>
-<a class="sourceLine" id="cb64-8" title="8">                            <span class="dt">sheet =</span> ____, </a>
-<a class="sourceLine" id="cb64-9" title="9">                            <span class="dt">skip =</span> ___</a>
-<a class="sourceLine" id="cb64-10" title="10">                            <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span></a>
-<a class="sourceLine" id="cb64-11" title="11">                            )  </a>
-<a class="sourceLine" id="cb64-12" title="12"></a>
-<a class="sourceLine" id="cb64-13" title="13"><span class="co">#load lusc_clinical here</span></a>
-<a class="sourceLine" id="cb64-14" title="14"></a>
-<a class="sourceLine" id="cb64-15" title="15">lusc_clinical &lt;-<span class="st"> </span></a></code></pre></div>
-<p>Importing data can be tricky and frustrating. However, if you can’t get your data into R, you can’t do anything to analyze or visualize it. It’s worth understanding how to do it effectively to save you time and energy later.</p>
-<p>We will be covering loading in another format that you can export from many different software programs, the <em>comma separated value</em> format, or <code>csv</code> format in another section.</p>
-</div>
-<div id="tips-on-formating-your-excel-file-for-r" class="section level3">
-<h3><span class="header-section-number">3.3.6</span> Tips on Formating your excel file for R</h3>
-<p>Here are some tips on formatting your data to get it into R easier.</p>
-<p>Click on the code block below to load up a graphic.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;image/tidy-1.png&quot;</span>)</a></code></pre></div>
-<p><img src="image/tidy-1.png" width="960" /></p>
-<ol style="list-style-type: decimal">
-<li><strong>Tidy is Best</strong>. Try to format your spreadsheet where the columns correspond to variables you’re measuring, and a row corresponds to an observation.</li>
-</ol>
-<p>In our example:</p>
-<ul>
-<li>each row corresponds to a patient</li>
-<li>each column corresponds to a <em>variable</em> of clinical data</li>
-<li>each cell has a value</li>
-</ul>
-<p>We’ll be seeing that this format is called <strong>Tidy Data</strong>, and it lets us do all sorts of things in R successfully.</p>
-<ol start="2" style="list-style-type: decimal">
-<li><p><strong>Transpose is your Friend in Excel.</strong>* If your data isn’t in this format, no worries! You can copy it to a new sheet and use the transpose option when you’re pasting it, and then load that in.</p></li>
-<li><p><strong>Every column needs a name.</strong> Every one of your columns should be named at the top, and should begin with a letter. Numbers and special characters can cause errors in your data analysis pipeline.</p></li>
-<li><p><strong>Color information is hard to get into R</strong>. Avoid using color coding of cells if that is extra information attached to a cell. Instead, make the information the color is representing its own column.</p></li>
-<li><p><strong>Extra Lines are OK!</strong> Extra lines before the column header are ok, as you’ve seen. It’s sometimes better to have a “notes” sheet where you put extra information or, better yet, a data dictionary.</p></li>
-</ol>
+<div id="your-turn-4" class="section level3">
+<h3><span class="header-section-number">8.5.5</span> Your Turn</h3>
+<p>Try running <code>t.test</code>, comparing <code>dxa</code> and <code>br</code> using <code>body_comp_long</code>. Hint: You’ll have to filter the <code>method</code> like above.</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" title="1">body_comp &lt;-<span class="st"> </span>body_comp <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb239-2" title="2"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">drop_na</span>()</a>
+<a class="sourceLine" id="cb239-3" title="3"></a>
+<a class="sourceLine" id="cb239-4" title="4">body_comp_long &lt;-<span class="st"> </span>body_comp <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb239-5" title="5"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&#39;dxa&#39;</span>, <span class="st">&#39;st&#39;</span>, <span class="st">&#39;br&#39;</span>),</a>
+<a class="sourceLine" id="cb239-6" title="6">               <span class="dt">names_to =</span> <span class="st">&#39;method&#39;</span>,</a>
+<a class="sourceLine" id="cb239-7" title="7">               <span class="dt">values_to =</span> <span class="st">&#39;body_fat_percentage&#39;</span>) </a>
+<a class="sourceLine" id="cb239-8" title="8"></a>
+<a class="sourceLine" id="cb239-9" title="9"></a>
+<a class="sourceLine" id="cb239-10" title="10"></a>
+<a class="sourceLine" id="cb239-11" title="11">body_comp_dxa_sf &lt;-<span class="st"> </span>body_comp_long <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb239-12" title="12"><span class="st">  </span><span class="kw">filter</span>(method <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dxa&quot;</span>, <span class="st">&quot;br&quot;</span>))</a>
+<a class="sourceLine" id="cb239-13" title="13"></a>
+<a class="sourceLine" id="cb239-14" title="14">tidy_output &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb239-15" title="15"><span class="st">  </span><span class="kw">t.test</span>(body_fat_percentage <span class="op">~</span><span class="st"> </span>method, </a>
+<a class="sourceLine" id="cb239-16" title="16">       <span class="dt">paired=</span><span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb239-17" title="17">       <span class="dt">data=</span>body_comp_dxa_sf) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb239-18" title="18"><span class="st">    </span><span class="kw">tidy</span>()</a>
+<a class="sourceLine" id="cb239-19" title="19"></a>
+<a class="sourceLine" id="cb239-20" title="20">tidy_output</a></code></pre></div>
 </div>
 </div>
-<div id="data.frames" class="section level2">
-<h2><span class="header-section-number">3.4</span> <code>data.frame</code>s</h2>
-<p>Now that we have data imported and available, we can start to inspect the data more closely. These data have been interpreted by R to be a data frame, which is a data structure (way of organizing data) that is analogous to tabular or spreadsheet style data.</p>
-<p>By definition, a <code>data.frame</code> is:</p>
-<p>a table made of vectors (columns) of all the same length. As we learned in our last session, a vector needs to include all of the same type of data (e.g., character, numeric).</p>
-<p>A <code>data.frame</code>, however, can include vectors (columns) of different data types. This makes them extremely versatile way of storing information.</p>
-<div id="data.frames---how-do-they-work" class="section level3">
-<h3><span class="header-section-number">3.4.1</span> <code>data.frame</code>s - How do they Work?</h3>
-<p>To learn more about this data frame, we’ll first explore its dimensions:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co"># assess size of data frame</span></a>
-<a class="sourceLine" id="cb66-2" title="2"></a>
-<a class="sourceLine" id="cb66-3" title="3"><span class="kw">dim</span>(brca_clinical)</a></code></pre></div>
-<pre><code>## [1] 1095   16</code></pre>
-<p>This output reflects the number of rows, then the number of columns.</p>
-<p>We can also preview the content by showing the first few rows:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="co"># preview first few rows</span></a>
-<a class="sourceLine" id="cb68-2" title="2"></a>
-<a class="sourceLine" id="cb68-3" title="3"><span class="kw">head</span>(brca_clinical) </a></code></pre></div>
-<pre><code>## # A tibble: 6 x 16
-##   submitter_id primary_diagnos~ tumor_stage disease age_at_diagnosis
-##   &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
-## 1 TCGA-3C-AAAU C50.9            stage x     BRCA               20211
-## 2 TCGA-3C-AALI C50.9            stage iib   BRCA               18538
-## 3 TCGA-3C-AALJ C50.9            stage iib   BRCA               22848
-## 4 TCGA-3C-AALK C50.9            stage ia    BRCA               19074
-## 5 TCGA-4H-AAAK C50.9            stage iiia  BRCA               18371
-## 6 TCGA-5L-AAT0 C50.9            stage iia   BRCA               15393
-## # ... with 11 more variables: vital_status &lt;chr&gt;, morphology &lt;chr&gt;,
-## #   days_to_death &lt;dbl&gt;, days_to_birth &lt;dbl&gt;,
-## #   site_of_resection_or_biopsy &lt;chr&gt;, days_to_last_follow_up &lt;dbl&gt;,
-## #   gender &lt;chr&gt;, year_of_birth &lt;dbl&gt;, race &lt;chr&gt;, ethnicity &lt;chr&gt;,
-## #   year_of_death &lt;dbl&gt;</code></pre>
-</div>
-<div id="column-names" class="section level3">
-<h3><span class="header-section-number">3.4.2</span> Column Names</h3>
-<p>We often need to reference the names of <em>variables</em> (also known as columns) in our <code>data.frame</code>, so it’s useful to print only those to the screen:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="co"># view column names</span></a>
-<a class="sourceLine" id="cb70-2" title="2"></a>
-<a class="sourceLine" id="cb70-3" title="3"><span class="kw">colnames</span>(brca_clinical) </a></code></pre></div>
-<pre><code>##  [1] &quot;submitter_id&quot;                &quot;primary_diagnosis&quot;          
-##  [3] &quot;tumor_stage&quot;                 &quot;disease&quot;                    
-##  [5] &quot;age_at_diagnosis&quot;            &quot;vital_status&quot;               
-##  [7] &quot;morphology&quot;                  &quot;days_to_death&quot;              
-##  [9] &quot;days_to_birth&quot;               &quot;site_of_resection_or_biopsy&quot;
-## [11] &quot;days_to_last_follow_up&quot;      &quot;gender&quot;                     
-## [13] &quot;year_of_birth&quot;               &quot;race&quot;                       
-## [15] &quot;ethnicity&quot;                   &quot;year_of_death&quot;</code></pre>
-<p>It’s also possible to view row names using<code>rownames(brca_clinical)</code>, but our data only possess numbers for row names so it’s not very informative.</p>
-</div>
-<div id="okay-whats-really-in-it" class="section level3">
-<h3><span class="header-section-number">3.4.3</span> Okay, What’s really in it?</h3>
-<p>We can use <code>glimpse()</code> to provide a general overview of the object:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="co"># show overview of data.frame</span></a>
-<a class="sourceLine" id="cb72-2" title="2"></a>
-<a class="sourceLine" id="cb72-3" title="3"><span class="kw">glimpse</span>(brca_clinical) </a></code></pre></div>
-<pre><code>## Rows: 1,095
-## Columns: 16
-## $ submitter_id                &lt;chr&gt; &quot;TCGA-3C-AAAU&quot;, &quot;TCGA-3C-AALI&quot;, &quot;TCGA-3...
-## $ primary_diagnosis           &lt;chr&gt; &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C5...
-## $ tumor_stage                 &lt;chr&gt; &quot;stage x&quot;, &quot;stage iib&quot;, &quot;stage iib&quot;, &quot;s...
-## $ disease                     &lt;chr&gt; &quot;BRCA&quot;, &quot;BRCA&quot;, &quot;BRCA&quot;, &quot;BRCA&quot;, &quot;BRCA&quot;,...
-## $ age_at_diagnosis            &lt;dbl&gt; 20211, 18538, 22848, 19074, 18371, 1539...
-## $ vital_status                &lt;chr&gt; &quot;alive&quot;, &quot;alive&quot;, &quot;alive&quot;, &quot;alive&quot;, &quot;al...
-## $ morphology                  &lt;chr&gt; &quot;8520/3&quot;, &quot;8500/3&quot;, &quot;8500/3&quot;, &quot;8500/3&quot;,...
-## $ days_to_death               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
-## $ days_to_birth               &lt;dbl&gt; -20211, -18538, -22848, -19074, -18371,...
-## $ site_of_resection_or_biopsy &lt;chr&gt; &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C50.9&quot;, &quot;C5...
-## $ days_to_last_follow_up      &lt;dbl&gt; 4047, 4005, 1474, 1448, 348, 1477, 1471...
-## $ gender                      &lt;chr&gt; &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;,...
-## $ year_of_birth               &lt;dbl&gt; 1949, 1953, 1949, 1959, 1963, 1968, 194...
-## $ race                        &lt;chr&gt; &quot;white&quot;, &quot;black or african american&quot;, &quot;...
-## $ ethnicity                   &lt;chr&gt; &quot;not hispanic or latino&quot;, &quot;not hispanic...
-## $ year_of_death               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...</code></pre>
-<p>The output provided by <code>glimpse()</code> includes:</p>
-<ul>
-<li>data structure: <code>data.frame</code></li>
-<li>dimensions:</li>
-<li>column-by-column information: each prefaced with a <code>$</code>, and includes the column name, data type (num, int, Factor)</li>
-</ul>
-<p>Identify the <code>numeric</code> variables (they are noted as <code>&lt;dbl&gt;</code> or <code>double</code>). What are they?</p>
-<p>Another useful command is <code>View()</code> - it will open up a spreadsheet like view of our <code>data_frame</code>. You can also view this by clicking on the <code>brca_clinical</code> object in the <code>Environment</code> pane in the top-right.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">View</span>(brca_clinical)</a></code></pre></div>
-</div>
-<div id="summarizing-our-data" class="section level3">
-<h3><span class="header-section-number">3.4.4</span> Summarizing our Data</h3>
-<p>Finally, we can also examine basic summary statistics for each column:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="co"># provide summary statistics for each column</span></a>
-<a class="sourceLine" id="cb75-2" title="2"><span class="kw">summary</span>(brca_clinical) </a></code></pre></div>
-<pre><code>##  submitter_id       primary_diagnosis  tumor_stage          disease         
-##  Length:1095        Length:1095        Length:1095        Length:1095       
-##  Class :character   Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-##                                                                             
-##                                                                             
-##                                                                             
-##                                                                             
-##  age_at_diagnosis vital_status        morphology        days_to_death   
-##  Min.   : 9706    Length:1095        Length:1095        Min.   : 116.0  
-##  1st Qu.:18032    Class :character   Class :character   1st Qu.: 689.2  
-##  Median :21562    Mode  :character   Mode  :character   Median :1223.0  
-##  Mean   :21587                                          Mean   :1643.0  
-##  3rd Qu.:24863                                          3rd Qu.:2370.0  
-##  Max.   :32872                                          Max.   :7455.0  
-##  NA&#39;s   :16                                             NA&#39;s   :945     
-##  days_to_birth    site_of_resection_or_biopsy days_to_last_follow_up
-##  Min.   :-32872   Length:1095                 Min.   : -31.0        
-##  1st Qu.:-24863   Class :character            1st Qu.: 434.2        
-##  Median :-21562   Mode  :character            Median : 760.5        
-##  Mean   :-21587                               Mean   :1187.2        
-##  3rd Qu.:-18032                               3rd Qu.:1583.2        
-##  Max.   : -9706                               Max.   :8605.0        
-##  NA&#39;s   :16                                   NA&#39;s   :105           
-##     gender          year_of_birth      race            ethnicity        
-##  Length:1095        Min.   :1902   Length:1095        Length:1095       
-##  Class :character   1st Qu.:1940   Class :character   Class :character  
-##  Mode  :character   Median :1950   Mode  :character   Mode  :character  
-##                     Mean   :1949                                        
-##                     3rd Qu.:1960                                        
-##                     Max.   :1984                                        
-##                     NA&#39;s   :1                                           
-##  year_of_death 
-##  Min.   :1992  
-##  1st Qu.:2001  
-##  Median :2005  
-##  Mean   :2004  
-##  3rd Qu.:2008  
-##  Max.   :2013  
-##  NA&#39;s   :991</code></pre>
-<p>For numeric data (such as <code>year_of_death</code>), this output includes common statistics like median and mean, as well as the number of rows (patients) with missing data (as <code>NA</code>).</p>
-<p>For <code>factor</code>s (also known as categorical variables), and <code>character</code> variables, such as <code>disease</code>, you’re given a count of the number of times the top six most frequent factors (categories) occur in the data frame.</p>
-<p>We will talk more about <code>factors</code> in the next lab.</p>
-</div>
-</div>
-<div id="introducing-ggplot2" class="section level2">
-<h2><span class="header-section-number">3.5</span> Introducing <code>ggplot2</code></h2>
-<p>Click the button below to load up the graphic.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="kw">here</span>(<span class="st">&quot;image/ggplot2_exploratory.png&quot;</span>))</a></code></pre></div>
-<p><img src="image/ggplot2_exploratory.png" width="1024" /></p>
-<p>Now that we’ve loaded our data as a <code>data.frame</code>, we can begin to start doing things with it.</p>
-<p>Let’s start with visualizing the data.</p>
-<div id="working-towards-a-graph" class="section level3">
-<h3><span class="header-section-number">3.5.1</span> Working Towards a Graph</h3>
-<p>We’re going to work towards the following graph today:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="kw">here</span>(<span class="st">&quot;image/days_to_last_followup.png&quot;</span>))</a></code></pre></div>
-<p><img src="image/days_to_last_followup.png" width="1050" /></p>
-</div>
-<div id="ggplot2-a-grammar-of-graphics" class="section level3">
-<h3><span class="header-section-number">3.5.2</span> <code>ggplot2</code>: A Grammar of Graphics</h3>
-<p><code>ggplot2</code> is an extremely powerful software library for visualization.</p>
-<p>The <code>gg</code> is short for Grammar of Graphics, which means that visualizations are expressed in a very specific way.</p>
-</div>
-<div id="learning-to-read-ggplot2-code" class="section level3">
-<h3><span class="header-section-number">3.5.3</span> Learning to read <code>ggplot2</code> code</h3>
-<p>A <code>ggplot2</code> graphic consists of a:</p>
-<ul>
-<li><code>mapping</code> of variables in <code>data</code> to</li>
-<li><code>aes()</code>thetic attributes of</li>
-<li><code>geom_</code>etric objects.</li>
-</ul>
-<p>In code, this is translated as:</p>
-<pre><code>#start the plot with ggplot()
+<div id="how-correlated-are-the-three-variables" class="section level2">
+<h2><span class="header-section-number">8.6</span> How Correlated are the Three Variables?</h2>
+<p>Another question we’d like to check is whether the measurements are correlated or not.</p>
+<p>That is, can we reliably predict <code>dxa</code> from <code>st</code>?</p>
+<p>Let’s generate a pairs plot, which can be a useful way of visualizing correlated variables.</p>
+<p>We can do this by using <code>ggpairs()</code>, which is in the <code>GGally</code> package (not part of the <code>tidyverse</code>):</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1">GGally<span class="op">::</span><span class="kw">ggpairs</span>(body_comp,  <span class="kw">aes</span>(<span class="dt">color=</span>gender))  </a></code></pre></div>
+<pre><code>## Warning in ggally_statistic(data = data, mapping = mapping, na.rm = na.rm, :
+## Removing 1 row that contained a missing value
 
-ggplot(data = brca_clinical) +   
+## Warning in ggally_statistic(data = data, mapping = mapping, na.rm = na.rm, :
+## Removing 1 row that contained a missing value</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).
 
+## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_density).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="07-part6_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>We can generate a scatterplot with a trend line using a geom called <code>geom_smooth()</code>.</p>
+<p>We need to add the arguments <code>method</code> and <code>se</code> (short for standard error).</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" title="1">body_comp <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb246-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb246-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x=</span>dxa, <span class="dt">y=</span>st) <span class="op">+</span></a>
+<a class="sourceLine" id="cb246-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb246-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="07-part6_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div id="your-turn-5" class="section level3">
+<h3><span class="header-section-number">8.6.1</span> Your Turn</h3>
+<p>Try setting <code>se</code> to <code>TRUE</code>. What does it add to the graph?</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" title="1">body_comp <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb248-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb248-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x=</span>dxa, <span class="dt">y=</span>st) <span class="op">+</span></a>
+<a class="sourceLine" id="cb248-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb248-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>( <span class="dt">se =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="07-part6_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+</div>
+<div id="lets-build-a-simple-linear-model" class="section level2">
+<h2><span class="header-section-number">8.7</span> Let’s build a simple linear model</h2>
+<p>We’ve established that there is a correlation between <code>dxa</code> and <code>st</code>. Can we use <code>st</code> to predict <code>dxa</code>?</p>
+<p>y = ax + b</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1"><span class="kw">lm</span>(dxa <span class="op">~</span><span class="st"> </span>st, <span class="dt">data=</span>body_comp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb250-2" title="2"><span class="st">  </span><span class="kw">tidy</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)    0.275    0.215       1.28 2.05e- 1
+## 2 st             0.903    0.0367     24.6  3.17e-43</code></pre>
+<p>The predicted line through the data is:</p>
+<p>dxa = 0.295 + 0.903 * <code>st</code></p>
+<div id="adding-another-variable" class="section level3">
+<h3><span class="header-section-number">8.7.1</span> Adding another variable</h3>
+<p>What if we included <code>gender</code> in our model? Our model can accept <code>factors</code> as inputs.</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" title="1">copy_number &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;2&quot;</span>)</a>
+<a class="sourceLine" id="cb252-2" title="2"></a>
+<a class="sourceLine" id="cb252-3" title="3"></a>
+<a class="sourceLine" id="cb252-4" title="4"><span class="kw">lm</span>(dxa <span class="op">~</span><span class="st"> </span>st <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data=</span>body_comp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb252-5" title="5"><span class="st">  </span><span class="kw">tidy</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)   0.0646    0.224      0.288 7.74e- 1
+## 2 st            0.888     0.0362    24.5   6.93e-43
+## 3 gender0       0.577     0.222      2.60  1.09e- 2</code></pre>
+<p>In this case, <code>gender</code> is a useful predictor of <code>dxa</code>, since the p-value is less than our threshold of 0.05.</p>
+<p>However, if we did use the equation, it would correspond to this equation:</p>
+<p><code>dxa</code> = 0.097 + 0.889 * <code>st</code> + 0.536 * <code>gender0</code></p>
+<p>The factor <code>gender</code> here is recoded as a “dummy” variable, and reading it is a little confusing. Note that it says <code>gender0</code> and not <code>gender</code>. That’s because it’s coding <code>gender</code> = 0 as 1 here, and 0, if gender is 1.</p>
+<p>Dummy variables are very confusing. <a href="http://www.sthda.com/english/articles/40-regression-analysis/163-regression-with-categorical-variables-dummy-coding-essentials-in-r/" class="uri">http://www.sthda.com/english/articles/40-regression-analysis/163-regression-with-categorical-variables-dummy-coding-essentials-in-r/</a></p>
+</div>
+<div id="your-turn-6" class="section level3">
+<h3><span class="header-section-number">8.7.2</span> Your Turn</h3>
+<p>Try adding <code>br</code> as a term in the model. How does it change the p-value of <code>st</code>?</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" title="1"><span class="kw">lm</span>(dxa <span class="op">~</span><span class="st"> </span>st <span class="op">+</span><span class="st"> </span>br, <span class="dt">data=</span>body_comp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb254-2" title="2"><span class="st">  </span><span class="kw">tidy</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)    0.111    0.208      0.532 5.96e- 1
+## 2 st             0.699    0.0683    10.2   5.78e-17
+## 3 br             0.213    0.0615     3.46  8.20e- 4</code></pre>
+</div>
+</div>
+<div id="analysis-of-variance-anova-optional" class="section level2">
+<h2><span class="header-section-number">8.8</span> Analysis of Variance (ANOVA) (Optional)</h2>
+<p>We’ve determined that there isn’t a statistical difference between <code>dxa</code> and <code>st</code>, but we also meausured bodyfat using bioelectric resistance, <code>br</code>.</p>
+<p>Maybe we should see if it measures differently from the other two methods. Because a t-test can only be used to measure the differences in means between two groups, we’d have to use multiple t-tests.</p>
+<p>But wait, should we do that right away? No, because we’ll run into the <a href="https://en.wikipedia.org/wiki/Multiple_comparisons_problem">Multiple Comparisons Problem</a>!</p>
+<p>So rather than performing multiple t-tests, we first want to examine whether any of the groups is different from the rest of the groups using an ANOVA (<code>aov()</code>).</p>
+<p><code>aov()</code> uses the formula interface. The tilde (<code>~</code>) can be translated to “is a function of”. Below, we are testing whether body fat percentage is a function of the type of body fat measurement method. We pipe the output of <code>aov()</code> to <code>summary()</code> to get a clearer idea of the output of the ANOVA.</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1"><span class="kw">aov</span>(body_fat_percentage <span class="op">~</span><span class="st"> </span>method, <span class="dt">data =</span> body_comp_long) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb256-2" title="2"><span class="st">  </span><span class="kw">tidy</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 6
+##   term         df  sumsq meansq statistic p.value
+##   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 method        2   40.7   20.3      2.01   0.136
+## 2 Residuals   290 2935.    10.1     NA     NA</code></pre>
+<p>The value <code>p.value</code> is what we’re interested in. Because it is greater than 0.05, we can conclude that none of the measurement methods is significantly different from the others, and there is no reason to perform multiple t-tests on our dataset.</p>
+<div id="post-hoc-tests" class="section level3">
+<h3><span class="header-section-number">8.8.1</span> Post-hoc Tests</h3>
+<p>Now <em>if</em> our F statistic probability had come back below 0.05, then we could perform multiple post-hoc t-tests. However, we would need to account for false positives by using a correction method (e.g., Bonferroni).</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" title="1"><span class="kw">pairwise.t.test</span>(body_comp_long<span class="op">$</span>body_fat_percentage, </a>
+<a class="sourceLine" id="cb258-2" title="2">                body_comp_long<span class="op">$</span>method, </a>
+<a class="sourceLine" id="cb258-3" title="3">                <span class="dt">p.adjust =</span> <span class="st">&quot;bonferroni&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb258-4" title="4"><span class="st">  </span><span class="kw">tidy</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##   group1 group2 p.value
+##   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;
+## 1 dxa    br       0.167
+## 2 st     br       0.432
+## 3 st     dxa      1</code></pre>
+</div>
+<div id="more-about-the-multiple-testing-problem" class="section level3">
+<h3><span class="header-section-number">8.8.2</span> More about the Multiple Testing Problem</h3>
+<p>Consider what a p-value of 0.05 actually means: if a test is performed at the 0.05 level and the corresponding null hypothesis is true, there is only a 5% chance of incorrectly rejecting the null hypothesis. This is an okay risk to take given that we are only performing the t-test once. But if we were to perform the t-test 1,000 times on data where all null hypotheses were true, the expected number of incorrect rejections (also known as false positives or Type I errors) would be 50!</p>
+</div>
+<div id="acknowledgements-2" class="section level3">
+<h3><span class="header-section-number">8.8.3</span> Acknowledgements</h3>
+<p>Written by Aaron Coyner and Ted Laderas</p>
 
-# make the mapping
-# map the x-axis to age_at_diagnosis
-
-      aes(
-          x = age_at_diagnosis, 
-          y = days_to_birth 
-          ) +
-
-# add the geometry
-  geom_point()</code></pre>
-<p>Things to note: we chain these three things together with <code>+</code> (plus sign). I tend to read the plus as <code>then</code>.</p>
-<p>[aes() function - mapping variables to visual properties of the graph]</p>
 </div>
-<div id="challenge-5" class="section level3">
-<h3><span class="header-section-number">3.5.4</span> Challenge</h3>
-<p>Based on the graph above, map the appropriate variables in <code>brca_clinical</code> to the x, and y aesthetics. Run your plot. Is it what you expected?</p>
-<p>What’s missing compared to the graph above?</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> brca_clinical) <span class="op">+</span></a>
-<a class="sourceLine" id="cb80-2" title="2"></a>
-<a class="sourceLine" id="cb80-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> _____ ,</a>
-<a class="sourceLine" id="cb80-4" title="4">      <span class="dt">y =</span> _____ ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb80-5" title="5"><span class="st">  </span></a>
-<a class="sourceLine" id="cb80-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-</div>
-<div id="simple-arithmetic" class="section level3">
-<h3><span class="header-section-number">3.5.5</span> Simple arithmetic</h3>
-<p>Huh. <code>age_at_diagnosis</code> is in days, not years. We can fix that by dividing it by 365:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> brca_clinical) <span class="op">+</span></a>
-<a class="sourceLine" id="cb81-2" title="2"></a>
-<a class="sourceLine" id="cb81-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> age_at_diagnosis <span class="op">/</span><span class="st"> </span><span class="dv">365</span> ,</a>
-<a class="sourceLine" id="cb81-4" title="4">      <span class="dt">y =</span> days_to_last_follow_up ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb81-5" title="5"><span class="st">  </span></a>
-<a class="sourceLine" id="cb81-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<pre><code>## Warning: Removed 120 rows containing missing values (geom_point).</code></pre>
-<p><img src="02-part2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-</div>
-<div id="color" class="section level3">
-<h3><span class="header-section-number">3.5.6</span> Color</h3>
-<p>We can also map a <code>character</code> variable to our graph to color.</p>
-<p>Try mapping <code>gender</code> to color.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> brca_clinical) <span class="op">+</span></a>
-<a class="sourceLine" id="cb83-2" title="2"></a>
-<a class="sourceLine" id="cb83-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> age_at_diagnosis <span class="op">/</span><span class="st"> </span><span class="dv">365</span> ,</a>
-<a class="sourceLine" id="cb83-4" title="4">      <span class="dt">y =</span> days_to_last_follow_up,  </a>
-<a class="sourceLine" id="cb83-5" title="5">      <span class="dt">color =</span> _____) <span class="op">+</span></a>
-<a class="sourceLine" id="cb83-6" title="6"><span class="st">  </span></a>
-<a class="sourceLine" id="cb83-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() </a></code></pre></div>
-</div>
-<div id="titles" class="section level3">
-<h3><span class="header-section-number">3.5.7</span> Titles</h3>
-<p>We can add more details to our graph. We can add a title using the <code>labs()</code> function:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> brca_clinical) <span class="op">+</span></a>
-<a class="sourceLine" id="cb84-2" title="2"></a>
-<a class="sourceLine" id="cb84-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> age_at_diagnosis <span class="op">/</span><span class="st"> </span><span class="dv">365</span> ,</a>
-<a class="sourceLine" id="cb84-4" title="4">      <span class="dt">y =</span> days_to_last_follow_up,  </a>
-<a class="sourceLine" id="cb84-5" title="5">      <span class="dt">color =</span> gender) <span class="op">+</span></a>
-<a class="sourceLine" id="cb84-6" title="6"><span class="st">  </span></a>
-<a class="sourceLine" id="cb84-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb84-8" title="8"><span class="st">  </span></a>
-<a class="sourceLine" id="cb84-9" title="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Age versus Days to Last followup&quot;</span>) </a></code></pre></div>
-<pre><code>## Warning: Removed 120 rows containing missing values (geom_point).</code></pre>
-<p><img src="02-part2_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
-</div>
-<div id="changing-the-axis-labels" class="section level3">
-<h3><span class="header-section-number">3.5.8</span> Changing the Axis Labels</h3>
-<p>We can change the x-axis titles and the y-axis titles using the <code>xlab()</code> (short for x label) and <code>ylab()</code> functions:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> brca_clinical) <span class="op">+</span></a>
-<a class="sourceLine" id="cb86-2" title="2"></a>
-<a class="sourceLine" id="cb86-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> age_at_diagnosis <span class="op">/</span><span class="st"> </span><span class="dv">365</span> ,</a>
-<a class="sourceLine" id="cb86-4" title="4">      <span class="dt">y =</span> days_to_last_follow_up,  </a>
-<a class="sourceLine" id="cb86-5" title="5">      <span class="dt">color =</span> gender) <span class="op">+</span></a>
-<a class="sourceLine" id="cb86-6" title="6"><span class="st">  </span></a>
-<a class="sourceLine" id="cb86-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb86-8" title="8"><span class="st">  </span></a>
-<a class="sourceLine" id="cb86-9" title="9"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Age versus Days to Last followup&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb86-10" title="10"><span class="st">  </span></a>
-<a class="sourceLine" id="cb86-11" title="11"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age at Diagnosis (Years)&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb86-12" title="12"><span class="st">  </span></a>
-<a class="sourceLine" id="cb86-13" title="13"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Days to Follow Up&quot;</span>)</a></code></pre></div>
-<pre><code>## Warning: Removed 120 rows containing missing values (geom_point).</code></pre>
-<p><img src="02-part2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
-<p>Now we’ve re-created the above plot! Let’s save it using <code>ggsave()</code>. <code>ggsave()</code> saves the last created plot to a file. We’ll save it as a <code>jpg</code> file. <code>ggsave()</code> is smart enough to know that we want to save it as a <code>jpg</code> from adding the extension <code>.jpg</code> to our filename.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">ggsave</span>(<span class="st">&quot;follow-up-plot.jpg&quot;</span>)</a></code></pre></div>
-<pre><code>## Saving 7 x 5 in image</code></pre>
-<pre><code>## Warning: Removed 120 rows containing missing values (geom_point).</code></pre>
-</div>
-</div>
-<div id="what-you-learned-today" class="section level2">
-<h2><span class="header-section-number">3.6</span> What you learned today:</h2>
-<ul>
-<li>Loading excel data and tips for formatting your data in excel</li>
-<li>Understanding basic properties of <code>data.frame</code>s</li>
-<li>The basics of the “grammar of graphics” with <code>ggplot2</code></li>
-</ul>
-</div>
-<div id="practice" class="section level2">
-<h2><span class="header-section-number">3.7</span> Practice</h2>
-<p>You can practice your <code>ggplot2</code> skills by taking the first chapter of the R-Bootcamp:</p>
-<p><a href="https://r-bootcamp.netlify.com/chapter1" class="uri">https://r-bootcamp.netlify.com/chapter1</a></p>
-</div>
-<div id="assignment-10-points" class="section level2">
-<h2><span class="header-section-number">3.8</span> Assignment (10 points)</h2>
-<p>Instructions: Turn your <code>.nb.html</code> file in with the following assignment finished. Make sure it is named <code>part2_LASTNAME.nb.html</code>, where <code>LASTNAME</code> is your last name, of course.</p>
-<ol style="list-style-type: decimal">
-<li>Load the <code>smoke_complete.xlsx</code> file into R using <code>read_excel</code>. You’ll need to take a look at it to make sure that your arguments are correct.</li>
-</ol>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">smoke_complete &lt;-<span class="st"> </span><span class="kw">read_excel</span>()</a></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>Use <code>glimpse()</code> on <code>smoke_complete</code>. How many rows does the file have? How many variables does it have? What are the numeric variables in this dataset?</li>
-</ol>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="kw">glimpse</span>(smoke_complete)</a></code></pre></div>
-<p>[Put your answer here]</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Produce a scatter plot of <code>smoke_complete</code> using <code>geom_point()</code>, mapping these variables to the following aesthetics:</li>
-</ol>
-<p><code>year_of_birth</code> to the <code>x</code> aesthetic,
-<code>cigarettes_per_day</code> to the <code>y</code> aesthetic, and
-<code>gender</code> to the <code>color</code> aesthetic.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">ggplot</span>(smoke_complete, <span class="kw">aes</span>(<span class="dt">x =</span> ____,</a>
-<a class="sourceLine" id="cb93-2" title="2">                           <span class="dt">y =</span> ____,</a>
-<a class="sourceLine" id="cb93-3" title="3">                           <span class="dt">color =</span> ___)) <span class="op">+</span></a></code></pre></div>
-<ol start="4" style="list-style-type: decimal">
-<li>Pick two <code>numeric</code> variables, and a character variable in the dataset and produce a scatterplot by mapping them to <code>x</code>, <code>y</code>, and <code>color</code>. Add a title and change the x and y labels to make sense.</li>
-</ol>
-
 </div>
 </div>
             </section>
@@ -744,8 +643,8 @@ ggplot(data = brca_clinical) +
           </div>
         </div>
       </div>
-<a href="part-1-functions-and-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="part-3-more-data-visualization-and-data-manipulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="part-5-doing-useful-things-with-multiple-tables.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -776,7 +675,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-part2.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-part6.Rmd",
 "text": "Edit"
 },
 "history": {

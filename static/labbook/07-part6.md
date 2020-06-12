@@ -1,5 +1,7 @@
+# Simple Statistics with `broom`
 
-# Learning Objectives
+
+## Learning Objectives
 
 - **Learn** about errors and warnings and where to ask for help
 - **Learn** some basic Exploratory Data Analysis techniques
