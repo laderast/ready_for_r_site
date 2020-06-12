@@ -1,12 +1,3 @@
----
-title: 'Part 6: Doing Stats, Making Friends'
-author: "you"
-date: "5/5/2020"
-output: html_document
----
-
-
-
 
 # Learning Objectives
 
