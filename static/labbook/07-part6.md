@@ -19,9 +19,9 @@ output: html_document
 - **Learn** and **apply** Analysis of Variance (ANOVA)
 
 
-# Getting Help on Errors
+## Getting Help on Errors
 
-## Understanding the difference between warnings and errors
+### Understanding the difference between warnings and errors
 
 A *warning* is an indication that the data or arguments isn't quite what the function expected. 
 
@@ -33,7 +33,7 @@ Errors can be difficult to understand, which is why
 
 
 
-## Googling is StandaRd pRactice foR eRrors
+### Googling is StandaRd pRactice foR eRrors
 
 The first thing I do when I encounter an error is to search for the error. I usually start with Google.
 
@@ -48,7 +48,7 @@ There are some resources that I especially check (in order):
 
 
 
-## Where do I ask for help?
+### Where do I ask for help?
 
 I'm trying to be as helpful as I can, but I can't answer all of your questions.
 
@@ -60,7 +60,7 @@ The following communities are extremely helpful to beginners:
 
 
 
-# Caveat about statistics
+## Caveat about statistics
 
 This is not meant to be a comprehensive course in statistics. We want to show you some basic techniques, but you will need to dig further.
 
@@ -69,7 +69,7 @@ Danielle Navarro's Learning Statistics with R is excellent and talks much more a
 
 
 
-# Introducing `tidymodels`
+## Introducing `tidymodels`
 
 We will be using the `broom` package from the `tidymodels` set of packages to make the modeling easier to work with. 
 
@@ -88,9 +88,9 @@ We will mostly use `tidy()` and `glance()` for right now.
 
 
 
-# T-tests
+## T-tests
 
-## The Dataset
+### The Dataset
 
 
 A study by Goran et.al (1996) examined the accuracy of some widely used body-composition techniques for children using three different methods: 
@@ -105,7 +105,7 @@ One purpose of the study was to determine whether there was a difference in fat 
 
 We also wish to determine if `DXA` levels are significantly different between males and females.
 
-## Getting set up
+### Getting set up
 
 
 ```r
@@ -141,7 +141,7 @@ head(body_comp)
 
 
 
-## Exploratory Data Analysis
+### Exploratory Data Analysis
 
 Before we do any statistical tests on our data, we should first visualize it. 
 
@@ -190,9 +190,9 @@ It appears that our measurements are close to one another, but there are some no
 
 
 
-## t-Test
+### t-test
 
-Briefly, a t-Test should be used when examining whether the mean **between two groups** are similar This means that the measurements must be **numeric** (there are other tests for categorical data). 
+Briefly, a t-test should be used when examining whether the mean **between two groups** are similar This means that the measurements must be **numeric** (there are other tests for categorical data). 
 
 The null hypothesis for a t-test is that the two means are equal, and the alternative is that they are not.
 
@@ -203,9 +203,9 @@ The null hypothesis for a t-test is that the two means are equal, and the altern
 Below, we will use a paired t-test. Paired simply means that each group (`dxa` and `st`) each contain measurements for the same subject on corresponding rows. If body fat measurements were collected using `dxa` for children in Group A and `st` for a separate set of children in Group B, then we would *not* use a paired t-test.
 
 
-### HYPOTHESIS: There is a difference in mean fat mass measurements between the DXA and skin-fold thickness (ST) methods.
+> HYPOTHESIS: There is a difference in mean fat mass measurements between the DXA and skin-fold thickness (ST) methods.
 
-### NULL HYPOTHESIS: There is no difference in mean fat mass measurements between the two methods.
+> NULL HYPOTHESIS: There is no difference in mean fat mass measurements between the two methods.
 
 
 We also need to set a significance threshold. We'll set it at 0.05.
@@ -240,7 +240,7 @@ We see that `p.value` is equal to `~0.634`; this means **we cannot reject the nu
 
 
 
-## Your Turn
+### Your Turn
 
 Try running `t.test`, comparing `dxa` and `br` using `body_comp_long`. Hint: You'll have to filter the `method` like above.
 
@@ -273,7 +273,7 @@ tidy_output
 
 
 
-# How Correlated are the Three Variables?
+## How Correlated are the Three Variables?
 
 Another question we'd like to check is whether the measurements are correlated or not. 
 
@@ -337,7 +337,7 @@ body_comp %>%
 <img src="07-part6_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 
-## Your Turn
+### Your Turn
 
 Try setting `se` to `TRUE`. What does it add to the graph?
 
@@ -385,7 +385,7 @@ dxa  = 0.295    +    0.903 * `st`
 
 
 
-## Adding another variable
+### Adding another variable
 
 
 What if we included `gender` in our model? Our model can accept `factors` as inputs.
@@ -421,7 +421,7 @@ The factor `gender` here is recoded as a "dummy" variable, and reading it is a l
 Dummy variables are very confusing. http://www.sthda.com/english/articles/40-regression-analysis/163-regression-with-categorical-variables-dummy-coding-essentials-in-r/
 
 
-## Your Turn
+### Your Turn
 
 Try adding `br` as a term in the model. How does it change the p-value of `st`?
 
@@ -445,7 +445,7 @@ lm(dxa ~ st + br, data=body_comp) %>%
 
 
 
-# Analysis of Variance (ANOVA) (Optional)
+## Analysis of Variance (ANOVA) (Optional)
 
 We've determined that there isn't a statistical difference between `dxa` and `st`, but we also meausured bodyfat using bioelectric resistance, `br`. 
 
@@ -476,7 +476,7 @@ aov(body_fat_percentage ~ method, data = body_comp_long) %>%
 The value `p.value` is what we're interested in. Because it is greater than 0.05, we can conclude that none of the measurement methods is significantly different from the others, and there is no reason to perform multiple t-tests on our dataset.
 
 
-## Post-hoc Tests
+### Post-hoc Tests
 
 Now *if* our F statistic probability had come back below 0.05, then we could perform multiple post-hoc t-tests. However, we would need to account for false positives by using a correction method (e.g., Bonferroni).
 
@@ -498,12 +498,12 @@ pairwise.t.test(body_comp_long$body_fat_percentage,
 ```
 
 
-## More about the Multiple Testing Problem
+### More about the Multiple Testing Problem
 
 Consider what a p-value of 0.05 actually means: if a test is performed at the 0.05 level and the corresponding null hypothesis is true, there is only a 5% chance of incorrectly rejecting the null hypothesis. This is an okay risk to take given that we are only performing the t-test once. But if we were to perform the t-test 1,000 times on data where all null hypotheses were true, the expected number of incorrect rejections (also known as false positives or Type I errors) would be 50!
 
 
-## Acknowledgements
+### Acknowledgements
 
 Written by Aaron Coyner and Ted Laderas
 
