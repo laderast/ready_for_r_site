@@ -36,7 +36,7 @@ You can read about the course learning objectives here: https://ready4r.netlify.
 
 David is a great instructor, and his course is free and excellent. In fact, I suggest that you take a look at his material if you need another reference or things are confusing. 
 
-Jessica Minnier and I have also co-authored the R-Bootcamp, which this material is based on. We'll be covering very similar bases, but this is a self-paced option for those who want it. I do recommend at least sitting in on the first session of Ready for R before starting it: https://r-bootcamp.netlify.com/
+Jessica Minnier and I have also co-authored the R-Bootcamp, which this material is based on. We'll be covering very similar bases, but this is a self-paced option for those who want it. I do recommend at least sitting in on the first session of Ready for R before starting it: https://r-bootcamp.netlify.app/
 
 Thanks again for your interest and I'll do my best to help you in your journey to learning R.
 

@@ -5,23 +5,9 @@ main:
   - name: Schedule
     url: /schedule/
     weight: 2
-  - name: Readings
-    url: /reading/
-#    weight: 3
-#  - name: Assignments
-#    url: /assignment/
-#    weight: 4
-  - name: Classes
-    url: /class/
   - name: Mailing List
     url: /mailing/
-    weight: 7
-#    weight: 5
+    weight: 3
   - name: Reference
     url: /labbook/
-    weight: 8
-#assignment:
-#  - name: Assignments
-#    weight: 1
-#  - name: Problem sets
-#    weight: 2
+    weight: 4
