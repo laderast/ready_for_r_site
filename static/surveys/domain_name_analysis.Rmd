@@ -1,0 +1,131 @@
+---
+title: "Domain Analysis of Email Addresses"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+```{r}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+suppressMessages({library(readr)
+library(janitor)
+library(dplyr)
+library(tldextract)
+library(ggplot2)
+library(forcats)})
+
+
+
+email_addresses <- read_csv("tinyletter_contacts_2020_07_4.csv") %>%
+  clean_names()
+
+
+
+#tld_details <- read_csv("country_codes.csv") %>%
+#  janitor::clean_names() #%>%
+#  tidyr::separate(country_code_top_level_domain_tld,sep="�", into=c("tld", "annotation"))
+
+tld_names <- getTLD()
+tlds <- tldextract(email_addresses$e_mail) %>%
+  tidyr::separate_rows(tld, sep="\\.")
+```
+
+```{r}
+library(rvest)
+library(stringr)
+country_page <- xml2::read_html("https://www.countries-ofthe-world.com/TLD-list.html")
+
+countries <- bind_rows(html_table(country_page)) %>%
+  janitor::clean_names()
+
+countries <- countries %>%
+  filter(grepl("\\.", domain)) %>%
+  mutate(tld = str_remove(domain, "^\\."))
+```
+
+
+```{r}
+tld_counts <- tlds %>%
+  filter(tld != "com") %>%
+  left_join(y= countries, by=c("tld"="tld")) %>%
+  count(country_territory) %>%
+  arrange(desc(n)) %>%
+  mutate(tld = fct_reorder(country_territory, desc(n))) %>%
+  tidyr::drop_na(tld)
+
+ggplot(tld_counts) +
+  aes(x=tld, y=n) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle=90, hjust = 1, vjust=0.5)) +
+  ggtitle("Country Domains Represented in List")
+
+```
+
+```{r}
+library(choroplethr)
+library(choroplethrMaps)
+
+tld_counts %>%
+  mutate(tld = tolower(tld)) %>%
+  select(region=tld, value=n) %>%
+  country_choropleth(title="Ready for R Users by Country Domain",num_colors = 4)
+
+```
+
+
+```{r}
+tlds %>%
+  mutate(tld = factor(tld)) %>%
+  count(tld) %>%
+  arrange(desc(n)) %>%
+  mutate(tld = fct_reorder(tld, desc(n))) %>%
+  ggplot() +
+  aes(x=tld, y=n) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle=90)) +
+  labs(title="Top Level Domains Sorted by Frequency")
+```
+
+```{r}
+tlds %>%
+  filter(grepl("edu", tld)) %>%
+  tidyr::separate(domain, into 
+                  =c("email", "domain"), sep="@")  %>%
+  tidyr::drop_na(domain) %>%
+  count(domain) %>%
+  arrange(desc(n)) %>%
+  slice_head(n, n=20) %>%
+   mutate(domain = fct_reorder(domain, desc(n))) %>%
+  ggplot() +
+  aes(x=domain, y=n) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle=90)) +
+  labs(title="Top 20 .edu domains")
+
+```
+
+```{r}
+tlds %>%
+  filter(grepl("gov", tld)) %>%
+  tidyr::separate(domain, into 
+                  =c("email", "domain"), sep="@")  %>%
+  tidyr::drop_na(domain) %>%
+  count(domain) %>%
+  arrange(desc(n)) %>%
+  slice_head(n, n=20) %>%
+   mutate(domain = fct_reorder(domain, desc(n))) %>%
+  ggplot() +
+  aes(x=domain, y=n) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle=90)) +
+  labs(title="Top 20 .gov domains")
+
+```
+
+# How Many OHSU folks?
+
+```{r}
+tlds %>%
+  filter(grepl("ohsu", domain)) %>%
+  nrow()
+```
