@@ -14,8 +14,9 @@ library(janitor)
 library(dplyr)
 library(tldextract)
 library(ggplot2)
-library(forcats)})
-
+library(forcats)
+library(urltools)
+  })
 
 
 email_addresses <- read_csv("tinyletter_contacts_2020_07_4.csv") %>%
@@ -26,8 +27,11 @@ Extract the very top level domain from tlds like `co.uk` by using `tidyr::separa
 
 ```{r}
 tld_names <- getTLD()
-tlds <- tldextract(email_addresses$e_mail) %>%
-  tidyr::separate_rows(tld, sep="\\.")
+
+tld_suffix <- suffix_extract(email_addresses$e_mail) %>%
+   mutate(tld=  gsub("[a-z]+\\.", "", suffix))
+
+tlds <- tldextract(email_addresses$e_mail) 
 ```
 
 As a first pass, I scrape the country level domains from https://www.countries-ofthe-world.com/TLD-list.html I tried multiple other CSV files from other courses, but this is the only source I could find with domain names mapped to countries.
@@ -48,19 +52,22 @@ countries <- countries %>%
 Map the email domains to countries using `left_join()`. Count by country.
 
 ```{r}
-tld_counts <- tlds %>%
+tld_counts <- tld_suffix %>%
   filter(tld != "com") %>%
+  filter(tld != "edu") %>%
+  filter(tld != "org") %>%
   left_join(y= countries, by=c("tld"="tld")) %>%
-  count(country_territory) %>%
+  count(country_territory, tld) %>%
   arrange(desc(n)) %>%
-  mutate(tld = fct_reorder(country_territory, desc(n))) %>%
-  tidyr::drop_na(tld)
+  mutate(country_territory = fct_reorder(country_territory, desc(n))) %>% ungroup() %>% mutate(country_territory = fct_rev(country_territory)) %>%
+  tidyr::drop_na(country_territory)
 
 ggplot(tld_counts) +
-  aes(x=tld, y=n) +
+  aes(x=country_territory, y=n) +
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle=90, hjust = 1, vjust=0.5)) +
-  ggtitle("Country Domains Represented in List")
+  ggtitle("Country Domains Represented in List") +
+  coord_flip()
 
 ```
 
@@ -71,8 +78,8 @@ library(choroplethr)
 library(choroplethrMaps)
 
 tld_counts %>%
-  mutate(tld = tolower(tld)) %>%
-  select(region=tld, value=n) %>%
+  mutate(country_territory = tolower(country_territory)) %>%
+  select(region=country_territory, value=n) %>%
   country_choropleth(title="Ready for R Users by Country Domain",num_colors = 4)
 
 ```
@@ -86,11 +93,12 @@ tlds %>%
   count(tld) %>%
   arrange(desc(n)) %>%
   mutate(tld = fct_reorder(tld, desc(n))) %>%
+  mutate(tld = fct_rev(tld)) %>%
   ggplot() +
   aes(x=tld, y=n) +
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle=90)) +
-  labs(title="Top Level Domains Sorted by Frequency")
+  labs(title="Top Level Domains Sorted by Frequency")+ coord_flip()
 ```
 
 ```{r}
@@ -103,11 +111,13 @@ tlds %>%
   arrange(desc(n)) %>%
   slice_head(n, n=20) %>%
    mutate(domain = fct_reorder(domain, desc(n))) %>%
+  mutate(domain = fct_rev(domain)) %>%
   ggplot() +
   aes(x=domain, y=n) +
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle=90)) +
-  labs(title="Top 20 .edu domains")
+  labs(title="Top 20 .edu domains") + 
+  coord_flip()
 
 ```
 
