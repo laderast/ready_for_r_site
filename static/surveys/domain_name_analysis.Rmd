@@ -23,15 +23,15 @@ email_addresses <- read_csv("tinyletter_contacts_2020_07_4.csv") %>%
   clean_names()
 ```
 
-Extract the very top level domain from tlds like `co.uk` by using `tidyr::separate_rows` to separate on `.`. Now that I think about it, this is probably introducing lots of `.co` domains, so I need to fix this.
+~~Extract the very top level domain from tlds like `co.uk` by using `tidyr::separate_rows` to separate on `.`. Now that I think about it, this is probably introducing lots of `.co` domains, so I need to fix this.~~
+
+Update: ended up using `gsub()` on the `tld` column to extract the country code.
 
 ```{r}
 tld_names <- getTLD()
 
-tld_suffix <- suffix_extract(email_addresses$e_mail) %>%
-   mutate(tld=  gsub("[a-z]+\\.", "", suffix))
-
-tlds <- tldextract(email_addresses$e_mail) 
+tlds <- tldextract(email_addresses$e_mail)  %>%
+     mutate(tld=  gsub("[a-z]+\\.", "", tld))
 ```
 
 As a first pass, I scrape the country level domains from https://www.countries-ofthe-world.com/TLD-list.html I tried multiple other CSV files from other courses, but this is the only source I could find with domain names mapped to countries.
@@ -52,7 +52,7 @@ countries <- countries %>%
 Map the email domains to countries using `left_join()`. Count by country.
 
 ```{r}
-tld_counts <- tld_suffix %>%
+tld_counts <- tlds %>%
   filter(tld != "com") %>%
   filter(tld != "edu") %>%
   filter(tld != "org") %>%
