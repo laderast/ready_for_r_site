@@ -100,11 +100,7 @@ instructor:
 
 course:
   number: "BMI 507"
-  semester: "Spring 2020"
-  days: "Thursdays"
-  time: "10 - 11:30 AM"
   location: "Online"
-  dates: "April 9 – June 2, 2020"
   github: "laderast/ready_for_r_site"
   copyrightYear: "2020-2021"
 

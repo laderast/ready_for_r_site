@@ -1,7 +1,7 @@
 main:
   - name: Syllabus
     url: /syllabus/
-    weight: 1
+    weight: 4
   - name: Class Notes
     url: /class/
     weight: 2
@@ -10,7 +10,7 @@ main:
     weight: 3
   - name: Schedule
     url: /schedule/
-    weight: 4
+    weight: 2
   - name: Mailing List
     url: /mailing/
     weight: 5
