@@ -1,374 +1,189 @@
-<!DOCTYPE html>
-<html lang="" xml:lang="">
-  <head>
-    <title>BMI507/607 Introduction</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="Ted Laderas" />
-    <meta name="date" content="2020-04-09" />
-    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
-  </head>
-  <body>
-    <textarea id="source">
-class: center, middle, inverse, title-slide
-
-# BMI507/607 Introduction
-## Ready for R
-### Ted Laderas
-### 2020-04-09
-
+---
+title: "BSTA 504 Introduction"
+subtitle: "R Programming"
+author: "Ted Laderas"
+date: "2021-05-05"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
 ---
 
-
-
-
-class: center, middle
-
-
-# Welcome
-
----
-# Ted Laderas, PhD 
-
-.pull-left[
-- Assistant Professor, Division of Bioinformatics and Computational Biology, Department of Medical Informatics and Clinical Epidemiology 
-- Bioinformatics/Computational Biology
-- Interactive Visualization
-- Certified RStudio Instructor 
-- Co-founder of [BioData Club](http://biodata-club.github.io)]
-
-.pull-right[&lt;img src="image/week1/ted.jpg" width = 500&gt;]
-
----
-# Class Facilitator/TA
-
-- Meet Aaron Coyner, PhD Candidate
-- He will be helping me faciliate online sessions
-
----
-# Introduction Overview
-
-- Introduction to Zoom
-- Learning Objectives
-- Class Logistics
-
----
-# First of All
-
-- This is a brand new course
-- Let's support each other
-    - Be gentle with each other
-- I expect to make many mistakes
-    - I don't mind you pointing them out, but be gentle
-    - You can end up as a collaborator!
-
----
-# Tour of Zoom
-
-- We'll be using zoom for our classes
-- Let's do a quick guided tour
-
----
-
-&lt;iframe width="1000" height = "600" src="https://www.youtube.com/embed/5iap0Ffl5Lg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
-
----
-# Let's Try Out Chat
-
-Open the chat window (if we are in full screen, press the escape key, and then click on the chat icon)
-
-&lt;img src="image/week1/zoom_chat.jpg" width = 800&gt;
-
-Type in Chat:
-
-- Your Name
-- Your Department/Program
-- What you hope to learn from this course
-
----
-# Rules for Interaction
-
-During Lectures:
-
-- Post questions in Chat
-    - Aaron will interrupt me to make sure these questions are answered
-- Post answers to questions in chat
-
----
-# Rules for Interaction
-
-During Labs:
-
-- Work within your breakout group to solve 
-- Share screens to talk about issues
-- We'll pop in to each discussion group to help you out
-
----
-# Sharing Your Screen
-
-&lt;img src = "image/week1/screen sharing.jpg" width = 800&gt;
-
----
-# Breakout Rooms
-
-- I'll divide the class into breakout rooms for discussion and labs
-- I'll ask each room for a summary
-
----
-# Let's try the Breakout Rooms
-
-- Let's try it (3 minutes)
-- Icebreaker: What is your favorite all purpose condiment (such as salsa, ketchup, or chile oil?) and why?
-
----
-# Zoom Recordings/Attendance
-
-- I will record each session and post it as soon it is ready
-- I will pause recording for breakout rooms (that won't be recorded)
-
----
-class: center, middle
-
-# Let's look at the website:
-## http://ready4r.netlify.com
-
----
-class: center, middle
-
-# Class Logistics
-
----
-# Learning Objectives
-
-By the end of this course you will be able to:
-
-1. **Understand** and **utilize** **R/RStudio**.
-2. **Understand** basic data types and data structures in R.
-3. **Familiarize** and **load** data files (Excel, Comma Separated Value files) into R/Rstudio, with tips on formatting.
-4. **Visualize** datasets using **ggplot2** and understand how to build basic plots using **ggplot2** syntax.
-5. **Filter** and **format** data in R for use with various routines.
-6. **Execute** and **Interpret** some basic statistics in R.
-
----
-# My Approach to Teaching
-
-I think students learn the best when they're actually looking and thinking about data.
-
-This means we will be looking at lots of data.
-
-I also think that we learn best when we are discussing data together.
-
----
-class:center, middle
-# This is a Safe Space to Ask Questions
-
----
-# Code of Conduct
-
-This class is governed by the [BioData Club Code of Conduct](https://biodata-club.github.io/code_of_conduct/).
-
-This class is meant to be a psychologically safe space where it's ok to ask questions.
-
-I want to normalize your own curiosity and fuel your desire to learn more.
-
-If you are disruptive to class learning or disparaging to other students, I may mute you for the day.
-
----
-# Class Slack
-
-I have created a class Slack here: http://ready4r.slack.com - the invite link will be sent out.
-
-I will try to answer questions there when I can. We'll take a tour of class next week.
-
-I am inviting external people who are intereseted in learning R as well, but you will have your own private channel and get priority.
-
-If you have a question, please ask it in a public channel, rather than a private message, so it can benefit everyone.
-
-- [Slack 101 Videos](https://slack.com/resources/slack-101)
-
----
-# Class Attendance Policy
-
-Please try to attend class. 
-
-There is a post-class survey that will be posted in each notebook. 
-
-Please fill it out, as it counts as attendance.
-
----
-# Office Hours
-
-I will be available for office hours/drop in time 2 Hours a week (Aaron will be available once a week). You're free to sign in to the Zoom Room and work on homework at this time.
-
-The when is good link was sent out as an announcement
-
----
-# One Note about Scheduling
-
-I only work 4 days a week. I'm not available on Wednesdays.
-
----
-# Class Assignments
-
-Class Assignments will be done in RStudio Notebooks (more during lab)
-
-Assignments will be submitted through Sakai. 
-
-We will do our best to return it to you 1 week after due date
-
----
-# Why R?
-
-R is an extremely powerful language for **statistical modeling**, machine learning, data manipulation, and visualization.
-
-It's a *hub* language in that you can access many different kinds of systems (TensorFlow, Databases, Apache Spark) without needing to know other languages.
-
----
-# R is Not Easy
-
-- Learning R can be a difficult, but rewarding process
-- Be patient with yourself, don't beat yourself up
-- We'll try to make it a fun process for you
-
----
-
-# Grading Breakdown
-
-Class is Pass/Fail
-
-- In class activities 30%
-- Assignments (from labs) 50%
-- Final Project 20%
-
----
-# Format of Class
-
-- Lecture/Labs (1 1/2 hours)
-
-- Office Hours (2 hrs/week)
-
----
-# R and RStudio
-
-- In-class labs and assignments will be done with [RStudio.cloud](http://rstudio.cloud)
-- Submissions of notebooks will be via Sakai (we will talk about this)
-
----
-# Post-Class Survey
-
-Filling this out is required and counts towards your attendance.
-
-https://ohsu.ca1.qualtrics.com/jfe/form/SV_6nc1ZLFMmRoE7nn
-
----
-class: center, middle
-
-# Any Questions?
-    </textarea>
-<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
-<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script>var slideshow = remark.create({
-"ratio": "16:9",
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
-});
-if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
-  window.dispatchEvent(new Event('resize'));
-});
-(function(d) {
-  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
-  if (!r) return;
-  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
-  d.head.appendChild(s);
-})(document);
-
-(function(d) {
-  var el = d.getElementsByClassName("remark-slides-area");
-  if (!el) return;
-  var slide, slides = slideshow.getSlides(), els = el[0].children;
-  for (var i = 1; i < slides.length; i++) {
-    slide = slides[i];
-    if (slide.properties.continued === "true" || slide.properties.count === "false") {
-      els[i - 1].className += ' has-continuation';
-    }
-  }
-  var s = d.createElement("style");
-  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
-  d.head.appendChild(s);
-})(document);
-// delete the temporary CSS (for displaying all slides initially) when the user
-// starts to view slides
-(function() {
-  var deleted = false;
-  slideshow.on('beforeShowSlide', function(slide) {
-    if (deleted) return;
-    var sheets = document.styleSheets, node;
-    for (var i = 0; i < sheets.length; i++) {
-      node = sheets[i].ownerNode;
-      if (node.dataset["target"] !== "print-only") continue;
-      node.parentNode.removeChild(node);
-    }
-    deleted = true;
-  });
-})();
-// adds .remark-code-has-line-highlighted class to <pre> parent elements
-// of code chunks containing highlighted lines with class .remark-code-line-highlighted
-(function(d) {
-  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
-  const preParents = [];
-  const findPreParent = function(line, p = 0) {
-    if (p > 1) return null; // traverse up no further than grandparent
-    const el = line.parentElement;
-    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
-  };
-
-  for (let line of hlines) {
-    let pre = findPreParent(line);
-    if (pre && !preParents.includes(pre)) preParents.push(pre);
-  }
-  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
-})(document);</script>
-
-<script>
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-</script>
-
-<script>
-slideshow._releaseMath = function(el) {
-  var i, text, code, codes = el.getElementsByTagName('code');
-  for (i = 0; i < codes.length;) {
-    code = codes[i];
-    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
-      text = code.textContent;
-      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
-          /^\$\$(.|\s)+\$\$$/.test(text) ||
-          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
-        code.outerHTML = code.innerHTML;  // remove <code></code>
-        continue;
-      }
-    }
-    i++;
-  }
-};
-slideshow._releaseMath(document);
-</script>
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-(function () {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
-  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
-    script.src  = script.src.replace(/^https?:/, '');
-  document.getElementsByTagName('head')[0].appendChild(script);
-})();
-</script>
-  </body>
-</html>
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<link href="/rmarkdown-libs/tile-view/tile-view.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/tile-view/tile-view.js"></script>
+<link href="/rmarkdown-libs/tachyons/tachyons.min.css" rel="stylesheet" />
+<link href="/rmarkdown-libs/panelset/panelset.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/panelset/panelset.js"></script>
+
+
+<p>class: center, middle</p>
+<div id="welcome" class="section level1">
+<h1>Welcome</h1>
+<hr />
+</div>
+<div id="ted-laderas-phd" class="section level1">
+<h1>Ted Laderas, PhD</h1>
+<p>.pull-left[
+- Assistant Professor, Department of Medical Informatics and Clinical Epidemiology
+- Interactive Visualization/Flow Cytometry
+- Certified RStudio/Carpentries Instructor
+- Co-founder of
+- <a href="http://biodata-club.github.io">BioData Club</a>
+- <a href="https://cascadiarconf.com">Cascadia-R Conference</a>
+- <a href="https://laderast.github.io" class="uri">https://laderast.github.io</a> ]
+.pull-right[
+<img src="image/week1/ted.jpg" width = 400>]</p>
+</div>
+<div id="introduction-overview" class="section level1">
+<h1>Introduction Overview</h1>
+<ul>
+<li>Code of Conduct</li>
+<li>Introduction to Zoom</li>
+<li>Learning Objectives</li>
+<li>Class Logistics</li>
+</ul>
+<p>class:center, middle
+# This is a Safe Space to Ask Questions</p>
+</div>
+<div id="code-of-conduct-violations" class="section level1">
+<h1>Code of Conduct Violations</h1>
+<p>Please report them to me directly or to Eric if you feel comfortable.</p>
+<p>If not, please use the anonymous reporting form here: <a href="https://forms.gle/7CTv1p573MAHEdX69" class="uri">https://forms.gle/7CTv1p573MAHEdX69</a></p>
+<iframe width="1000" height="600" src="https://www.youtube.com/embed/5iap0Ffl5Lg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="lets-try-out-chat-10-minutes" class="section level1">
+<h1>Let’s Try Out Chat (10 minutes)</h1>
+<p>Open the chat window (if we are in full screen, press the escape key, and then click on the chat icon)</p>
+<p><img src="image/week1/zoom_chat.jpg" width = 800></p>
+<p>Type in Chat:</p>
+<ul>
+<li>Your Name</li>
+<li>Your Year</li>
+<li>What you hope to learn from this course</li>
+</ul>
+</div>
+<div id="rules-for-interaction" class="section level1">
+<h1>Rules for Interaction</h1>
+<p>During Class</p>
+<ul>
+<li>Work with your buddy if we’re working on a lab</li>
+<li>Share screens to talk about issues</li>
+</ul>
+</div>
+<div id="lets-try-the-breakout-rooms" class="section level1">
+<h1>Let’s try the Breakout Rooms</h1>
+<ul>
+<li>Let’s try it (3 minutes)</li>
+<li>Icebreaker: What is your favorite all purpose condiment (such as salsa, ketchup, or chile oil?) and why?</li>
+</ul>
+</div>
+<div id="learning-objectives" class="section level1">
+<h1>Learning Objectives</h1>
+<p>By the end of this course you will be able to:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Understand</strong> and <strong>utilize</strong> <strong>R/RStudio</strong>.</li>
+<li><strong>Understand</strong> basic data types and data structures in R.</li>
+<li><strong>Familiarize</strong> and <strong>load</strong> data files (Excel, Comma Separated Value files) into R/Rstudio, with tips on formatting.</li>
+<li><strong>Visualize</strong> datasets using <strong>ggplot2</strong> and understand how to build basic plots using <strong>ggplot2</strong> syntax.</li>
+<li><strong>Filter</strong> and <strong>format</strong> data in R for use with various routines.</li>
+<li><strong>Manipulate</strong> and <strong>combine</strong> multiple files.</li>
+<li><strong>Automate</strong> repetitive tasks in R, such as loading a folder of files.</li>
+<li><strong>Execute</strong> and <strong>Interpret</strong> some basic statistics in R.</li>
+<li><strong>Execute</strong> basic machine learning workflows using <code>tidymodels</code>, including PCA, resampling, and Supervised Learning.</li>
+<li><strong>Your Choice</strong>: <code>shiny</code>, <code>leaflet</code>, <code>tidytext</code> or <code>Bioconductor</code>.</li>
+</ol>
+<p>class: center, middle</p>
+</div>
+<div id="lets-look-at-the-website" class="section level1">
+<h1>Let’s look at the website:</h1>
+<div id="httpsph-r-programming.netlify.app" class="section level2">
+<h2><a href="http://sph-r-programming.netlify.app" class="uri">http://sph-r-programming.netlify.app</a></h2>
+</div>
+</div>
+<div id="textbooks" class="section level1">
+<h1>Textbooks</h1>
+<p>All textbooks are available online and are free to use.</p>
+<p>We’ll be using the following for reference:</p>
+<p><strong>Getting Used to R, RStudio, and RMarkdown</strong>. Chester Ismay.
+<a href="https://ismayc.github.io/rbasics-book/" class="uri">https://ismayc.github.io/rbasics-book/</a></p>
+<p><strong>Introduction to Data Science</strong>. Tiffany Timbers, Trevor Campbell, Melissa Lee. <a href="https://ubc-dsci.github.io/introduction-to-datascience/" class="uri">https://ubc-dsci.github.io/introduction-to-datascience/</a></p>
+<p><strong>RMarkdown for Scientists</strong>. Nick Tierney. <a href="https://rmd4sci.njtierney.com/" class="uri">https://rmd4sci.njtierney.com/</a></p>
+<p><strong>R for Data Science</strong>. Garret Grolemund and Hadley Wickham. <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a></p>
+</div>
+<div id="social-learning-works" class="section level1">
+<h1>Social Learning Works</h1>
+<p>I also think that we learn best when we are discussing data together.</p>
+<p>You’ll be assigned a buddy at the beginning of each class</p>
+</div>
+<div id="grading-breakdown" class="section level1">
+<h1>Grading Breakdown</h1>
+<ul>
+<li>Attendance 10%</li>
+<li>Midterm Project 15%</li>
+<li>Function of the Week 5%</li>
+<li>Homework Assignments 45%</li>
+<li>Final Project 25%</li>
+</ul>
+</div>
+<div id="class-assignments" class="section level1">
+<h1>Class Assignments</h1>
+<p>Class Assignments will be done in RStudio Notebooks</p>
+<p>Assignments will be submitted through Sakai.</p>
+<p>We will do our best to return it to you within a week.</p>
+<p>We will highlight any points of confusion.</p>
+</div>
+<div id="midterm-final-project" class="section level1">
+<h1>Midterm / Final Project</h1>
+<ul>
+<li>Midterm: Pick a dataset and show that you can explore it, plot it, and transform it to answer a specific question
+<ul>
+<li>Schedule a meeting to discuss the data</li>
+</ul></li>
+<li>Final: Pick a different dataset and build a model using machine learning or statistics and present it
+<ul>
+<li>Schedule a meeting to discuss the dataset</li>
+</ul></li>
+</ul>
+</div>
+<div id="office-hours" class="section level1">
+<h1>Office Hours</h1>
+<p>I will be available for office hours/drop in time 2 Hours a week. You’re free to sign in to the Zoom Room and work on homework at this time.</p>
+<p>When is good link:</p>
+<p>Highlight all times that work for you.</p>
+</div>
+<div id="r-is-not-easy" class="section level1">
+<h1>R is Not Easy</h1>
+<ul>
+<li>Learning R can be a difficult, but rewarding process</li>
+<li>Be patient with yourself, don’t beat yourself up</li>
+<li>We’ll try to make it a fun process for you</li>
+</ul>
+</div>
+<div id="testimonies" class="section level1">
+<h1>Testimonies</h1>
+<p>.bg-washed-green.b–dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
+“I have used other standard softwares for my stats during my doctoral program and was always intimidated by R. I am so glad I found this course, after going through numerous online videos &amp; courses. It is taking me time to learn through your course, but I am confident that this time I will get through it.”]</p>
+</div>
+<div id="other-resourcesevents-optional" class="section level1">
+<h1>Other Resources/Events (Optional)</h1>
+<ul>
+<li><a href="https://www.meetup.com/portland-r-user-group/">PDX R User Group Meetup</a> (monthly)
+<ul>
+<li>Intro to tidyselect (1/21 @ 6:30)</li>
+</ul></li>
+<li>BioData Club: Intro to Shiny Workshop (1/21 @ 3-5 PM)</li>
+<li>Cascadia R Conference 2021 will be online in late May or early June</li>
+</ul>
+<hr />
+<p>class: center, middle</p>
+</div>
+<div id="any-questions" class="section level1">
+<h1>Any Questions?</h1>
+</div>

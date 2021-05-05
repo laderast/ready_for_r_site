@@ -1,6 +1,6 @@
 ---
-title: "BMI507/607 Introduction"
-subtitle: "Ready for R"
+title: "BSTA 504 Introduction"
+subtitle: "R Programming"
 author: "Ted Laderas"
 date: "`r Sys.Date()`"
 output:
@@ -16,44 +16,57 @@ output:
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-mono_light(
+style_mono_accent(
   base_color = "midnightblue",
   header_font_google = google_font("Josefin Sans"),
-  text_font_google   = google_font("Montserrat", "300", "300i"),
-  code_font_google   = google_font("Droid Mono"),
-  link_color = "deepskyblue1",
-  text_font_size = "28px"
+  link_color = "steelblue",
+  text_font_size = "26px",
+  footnote_font_size = "22px"
 )
 ```
 
-class: center, middle
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "logo", "tachyons"))
+xaringanExtra::use_panelset()
+xaringanExtra::use_tachyons()
+```
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 ```
+
+class: center, middle
+
 # Welcome
 
 ---
-# Ted Laderas, PhD 
+
+# Ted Laderas, PhD
 
 .pull-left[
-- Assistant Professor, Division of Bioinformatics and Computational Biology, Department of Medical Informatics and Clinical Epidemiology 
-- Bioinformatics/Computational Biology
-- Interactive Visualization
-- Certified RStudio Instructor 
-- Co-founder of [BioData Club](http://biodata-club.github.io)]
-
-.pull-right[<img src="image/week1/ted.jpg" width = 500>]
+- Assistant Professor, Department of Medical Informatics and Clinical Epidemiology 
+- Interactive Visualization/Flow Cytometry
+- Certified RStudio/Carpentries Instructor
+- Co-founder of
+  - [BioData Club](http://biodata-club.github.io)
+  - [Cascadia-R Conference](https://cascadiarconf.com)
+- https://laderast.github.io 
+]
+.pull-right[
+<img src="image/week1/ted.jpg" width = 400>
+]
 
 ---
 # Class Facilitator/TA
 
-- Meet Aaron Coyner, PhD Candidate
+- Meet Eric Leung from DMICE
 - He will be helping me faciliate online sessions
+- Also will be grading and will be available for questions
 
 ---
 # Introduction Overview
 
+- Code of Conduct
 - Introduction to Zoom
 - Learning Objectives
 - Class Logistics
@@ -67,102 +80,6 @@ options(htmltools.dir.version = FALSE)
 - I expect to make many mistakes
     - I don't mind you pointing them out, but be gentle
     - You can end up as a collaborator!
-
----
-# Tour of Zoom
-
-- We'll be using zoom for our classes
-- Let's do a quick guided tour
-
----
-
-<iframe width="1000" height = "600" src="https://www.youtube.com/embed/5iap0Ffl5Lg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
----
-# Let's Try Out Chat
-
-Open the chat window (if we are in full screen, press the escape key, and then click on the chat icon)
-
-<img src="image/week1/zoom_chat.jpg" width = 800>
-
-Type in Chat:
-
-- Your Name
-- Your Department/Program
-- What you hope to learn from this course
-
----
-# Rules for Interaction
-
-During Lectures:
-
-- Post questions in Chat
-    - Aaron will interrupt me to make sure these questions are answered
-- Post answers to questions in chat
-
----
-# Rules for Interaction
-
-During Labs:
-
-- Work within your breakout group to solve 
-- Share screens to talk about issues
-- We'll pop in to each discussion group to help you out
-
----
-# Sharing Your Screen
-
-<img src = "image/week1/screen sharing.jpg" width = 800>
-
----
-# Breakout Rooms
-
-- I'll divide the class into breakout rooms for discussion and labs
-- I'll ask each room for a summary
-
----
-# Let's try the Breakout Rooms
-
-- Let's try it (3 minutes)
-- Icebreaker: What is your favorite all purpose condiment (such as salsa, ketchup, or chile oil?) and why?
-
----
-# Zoom Recordings/Attendance
-
-- I will record each session and post it as soon it is ready
-- I will pause recording for breakout rooms (that won't be recorded)
-
----
-class: center, middle
-
-# Let's look at the website:
-## http://ready4r.netlify.com
-
----
-class: center, middle
-
-# Class Logistics
-
----
-# Learning Objectives
-
-By the end of this course you will be able to:
-
-1. **Understand** and **utilize** **R/RStudio**.
-2. **Understand** basic data types and data structures in R.
-3. **Familiarize** and **load** data files (Excel, Comma Separated Value files) into R/Rstudio, with tips on formatting.
-4. **Visualize** datasets using **ggplot2** and understand how to build basic plots using **ggplot2** syntax.
-5. **Filter** and **format** data in R for use with various routines.
-6. **Execute** and **Interpret** some basic statistics in R.
-
----
-# My Approach to Teaching
-
-I think students learn the best when they're actually looking and thinking about data.
-
-This means we will be looking at lots of data.
-
-I also think that we learn best when we are discussing data together.
 
 ---
 class:center, middle
@@ -180,52 +97,224 @@ I want to normalize your own curiosity and fuel your desire to learn more.
 If you are disruptive to class learning or disparaging to other students, I may mute you for the day.
 
 ---
-# Class Slack
+# Code of Conduct Violations
 
-I have created a class Slack here: http://ready4r.slack.com - the invite link will be sent out.
+Please report them to me directly or to Eric if you feel comfortable.
 
-I will try to answer questions there when I can. We'll take a tour of class next week.
+If not, please use the anonymous reporting form here: https://forms.gle/7CTv1p573MAHEdX69
 
-I am inviting external people who are intereseted in learning R as well, but you will have your own private channel and get priority.
 
-If you have a question, please ask it in a public channel, rather than a private message, so it can benefit everyone.
+---
+# Tour of Zoom
 
-- [Slack 101 Videos](https://slack.com/resources/slack-101)
+- We'll be using zoom for our classes
+- Let's do a quick guided tour
+
+---
+<iframe width="1000" height = "600" src="https://www.youtube.com/embed/5iap0Ffl5Lg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+# Letting me Know
+
+When we're doing the activity, use the hands up in Zoom to indicate that you're finished.
+
+If you have questions, please ask them in chat.
+
+---
+# Let's Try Out Chat (10 minutes)
+
+Open the chat window (if we are in full screen, press the escape key, and then click on the chat icon)
+
+<img src="image/week1/zoom_chat.jpg" width = 800>
+
+Type in Chat:
+
+- Your Name
+- Your Year
+- What you hope to learn from this course
+
+---
+# Rules for Interaction
+
+During Class
+
+- Post questions in Chat
+    - Eric will interrupt me to make sure these questions are answered
+- Post answers to questions in chat if you know them
+- You can unmute to ask questions as well
+
+---
+# Rules for Interaction
+
+During Class
+
+- Work with your buddy if we're working on a lab 
+- Share screens to talk about issues
+
+---
+# Sharing Your Screen
+
+<img src = "image/week1/screen sharing.jpg" width = 800>
+
+
+---
+# Let's try the Breakout Rooms
+
+- Let's try it (3 minutes)
+- Icebreaker: What is your favorite all purpose condiment (such as salsa, ketchup, or chile oil?) and why?
+
+---
+# Zoom Recordings/Attendance
+
+- I will record each session and Eric will post it as soon it is ready
+- I will pause recording for breakout rooms (that won't be recorded)
+- Remind me to start recording when class starts
+
+---
+# Learning Objectives
+
+By the end of this course you will be able to:
+
+1. **Understand** and **utilize** **R/RStudio**.
+2. **Understand** basic data types and data structures in R.
+3. **Familiarize** and **load** data files (Excel, Comma Separated Value files) into R/Rstudio, with tips on formatting.
+4. **Visualize** datasets using **ggplot2** and understand how to build basic plots using **ggplot2** syntax.
+5. **Filter** and **format** data in R for use with various routines.
+6. **Manipulate** and **combine** multiple files.
+7. **Automate** repetitive tasks in R, such as loading a folder of files.
+8. **Execute** and **Interpret** some basic statistics in R.
+9. **Execute** basic machine learning workflows using `tidymodels`, including PCA, resampling, and Supervised Learning.
+10. **Your Choice**: `shiny`, `leaflet`, `tidytext` or `Bioconductor`.
+
+---
+class: center, middle
+# Class Logistics
+
+---
+class: center, middle
+
+# Let's look at the website:
+## http://sph-r-programming.netlify.app
+
+---
+# Caveat Emptor
+
+- This is *not* a conventional programming course
+- We try to get you doing interesting and useful things from the beginning
+- We use `tidyverse` because it helps you get up and running quickly
+- This is also *not* a full course on statistics or machine learning
+
+---
+# Textbooks
+
+All textbooks are available online and are free to use.
+
+We'll be using the following for reference:
+
+**Getting Used to R, RStudio, and RMarkdown**. Chester Ismay.
+<https://ismayc.github.io/rbasics-book/>
+
+**Introduction to Data Science**. Tiffany Timbers, Trevor Campbell, Melissa Lee. <https://ubc-dsci.github.io/introduction-to-datascience/>
+
+**RMarkdown for Scientists**. Nick Tierney. <https://rmd4sci.njtierney.com/>
+
+**R for Data Science**. Garret Grolemund and Hadley Wickham. <https://r4ds.had.co.nz/>
+
+
+---
+# My Approach to Teaching
+
+I think students learn the best when they're actually looking and thinking about data.
+
+This means we will be looking at lots of data.
+
+---
+# Social Learning Works
+
+I also think that we learn best when we are discussing data together.
+
+You'll be assigned a buddy at the beginning of each class
+
+---
+# Format of Class
+
+- Review of muddiest points (10-15 minutes)
+- Main Learning (2 hours)
+- Function of the Week presentations (20 minutes)
+- Wrap Up/Questions (remaining time)
+
+We'll take 5 minute breaks at the top of each hour.
+
+---
+# Grading Breakdown
+
+- Attendance 10%
+- Midterm Project 15%
+- Function of the Week 5%
+- Homework Assignments 45%
+- Final Project 25%
 
 ---
 # Class Attendance Policy
 
 Please try to attend class. 
 
-There is a post-class survey that will be posted in each notebook. 
+There is a post-class survey that will be posted. Please fill it out, as it counts as attendance.
 
-Please fill it out, as it counts as attendance.
-
----
-# Office Hours
-
-I will be available for office hours/drop in time 2 Hours a week (Aaron will be available once a week). You're free to sign in to the Zoom Room and work on homework at this time.
-
-The when is good link was sent out as an announcement
-
----
-# One Note about Scheduling
-
-I only work 4 days a week. I'm not available on Wednesdays.
+If you can't attend class, please let me know.
 
 ---
 # Class Assignments
 
-Class Assignments will be done in RStudio Notebooks (more during lab)
+Class Assignments will be done in RStudio Notebooks 
 
 Assignments will be submitted through Sakai. 
 
-We will do our best to return it to you 1 week after due date
+We will do our best to return it to you within a week.
+
+We will highlight any points of confusion.
+
+---
+# Function of the Week
+
+- Starts in Week 3
+- Learn and share about an underrated `tidyverse()` function (5 minutes max)
+- Share your experience with the function
+  - Is it useful?
+  - Is it hard to use?
+  - Share an example
+- You will have time to meet with me before you present
+  
+---
+# Midterm / Final Project
+
+- Midterm: Pick a dataset and show that you can explore it, plot it, and transform it to answer a specific question
+  - Schedule a meeting to discuss the data
+- Final: Pick a different dataset and build a model using machine learning or statistics and present it
+  - Schedule a meeting to discuss the dataset
+
+---
+# Class Discord
+
+- Invitation to Class Discord is on Sakai and emailed to you
+- Use to ask questions
+- If you know the answer, try to help out
+- I will try and review once a day
+- Video channels for working together
+
+---
+# Office Hours
+
+I will be available for office hours/drop in time 2 Hours a week. You're free to sign in to the Zoom Room and work on homework at this time.
+
+When is good link: 
+
+Highlight all times that work for you.
 
 ---
 # Why R?
 
-R is an extremely powerful language for **statistical modeling**, machine learning, data manipulation, and visualization.
+R is an extremely powerful language for **statistical modeling**, **machine learning**, **data manipulation**, and **visualization**.
 
 It's a *hub* language in that you can access many different kinds of systems (TensorFlow, Databases, Apache Spark) without needing to know other languages.
 
@@ -237,34 +326,30 @@ It's a *hub* language in that you can access many different kinds of systems (Te
 - We'll try to make it a fun process for you
 
 ---
+# Testimonies (You Can Do It!)
 
-# Grading Breakdown
-
-Class is Pass/Fail
-
-- In class activities 30%
-- Assignments (from labs) 50%
-- Final Project 20%
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
+"I started out very anxious about being able to learn R effectively and your class was a very gentle entry point that covered quite a lot of material. I feel like I'm going to be able to search and figure out much of what I want to accomplish now."]
 
 ---
-# Format of Class
+# Testimonies
 
-- Lecture/Labs (1 1/2 hours)
-
-- Office Hours (2 hrs/week)
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
+ "I have used other standard softwares for my stats during my doctoral program and was always intimidated by R. I am so glad I found this course, after going through numerous online videos & courses. It is taking me time to learn through your course, but I am confident that this time I will get through it."]
 
 ---
 # R and RStudio
 
 - In-class labs and assignments will be done with [RStudio.cloud](http://rstudio.cloud)
-- Submissions of notebooks will be via Sakai (we will talk about this)
+- We'll take a guided tour of RStudio Cloud next
 
 ---
-# Post-Class Survey
+# Other Resources/Events (Optional)
 
-Filling this out is required and counts towards your attendance.
-
-https://ohsu.ca1.qualtrics.com/jfe/form/SV_6nc1ZLFMmRoE7nn
+- [PDX R User Group Meetup](https://www.meetup.com/portland-r-user-group/) (monthly)
+  - Intro to tidyselect (1/21 @ 6:30) 
+- BioData Club: Intro to Shiny Workshop (1/21 @ 3-5 PM) 
+- Cascadia R Conference 2021 will be online in late May or early June
 
 ---
 class: center, middle

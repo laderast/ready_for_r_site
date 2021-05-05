@@ -1,0 +1,98 @@
+---
+title: "Part 7: purrr"
+subtitle: "BSTA504"
+author: "Ted Laderas"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(xaringanExtra)
+library(flair)
+```
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "midnightblue",
+  header_font_google = google_font("Josefin Sans"),
+  link_color = "steelblue",
+  text_font_size = "26px",
+  footnote_font_size = "22px"
+)
+```
+
+
+class: center, middle
+# The magic of `purrr`
+## Doing things one at a time
+
+---
+# For loops are hard
+
+<img src="image/week7/forloops.png" width=750>
+
+.footnote[image from Allison Horst]
+
+---
+# Enter `purrr`
+
+<img src="image/week7/purrr_cat.png" width=750>
+
+.footnote[image from Allison Horst]
+
+
+---
+# `purrr` works with lists
+
+- We'll need to get things into and out of them
+- `purrr::map()` returns a new list of the same length
+
+
+```
+my_list <- c()
+```
+
+
+---
+
+<img src="image/week7/map_frosting.png" width=750>
+
+.footnote[image from Allison Horst]
+
+
+---
+# Use Case 1 (part 1)
+
+<img src="image/week7/purrr_case1.JPG" width=750>
+
+---
+# Use Case 1 (part 2)
+
+<img src="image/week7/purrr_case1-2.JPG" width=750>
+
+---
+# Use Case 2
+
+<img src="image/week7/purrr_case2.JPG" width=750>
+
+---
+# `map2()`
+
+<img src="image/week7/map2_cupcakes.png" width=750>
+
+---
+# Learn More
+
+[Learn to Purrr](http://www.rebeccabarter.com/blog/2019-08-19_purrr/)
+

@@ -1,0 +1,244 @@
+---
+title: "Machine Learning"
+subtitle: "BSTA 504"  
+author: "Ted Laderas"
+date: '2021-05-05'
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<link href="/rmarkdown-libs/tachyons/tachyons.min.css" rel="stylesheet" />
+
+
+<div id="learning-objectives" class="section level1">
+<h1>Learning Objectives</h1>
+<ul>
+<li><strong>Learn</strong> about different types of machine learning</li>
+<li><strong>Learn</strong> how to split data using <code>{rsample}</code></li>
+<li><strong>Learn</strong> about standard approaches for preprocessing data using <code>{recipes}</code></li>
+<li><strong>Learn</strong> about PCA as a visualization and exploration technique</li>
+<li><strong>Learn</strong> the basic phases of supervised machine learning and the <code>tidymodels</code> functions associated with them</li>
+<li><strong>Learn how to evaluate</strong> the predictive power of a model/learner</li>
+</ul>
+<hr />
+</div>
+<div id="what-is-machine-learning" class="section level1">
+<h1>What is Machine Learning?</h1>
+<ul>
+<li>“The study of computer algorithms that improve automatically through experience”</li>
+<li>Using algorithms to find predictive patterns in the data</li>
+</ul>
+</div>
+<div id="whats-the-difference" class="section level1">
+<h1>What’s the Difference?</h1>
+<p>.pull-left[
+## Statistical Modeling</p>
+<ul>
+<li>Understand and quantify relationships between covariates and outcome is primary goal</li>
+<li>Prediction is secondary</li>
+<li>Sample sizes tend to be smaller
+]</li>
+</ul>
+<p>.pull-right[
+## (Supervised) Machine Learning</p>
+<ul>
+<li>Prediction is primary goal</li>
+<li>Understanding relationships between variables is secondary</li>
+<li>Sample sizes tend to be very large
+]</li>
+</ul>
+</div>
+<div id="the-different-parts-of-tidymodels" class="section level1">
+<h1>The different parts of <code>tidymodels</code></h1>
+<p>The different sections of <code>tidymodels</code> are designed to be useful in a <code>tidy</code> workflow and roughly map to the different steps and requirements of a machine learning workflow.</p>
+<hr />
+<div id="lets-run-through-a-basic-tidymodels-workflow" class="section level2">
+<h2>Let’s run through a basic <code>tidymodels</code> workflow</h2>
+<p>These are the major packages where <code>tidymodels</code> is used in machine learning.</p>
+<ul>
+<li><code>{rsample}</code> - use these functions to specify a test/training set, or to build a cross-validation set, or for bootstrap sampling</li>
+<li><code>{recipes}</code> - use these functions to normalize variables and process them for use in machine learning, also known as <strong>feature engineering</strong>.</li>
+<li><code>{parsnip}</code> - use these functions to specify and train your model</li>
+<li><code>{workflows}</code> - use a model and recipe together (allows you to switch out models and use them reproducibly)</li>
+<li><code>{yardstick}</code> - use these functions to evaluate your model (accuracy on test data)</li>
+</ul>
+</div>
+</div>
+<div id="workflow-with-packages" class="section level1">
+<h1>Workflow with Packages</h1>
+<p><img src="image/week9/workflow_packages.png" width = 700></p>
+<p><img src="image/week9/labels.JPG" width = 700></p>
+<hr />
+<p><img src="image/week9/test_train.JPG" width = 700></p>
+<hr />
+</div>
+<div id="rsampleinitial_split" class="section level1">
+<h1><code>rsample::initial_split()</code></h1>
+<p>The function <code>initial_split()</code> from <code>rsample</code> package in <code>tidymodels</code> handles splitting data into test/train sets.</p>
+<pre class="r"><code>all_features_split &lt;- initial_split(all_features, 
+                                prop = 3/4)
+all_features_train &lt;- training(all_features_split)
+all_features_test &lt;- testing(all_features_split)</code></pre>
+</div>
+<div id="data-types" class="section level1">
+<h1>Data Types</h1>
+<p><img src="image/week9/data_types1.png" width = 700></p>
+</div>
+<div id="building-a-recipe" class="section level1">
+<h1>Building a <code>recipe</code></h1>
+<ul>
+<li>Many standardized steps for processing data in machine learning</li>
+</ul>
+<hr />
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Step
+</th>
+<th style="text-align:left;">
+Function
+</th>
+<th style="text-align:left;">
+Data_type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Imputing missing data
+</td>
+<td style="text-align:left;">
+step_knnimpute()
+</td>
+<td style="text-align:left;">
+all_numeric(), all_nominal()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Transform variables for skewness
+</td>
+<td style="text-align:left;">
+step_BoxCox(), step_log()
+</td>
+<td style="text-align:left;">
+all_numeric()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Discretize continuous variables
+</td>
+<td style="text-align:left;">
+step_cut(), step_discretize()
+</td>
+<td style="text-align:left;">
+all_numeric()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Normalize data (center, scale, etc)
+</td>
+<td style="text-align:left;">
+step_normalize()
+</td>
+<td style="text-align:left;">
+all_numeric()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Create Dummy Variables
+</td>
+<td style="text-align:left;">
+step_dummy()
+</td>
+<td style="text-align:left;">
+all_nominal()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Identify highly correlated variables
+</td>
+<td style="text-align:left;">
+step_corr()
+</td>
+<td style="text-align:left;">
+all_numeric()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Create Interactions
+</td>
+<td style="text-align:left;">
+step_interact()
+</td>
+<td style="text-align:left;">
+all_numeric(), all_nominal()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Multivariate transformation
+</td>
+<td style="text-align:left;">
+step_pca(), step_ica()
+</td>
+<td style="text-align:left;">
+all_numeric()
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="pca-principal-components-analysis" class="section level1">
+<h1>PCA: Principal Components Analysis</h1>
+<ul>
+<li>Visualization method</li>
+<li>Summarize many covariates into a smaller number of “Prinicipal Components”</li>
+<li>Principal components “squish” multiple covariaes into linear combinations</li>
+<li>Values of linear combinations chosen to maximize variability</li>
+</ul>
+<p><img src="image/week9/workflow.JPG" width = 700></p>
+</div>
+<div id="test-data-workflow" class="section level1">
+<h1>Test Data Workflow</h1>
+<p><img src="image/week9/test_data.jpg" width = 700></p>
+</div>
+<div id="yardstick-for-evaluating-on-test-set" class="section level1">
+<h1>{yardstick} for evaluating on test set</h1>
+<p><code>collect_metrics()</code> from <code>tidymodels</code> allows you to calculate metrics on predictions including:</p>
+<ul>
+<li>Accuracy</li>
+<li>Balanced Accuracy</li>
+<li>Sensitivity (requires an “event_level”, such as “depressed”)</li>
+<li>Specificity (requires an “event_level”, such as “depressed”)</li>
+<li>Area under the Reciever Operating Curve (ROC)</li>
+</ul>
+</div>
+<div id="logistic-regression" class="section level1">
+<h1>Logistic Regression</h1>
+<p>Talk more about this in RStudio cloud notebook.</p>
+</div>
+<div id="k-nearest-neighbor" class="section level1">
+<h1>K-nearest Neighbor</h1>
+<p><img src="image/week9/knn2.jpg" width = 700></p>
+<hr />
+</div>
+<div id="k-nearest-neighbor-1" class="section level1">
+<h1>K-nearest Neighbor</h1>
+<p><img src="image/week9/knn3.jpg" width = 700></p>
+</div>

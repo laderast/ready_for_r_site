@@ -1,0 +1,503 @@
+---
+title: "What you can do with RMarkdown"
+subtitle: "BSTA504"
+author: "Ted Laderas"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(xaringanExtra)
+library(flair)
+```
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "midnightblue",
+  header_font_google = google_font("Josefin Sans"),
+  link_color = "steelblue",
+  text_font_size = "26px",
+  footnote_font_size = "22px"
+)
+```
+
+
+class: center, middle
+# Warning: RMarkdown is a Deep (but Rewarding) Rabbit Hole
+
+---
+class: center, middle
+# What is RMarkdown?
+
+---
+# One format to Rule them All
+
+--
+- Variant of Markdown (made for websites)
+
+--
+- Lets you mix code and text
+
+--
+- Can be made into many different formats
+
+---
+# Parts of an RMarkdown Document
+
+- Metadata (front matter)
+  - lets you set formatting options, document type
+- Text 
+  - Uses [Markdown Formatting](https://sph-r-programming.netlify.app/reference/markdown/)
+  - Can mix in HTML tags as well (such as twitter embed code)
+- Code Chunks
+  - Executes code and generates output in order, from scratch
+
+---
+# How does this work?
+
+- knitting: generating outputs (tables, figures) from codeblocks
+- Output + markdown is then passed down to a "rendering engine" which makes the document
+  - Pandoc (html, word documents, EPUB, many others)
+  - reveal.js (slide presentations)
+  - LaTeX (PDFs)
+- Can save intermediate outputs as well.
+  - LaTeX code
+
+---
+class: center, middle
+
+# Let's learn about Front Matter/Metadata
+
+---
+# Front Matter: YAML
+
+You can include a special section at the top of a Markdown document that contains metadata (or data about your document) like the `title`, `date`, `author`, etc. 
+
+This section uses a special syntax named YAML (or “YAML Ain’t Markup Language”) that follows this basic outline: 
+
+```
+---                   #note it has to start with three dashes
+setting: value for setting. 
+---                   #and end in three dashes.
+```
+---
+# Front Matter Example
+
+.pull-left[
+```{r yaml_ex, eval=FALSE, include=FALSE}
+---
+title: "Introduction to RMarkdown"
+author: "Ted Laderas"
+date: "\`r Sys.Date()\`"
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+```
+
+```{r echo=FALSE}
+decorate_chunk("yaml_ex", eval=FALSE)
+```
+]
+
+.pull-right[
+Here’s an example YAML metadata section. Note that it must start and end with three dashes (---).
+
+]
+---
+# `title` and `author`
+
+.pull-left[
+```{r echo=FALSE}
+decorate_chunk("yaml_ex", eval=FALSE) %>%
+  flair("title") %>%
+  flair("author")
+```
+]
+
+.pull-right[
+- `title` - title of your document
+- `author` - author of your document
+
+]
+---
+# `date`
+
+.pull-left[
+```{r echo=FALSE}
+decorate_chunk("yaml_ex", eval=FALSE) %>%
+  flair("date") %>%
+  flair("`r Sys.Date()`")
+```
+]
+
+.pull-right[
+- `date` can be in a regular format, such as `08/20/2012`
+- using the inline code chunk updates the date automatically!
+]
+---
+# `output`
+
+.pull-left[
+
+```{r echo=FALSE}
+decorate_chunk("yaml_ex", eval=FALSE) %>%
+  flair("output:") %>%
+  flair("html_document:")
+```
+]
+
+.pull-right[
+- `output:` is one of the most important options to set.
+- You have seen `output: html_document` before.
+- This is an example of a *nested* option, where an option is part of a larger option.
+- Use **two** spaces for the **first** level. Use **four** spaces for the **second** level, and so on.
+]
+---
+# Let's look at three output types
+
+.pull-left[
+- `html_document` 
+- `distill::distill_article`
+- `slidy_presentation`
+]
+
+.pull-right[
+- Many, many other output formats
+- `{xaringan}` presentations (like this)
+- Shiny web apps
+- LearnR tutorials
+- Book format (`{bookdown}`)
+- Websites (`{blogdown}`/`{distill}`)
+
+]
+---
+# `html_document`: a really versatile format!
+
+Lots of options make it a really versatile format.
+
+- Table of contents 
+- Themes
+- Section Numbering
+- Figure Formatting
+- Embed interactive visualizations
+- Data Frame Printing
+
+---
+# Themes
+
+.pull-left[
+```{r theme_chunk, include=FALSE, eval=FALSE}
+---
+output:
+  html_document:
+    theme: flatly
+---
+```
+
+```{r, echo=FALSE}
+decorate_chunk("theme_chunk", eval=FALSE) %>%
+  flair("theme: flatly")
+```
+]
+
+.pull-right[
+There are a number of themes that exist within Rmarkdown. 
+
+Examples include: 
+- `flatly` 
+- `cosmo` 
+- `lumen` 
+- `paper`
+
+More info here: [RMarkdown Theme Gallery](https://www.datadreaming.org/post/r-markdown-theme-gallery/)
+]
+---
+# Theme packages that are really helpful
+
+- `{prettydoc}`: https://prettydoc.statr.me/themes.html
+- `{hrbrthemes}`: https://cinc.rud.is/web/packages/hrbrthemes/
+- `{rmdformats}`: https://bookdown.org/yihui/rmarkdown/rmdformats.html 
+- `{tufte}`: https://bookdown.org/yihui/rmarkdown/tufte-handouts.html
+- [Branding and Packaging Reports with RMarkdown](https://www.wjakethompson.com/talk/2020-01-30-rstudioconf-ratlas/)
+
+---
+# `toc: true`
+
+.pull-left[
+```{r echo=FALSE}
+decorate_chunk("yaml_ex", eval=FALSE) %>%
+  flair("toc: true") %>%
+  flair("toc_float: true")
+```
+]
+
+.pull-right[
+- Add a table of contents to your file with `toc: true`
+- Setting `toc_float: true` adds a *floating* table of contents
+]
+---
+# number_sections
+
+.pull-left[
+```{r num_chunk, include=FALSE, eval=FALSE}
+---
+output:
+  html_document:
+    number_sections: true
+---
+```
+
+```{r echo=FALSE}
+decorate_chunk("yaml_ex", eval=FALSE) %>%
+  flair("number_sections: true") 
+```
+]
+
+.pull-right[
+- Auto-number each section and heading
+]
+
+---
+
+class: center, middle
+
+# Code Chunks, Tables, and Figures
+
+---
+# Some best practices
+
+Nick Tierney suggests that you always have these 3 chunks in your file
+
+```
+{r setup}
+```
+
+Note: this chunk is always run, even if you hit play on a later chunk
+
+
+```
+{r library}
+```
+
+Put your library statements here
+
+
+```
+{r functions}
+```
+
+Put functions here
+
+.footnote[https://rmd4sci.njtierney.com/using-rmarkdown.html#nicks-rmarkdown-hygiene-recommendations]
+---
+# Code Chunks and Languages
+
+.pull-left[
+```
+{r}
+```
+
+```
+{python}
+```
+]
+.pull-right[
+- Doesn't have to just be R! Can be `python` as well
+- Other languages are supported, including SQL for databases
+]
+---
+# Code Chunks can have names
+
+```
+{r my_code_chunk, fig.height=8, fig.width=10}
+```
+
+- add a name right after the `r` (no commas after `r`)
+- can be referred to later (useful with autonumbering and referring to figures)
+
+---
+# Important Options: `echo=FALSE`
+
+Show my output, but not my code.
+
+```
+{r my_code_chunk, echo=FALSE}
+```
+
+---
+# Important Options: `eval=FALSE`
+
+Show my code block, but don't run it.
+
+```
+{r my_code_chunk}
+```
+
+---
+# Important Options: `warning, message`
+
+If an operation is throwing warnings or giving you an unwanted message, you can set these to be `FALSE`.
+
+```
+{r my_code_chunk, warning=FALSE, message=FALSE}
+```
+
+---
+# `fig.height` and `fig.width`
+
+- Lets you set dimensions of your figures
+- Default measurement is in Inches
+- Much more here: https://rmd4sci.njtierney.com/customising-your-figures.html
+
+```
+{r my_code_chunk, fig.height=8, fig.width=10}
+```
+
+---
+# Table options
+
+We'll take a look at this in the notebooks.
+
+```
+output:
+  html_document:
+    df_print: paged
+```
+
+- `paged`
+- `kable`
+
+---
+# Setting default chunk options with `knitr::opts_chunk$set()`
+
+Can set the default chunk options with the following in your `setup` chunk:
+
+```
+knitr::opts_chunk$set(echo = TRUE, fig.width=8, fig.height=8)
+```
+---
+# Netlify Drop Demo
+
+Go to https://app.netlify.com/drop
+
+
+---
+# Table and figure references
+
+See RMarkdown for Scientists: https://rmd4sci.njtierney.com/start.html
+
+---
+# How do I make that pretty PDF?
+
+- Requires you to install `{tinytex}` - minimal version of LaTeX
+
+```
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+- Yihui's rule of thumb: knit to HTML first, then word or pdf as needed.
+
+
+---
+class: center, middle
+# Some YAML tips
+
+---
+# Rule 1: Front matter goes first
+
+You can't put code chunks or anything in front of the front matter!
+
+Which is probably why it's called *front matter*.
+
+---
+# Rule 2: Be Careful with your spacing
+
+YAML can only use spaces, not tabs. This is an easy mistake to make!
+
+Each "level" uses two spaces, not a tab.
+
+If your YAML is giving you an error, this is usually the reason.
+
+---
+# Rule 3: When in doubt, use quotes or `|` for long entries
+
+If you have a long bit of text you want to put in a field, don't hesitate to put it in quotes:
+
+```
+author: "My Name is Extremely Long but that's ok"
+```
+
+You can also use a `|` on the first line to split text up on multiple lines:
+
+```
+author: |
+  This is a multi line
+  example and you can break 
+  anywhere
+```
+
+---
+# Rule 4: Not all outputs have the same options
+
+- `html_document` is the most flexible (can also embed interactive visualizations)
+- `distill::distill_article` has the most intelligent defaults for scientific publishing
+- `pdf_document` is probably the least flexible because LaTeX is very picky.
+
+When in doubt, look at the appropriate chapter in the RMarkdown Book. 
+
+---
+# Rule 5: Use `{ymlthis}` to write your YAML
+
+Writing YAML can be frustrating! The `ymlthis` package is probably the most error free way to write YAML.
+
+.pull-left[
+```{r eval=FALSE}
+library(ymlthis)
+
+yml() %>%
+  yml_author("Ted Laderas") %>%
+  yml_title("My new document") %>%
+  yml_subtitle("Which is so great") %>%
+  yml_output(html_document(
+    toc = TRUE, 
+    number_sections = TRUE))
+```
+]
+
+.pull-right[
+```{r echo=FALSE, warning=FALSE}
+library(ymlthis)
+
+yml() %>%
+  yml_author("Ted Laderas") %>%
+  yml_title("My new document") %>%
+  yml_subtitle("Which is so great") %>%
+  yml_output(html_document(toc = TRUE, number_sections = TRUE))
+```
+- can cut and paste this into your new document
+]
+
+
+---
+# Resources for Further Learning
+
+- [RMarkdown Cheatsheet](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+- [RMarkdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+- [RMarkdown for Scientists](https://rmd4sci.njtierney.com/)

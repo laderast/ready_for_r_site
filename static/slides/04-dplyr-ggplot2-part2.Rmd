@@ -1,0 +1,71 @@
+---
+title: "Part 4"
+subtitle: "R Programming"
+author: "Ted Laderas"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "midnightblue",
+  header_font_google = google_font("Josefin Sans"),
+  link_color = "steelblue",
+  text_font_size = "26px",
+  footnote_font_size = "22px"
+)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "logo", "tachyons"))
+xaringanExtra::use_panelset()
+xaringanExtra::use_tachyons()
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: center, middle
+
+# Words of Comfort from Hadley Wickham
+
+---
+
+<img src="image/week4/hadley.png" width = 700>
+
+---
+class: center, middle
+# here() demonstration 2
+
+---
+
+<img src="image/week4/dplyr_mutate.png" width = 700>
+
+.footnote[illustration from Allison Horst]
+---
+<img src="image/week4/dplyr_case_when.png" width = 850>
+
+.footnote[illustration from Allison Horst]
+---
+<img src="image/week4/dplyr_across.png" width = 850>
+
+.footnote[illustration from Allison Horst]
+---
+class: center, middle
+
+# `dplyr::group_by()/summarize()`
+
+---
+<img src="image/week4/janitor_clean_names.png" width = 850>
+
+.footnote[illustration from Allison Horst]

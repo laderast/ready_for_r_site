@@ -1,0 +1,205 @@
+---
+title: "What you can do with RMarkdown"
+subtitle: "BSTA504"
+author: "Ted Laderas"
+date: "2021-05-05"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>class: center, middle
+# Warning: RMarkdown is a Deep (but Rewarding) Rabbit Hole</p>
+<div id="one-format-to-rule-them-all" class="section level1">
+<h1>One format to Rule them All</h1>
+<table style="width:4%;">
+<colgroup>
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>- Variant of Markdown (made for websites)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>- Lets you mix code and text</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Can be made into many different formats</li>
+</ul>
+</div>
+<div id="how-does-this-work" class="section level1">
+<h1>How does this work?</h1>
+<ul>
+<li>knitting: generating outputs (tables, figures) from codeblocks</li>
+<li>Output + markdown is then passed down to a “rendering engine” which makes the document
+<ul>
+<li>Pandoc (html, word documents, EPUB, many others)</li>
+<li>reveal.js (slide presentations)</li>
+<li>LaTeX (PDFs)</li>
+</ul></li>
+<li>Can save intermediate outputs as well.
+<ul>
+<li>LaTeX code</li>
+</ul></li>
+</ul>
+</div>
+<div id="front-matter-yaml" class="section level1">
+<h1>Front Matter: YAML</h1>
+<p>You can include a special section at the top of a Markdown document that contains metadata (or data about your document) like the <code>title</code>, <code>date</code>, <code>author</code>, etc.</p>
+<p>This section uses a special syntax named YAML (or “YAML Ain’t Markup Language”) that follows this basic outline:</p>
+<pre><code>---                   #note it has to start with three dashes
+setting: value for setting. 
+---                   #and end in three dashes.</code></pre>
+</div>
+<div id="title-and-author" class="section level1">
+<h1><code>title</code> and <code>author</code></h1>
+<p>.pull-left[</p>
+<p><code class ='r hljs remark-code'>—<br><span style="background-color:#ffff7f">title</span>: “Introduction to RMarkdown”<br><span style="background-color:#ffff7f">author</span>: “Ted Laderas”<br>date: “`r Sys.Date()`”<br>output: <br>  html_document:<br>    theme: flatly<br>    toc: true<br>    toc_float: true<br>    number_sections: true<br>—</code>
+]</p>
+<p>.pull-right[
+- <code>title</code> - title of your document
+- <code>author</code> - author of your document]
+—
+# <code>date</code></p>
+<p>.pull-left[</p>
+<p><code class ='r hljs remark-code'>—<br>title: “Introduction to RMarkdown”<br>author: “Ted Laderas”<br><span style="background-color:#ffff7f">date</span>: “`r Sys.Date()`”<br>output: <br>  html_document:<br>    theme: flatly<br>    toc: true<br>    toc_float: true<br>    number_sections: true<br>—</code>
+]</p>
+<p>.pull-right[
+- <code>date</code> can be in a regular format, such as <code>08/20/2012</code>
+- using the inline code chunk updates the date automatically!]
+—
+# <code>output</code></p>
+<p>.pull-left[</p>
+<p><code class ='r hljs remark-code'>—<br>title: “Introduction to RMarkdown”<br>author: “Ted Laderas”<br>date: “`r Sys.Date()`”<br><span style="background-color:#ffff7f">output:</span> <br>  <span style="background-color:#ffff7f">html_document:</span><br>    theme: flatly<br>    toc: true<br>    toc_float: true<br>    number_sections: true<br>—</code>
+]</p>
+<p>.pull-right[
+- <code>output:</code> is one of the most important options to set.
+- You have seen <code>output: html_document</code> before.
+- This is an example of a <em>nested</em> option, where an option is part of a larger option.
+- Use <strong>two</strong> spaces for the <strong>first</strong> level. Use <strong>four</strong> spaces for the <strong>second</strong> level, and so on.]
+—
+# Let’s look at three output types</p>
+<p>.pull-left[
+- <code>html_document</code>
+- <code>distill::distill_article</code>
+- <code>slidy_presentation</code>]</p>
+<p>.pull-right[
+- Many, many other output formats
+- <code>{xaringan}</code> presentations (like this)
+- Shiny web apps
+- LearnR tutorials
+- Book format (<code>{bookdown}</code>)
+- Websites (<code>{blogdown}</code>/<code>{distill}</code>)]
+—
+# <code>html_document</code>: a really versatile format!</p>
+<p>Lots of options make it a really versatile format.</p>
+<ul>
+<li>Table of contents</li>
+<li>Themes</li>
+<li>Section Numbering</li>
+<li>Figure Formatting</li>
+<li>Embed interactive visualizations</li>
+<li>Data Frame Printing</li>
+</ul>
+</div>
+<div id="theme-packages-that-are-really-helpful" class="section level1">
+<h1>Theme packages that are really helpful</h1>
+<ul>
+<li><code>{prettydoc}</code>: <a href="https://prettydoc.statr.me/themes.html" class="uri">https://prettydoc.statr.me/themes.html</a></li>
+<li><code>{hrbrthemes}</code>: <a href="https://cinc.rud.is/web/packages/hrbrthemes/" class="uri">https://cinc.rud.is/web/packages/hrbrthemes/</a></li>
+<li><code>{rmdformats}</code>: <a href="https://bookdown.org/yihui/rmarkdown/rmdformats.html" class="uri">https://bookdown.org/yihui/rmarkdown/rmdformats.html</a></li>
+<li><code>{tufte}</code>: <a href="https://bookdown.org/yihui/rmarkdown/tufte-handouts.html" class="uri">https://bookdown.org/yihui/rmarkdown/tufte-handouts.html</a></li>
+<li><a href="https://www.wjakethompson.com/talk/2020-01-30-rstudioconf-ratlas/">Branding and Packaging Reports with RMarkdown</a></li>
+</ul>
+</div>
+<div id="number_sections" class="section level1">
+<h1>number_sections</h1>
+<p>.pull-left[</p>
+<p><code class ='r hljs remark-code'>—<br>title: “Introduction to RMarkdown”<br>author: “Ted Laderas”<br>date: “`r Sys.Date()`”<br>output: <br>  html_document:<br>    theme: flatly<br>    toc: true<br>    toc_float: true<br>    <span style="background-color:#ffff7f">number_sections: true</span><br>—</code>
+]</p>
+<p>.pull-right[
+- Auto-number each section and heading]</p>
+<hr />
+<p>class: center, middle</p>
+</div>
+<div id="code-chunks-tables-and-figures" class="section level1">
+<h1>Code Chunks, Tables, and Figures</h1>
+</div>
+<div id="code-chunks-and-languages" class="section level1">
+<h1>Code Chunks and Languages</h1>
+<p>.pull-left[</p>
+<pre><code>{r}</code></pre>
+<pre><code>{python}</code></pre>
+<p>]
+.pull-right[
+- Doesn’t have to just be R! Can be <code>python</code> as well
+- Other languages are supported, including SQL for databases]
+—
+# Code Chunks can have names</p>
+<pre><code>{r my_code_chunk, fig.height=8, fig.width=10}</code></pre>
+<ul>
+<li>add a name right after the <code>r</code> (no commas after <code>r</code>)</li>
+<li>can be referred to later (useful with autonumbering and referring to figures)</li>
+</ul>
+</div>
+<div id="important-options-evalfalse" class="section level1">
+<h1>Important Options: <code>eval=FALSE</code></h1>
+<p>Show my code block, but don’t run it.</p>
+<pre><code>{r my_code_chunk}</code></pre>
+</div>
+<div id="fig.height-and-fig.width" class="section level1">
+<h1><code>fig.height</code> and <code>fig.width</code></h1>
+<ul>
+<li>Lets you set dimensions of your figures</li>
+<li>Default measurement is in Inches</li>
+<li>Much more here: <a href="https://rmd4sci.njtierney.com/customising-your-figures.html" class="uri">https://rmd4sci.njtierney.com/customising-your-figures.html</a></li>
+</ul>
+<pre><code>{r my_code_chunk, fig.height=8, fig.width=10}</code></pre>
+</div>
+<div id="setting-default-chunk-options-with-knitropts_chunkset" class="section level1">
+<h1>Setting default chunk options with <code>knitr::opts_chunk$set()</code></h1>
+<p>Can set the default chunk options with the following in your <code>setup</code> chunk:</p>
+<pre><code>knitr::opts_chunk$set(echo = TRUE, fig.width=8, fig.height=8)</code></pre>
+</div>
+<div id="table-and-figure-references" class="section level1">
+<h1>Table and figure references</h1>
+<p>See RMarkdown for Scientists: <a href="https://rmd4sci.njtierney.com/start.html" class="uri">https://rmd4sci.njtierney.com/start.html</a></p>
+<p>class: center, middle
+# Some YAML tips</p>
+</div>
+<div id="rule-2-be-careful-with-your-spacing" class="section level1">
+<h1>Rule 2: Be Careful with your spacing</h1>
+<p>YAML can only use spaces, not tabs. This is an easy mistake to make!</p>
+<p>Each “level” uses two spaces, not a tab.</p>
+<p>If your YAML is giving you an error, this is usually the reason.</p>
+</div>
+<div id="rule-4-not-all-outputs-have-the-same-options" class="section level1">
+<h1>Rule 4: Not all outputs have the same options</h1>
+<ul>
+<li><code>html_document</code> is the most flexible (can also embed interactive visualizations)</li>
+<li><code>distill::distill_article</code> has the most intelligent defaults for scientific publishing</li>
+<li><code>pdf_document</code> is probably the least flexible because LaTeX is very picky.</li>
+</ul>
+<p>When in doubt, look at the appropriate chapter in the RMarkdown Book.</p>
+</div>
+<div id="resources-for-further-learning" class="section level1">
+<h1>Resources for Further Learning</h1>
+<ul>
+<li><a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">RMarkdown Cheatsheet</a></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">RMarkdown Cookbook</a></li>
+<li><a href="https://rmd4sci.njtierney.com/">RMarkdown for Scientists</a></li>
+</ul>
+</div>
