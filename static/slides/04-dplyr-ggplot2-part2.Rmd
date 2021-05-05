@@ -1,6 +1,6 @@
 ---
 title: "Part 4"
-subtitle: "R Programming"
+subtitle: "Ready for R"
 author: "Ted Laderas"
 date: "`r Sys.Date()`"
 output:

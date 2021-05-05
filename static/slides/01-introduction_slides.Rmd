@@ -1,6 +1,5 @@
 ---
-title: "BSTA 504 Introduction"
-subtitle: "R Programming"
+title: "Ready for R: Introduction"
 author: "Ted Laderas"
 date: "`r Sys.Date()`"
 output:
