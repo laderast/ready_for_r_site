@@ -32,20 +32,6 @@ Open the slides in a separate window: <a href="https://ready4r.netlify.com/slide
 knitr::include_url('https://ready4r.netlify.com/slides/02-for_loops#1')
 ```
 
-### Function of the Week Assignment
-
-Please refer to the `function_assignment` project in the RStudio Cloud workspace. We will go over this in class.
-
-### Post-Class
-
-Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.
-
-- Clearest Point: What was the most clear part of the lecture?
-- Muddiest Point: What was the most unclear part of the lecture to you?
-- Anything Else: Is there something you'd like me to know?
-
-https://ohsu.ca1.qualtrics.com/jfe/form/SV_0rjxy6FgXapnMk5
-
 ## Muddiest Points
 
 > little bit confused about how you loaded data. I used a different method when using Rstudio.

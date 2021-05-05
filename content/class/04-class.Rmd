@@ -43,16 +43,6 @@ https://github.com/rfordatascience/tidytuesday
 
 We will take part of next class doing short meetings to discuss the midterm and the datasets individually.
 
-### Post-Class
-
-Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.
-
-- Clearest Point: What was the most clear part of the lecture?
-- Muddiest Point: What was the most unclear part of the lecture to you?
-- Anything Else: Is there something you'd like me to know?
-
-http://bit.ly/sph504_survey
-
 ## Muddiest Points
 
 > How functions that we saw used with across() work, such as where() and start_with() (are they for across() only or do they work in other areas too?)

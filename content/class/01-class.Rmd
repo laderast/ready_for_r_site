@@ -32,17 +32,6 @@ Open the class introduction slides in a separate window: <a href="https://ready4
 knitr::include_url('https://ready4r.netlify.com/slides/01-introduction_slides#1')
 ```
 
-### Post-Class
-
-Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.
-
-- Clearest Point: What was the most clear part of the lecture?
-- Muddiest Point: What was the most unclear part of the lecture to you?
-- Anything Else: Is there something you'd like me to know?
-
-https://ohsu.ca1.qualtrics.com/jfe/form/SV_0rjxy6FgXapnMk5
-
-
 ## Muddiest Points 
 
 > For Loops. I still don't understand how to read the for loop code and what exactly it is doing.
@@ -79,10 +68,3 @@ I will have this conversation with Biostats about this.
 
 For right now, it's okay to skip class, if you can get through the lab and the assignment. Please still fill out the survey, though. As we get into more complicated topics (like `dplyr`), I have some intermediate level tutorials in my `{tidyowl}` package that you can go through.
 
-## Discord Intro
-
-Two short videos to introduce you to Discord:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ek8JKPtYQ7w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3fm_o8Qa0f0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
