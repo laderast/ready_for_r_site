@@ -26,10 +26,10 @@ editor_options:
 
 ### For loops
 
-Open the class introduction slides in a separate window: <a href="https://sph-r-programming.netlify.com/slides/01-introduction_slides#1" target="_blank">https://sph-r-programming.netlify.com/01-introduction_slides#1</a>
+Open the class introduction slides in a separate window: <a href="https://ready4r.netlify.com/slides/01-introduction_slides#1" target="_blank">https://ready4r.netlify.com/01-introduction_slides#1</a>
 
 ```{r echo=FALSE}
-knitr::include_url('https://sph-r-programming.netlify.com/slides/01-introduction_slides#1')
+knitr::include_url('https://ready4r.netlify.com/slides/01-introduction_slides#1')
 ```
 
 ### Post-Class

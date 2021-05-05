@@ -26,10 +26,10 @@ editor_options:
 
 ### For Loops / Projects / ggplot2
 
-Open the slides in a separate window: <a href="https://sph-r-programming.netlify.com/slides/02-for_loops#1" target="_blank">https://sph-r-programming.netlify.com/slides/02-for_loops#1</a>
+Open the slides in a separate window: <a href="https://ready4r.netlify.com/slides/02-for_loops#1" target="_blank">https://ready4r.netlify.com/slides/02-for_loops#1</a>
 
 ```{r echo=FALSE}
-knitr::include_url('https://sph-r-programming.netlify.com/slides/02-for_loops#1')
+knitr::include_url('https://ready4r.netlify.com/slides/02-for_loops#1')
 ```
 
 ### Function of the Week Assignment
