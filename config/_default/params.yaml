@@ -74,7 +74,7 @@ privacy_pack: false
 # Enable visitors to edit pages?
 #   `repo` defines the repository URL. `editable` defines which page types can be edited.
 edit_page:
-  repo_url: 'https://github.com/laderast/rboot_ohsu_site'
+  repo_url: 'https://github.com/laderast/ready_for_r_site'
   content_dir: ''
   repo_branch: master
   editable:
@@ -93,14 +93,10 @@ author: ted
 
 instructor: 
   name: Dr. Ted Laderas
-  email: laderast@ohsu.edu
+  email: tedladeras@gmail.com
   url: "https://laderast.github.io"
   twitter: tladeras
   github: laderast
-  office: "School of Nursing 630"
-  contact_policy: >-
-    E-mail or Slack is the best way to get in contact with me. I will try to respond to all course-related e-mails within 1 business day.
-#  appointment_url: https://calendly.com/andrewheiss/meeting/
 
 course:
   number: "BMI 507"
@@ -109,8 +105,8 @@ course:
   time: "10 - 11:30 AM"
   location: "Online"
   dates: "April 9 – June 2, 2020"
-  github: "laderast/rboot_ohsu_site"
-  copyrightYear: "2020"
+  github: "laderast/ready_for_r_site"
+  copyrightYear: "2020-2021"
 
 university: 
   name: Oregon Health & Science University

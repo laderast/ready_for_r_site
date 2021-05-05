@@ -36,36 +36,9 @@ This course is meant to be a gentle introduction to data wrangling and visualiza
 
 ## Course Website
 
-All course information will be available here:
+For access to the RStudio.cloud notebooks, please subscribe here: https://ready4r.netlify.app/mailing/
 
-https://sph-r-programming.netlify.com/
-
-Course discussions will be done in the class Discord Workspace. Invites will be sent before class.
-
-Lab Assignments will be done in the class RStudio.cloud workspace. Students should register at https://RStudio.cloud before the lab. Link to join the workspace will be sent out before the first lab.
-
-## Office Hours
-
-Office Hours will be held via Zoom and a link will be sent out that day. Feel free to drop into the office hours and work and ask questions as needed.
-
-## Prerequisites or Concurrent Enrollment Requirements
-
-No Prerequisites
-
-## Faculty Information
-
-### Instructor
-
-[Ted Laderas, PhD](https://laderast.github.io)  
-laderast@ohsu.edu  
-**Preferred Method of Contact**: Email/Discord  
-**Expected Response Time**: 24hrs  
-
-### Teaching Assistant
-
-[Eric Leung](https://erictleung.com/)
-leunge@ohsu.edu
-
+Answers to assignments will be provided when you subscribe.
 
 ## Code of Conduct
 
@@ -119,41 +92,6 @@ If you understand something and someone is struggling with it, try and help them
 Our goal is to be better programmers each day, not to be the perfect programmer. There's no such thing as a perfect programmer. I've been learning new things almost every day.
 
 
-## Attendance Requirements
-
-Online attendance is required. Please let me know in advance if you have to miss class, or if you have an emergency. 
-
-Classes will be recorded, but please do not use this as an excuse to miss class. Again, those who are curious and ask questions will learn quite a bit. 
-
-
-## Grading Policy
-
-- Attendance 10%
-- Midterm Project 15%
-- Function of the Week 5%
-- Homework Assignments 45%
-- Final Project 25%
-
-
-### Late Policy
-
-Students get 1 free assignment to submit late without penalties. Please email us through Sakai that you need more time. If you need accomodation, please email us so we can figure out a way to help you.
-
-Graduate Studies in the OHSU School of Medicine is committed to providing grades to students in a timely manner. Course instructors will provide students with information in writing at the beginning of each
-course that describes the grading policies and procedures including but not limited to evaluation criteria, expected time needed to grade individual student examinations and type of feedback they will provide.
-
-Class grades are due to the Registrar by the Friday following the week of finals. However, on those occasions when a grade has not been submitted by the deadline, the following procedure shall be followed:
-
-1)  The Department/Program Coordinator will immediately contact the Instructor requesting the missing grade, with a copy to the Program Director and Registrar.
-
-2)  If the grade is still overdue by the end of next week, the Department/Program Coordinator will email the Department Chair directly, with a copy to the Instructor and Program Director requesting resolution of the missing grade.
-
-3)  If, after an additional week the grade is still outstanding, the student or Department/Program Coordinator may petition the Office of Graduate students for final resolution.
-
-1.  *For courses that are run by a specific department.*
-
-2.  *For the conjoined courses (course number is preceded by CON\_ that
-    are run by Graduate Studies.*
 
 ## Copyright Information
 
@@ -162,108 +100,4 @@ Every reasonable effort has been made to protect the copyright requirements of m
 Journal articles will be kept on reserve at the library or online for student access. Copyright law does allow for making one personal copy of each article from the original article. This limit also applies to electronic sources.
 
 To comply with the fair use fair use doctrine of the US copyright law, Sakai course sites close three weeks after grades are posted with the Registrar. Please be sure to download all course material you wish to keep before this time as you will have no further access to your courses.
-
-## Communication Policy
-
-1.  If the syllabus directs the student to contact the TA before contacting the instructor, the student should do so. Otherwise, the student should contact the instructor and allow 2 business days (not including weekends) for a response.
-
-2.  If the student does not receive a response from the instructor within 2 business days, s/he should contact the TA (if there is one). When contacting the TA s/he should cc the instructor and Diane Doctor at <doctord@ohsu.edu>.
-
-3.  If a student does not receive a response from the TA within 1 business day (not including weekends), s/he should contact Diane Doctor at <doctord@ohsu.edu> and cc the instructor and the TA.
-
-4.  If Diane does not reply within 1 business day (not including weekends), the student should contact Andrea Ilg at <ilgan@ohsu.edu>.
-
-5.  Students having difficulties with Sakai should contact the Sakai Help Desk at <sakai@ohsu.edu> or at (877) 972-5249. Sakai help is available M-F from 8am to 9 pm and weekends from Noon to 5pm. Do not contact the instructor.
-
-6.  Please use professional etiquette when communicating with peers and the instructor. This means avoiding aggressive or offensive language, showing respect for others' opinions and positions, and conducting yourself as if you were face to face with them. Please pay special attention to etiquette in class forums and when using email. If you notice someone violating this policy, please make the instructor and TA aware of the problem.
-
-## Syllabus Changes and Retention
-
-This syllabus is not to be considered a contract between the student and the School of Medicine. It is recognized that changes may be made as the need arises. Students are responsible for keeping a copy of the course syllabus for their records.
-
-## Syllabus Statement Regarding Disability Services
-
-OHSU is committed to providing equal access to qualified students who experience a disability in compliance with Section 504 of the Rehabilitation Act of 1973, the Americans with Disabilities Act (ADA) of
-1990, and the ADA Amendments Act (ADA-AA) of 2008. If you have a disability or think you may have a disability (physical, sensory, chronic health, psychological or learning) please contact the Office for Student Access at (503) 494-0082 or <studentaccess@ohsu.edu> to discuss
-eligibility for academic accommodations. Information is also available at [www.ohsu.edu/student-access.](http://www.ohsu.edu/student-access) Because accommodations may take time to implement and cannot be applied retroactively, it is important to have this discussion as soon as
-possible. All information regarding a student's disability is kept in accordance with relevant state and federal laws.
-
-
-## Commitment of Equity and Inclusion
-
-Oregon Health & Science University is committed to creating and fostering a learning and working environment based on open communication
-and mutual respect. If you encounter sexual harassment, sexual misconduct, sexual assault, or discrimination based on race, color,
-religion, age, national origin or ancestry, veteran or military status, sex, marital status, pregnancy or parenting status, sexual orientation,
-gender identity, disability or any other protected status please contact the Affirmative Action and Equal Opportunity Department at 503-494-5148 or <aaeo@ohsu.edu.> Inquiries about Title IX compliance or sex/gender discrimination and harassment may be directed to the OHSU Title IX Coordinator at 503-494-0258 or <titleix@ohsu.edu>
-
-## Academic Honesty
-
-Course participants are expected to maintain academic honesty in their course work. Participants should refrain from seeking past published solutions to any assignments. Literature and resources (including
-Internet resources) employed in fulfilling assignments must be cited. See
-[http://www.ohsu.edu/xd/education/library/research-assistance/plagiarism.cfm?WT\_rank=1\#](http://www.ohsu.edu/xd/education/library/research-assistance/plagiarism.cfm?WT_rank=1)
-for information on code of conduct for OHSU and
-
-<http://www.ohsu.edu/xd/education/teaching-and-learning-center/for-students/index.cfm>
-for more information on citing sources and recognizing plagiarism.
-
-*In an effort to uphold the principles and practice of academic honesty,
-faculty members at OHSU may use originality checking systems such as
-Turnitin to compare a student's submitted work against multiple
-sources.*
-
-*To protect student privacy in this process, it will be necessary to
-remove all personal information, i.e. student name, email address,
-student u-number, or any other personal information, from documents
-BEFORE submission.*
-
-## Use of Sakai
-
-This course will have an online component, which can be accessed through
-Sakai, OHSU's online course management system. For any technical
-questions or if you need help logging in, please contact the Sakai Help
-Desk.
-
-Hours: Sakai Help Desk is available Mon -- Fri, 8 am -- 9 pm and
-weekends 12 pm -- 5 pm, Pacific Time.
-
-Contact Information:
-
-(Toll-free) 877-972-5249
-
-(Web) <http://atech.ohsu.edu/help>
-
-(Email) <sakai@ohsu.edu>
-
-## OHSU Proctoring Policy
-
-It is OHSU policy that any exam offered online and worth more than 10%
-of the final course grade must be [virtually proctored.]{.underline} In
-this course, we will be using the services of Examity, a remote
-proctoring services. You will be required to schedule your exam three
-(3) weeks ahead of time. There is no cost to the student. More
-information will be provided to you regarding setup, scheduling, and
-requirements in the Course Materials.
-
-Policy number: 02-70-050
-(<http://www.ohsu.edu/xd/education/student-services/academic-programs-and-assessment/academic-policy/approved-policies/upload/Online-Exam-Proctoring-02-70-050.pdf>)
-
-## Inclement Weather Policy
-
-When the weather forecaster is calling for ice or snow, call the **OHSU
-Alert Line, 503 494-9021**, for information regarding weather conditions
-that may affect operations at OHSU. This hot line will offer specific
-recorded messages for road conditions on OHSU\'s Marquam Hill and West
-campuses (option 1), and for patients (option 2), students (option 3)
-and employees (option 4).
-
-If extreme weather conditions present potentially unsafe situations, the
-provost of the university may choose to delay or cancel classes, or
-alter office and research activities. If classes are canceled or
-delayed, residents and students who have patient care responsibilities
-must meet those obligations.
-
-For more information, please view the website
-<http://www.ohsu.edu/xd/about/visiting/weather/index.cfm> or call the
-above hotline.
-
 
