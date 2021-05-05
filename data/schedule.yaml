@@ -1,41 +1,27 @@
 lessons:
-  - title: '<span class="fake-header-table">Getting to Know R/RStudio</span>'
+  - title: '<span class="fake-header-table">Ready for R</span>'
     header: True
 
-  - title: '**Lecture/Lab 1: RStudio, Functions, Objects, and Data Types**'
-    date: "April 9"
+  - title: '**Part 1: Introduction to course/expectations, Intro to R/RStudio, Functions, Vectors, Data Types**'
     reading: "01-reading"
-    class: "01-class"
+    class: "01-class" 
 
-  - title: '<span class="fake-header-table">Learning the `Tidyverse`</span>'
-    header: True
-
-  - title: "**Lecture/Lab 2: Loading Data, data.frames, and Visualization with `ggplot2` Part 1**"
-    date: "April 16"
-    class: "02-class"
+  - title: '**Part 2: Loading Data, `data.frame`s, and `ggplot2`**'
     reading: "02-reading"
-    
-  - title: "**Drop in Lab time/Finish Notebook 2**"
-    date: "April 23"
-# blash
-  - title: "**Notebooks 1 and 2 due**"
-    date: "April 24"
+    class: "02-class"
 
-  - title: "**Lecture/Lab 3: Visualization using `ggplot2` part 2, Filtering, Sorting, and Selecting data using `dplyr`**"
-    date: "April 30"
-    
-  - title: "**Lecture/Lab 4: Mutating and Summarizing data using `dplyr`**"
-    date: "May 7"
-    
-  - title: "**Drop in Lab time/Finish Notebook 4**"
-    date: "May 14"
-    
-  - title: "**Notebooks 3 and 4 due**"
-    date: "May 14"
-    
-  - title: "**Lecture/Lab 5: Stats and Modeling Using `broom`**"
-    date: "May 21"
-    
-  - title: "Final Project Assigned"
-    date: "May 21"
-    
+  - title: "**Part 3: `ggplot2`, factors, boxplots, `dplyr`: subsetting using `filter()`/`select()`**"
+    reading: "03-reading"
+    class: "03-class"
+
+  - title: '**Part 4. `dplyr`: `mutate()`, `group_by()`/`summarize()`/`across`**'
+    reading: "04-reading"
+    class: "04-class"
+
+  - title: '**Part 5. More about manipulating factors (`forcats`)/doing things with multiple tables/functions()**'
+    class: "05-class"
+    reading: "05-reading"
+
+  - title: "**Part 8. Intro to stats/formulas/`broom`**"
+    class: "08-class"
+    reading: "08-reading"

@@ -1,0 +1,16 @@
+---
+title: "Part 5. More about manipulating factors (`forcats`)/doing things with multiple tables/functions()"
+linktitle: "Part 5. More about manipulating factors (`forcats`)/doing things with multiple tables/functions()"
+date: "2020-01-27"
+menu:
+  reading:
+    parent: Readings
+    weight: 5
+type: docs
+---
+
+## Required
+
+- [Introduction to Functions and Arguments](https://hbctraining.github.io/Intro-to-R/lessons/03_introR-functions-and-arguments.html)
+- [Introduction to Lists](http://statseducation.com/Introduction-to-R/modules/getting%20data/lists/) - be sure to read this before class next week.
+- [Control your Factors Using Forcats](https://sciencificity-blog.netlify.app/posts/2021-01-30-control-your-factors-with-forcats/)

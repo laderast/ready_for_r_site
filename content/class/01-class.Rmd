@@ -1,8 +1,8 @@
 ---
-title: "Part 1: Introduction to R/RStudio"
-linktitle: "1. Introduction to R/RStudio"
-date: "2020-04-09"
-class_date: "2020-04-09"
+title: "Part 1: Introduction to R/Rstudio/Vectors/For Loops"
+linktitle: "Part 1.  Introduction to R/Rstudio/Vectors/For Loops"
+date: "2021-01-06"
+class_date: "2020-01-06"
 output:
   blogdown::html_page:
     toc: true
@@ -18,41 +18,71 @@ editor_options:
   chunk_output_type: console
 ---
 
+## Class Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yCPcijCj15c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Slides
 
-### Class Introduction
+### For loops
 
-Open the class introduction slides in a separate window: <a href="https://ready4r.netlify.com/slides/01-introduction_slides#1" target="_blank">https://ready4r.netlify.com/slides/01-introduction_slides#1</a>
+Open the class introduction slides in a separate window: <a href="https://sph-r-programming.netlify.com/slides/01-introduction_slides#1" target="_blank">https://sph-r-programming.netlify.com/01-introduction_slides#1</a>
 
 ```{r echo=FALSE}
-knitr::include_url('https://ready4r.netlify.com/slides/01-introduction_slides#1')
+knitr::include_url('https://sph-r-programming.netlify.com/slides/01-introduction_slides#1')
 ```
 
-### Post-Class Survey
+### Post-Class
 
-Please fill out the following survey and we will discuss the results during the next class. All responses will be anonymous. Remember, filling this out counts as attendance.
+Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.
 
-- Pace
 - Clearest Point: What was the most clear part of the lecture?
 - Muddiest Point: What was the most unclear part of the lecture to you?
 - Anything Else: Is there something you'd like me to know?
 
-https://ohsu.ca1.qualtrics.com/jfe/form/SV_6nc1ZLFMmRoE7nn
+https://ohsu.ca1.qualtrics.com/jfe/form/SV_0rjxy6FgXapnMk5
 
-### Muddiest Points
 
-> I'm not a programmer person so the concept of a programming environment is pretty mystifying. That said, it doesn't stop me from applying what you're teaching us, so no real worries there.
+## Muddiest Points 
 
-Stick with it!
+> For Loops. I still don't understand how to read the for loop code and what exactly it is doing.
 
-> The challenges since I lost where we were and had to back track all of the time to see where the instructor was.
+> The "For loops" though I know you mentioned we would do more on that later
 
-Ok, I will do my best to announce which section we are on in the notebook.
+> The most unclear point was "loops", but I think that's because it was an introduction today. I know the class notes said we would be covering more of this later, so I'm not concerned about this being unclear.
 
-> na.omit
+Thanks for letting me know. We will be talking more about this today.
 
-We wil get to that today.
-	
->	folder organization; projects vs notebooks?
+> The only thing I'll say is that I dont really have a great understanding of what machine learning is or its application in public health. I know we're not learning about that until the end but maybe explain it ahead of time so we know more about what it is and its purpose?
 
-We will talk about that today.
+## Clearest Points
+
+> overall it was quite clear. I know we started slow but honestly that was welcome. Its been a while since I've used R and my brain isnt firing on all cylinders. I understood everything
+
+> The whole class today was clear. The pacing is perfect and I really appreciate how you went through code line by line.
+
+## Thanks for Letting Me Know
+
+> [I] am coming into this class 15 minutes after biostats--as are many of my classmates--so if energy or participation seems low its likely just fatigue.
+
+Thanks for letting me know - I'm keeping the pace pretty slow at the beginning.
+
+> I wish this class was offered before the Biostats series.
+
+> I am already learning so much and wish this class had been available prior to taking biostats! It certainly would have saved lots of tears and grief. 
+
+> I wish we had this course mandatory before the BSTA sequence starts, I learnt R instead of hypothesis testing on BSTA 511. 
+
+I will have this conversation with Biostats about this.
+
+>  Many of the students in this course are in the BSTA 511/512/513 sequence and use a LOT of R already. The professor who recommended this class to me implied it was for people already familiar with R. Is it possible to include maybe some not for credit (so it's fair for the beginners) more difficult problems?
+
+For right now, it's okay to skip class, if you can get through the lab and the assignment. Please still fill out the survey, though. As we get into more complicated topics (like `dplyr`), I have some intermediate level tutorials in my `{tidyowl}` package that you can go through.
+
+## Discord Intro
+
+Two short videos to introduce you to Discord:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ek8JKPtYQ7w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3fm_o8Qa0f0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

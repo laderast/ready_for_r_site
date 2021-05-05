@@ -8,6 +8,7 @@ output:
     fig_caption: false
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
@@ -17,15 +18,18 @@ output:
 <li><a href="#course-website">Course Website</a></li>
 <li><a href="#office-hours">Office Hours</a></li>
 <li><a href="#prerequisites-or-concurrent-enrollment-requirements">Prerequisites or Concurrent Enrollment Requirements</a></li>
-<li><a href="#faculty-information">Faculty Information</a><ul>
+<li><a href="#faculty-information">Faculty Information</a>
+<ul>
 <li><a href="#instructor">Instructor</a></li>
 <li><a href="#teaching-assistant">Teaching Assistant</a></li>
 </ul></li>
 <li><a href="#code-of-conduct">Code of Conduct</a></li>
 <li><a href="#required-texts-or-readings">Required Texts or Readings</a></li>
 <li><a href="#words-of-encouragement">Words of Encouragement</a></li>
+<li><a href="#learning-is-social">LeaRning is Social</a></li>
 <li><a href="#attendance-requirements">Attendance Requirements</a></li>
-<li><a href="#grading-policy">Grading Policy</a><ul>
+<li><a href="#grading-policy">Grading Policy</a>
+<ul>
 <li><a href="#late-policy">Late Policy</a></li>
 </ul></li>
 <li><a href="#copyright-information">Copyright Information</a></li>
@@ -40,15 +44,14 @@ output:
 </ul>
 </div>
 
-{{% courseinfo %}}
+<p>{{% courseinfo %}}</p>
 <div id="course-description" class="section level2">
 <h2>Course Description</h2>
-<p>This course is meant to be a gentle introduction to using R/Rstudio in your daily work. It aims to teach useful skills (visualization, data loading, data filtering and manipulation, simple statistics) that students can immediately use in their work. No prerequisites or previous experience required.</p>
-<p>It is not meant to be a substitute for a full programming course or a full course in statistics. In the end, students will apply these skills to a final project.</p>
+<p>This course is meant to be a gentle introduction to data wrangling and visualization using the <code>tidyverse</code> in R. This course focuses on practical data science skills in R (loading data, data wrangling, visualization, automation, machine learning, and running statistical models) that you’ll use almost everyday in your work. It is meant for both beginners and students wanting to brush up on their R skills.</p>
 </div>
 <div id="credit-hours" class="section level2">
 <h2>Credit Hours</h2>
-<p>1 credit hour.</p>
+<p>3 credit hours.</p>
 </div>
 <div id="learning-objectives" class="section level2">
 <h2>Learning Objectives</h2>
@@ -59,14 +62,17 @@ output:
 <li><strong>Visualize</strong> datasets using <strong>ggplot2</strong> and understand how to build basic plots using <strong>ggplot2</strong> syntax.</li>
 <li><strong>Filter</strong> and <strong>format</strong> data in R for use with various routines.</li>
 <li><strong>Execute</strong> and <strong>Interpret</strong> some basic statistics in R.</li>
+<li><strong>Automate</strong> repetitive tasks in R, such as loading a folder of files.</li>
+<li><strong>Execute</strong> basic machine learning workflows using <code>tidymodels</code>.</li>
+<li><strong>Learn</strong> about Bioconductor Data Structures and conduct simple analysis with these structures.</li>
+<li><strong>Your Choice</strong>: <code>shiny</code>, <code>leaflet</code> or <code>tidytext</code>.</li>
 </ol>
 </div>
 <div id="course-website" class="section level2">
 <h2>Course Website</h2>
 <p>All course information will be available here:</p>
-<p><a href="https://ready4r.netlify.com/" class="uri">https://ready4r.netlify.com/</a></p>
-<p>Course discussions will be done in the BioData Club slack workspace. Invites will be sent before class.</p>
-<p><a href="https://biodata-club.slack.com" class="uri">https://biodata-club.slack.com</a></p>
+<p><a href="https://sph-r-programming.netlify.com/" class="uri">https://sph-r-programming.netlify.com/</a></p>
+<p>Course discussions will be done in the class Discord Workspace. Invites will be sent before class.</p>
 <p>Lab Assignments will be done in the class RStudio.cloud workspace. Students should register at <a href="https://RStudio.cloud" class="uri">https://RStudio.cloud</a> before the lab. Link to join the workspace will be sent out before the first lab.</p>
 </div>
 <div id="office-hours" class="section level2">
@@ -83,32 +89,35 @@ output:
 <h3>Instructor</h3>
 <p><a href="https://laderast.github.io">Ted Laderas, PhD</a><br />
 <a href="mailto:laderast@ohsu.edu" class="email">laderast@ohsu.edu</a><br />
-<strong>Preferred Method of Contact</strong>: Email/Slack<br />
+<strong>Preferred Method of Contact</strong>: Email/Discord<br />
 <strong>Expected Response Time</strong>: 24hrs</p>
 </div>
 <div id="teaching-assistant" class="section level3">
 <h3>Teaching Assistant</h3>
-<p>Aaron Coyner<br />
-<a href="mailto:coyner@ohsu.edu" class="email">coyner@ohsu.edu</a></p>
+<p><a href="https://erictleung.com/">Eric Leung</a>
+<a href="mailto:leunge@ohsu.edu" class="email">leunge@ohsu.edu</a></p>
 </div>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2>Code of Conduct</h2>
 <p>This class is governed by the BioData Club Code of Conduct:
 <a href="https://biodata-club.github.io/code_of_conduct/" class="uri">https://biodata-club.github.io/code_of_conduct/</a></p>
-<p>This class is meant to be a psychologically safe space where it’s ok to ask questions. I want to normalize your own curiosity and fuel your desire to learn more.</p>
+<p>This class is meant to be a psychologically safe space where it’s ok to ask questions. We want to normalize your own curiosity and fuel your desire to learn more.</p>
 <p>If you are disruptive to class learning or disparaging to other students, I may mute you for the day. I am very serious about this.</p>
 </div>
 <div id="required-texts-or-readings" class="section level2">
 <h2>Required Texts or Readings</h2>
-<p>We will be drawing on the following online textbooks during class and labs.</p>
-<p><em>Getting Used to R, RStudio, and RMarkdown</em>. Chester Ismay.
+<p>We will be drawing on the following online textbooks during class and labs. These books are online and free, though you can order them as textbooks if you prefer that format.</p>
+<p><strong>Getting Used to R, RStudio, and RMarkdown</strong>. Chester Ismay.
 <a href="https://ismayc.github.io/rbasics-book/" class="uri">https://ismayc.github.io/rbasics-book/</a></p>
+<p><strong>Introduction to Data Science</strong>. Tiffany Timbers, Trevor Campbell, Melissa Lee. <a href="https://ubc-dsci.github.io/introduction-to-datascience/" class="uri">https://ubc-dsci.github.io/introduction-to-datascience/</a></p>
+<p><strong>RMarkdown for Scientists</strong>. Nick Tierney. <a href="https://rmd4sci.njtierney.com/" class="uri">https://rmd4sci.njtierney.com/</a></p>
+<p><strong>R for Data Science</strong>. Garret Grolemund and Hadley Wickham. <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a></p>
 </div>
 <div id="words-of-encouragement" class="section level2">
 <h2>Words of Encouragement</h2>
 <blockquote>
-<p>This was adopted from Andrew Heiss. Thanks, Andrew!</p>
+<p>This was adopted from Andrew Heiss. Thanks!</p>
 </blockquote>
 <p>I <em>promise</em> you can succeed in this class.</p>
 <p>Learning R can be difficult at first—it’s like learning a new language, just like Spanish, French, or Chinese. Hadley Wickham—the chief data scientist at RStudio and the author of some amazing R packages you’ll be using like <code>ggplot2</code>—<a href="https://r-posts.com/advice-to-young-and-old-programmers-a-conversation-with-hadley-wickham/">made this wise observation</a>:</p>
@@ -119,24 +128,31 @@ output:
 <p><img src="/img/syllabus/hosrt_error_tweet.png" width="60%" /></p>
 <p><a href="https://twitter.com/allison_horst/status/1213275783675822080"><img src="/img/syllabus/gator_error.jpg" alt="Alison Horst: Gator error" /></a></p>
 </div>
+<div id="learning-is-social" class="section level2">
+<h2>LeaRning is Social</h2>
+<p>The students who have a bad time in my workshops and courses are the ones who don’t work with each other to learn. We are a learning community, and we should help each other to learn.</p>
+<p>If you understand something and someone is struggling with it, try and help them. If you are struggling, take a breath, and try to pinpoint what you are struggling with.</p>
+<p>Our goal is to be better programmers each day, not to be the perfect programmer. There’s no such thing as a perfect programmer. I’ve been learning new things almost every day.</p>
+</div>
 <div id="attendance-requirements" class="section level2">
 <h2>Attendance Requirements</h2>
-<p>Online attendance is required. Please let me know if you have to miss class. If you miss a lab day, know that you are responsible for finishing the lab and understanding the content.</p>
-<p>Classes will be recorded, but please do not use this as an excuse to miss class.</p>
+<p>Online attendance is required. Please let me know in advance if you have to miss class, or if you have an emergency.</p>
+<p>Classes will be recorded, but please do not use this as an excuse to miss class. Again, those who are curious and ask questions will learn quite a bit.</p>
 </div>
 <div id="grading-policy" class="section level2">
 <h2>Grading Policy</h2>
-<p>Grades will be based on the following:</p>
 <ul>
-<li>In class activities 30%</li>
-<li>Assignments (from labs) 50%</li>
-<li>Final Project 20%</li>
+<li>Attendance 10%</li>
+<li>Midterm Project 15%</li>
+<li>Function of the Week 5%</li>
+<li>Homework Assignments 45%</li>
+<li>Final Project 25%</li>
 </ul>
-<p>This course will be graded on a Pass/Fail Basis. Pass is defined as a grade of at least 70%.</p>
 <div id="late-policy" class="section level3">
 <h3>Late Policy</h3>
 <p>Students get 1 free assignment to submit late without penalties. Please email us through Sakai that you need more time. If you need accomodation, please email us so we can figure out a way to help you.</p>
-<p>Graduate Studies in the OHSU School of Medicine is committed to providing grades to students in a timely manner. Course instructors will provide students with information in writing at the beginning of each course that describes the grading policies and procedures including but not limited to evaluation criteria, expected time needed to grade individual student examinations and type of feedback they will provide.</p>
+<p>Graduate Studies in the OHSU School of Medicine is committed to providing grades to students in a timely manner. Course instructors will provide students with information in writing at the beginning of each
+course that describes the grading policies and procedures including but not limited to evaluation criteria, expected time needed to grade individual student examinations and type of feedback they will provide.</p>
 <p>Class grades are due to the Registrar by the Friday following the week of finals. However, on those occasions when a grade has not been submitted by the deadline, the following procedure shall be followed:</p>
 <ol style="list-style-type: decimal">
 <li><p>The Department/Program Coordinator will immediately contact the Instructor requesting the missing grade, with a copy to the Program Director and Registrar.</p></li>
@@ -152,10 +168,9 @@ are run by Graduate Studies.</em></p></li>
 </div>
 <div id="copyright-information" class="section level2">
 <h2>Copyright Information</h2>
-<p>Every reasonable effort has been made to protect the copyright requirements of materials used in this course. Class participants are warned not to copy, audio, or videotape in violation of copyright laws.
-Journal articles will be kept on reserve at the library or online for student access. Copyright law does allow for making one personal copy of each article from the original article. This limit also applies to electronic sources.</p>
-<p>To comply with the fair use fair use doctrine of the US copyright law, Sakai course sites close three weeks after grades are posted with the Registrar. Please be sure to download all course material you wish to
-keep before this time as you will have no further access to your courses.</p>
+<p>Every reasonable effort has been made to protect the copyright requirements of materials used in this course. Class participants are warned not to copy, audio, or videotape in violation of copyright laws.</p>
+<p>Journal articles will be kept on reserve at the library or online for student access. Copyright law does allow for making one personal copy of each article from the original article. This limit also applies to electronic sources.</p>
+<p>To comply with the fair use fair use doctrine of the US copyright law, Sakai course sites close three weeks after grades are posted with the Registrar. Please be sure to download all course material you wish to keep before this time as you will have no further access to your courses.</p>
 </div>
 <div id="communication-policy" class="section level2">
 <h2>Communication Policy</h2>

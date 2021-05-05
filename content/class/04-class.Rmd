@@ -1,0 +1,72 @@
+---
+title: "Part 4. `dplyr`: `mutate()`, `group_by()`/`summarize()`/`across`"
+linktitle: "Part 4. `dplyr`: `mutate()`, `group_by()`/`summarize()`/`across`"
+date: "2021-01-27"
+class_date: "2021-01-27"
+output:
+  blogdown::html_page:
+    toc: true
+menu:
+  class:
+    parent: Class sessions
+    weight: 4
+type: docs
+weight: 4
+# pdf: 
+# thumb: 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Class Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7KZWcICwF54" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Slides
+
+Open the slides in a separate window: <a href="https://sph-r-programming.netlify.com/slides/04-dplyr-ggplot2-part2#1" target="_blank">https://sph-r-programming.netlify.com/slides/04-dplyr-ggplot2-part2#1</a>
+
+```{r echo=FALSE}
+knitr::include_url('https://sph-r-programming.netlify.com/slides/04-dplyr-ggplot2-part2#1')
+```
+
+## Midterm will be assigned next week
+
+For this week, identify 1 dataset from the `tidytuesday` datasets and identify a research question that you think can be answered by the data. Be curious!
+
+Your dataset should have:
+
+- categorical variables
+- continuous variables
+
+https://github.com/rfordatascience/tidytuesday
+
+We will take part of next class doing short meetings to discuss the midterm and the datasets individually.
+
+### Post-Class
+
+Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.
+
+- Clearest Point: What was the most clear part of the lecture?
+- Muddiest Point: What was the most unclear part of the lecture to you?
+- Anything Else: Is there something you'd like me to know?
+
+http://bit.ly/sph504_survey
+
+## Muddiest Points
+
+> How functions that we saw used with across() work, such as where() and start_with() (are they for across() only or do they work in other areas too?)
+
+I don't have more time to cover this in class, but I will show you how to get started with the `tidyowl` tutorial.
+
+> I'm still not clear why we create a factor. I did the gender code without factoring and the table was the same when I included the factoring code. Why would i add this work?
+
+Stay tuned!
+
+> scale_x/y_continuous
+
+I will try and come up with more examples. This is a very handy reference: http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels
+
+> I struggled a bit with case_when () function and understanding how it is used.
+
+I have put together a few more examples and we will try to go over them in class.

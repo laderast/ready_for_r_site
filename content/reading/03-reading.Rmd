@@ -1,0 +1,47 @@
+---
+title: "Part 3: `ggplot2`, factors, boxplots, `dplyr`: subsetting using `filter()`/`select()`"
+linktitle: "Part 3: `ggplot2`, factors, boxplots, `dplyr`: subsetting using `filter()`/`select()`"
+date: "2020-01-20"
+menu:
+  reading:
+    parent: Readings
+    weight: 3
+type: docs
+---
+
+## Required
+
+### `ggplot2`
+
+- [ggplot2 BERD workshop slides](https://sph-r-programming.netlify.app/ggplot_flipbookr_berd/04_ggplot_slides.html) - lots more on different `geoms` and how to customize plots
+
+### `dplyr`
+
+- [`dplyr` cheatsheet](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) - one of the best references.
+- [Combining functions using the pipe operator, %>%](https://ubc-dsci.github.io/introduction-to-datascience/wrangling.html#combining-functions-using-the-pipe-operator) - if you're confused about `%>%`, please read this.
+
+## Optional
+
+### Customizing ggplot2 
+
+If you are interested in learning more about ggplot:
+
+- [Themes to improve your ggplot figures](https://rfortherestofus.com/2019/08/themes-to-improve-your-ggplot-figures/) by David Keyes is really helpful for learning how to do more styling. 
+- RStudio also publishes a [ggplot cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) that is really handy!
+- [Customizing ggplot2 Cheatsheet](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/) is also handy, because it organizes ggplot2 commands by task.
+- Documentation for all `ggplot` features is available [here](https://ggplot2.tidyverse.org).
+
+
+
+### Using `tidyselect` (Intermediate Level)
+
+Remember, `select()` works on columns.
+
+`tidyselect` lets you select columns by matching names. In conjunction with the `across()` command, you can apply the same operation to multiple columns at once. This is especially handy when you need to produce a summary on all numeric columns.
+
+You can run the `tidyselect` tutorial by running the code in your Rstudio cloud console:
+
+```
+library(tidyowl)
+learn_tidyselect()
+```

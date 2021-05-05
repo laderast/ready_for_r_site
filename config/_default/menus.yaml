@@ -2,12 +2,15 @@ main:
   - name: Syllabus
     url: /syllabus/
     weight: 1
+  - name: Class Notes
+    url: /class/
+    weight: 2
+  - name: Reading
+    url: /reading/
+    weight: 3
   - name: Schedule
     url: /schedule/
-    weight: 2
+    weight: 4
   - name: Mailing List
     url: /mailing/
-    weight: 3
-  - name: Reference
-    url: /labbook/
-    weight: 4
+    weight: 5

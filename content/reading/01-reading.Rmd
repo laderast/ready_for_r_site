@@ -1,8 +1,7 @@
 ---
-title: "Introduction to R/RStudio"
-linktitle: "1: Introduction to R/RStudio"
-date: "2020-01-15"
-read_date: "2020-01-15"
+title: "Introduction to R/RStudio/Vectors/For Loops"
+linktitle: "Part 1: Introduction to R/RStudio/Vectors/"
+date: "2021-01-07"
 menu:
   reading:
     parent: Readings
@@ -12,8 +11,35 @@ type: docs
 
 ## Required
 
+Remember, this reading is mostly supplemental and will help you if there are concepts that are unclear in class.
+
+- [Introduction to RStudio Cloud Video](https://www.youtube.com/watch?v=uK1Va_UWQFc) 
 - [R and RStudio Basics](https://ismayc.github.io/rbasics-book/3-rstudiobasics.html) - make sure to watch the videos.
+- [Vectors and Data Frames](https://ubc-dsci.github.io/introduction-to-datascience/wrangling.html#vectors-and-data-frames)
 
-## Practice
+## Optional 
 
-- In the Part 1 RStudio project, there is a document called "Practicing with Swirl" which will point you to how to run an interactive tutorial in RStudio to reinforce concepts in the lab.
+### Markdown Basics
+
+This is a short reference on how to do formatting in Markdown. This is optional, but may be a helpful reference as you continue on and work with Markdown and RMarkdown. 
+
+https://sph-r-programming.netlify.app/reference/markdown.html
+
+
+### Swirl Basics
+
+I'm going to highlight another resource for learning basic R concepts: `swirl`. This is a software package for R.
+
+To start it, run the following code in the console in RStudio Cloud:
+
+```{r eval=FALSE}
+library(swirl)
+swirl()
+```
+
+You'll want to take a look at the `R Programming` course, especially the following sections:
+
+1. Basic Building Blocks
+3. Sequences of Numbers
+4. Vectors
+5. Missing values

@@ -15,13 +15,11 @@ output:
 
 ## Course Description
 
-This course is meant to be a gentle introduction to using R/Rstudio in your daily work. It aims to teach useful skills (visualization, data loading, data filtering and manipulation, simple statistics) that students can immediately use in their work. No prerequisites or previous experience required.
-
-It is not meant to be a substitute for a full programming course or a full course in statistics. In the end, students will apply these skills to a final project. 
+This course is meant to be a gentle introduction to data wrangling and visualization using the `tidyverse` in R. This course focuses on practical data science skills in R (loading data, data wrangling, visualization, automation, machine learning, and running statistical models) that you'll use almost everyday in your work. It is meant for both beginners and students wanting to brush up on their R skills. 
 
 ## Credit Hours
 
-1 credit hour. 
+3 credit hours. 
 
 ## Learning Objectives
 
@@ -31,16 +29,18 @@ It is not meant to be a substitute for a full programming course or a full cours
 4. **Visualize** datasets using **ggplot2** and understand how to build basic plots using **ggplot2** syntax.
 5. **Filter** and **format** data in R for use with various routines.
 6. **Execute** and **Interpret** some basic statistics in R.
+7. **Automate** repetitive tasks in R, such as loading a folder of files.
+8. **Execute** basic machine learning workflows using `tidymodels`.
+9. **Learn** about Bioconductor Data Structures and conduct simple analysis with these structures.
+10. **Your Choice**: `shiny`, `leaflet` or `tidytext`.
 
 ## Course Website
 
 All course information will be available here:
 
-https://ready4r.netlify.com/
+https://sph-r-programming.netlify.com/
 
-Course discussions will be done in the BioData Club slack workspace. Invites will be sent before class.
-
-https://biodata-club.slack.com
+Course discussions will be done in the class Discord Workspace. Invites will be sent before class.
 
 Lab Assignments will be done in the class RStudio.cloud workspace. Students should register at https://RStudio.cloud before the lab. Link to join the workspace will be sent out before the first lab.
 
@@ -58,33 +58,41 @@ No Prerequisites
 
 [Ted Laderas, PhD](https://laderast.github.io)  
 laderast@ohsu.edu  
-**Preferred Method of Contact**: Email/Slack  
+**Preferred Method of Contact**: Email/Discord  
 **Expected Response Time**: 24hrs  
 
 ### Teaching Assistant
 
-Aaron Coyner  
-coyner@ohsu.edu
+[Eric Leung](https://erictleung.com/)
+leunge@ohsu.edu
+
 
 ## Code of Conduct
 
 This class is governed by the BioData Club Code of Conduct:
 <https://biodata-club.github.io/code_of_conduct/>
 
-This class is meant to be a psychologically safe space where it's ok to ask questions. I want to normalize your own curiosity and fuel your desire to learn more.
+This class is meant to be a psychologically safe space where it's ok to ask questions. We want to normalize your own curiosity and fuel your desire to learn more.
 
 If you are disruptive to class learning or disparaging to other students, I may mute you for the day. I am very serious about this.
 
 ## Required Texts or Readings
 
-We will be drawing on the following online textbooks during class and labs.
+We will be drawing on the following online textbooks during class and labs. These books are online and free, though you can order them as textbooks if you prefer that format.
 
-*Getting Used to R, RStudio, and RMarkdown*. Chester Ismay.
+**Getting Used to R, RStudio, and RMarkdown**. Chester Ismay.
 <https://ismayc.github.io/rbasics-book/>
+
+**Introduction to Data Science**. Tiffany Timbers, Trevor Campbell, Melissa Lee. <https://ubc-dsci.github.io/introduction-to-datascience/>
+
+**RMarkdown for Scientists**. Nick Tierney. <https://rmd4sci.njtierney.com/>
+
+**R for Data Science**. Garret Grolemund and Hadley Wickham. <https://r4ds.had.co.nz/>
+
 
 ## Words of Encouragement
 
-> This was adopted from Andrew Heiss. Thanks, Andrew!
+> This was adopted from Andrew Heiss. Thanks!
 
 I *promise* you can succeed in this class.
 
@@ -101,27 +109,38 @@ knitr::include_graphics("/img/syllabus/hosrt_error_tweet.png", error = FALSE)
 
 [![Alison Horst: Gator error](/img/syllabus/gator_error.jpg)](https://twitter.com/allison_horst/status/1213275783675822080)
 
+
+## LeaRning is Social
+
+The students who have a bad time in my workshops and courses are the ones who don't work with each other to learn. We are a learning community, and we should help each other to learn.
+
+If you understand something and someone is struggling with it, try and help them. If you are struggling, take a breath, and try to pinpoint what you are struggling with. 
+
+Our goal is to be better programmers each day, not to be the perfect programmer. There's no such thing as a perfect programmer. I've been learning new things almost every day.
+
+
 ## Attendance Requirements
 
-Online attendance is required. Please let me know if you have to miss class. If you miss a lab day, know that you are responsible for finishing the lab and understanding the content.
+Online attendance is required. Please let me know in advance if you have to miss class, or if you have an emergency. 
 
-Classes will be recorded, but please do not use this as an excuse to miss class.
+Classes will be recorded, but please do not use this as an excuse to miss class. Again, those who are curious and ask questions will learn quite a bit. 
+
 
 ## Grading Policy
 
-Grades will be based on the following:
+- Attendance 10%
+- Midterm Project 15%
+- Function of the Week 5%
+- Homework Assignments 45%
+- Final Project 25%
 
-- In class activities 30%
-- Assignments (from labs) 50%
-- Final Project 20%
-
-This course will be graded on a Pass/Fail Basis. Pass is defined as a grade of at least 70%.
 
 ### Late Policy
 
 Students get 1 free assignment to submit late without penalties. Please email us through Sakai that you need more time. If you need accomodation, please email us so we can figure out a way to help you.
 
-Graduate Studies in the OHSU School of Medicine is committed to providing grades to students in a timely manner. Course instructors will provide students with information in writing at the beginning of each course that describes the grading policies and procedures including but not limited to evaluation criteria, expected time needed to grade individual student examinations and type of feedback they will provide.
+Graduate Studies in the OHSU School of Medicine is committed to providing grades to students in a timely manner. Course instructors will provide students with information in writing at the beginning of each
+course that describes the grading policies and procedures including but not limited to evaluation criteria, expected time needed to grade individual student examinations and type of feedback they will provide.
 
 Class grades are due to the Registrar by the Friday following the week of finals. However, on those occasions when a grade has not been submitted by the deadline, the following procedure shall be followed:
 
@@ -139,10 +158,10 @@ Class grades are due to the Registrar by the Friday following the week of finals
 ## Copyright Information
 
 Every reasonable effort has been made to protect the copyright requirements of materials used in this course. Class participants are warned not to copy, audio, or videotape in violation of copyright laws.
+
 Journal articles will be kept on reserve at the library or online for student access. Copyright law does allow for making one personal copy of each article from the original article. This limit also applies to electronic sources.
 
-To comply with the fair use fair use doctrine of the US copyright law, Sakai course sites close three weeks after grades are posted with the Registrar. Please be sure to download all course material you wish to
-keep before this time as you will have no further access to your courses.
+To comply with the fair use fair use doctrine of the US copyright law, Sakai course sites close three weeks after grades are posted with the Registrar. Please be sure to download all course material you wish to keep before this time as you will have no further access to your courses.
 
 ## Communication Policy
 

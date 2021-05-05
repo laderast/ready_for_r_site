@@ -1,0 +1,17 @@
+---
+title: "Part 8. Statistical Modeling/More purrr"
+linktitle: "Part 8. Statistical Modeling/More purr"
+date: "2020-02-24"
+menu:
+  reading:
+    parent: Readings
+    weight: 8
+type: docs
+---
+
+## Required
+
+- [Model Basics](https://r4ds.had.co.nz/model-basics.html) from R for Data Science
+- [Model Building](https://r4ds.had.co.nz/model-building.html) from R for Data Science
+- [Many Models](https://r4ds.had.co.nz/many-models.html) - from R for Data science. Covers `group_by()/nest()` and list-columns
+- [Purrr Tips and Tricks](https://www.hvitfeldt.me/blog/purrr-tips-and-tricks/) by Emil Hvitfeldt.

@@ -1,58 +1,279 @@
 ---
 title: "Part 2: Loading Data, data.frames, and ggplot2"
-linktitle: "2. Loading Data, data.frames, and ggplot2"
-date: "2020-04-16"
-class_date: "2020-04-16"
+linktitle: "Part 2: Loading Data, data.frames, and ggplot2"
+date: "2021-01-13"
+class_date: "2021-01-13"
 output:
   blogdown::html_page:
     toc: true
 menu:
   class:
     parent: Class sessions
-    weight: 1
+    weight: 2
 type: docs
-weight: 1
+weight: 2
 # pdf: 
 # thumb: 
 editor_options: 
   chunk_output_type: console
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
-<li><a href="#post-class-survey">Post-Class Survey</a></li>
-<li><a href="#muddiest-points">Muddiest Points</a></li>
+<li><a href="#class-video">Class Video</a></li>
+<li><a href="#slides">Slides</a>
+<ul>
+<li><a href="#for-loops-projects-ggplot2">For Loops / Projects / ggplot2</a></li>
+<li><a href="#function-of-the-week-assignment">Function of the Week Assignment</a></li>
+<li><a href="#post-class">Post-Class</a></li>
+</ul></li>
+<li><a href="#muddiest-points">Muddiest Points</a>
+<ul>
+<li><a href="#projects-in-rstudio-desktop">Projects in RStudio Desktop</a></li>
+</ul></li>
+<li><a href="#thanks-for-letting-me-know">Thanks for Letting me Know</a></li>
 </ul>
 </div>
 
-<div id="post-class-survey" class="section level3">
-<h3>Post-Class Survey</h3>
-<p>Please fill out the following survey and we will discuss the results during the next class. All responses will be anonymous. Remember, filling this out counts as attendance.</p>
+<div id="class-video" class="section level2">
+<h2>Class Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EJ6_DEhC8v4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="slides" class="section level2">
+<h2>Slides</h2>
+<div id="for-loops-projects-ggplot2" class="section level3">
+<h3>For Loops / Projects / ggplot2</h3>
+<p>Open the slides in a separate window: <a href="https://sph-r-programming.netlify.com/slides/02-for_loops#1" target="_blank">https://sph-r-programming.netlify.com/slides/02-for_loops#1</a></p>
+<iframe src="https://sph-r-programming.netlify.com/slides/02-for_loops#1" width="672" height="400px">
+</iframe>
+</div>
+<div id="function-of-the-week-assignment" class="section level3">
+<h3>Function of the Week Assignment</h3>
+<p>Please refer to the <code>function_assignment</code> project in the RStudio Cloud workspace. We will go over this in class.</p>
+</div>
+<div id="post-class" class="section level3">
+<h3>Post-Class</h3>
+<p>Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.</p>
 <ul>
-<li>Pace</li>
 <li>Clearest Point: What was the most clear part of the lecture?</li>
 <li>Muddiest Point: What was the most unclear part of the lecture to you?</li>
 <li>Anything Else: Is there something you’d like me to know?</li>
 </ul>
-<p><a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_6nc1ZLFMmRoE7nn" class="uri">https://ohsu.ca1.qualtrics.com/jfe/form/SV_6nc1ZLFMmRoE7nn</a></p>
+<p><a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_0rjxy6FgXapnMk5" class="uri">https://ohsu.ca1.qualtrics.com/jfe/form/SV_0rjxy6FgXapnMk5</a></p>
 </div>
-<div id="muddiest-points" class="section level3">
-<h3>Muddiest Points</h3>
+</div>
+<div id="muddiest-points" class="section level2">
+<h2>Muddiest Points</h2>
 <blockquote>
-<p>I’m not a programmer person so the concept of a programming environment is pretty mystifying. That said, it doesn’t stop me from applying what you’re teaching us, so no real worries there.</p>
+<p>little bit confused about how you loaded data. I used a different method when using Rstudio.</p>
 </blockquote>
-<p>Stick with it!</p>
+<p>There are multiple routes to loading data in R.</p>
+<p>There is the option to load data using the file loading wizard, which you may find a little easier to use. But it’s worth talking about all of the different ways loading data can go wrong, which the wizard might not be able to help you with.</p>
 <blockquote>
-<p>The challenges since I lost where we were and had to back track all of the time to see where the instructor was.</p>
+<p>It wasn’t unclear but I’d like to learn more about ggplots. Can we customize the formatting of plots we create (like change colors, text size, etc.)?</p>
 </blockquote>
-<p>Ok, I will do my best to announce which section we are on in the notebook.</p>
+<p>Stay tuned. We’re covering it in class today!</p>
 <blockquote>
-<p>na.omit</p>
+<p>I always had trouble understanding this first comma inside the third bracket, glimpse(namcs[,1:5]), what does it do?</p>
 </blockquote>
-<p>We wil get to that today.</p>
+<p>The comma in the brackets can be hard to wrap your head around.</p>
+<p>We use the comma to specify both the row number and the column number in subsetting data.</p>
+<ul>
+<li>The numbers before the comma refer to the <em>rows</em></li>
+<li>The number after the comma refers to the <em>columns</em>.</li>
+</ul>
+<pre class="r"><code>library(palmerpenguins)</code></pre>
+<pre><code>## Warning: package &#39;palmerpenguins&#39; was built under R version 4.0.3</code></pre>
+<pre class="r"><code>data(penguins)</code></pre>
+<pre class="r"><code>knitr::kable(penguins[1:10,])</code></pre>
+<table>
+<colgroup>
+<col width="8%" />
+<col width="11%" />
+<col width="16%" />
+<col width="15%" />
+<col width="20%" />
+<col width="13%" />
+<col width="7%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">species</th>
+<th align="left">island</th>
+<th align="right">bill_length_mm</th>
+<th align="right">bill_depth_mm</th>
+<th align="right">flipper_length_mm</th>
+<th align="right">body_mass_g</th>
+<th align="left">sex</th>
+<th align="right">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="left">Torgersen</td>
+<td align="right">39.1</td>
+<td align="right">18.7</td>
+<td align="right">181</td>
+<td align="right">3750</td>
+<td align="left">male</td>
+<td align="right">2007</td>
+</tr>
+<tr class="even">
+<td align="left">Adelie</td>
+<td align="left">Torgersen</td>
+<td align="right">39.5</td>
+<td align="right">17.4</td>
+<td align="right">186</td>
+<td align="right">3800</td>
+<td align="left">female</td>
+<td align="right">2007</td>
+</tr>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="left">Torgersen</td>
+<td align="right">40.3</td>
+<td align="right">18.0</td>
+<td align="right">195</td>
+<td align="right">3250</td>
+<td align="left">female</td>
+<td align="right">2007</td>
+</tr>
+<tr class="even">
+<td align="left">Adelie</td>
+<td align="left">Torgersen</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">2007</td>
+</tr>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="left">Torgersen</td>
+<td align="right">36.7</td>
+<td align="right">19.3</td>
+<td align="right">193</td>
+<td align="right">3450</td>
+<td align="left">female</td>
+<td align="right">2007</td>
+</tr>
+<tr class="even">
+<td align="left">Adelie</td>
+<td align="left">Torgersen</td>
+<td align="right">39.3</td>
+<td align="right">20.6</td>
+<td align="right">190</td>
+<td align="right">3650</td>
+<td align="left">male</td>
+<td align="right">2007</td>
+</tr>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="left">Torgersen</td>
+<td align="right">38.9</td>
+<td align="right">17.8</td>
+<td align="right">181</td>
+<td align="right">3625</td>
+<td align="left">female</td>
+<td align="right">2007</td>
+</tr>
+<tr class="even">
+<td align="left">Adelie</td>
+<td align="left">Torgersen</td>
+<td align="right">39.2</td>
+<td align="right">19.6</td>
+<td align="right">195</td>
+<td align="right">4675</td>
+<td align="left">male</td>
+<td align="right">2007</td>
+</tr>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="left">Torgersen</td>
+<td align="right">34.1</td>
+<td align="right">18.1</td>
+<td align="right">193</td>
+<td align="right">3475</td>
+<td align="left">NA</td>
+<td align="right">2007</td>
+</tr>
+<tr class="even">
+<td align="left">Adelie</td>
+<td align="left">Torgersen</td>
+<td align="right">42.0</td>
+<td align="right">20.2</td>
+<td align="right">190</td>
+<td align="right">4250</td>
+<td align="left">NA</td>
+<td align="right">2007</td>
+</tr>
+</tbody>
+</table>
+<p>For example, if I wanted to refer to the first row and first column of <code>penguins</code>, I could use this:</p>
+<pre class="r"><code>penguins[1, 1]</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   species
+##   &lt;fct&gt;  
+## 1 Adelie</code></pre>
+<p>To refer to the entire first row of <code>penguins</code>, I can remove the second number. Note that the comma remains.</p>
+<pre class="r"><code>penguins[1, ]</code></pre>
+<pre><code>## # A tibble: 1 x 8
+##   species island bill_length_mm bill_depth_mm flipper_length_~ body_mass_g sex  
+##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;int&gt;       &lt;int&gt; &lt;fct&gt;
+## 1 Adelie  Torge~           39.1          18.7              181        3750 male 
+## # ... with 1 more variable: year &lt;int&gt;</code></pre>
+<p>To refer to the entire first column of <code>penguins</code>, I can remove the first number:</p>
+<pre class="r"><code>penguins[,1]</code></pre>
+<pre><code>## # A tibble: 344 x 1
+##    species
+##    &lt;fct&gt;  
+##  1 Adelie 
+##  2 Adelie 
+##  3 Adelie 
+##  4 Adelie 
+##  5 Adelie 
+##  6 Adelie 
+##  7 Adelie 
+##  8 Adelie 
+##  9 Adelie 
+## 10 Adelie 
+## # ... with 334 more rows</code></pre>
+<p>And to get a range of columns and rows in <code>penguins</code>, we can put in a <code>sequence</code>:</p>
+<pre class="r"><code>penguins[5:10, 1:5]</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+## 1 Adelie  Torgersen           36.7          19.3               193
+## 2 Adelie  Torgersen           39.3          20.6               190
+## 3 Adelie  Torgersen           38.9          17.8               181
+## 4 Adelie  Torgersen           39.2          19.6               195
+## 5 Adelie  Torgersen           34.1          18.1               193
+## 6 Adelie  Torgersen           42            20.2               190</code></pre>
 <blockquote>
-<p>folder organization; projects vs notebooks?</p>
+<p>For loops - though not bad! I think I just need to practice them more now.</p>
 </blockquote>
-<p>We will talk about that today.</p>
+<p>Keep at it!</p>
+<blockquote>
+<p>the function presentation: where do we upload it?</p>
+</blockquote>
+<p>There is a Sakai submission. Please upload both the HTML and the Rmd when you submit so I can get it up on the website.</p>
+<div id="projects-in-rstudio-desktop" class="section level3">
+<h3>Projects in RStudio Desktop</h3>
+<p>There were some questions about RStudio Desktop and projects, so here is a short video on how to setup projects in RStudio Desktop. We’ll have a session to install RStudio Desktop to your own machine in the future.</p>
+<iframe width="650" height="315" src="https://www.youtube.com/embed/D22THnoPA6w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</div>
+<div id="thanks-for-letting-me-know" class="section level2">
+<h2>Thanks for Letting me Know</h2>
+<blockquote>
+<p>I appreciate you advocating for this class to be taught before the Biostats series as per some of our requests. I appreciate the pace you are taking and your genuine want to make sure we are learning the material. Thank you very much.</p>
+</blockquote>
+<p>Much appreciated, thank you. I’ve emailed both Rochelle and Jessica and they will be thinking about it.</p>
 </div>

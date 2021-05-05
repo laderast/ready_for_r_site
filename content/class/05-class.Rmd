@@ -1,0 +1,72 @@
+---
+title: "Part 5. More about manipulating factors (`forcats`)/doing things with multiple tables/functions()"
+linktitle: "Part 5. More about manipulating factors (`forcats`)/doing things with multiple tables/functions()"
+date: "2021-02-03"
+class_date: "2021-02-03"
+output:
+  blogdown::html_page:
+    toc: true
+menu:
+  class:
+    parent: Class sessions
+    weight: 5
+type: docs
+weight: 5
+# pdf: 
+# thumb: 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Class Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/V4EACQWT8O8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Slides
+
+No Slides this week.
+
+## Midterm assigned (Due February 12 @ 11:55 PM)
+
+RStudio Project is now available. Please come to office hours or stay for class to discuss your data set.
+
+### Post-Class
+
+Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.
+
+- Clearest Point: What was the most clear part of the lecture?
+- Muddiest Point: What was the most unclear part of the lecture to you?
+- Anything Else: Is there something you'd like me to know?
+
+http://bit.ly/sph504_survey
+
+## Muddiest Points
+
+> joining datasets
+
+> Joining tables will take some more practice before it fully sticks for me.
+
+> Not unclear but nervous about joining tables with big datasets. But the GIFs are super helpful for illustrating the concept!
+
+> inner,left and right join functions
+
+> joining tables, specifically when to use which type of join, but I feel it will become more clear with practice.
+
+> how to know when to use "left " , "right" join etc.
+
+I will put together some more examples next week, with larger datasets, so you can compare the different kinds of joins.
+
+> Which figures require long/short dataframes
+
+> still trying to figure out when to turn stuff into a factor. I think I sort of understand it but I'm not super confident.
+
+> They weren't "unclear" but maybe more practice with pivot_longer, left_join, etc. would have been helpful
+
+I will have more practice exercises for these. 
+
+### Comment of the Week
+
+> Dear Ted, I got to reprimand my husband for poor spreadsheet hygiene this week and I thought you'd appreciate that.
+
+I really *did* appreciate that!
+

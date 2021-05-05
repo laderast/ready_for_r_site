@@ -1,29 +1,15 @@
 ---
-title: "Loading Data from Excel, data.frames, and ggplot2"
-linktitle: "2. Loading Data from Excel, data.frames, and ggplot2"
-date: "2020-04-16"
-read_date: "2020-04-16"
+title: "Part 2: Data Frames/Loading Data/ggplot2"
+linktitle: "Part 2: Data Frames/Loading Data/ggplot2"
+date: "2020-01-14"
 menu:
   reading:
     parent: Readings
-    weight: 1
+    weight: 2
 type: docs
 ---
 
-## Suggested Readings
+## Required
 
-Nick Tierney's [RMarkdown for Scientists](https://rmd4sci.njtierney.com) is an excellent resource for understanding RMarkdown. We'll be drawing on it for more classes.
-
-For right now, I'd like you to look over the Workflow section: 
-
-https://rmd4sci.njtierney.com/workflow.html
-
-And the *Using RMarkdown* section:
-
-https://rmd4sci.njtierney.com/using-rmarkdown.html
-
-## Practice your ggplot2 skills
-
-After this lecture, you now know enough to get started in the interactive R-Bootcamp. You can start with chapter 1:
-
-https://r-bootcamp.netlify.com/chapter1
+- [Data Organization in Spreadsheets](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) by Kara Woo and Karl Broman - if there is one paper that I think is useful for everyone, it's this one.
+- [Absolute and Relative File Paths](https://ubc-dsci.github.io/introduction-to-datascience/reading.html#absolute-and-relative-file-paths) - sometimes understanding file paths can be difficult. This is a great follow up reading. The video is very helpful as well. 

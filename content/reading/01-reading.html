@@ -1,8 +1,7 @@
 ---
-title: "Introduction to R/RStudio"
-linktitle: "1: Introduction to R/RStudio"
-date: "2020-01-15"
-read_date: "2020-01-15"
+title: "Introduction to R/RStudio/Vectors/For Loops"
+linktitle: "Part 1: Introduction to R/RStudio/Vectors/"
+date: "2021-01-07"
 menu:
   reading:
     parent: Readings
@@ -10,17 +9,37 @@ menu:
 type: docs
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <div id="required" class="section level2">
 <h2>Required</h2>
+<p>Remember, this reading is mostly supplemental and will help you if there are concepts that are unclear in class.</p>
 <ul>
+<li><a href="https://www.youtube.com/watch?v=uK1Va_UWQFc">Introduction to RStudio Cloud Video</a></li>
 <li><a href="https://ismayc.github.io/rbasics-book/3-rstudiobasics.html">R and RStudio Basics</a> - make sure to watch the videos.</li>
+<li><a href="https://ubc-dsci.github.io/introduction-to-datascience/wrangling.html#vectors-and-data-frames">Vectors and Data Frames</a></li>
 </ul>
 </div>
-<div id="practice" class="section level2">
-<h2>Practice</h2>
-<ul>
-<li>In the Part 1 RStudio project, there is a document called “Practicing with Swirl” which will point you to how to run an interactive tutorial in RStudio to reinforce concepts in the lab.</li>
-</ul>
+<div id="optional" class="section level2">
+<h2>Optional</h2>
+<div id="markdown-basics" class="section level3">
+<h3>Markdown Basics</h3>
+<p>This is a short reference on how to do formatting in Markdown. This is optional, but may be a helpful reference as you continue on and work with Markdown and RMarkdown.</p>
+<p><a href="https://sph-r-programming.netlify.app/reference/markdown.html" class="uri">https://sph-r-programming.netlify.app/reference/markdown.html</a></p>
+</div>
+<div id="swirl-basics" class="section level3">
+<h3>Swirl Basics</h3>
+<p>I’m going to highlight another resource for learning basic R concepts: <code>swirl</code>. This is a software package for R.</p>
+<p>To start it, run the following code in the console in RStudio Cloud:</p>
+<pre class="r"><code>library(swirl)
+swirl()</code></pre>
+<p>You’ll want to take a look at the <code>R Programming</code> course, especially the following sections:</p>
+<ol style="list-style-type: decimal">
+<li>Basic Building Blocks</li>
+<li>Sequences of Numbers</li>
+<li>Vectors</li>
+<li>Missing values</li>
+</ol>
+</div>
 </div>

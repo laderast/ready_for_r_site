@@ -1,0 +1,62 @@
+---
+title: "Part 8. Statistical Modeling/More purrr"
+linktitle: "Part 8. Statistical Modeling/More purrr"
+date: "2021-02-24"
+class_date: "2021-02-24"
+output:
+  blogdown::html_page:
+    toc: true
+menu:
+  class:
+    parent: Class sessions
+    weight: 7
+type: docs
+weight: 7
+# pdf: 
+# thumb: 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Class Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CcEqOLNT77g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Slides
+
+No slides this week.
+
+
+### Post-Class
+
+Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.
+
+- Clearest Point: What was the most clear part of the lecture?
+- Muddiest Point: What was the most unclear part of the lecture to you?
+- Anything Else: Is there something you'd like me to know?
+
+http://bit.ly/sph504_survey
+
+## Muddiest Points
+
+> I still find purr very confusing. But I am beginning to understand it more after using it on linear regression models
+
+> the nesting of tables and the following functions we applied still bends my mind a bit.
+
+> nest() and unnest() seem really really cool but I would be interested to learn a little bit more about how they're used
+
+> purrr df/model tables. You say it's a way to screen a lot of models, but it really seems like a way to apply one model to a bunch of dfs. Like, you'd need another dimension to test more models.
+
+> making/using list-columns
+
+## Thank you
+
+> While the nesting and un-nesting were more challenging topics, I thought the examples were great and I felt pretty good about everything by the end.
+
+> I thought that ggpairs was a cool function and would have been useful for the biostats project
+
+> Thanks for teaching cool stuff :)
+
+## Our Minds are Full
+
+> My brain is always so full by the end of the class that I forget what was fuzzy and what was clear.

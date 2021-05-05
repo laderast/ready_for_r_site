@@ -1,0 +1,126 @@
+---
+title: "Part 3: Errors, `ggplot2`, factors, boxplots, `dplyr`: subsetting using `filter()`/`select()`"
+linktitle: "Part 3: `ggplot2`, factors, boxplots, `dplyr`: subsetting using `filter()`/`select()`"
+date: "2021-01-20"
+class_date: "2021-01-20"
+output:
+  blogdown::html_page:
+    toc: true
+menu:
+  class:
+    parent: Class sessions
+    weight: 3
+type: docs
+weight: 3
+# pdf: 
+# thumb: 
+editor_options: 
+  chunk_output_type: console
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#class-video">Class Video</a></li>
+<li><a href="#slides">Slides</a>
+<ul>
+<li><a href="#function-of-the-week-assignment">Function of the Week Assignment</a></li>
+</ul></li>
+<li><a href="#post-class">Post-Class</a></li>
+<li><a href="#muddiest-points">Muddiest Points</a>
+<ul>
+<li><a href="#checking-your-data-types">Checking your Data Types</a></li>
+<li><a href="#why-here">Why <code>here()</code>?</a></li>
+<li><a href="#questions-about-ggplot2">Questions about <code>{ggplot2}</code></a></li>
+<li><a href="#questions-about-dplyr">Questions about <code>{dplyr}</code></a></li>
+<li><a href="#this-would-have-been-helpful">This would have been helpful</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="class-video" class="section level2">
+<h2>Class Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2U5xh8cn_JU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="slides" class="section level2">
+<h2>Slides</h2>
+<p>Open the slides in a separate window: <a href="https://sph-r-programming.netlify.com/slides/03-ggplot2-dplyr-part1#1" target="_blank">https://sph-r-programming.netlify.com/slides/03-ggplot2-dplyr-part1#1</a></p>
+<iframe src="https://sph-r-programming.netlify.com/slides/03-ggplot2-dplyr-part1#1" width="672" height="400px">
+</iframe>
+<div id="function-of-the-week-assignment" class="section level3">
+<h3>Function of the Week Assignment</h3>
+<p>Please make sure to sign up for a slot for the function of the week assignment if you haven’t already.</p>
+<p>Please refer to the <code>function_assignment</code> project in the RStudio Cloud workspace. We will go over this in class.</p>
+</div>
+</div>
+<div id="post-class" class="section level2">
+<h2>Post-Class</h2>
+<p>Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.</p>
+<ul>
+<li>Clearest Point: What was the most clear part of the lecture?</li>
+<li>Muddiest Point: What was the most unclear part of the lecture to you?</li>
+<li>Anything Else: Is there something you’d like me to know?</li>
+</ul>
+<p><a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_0rjxy6FgXapnMk5" class="uri">https://ohsu.ca1.qualtrics.com/jfe/form/SV_0rjxy6FgXapnMk5</a></p>
+</div>
+<div id="muddiest-points" class="section level2">
+<h2>Muddiest Points</h2>
+<div id="checking-your-data-types" class="section level3">
+<h3>Checking your Data Types</h3>
+<p>We will discuss assignment 2.</p>
+<p>As an aside, it’s important to deal with data type issues as soon as you can. That’s why it’s important to check your data and use the <code>na</code> argument in <code>read_excel()</code> or <code>read_csv()</code>.</p>
+</div>
+<div id="why-here" class="section level3">
+<h3>Why <code>here()</code>?</h3>
+<blockquote>
+<p>here() and why you’d use that if everything is already in the project</p>
+</blockquote>
+<blockquote>
+<p>The here function is still really muddy for me. I do not quite understand the purpose of it.</p>
+</blockquote>
+<p>We’ll talk more about this with a demonstration.</p>
+</div>
+<div id="questions-about-ggplot2" class="section level3">
+<h3>Questions about <code>{ggplot2}</code></h3>
+<blockquote>
+<p>I still struggle with understanding how to read ggplot2 code.</p>
+</blockquote>
+<p>If you are still struggling, please contact Eric or Me for a review session.</p>
+<blockquote>
+<p>How to deal with lots of missing data when creating ggplots</p>
+</blockquote>
+<p>This is something to be aware of - <code>ggplot2</code> does give you a warning when a variable that you’ve mapped to an aesthetic has a lot of missing values - it will tell you the number of rows dropped. The default ggplot2 behavior is to drop rows that have missing values.</p>
+<p>In general, missing values should be dealt with <code>{tidyr}</code> or <code>{dplyr}</code> before you plot. I will talk about one approach next time when we talk about reshaping data.</p>
+<blockquote>
+<p>I think it would be interesting to learn more about ggplot (can we do more with facet_wrap() for example or is there any other useful tricks we should know)</p>
+</blockquote>
+<p>I’ve added a short section on more ggplot2 fundamentals (scales and colors).</p>
+</div>
+<div id="questions-about-dplyr" class="section level3">
+<h3>Questions about <code>{dplyr}</code></h3>
+<blockquote>
+<p>Still wrapping my head around how exactly to use select(), filter() and arrange(), especially in sequence.</p>
+</blockquote>
+<blockquote>
+<p>Still trying to understand the tidyverse data-wrangling functions, but I think practice will help!</p>
+</blockquote>
+<p>Some thoughts. I have found it helpful to compare them to operations in Excel.</p>
+<ul>
+<li><code>filter()</code> is much like a Data Filter in Excel.</li>
+<li><code>select()</code> is much like selecting columns in Excel (such as A1-G1).</li>
+<li><code>arrange()</code> is the equivalent of Sorting your data.</li>
+</ul>
+</div>
+<div id="this-would-have-been-helpful" class="section level3">
+<h3>This would have been helpful</h3>
+<blockquote>
+<p>What %&gt;% is and its function were very clear. That info would have been so helpful for BSTA!</p>
+</blockquote>
+<blockquote>
+<p>Learning about the %&gt;% function was soooo clarifying</p>
+</blockquote>
+<p>Glad to help. Again, I feel your frustration.</p>
+</div>
+</div>

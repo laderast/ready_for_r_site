@@ -1,48 +1,122 @@
 ---
 title: "Part 2: Loading Data, data.frames, and ggplot2"
-linktitle: "2. Loading Data, data.frames, and ggplot2"
-date: "2020-04-16"
-class_date: "2020-04-16"
+linktitle: "Part 2: Loading Data, data.frames, and ggplot2"
+date: "2021-01-13"
+class_date: "2021-01-13"
 output:
   blogdown::html_page:
     toc: true
 menu:
   class:
     parent: Class sessions
-    weight: 1
+    weight: 2
 type: docs
-weight: 1
+weight: 2
 # pdf: 
 # thumb: 
 editor_options: 
   chunk_output_type: console
 ---
 
-### Post-Class Survey
+## Class Video
 
-Please fill out the following survey and we will discuss the results during the next class. All responses will be anonymous. Remember, filling this out counts as attendance.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EJ6_DEhC8v4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-- Pace
+## Slides
+
+### For Loops / Projects / ggplot2
+
+Open the slides in a separate window: <a href="https://sph-r-programming.netlify.com/slides/02-for_loops#1" target="_blank">https://sph-r-programming.netlify.com/slides/02-for_loops#1</a>
+
+```{r echo=FALSE}
+knitr::include_url('https://sph-r-programming.netlify.com/slides/02-for_loops#1')
+```
+
+### Function of the Week Assignment
+
+Please refer to the `function_assignment` project in the RStudio Cloud workspace. We will go over this in class.
+
+### Post-Class
+
+Please fill out the following survey and we will discuss the results during the next lecture. All responses will be anonymous.
+
 - Clearest Point: What was the most clear part of the lecture?
 - Muddiest Point: What was the most unclear part of the lecture to you?
 - Anything Else: Is there something you'd like me to know?
 
-https://ohsu.ca1.qualtrics.com/jfe/form/SV_6nc1ZLFMmRoE7nn
+https://ohsu.ca1.qualtrics.com/jfe/form/SV_0rjxy6FgXapnMk5
 
-### Muddiest Points
+## Muddiest Points
 
-> I'm not a programmer person so the concept of a programming environment is pretty mystifying. That said, it doesn't stop me from applying what you're teaching us, so no real worries there.
+> little bit confused about how you loaded data. I used a different method when using Rstudio.
 
-Stick with it!
+There are multiple routes to loading data in R. 
 
-> The challenges since I lost where we were and had to back track all of the time to see where the instructor was.
+There is the option to load data using the file loading wizard, which you may find a little easier to use. But it's worth talking about all of the different ways loading data can go wrong, which the wizard might not be able to help you with.
 
-Ok, I will do my best to announce which section we are on in the notebook.
+> It wasn’t unclear but I’d like to learn more about ggplots. Can we customize the formatting of plots we create (like change colors, text size, etc.)?
 
-> na.omit
+Stay tuned. We're covering it in class today!
 
-We wil get to that today.
-	
->	folder organization; projects vs notebooks?
+> I always had trouble understanding this first comma inside the third bracket, glimpse(namcs[,1:5]), what does it do? 
 
-We will talk about that today.
+The comma in the brackets can be hard to wrap your head around.
+
+We use the comma to specify both the row number and the column number in subsetting data.
+
+- The numbers before the comma refer to the *rows*
+- The number after the comma refers to the *columns*.
+
+```{r}
+library(palmerpenguins)
+data(penguins)
+```
+
+```{r}
+knitr::kable(penguins[1:10,])
+```
+
+For example, if I wanted to refer to the first row and first column of `penguins`, I could use this:
+
+```{r}
+penguins[1, 1]
+```
+
+To refer to the entire first row of `penguins`, I can remove the second number. Note that the comma remains.
+
+```{r}
+penguins[1, ]
+```
+
+To refer to the entire first column of `penguins`, I can remove the first number:
+
+```{r}
+penguins[,1]
+```
+
+And to get a range of columns and rows in `penguins`, we can put in a `sequence`:
+
+```{r}
+penguins[5:10, 1:5]
+```
+
+> For loops - though not bad! I think I just need to practice them more now.
+
+Keep at it!
+
+> the function presentation: where do we upload it?
+
+There is a Sakai submission. Please upload both the HTML and the Rmd when you submit so I can get it up on the website.
+
+### Projects in RStudio Desktop
+
+There were some questions about RStudio Desktop and projects, so here is a short video on how to setup projects in RStudio Desktop. We'll have a session to install RStudio Desktop to your own machine in the future.
+
+<iframe width="650" height="315" src="https://www.youtube.com/embed/D22THnoPA6w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+## Thanks for Letting me Know
+
+> I appreciate you advocating for this class to be taught before the Biostats series as per some of our requests. I appreciate the pace you are taking and your genuine want to make sure we are learning the material. Thank you very much.
+
+Much appreciated, thank you. I've emailed both Rochelle and Jessica and they will be thinking about it.
