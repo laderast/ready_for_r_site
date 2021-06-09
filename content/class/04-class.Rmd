@@ -30,19 +30,6 @@ Open the slides in a separate window: <a href="https://ready4r.netlify.com/slide
 knitr::include_url('https://ready4r.netlify.com/slides/04-dplyr-ggplot2-part2#1')
 ```
 
-## Midterm will be assigned next week
-
-For this week, identify 1 dataset from the `tidytuesday` datasets and identify a research question that you think can be answered by the data. Be curious!
-
-Your dataset should have:
-
-- categorical variables
-- continuous variables
-
-https://github.com/rfordatascience/tidytuesday
-
-We will take part of next class doing short meetings to discuss the midterm and the datasets individually.
-
 ## Muddiest Points
 
 > How functions that we saw used with across() work, such as where() and start_with() (are they for across() only or do they work in other areas too?)
