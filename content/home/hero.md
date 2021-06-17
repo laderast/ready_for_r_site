@@ -20,5 +20,5 @@ design:
     text_color_light: true
 
 cta_note:
-  label: Spring 2020<br>Medical Informatics and Clinical Epidemiology<br>Oregon Health & Science University
+  label: Online Course<br>Medical Informatics and Clinical Epidemiology<br>Oregon Health & Science University
 ---
