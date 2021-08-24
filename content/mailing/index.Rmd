@@ -30,9 +30,11 @@ You can read about the course learning objectives here: https://ready4r.netlify.
 
 4. **Video Releases**. I will be trying to release videos of each class the weekend after the OHSU class (the first class is April 9). Please be aware that I am just one person and that I will try to get these out as fast as I can.
 
-5. **Slack Workspace**. I will be sending invites later this week to a slack workspace. I will do my best to field questions and answers there. However, please be aware that I am only one person. The R for Data Science community is a great place to ask questions: https://www.rfordatasci.com/ 
+5. **Slack Workspace**. I have retired the Slack workspace. The R for Data Science community is a great place to ask questions: https://www.rfordatasci.com/ 
 
-6. **Alternatives**. This is not the only intro to R course out there. There is another course that I suggest: David Keyes' R for the Rest of Us course: https://rfortherestofus.com/ 
+6. **The Course is not Graded**. There is no credit provided for this course. It is purely for your learning benefit.
+
+7. **Alternatives**. This is not the only intro to R course out there. There is another course that I suggest: David Keyes' R for the Rest of Us course: https://rfortherestofus.com/ 
 
 David is a great instructor, and his course is free and excellent. In fact, I suggest that you take a look at his material if you need another reference or things are confusing. 
 
