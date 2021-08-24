@@ -1,0 +1,73 @@
+---
+title: "Ready for R Part 2"
+author: "Ted Laderas"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+params: 
+  survey_name: "BMI 507 Ready for R"
+  week: "Week 2"
+---
+
+```{r setup, include=FALSE}
+library(qualtRics)
+library(DT)
+library(tidyverse)
+opts <- list(pageLength =100)
+```
+
+## Pull OHSU students
+
+```{r}
+surveys <- all_surveys()
+survey_id <- surveys %>% filter(name == params$survey_name) %>%
+  pull(id)
+
+lab_survey_ohsu <- fetch_survey(survey_id, verbose=TRUE) %>%
+  filter(Q1 == params$week & Q8 == "OHSU") %>% select(pacing = `Q7_1`, clearest_points = Q2, muddiest_points= Q3, other_stuff=Q4)
+```
+
+## Muddiest points
+
+```{r}
+lab_survey_ohsu %>% 
+  select(muddiest_points) %>% 
+  DT::datatable(options=opts)
+```
+
+## Clearest Points
+
+```{r}
+lab_survey_ohsu %>%
+  select(clearest_points) %>%
+  DT::datatable(options=opts)
+```
+
+
+# Get External Students
+
+```{r}
+lab_survey_external <- fetch_survey(survey_id, verbose=TRUE) %>%
+  filter(Q1 == params$week & Q8 == "External") %>% select(pacing = `Q7_1`, clearest_points = Q2, muddiest_points= Q3, other_stuff=Q4)
+
+```
+
+## Muddiest Points (External)
+
+```{r}
+lab_survey_external %>% 
+  select(muddiest_points) %>% 
+  DT::datatable(options=opts)
+
+```
+
+## Clearest Points (External)
+
+```{r}
+
+lab_survey_external %>%
+  select(clearest_points) %>%
+  DT::datatable(options=opts)
+
+```

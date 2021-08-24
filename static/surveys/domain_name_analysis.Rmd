@@ -1,0 +1,130 @@
+---
+title: "Domain Analysis of Email Addresses"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+In this document, I parse the email list of Ready for R participants, and try to map those with a country top level domain to the countries to produce a choropleth of where Ready for R participants are from.
+
+```{r}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+suppressMessages({library(readr)
+library(janitor)
+library(dplyr)
+library(tldextract)
+library(ggplot2)
+library(forcats)
+library(urltools)
+  })
+
+
+email_addresses <- read_csv("tinyletter_contacts_2020_07_4.csv") %>%
+  clean_names()
+```
+
+~~Extract the very top level domain from tlds like `co.uk` by using `tidyr::separate_rows` to separate on `.`. Now that I think about it, this is probably introducing lots of `.co` domains, so I need to fix this.~~
+
+Update: ended up using `gsub()` on the `tld` column to extract the country code.
+
+```{r}
+tld_names <- getTLD()
+
+tlds <- tldextract(email_addresses$e_mail)  %>%
+     mutate(tld=  gsub("[a-z]+\\.", "", tld))
+```
+
+As a first pass, I scrape the country level domains from https://www.countries-ofthe-world.com/TLD-list.html I tried multiple other CSV files from other courses, but this is the only source I could find with domain names mapped to countries.
+
+```{r}
+library(rvest)
+library(stringr)
+country_page <- xml2::read_html("https://www.countries-ofthe-world.com/TLD-list.html")
+
+countries <- bind_rows(html_table(country_page)) %>%
+  janitor::clean_names()
+
+countries <- countries %>%
+  filter(grepl("\\.", domain)) %>%
+  mutate(tld = str_remove(domain, "^\\."))
+```
+
+Map the email domains to countries using `left_join()`. Count by country.
+
+```{r}
+tld_counts <- tlds %>%
+  filter(tld != "com") %>%
+  filter(tld != "edu") %>%
+  filter(tld != "org") %>%
+  left_join(y= countries, by=c("tld"="tld")) %>%
+  count(country_territory, tld) %>%
+  arrange(desc(n)) %>%
+  mutate(country_territory = fct_reorder(country_territory, desc(n))) %>% ungroup() %>% mutate(country_territory = fct_rev(country_territory)) %>%
+  tidyr::drop_na(country_territory)
+
+ggplot(tld_counts) +
+  aes(x=country_territory, y=n) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle=90, hjust = 1, vjust=0.5)) +
+  ggtitle("Country Domains Represented in List") +
+  coord_flip()
+
+```
+
+Use `choroplethr::country_choropleth()` to display country counts. Data is still pretty dirty, this is a first pass.
+
+```{r}
+library(choroplethr)
+library(choroplethrMaps)
+
+tld_counts %>%
+  mutate(country_territory = tolower(country_territory)) %>%
+  select(region=country_territory, value=n) %>%
+  country_choropleth(title="Ready for R Users by Country Domain",num_colors = 4)
+
+```
+
+
+Look at the top level domains by frequency count. As expected, `.com` and `.edu` dominate the list.
+
+```{r}
+tlds %>%
+  mutate(tld = factor(tld)) %>%
+  count(tld) %>%
+  arrange(desc(n)) %>%
+  mutate(tld = fct_reorder(tld, desc(n))) %>%
+  mutate(tld = fct_rev(tld)) %>%
+  ggplot() +
+  aes(x=tld, y=n) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle=90)) +
+  labs(title="Top Level Domains Sorted by Frequency")+ coord_flip()
+```
+
+```{r}
+tlds %>%
+  filter(grepl("edu", tld)) %>%
+  tidyr::separate(domain, into 
+                  =c("email", "domain"), sep="@")  %>%
+  tidyr::drop_na(domain) %>%
+  count(domain) %>%
+  arrange(desc(n)) %>%
+  slice_head(n, n=20) %>%
+   mutate(domain = fct_reorder(domain, desc(n))) %>%
+  mutate(domain = fct_rev(domain)) %>%
+  ggplot() +
+  aes(x=domain, y=n) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle=90)) +
+  labs(title="Top 20 .edu domains") + 
+  coord_flip()
+
+```
+
+# How Many OHSU folks?
+
+```{r}
+tlds %>%
+  filter(grepl("ohsu", domain)) %>%
+  nrow()
+```

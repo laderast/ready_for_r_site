@@ -1,0 +1,220 @@
+---
+title: "Course Evaluation for Ready for R External Users"
+author: "Ted Laderas"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+library(qualtRics)
+library(DT)
+library(tidyverse)
+opts <- list(pageLength =100)
+```
+
+## Description
+
+This is a pull of the course evaluation survey information from the "Ready for R" class.
+
+## Pull Survey
+
+```{r}
+survey_id <- "SV_87Kab3iMtEuKN5X"
+
+survey <- fetch_survey(survey_id, verbose=TRUE)
+
+lab_survey <- fetch_survey(survey_id, verbose=TRUE) %>% select(id=ResponseId,position=Q1, other_position=Q2, location=Q7, knowledgable=Q3_1,                        environment=Q3_2, recommend=Q3_3, skills=Q3_4,                                                                self_talk = Q4, accessibility=Q6, dear_ted = Q5)
+                                                              
+```
+
+## Locations of Users
+
+Our respondents are from five continents (North America, South America, Europe, Africa, Austrailia, and Central Asia).
+
+```{r}
+library(leaflet)
+
+leaflet(data = survey) %>% addTiles() %>%
+  addMarkers(~LocationLongitude, ~LocationLatitude)
+```
+
+## Skimming the Survey Data
+
+Just a quick look at the responses to the survey questions. Overall, the 4 likert scale questions (numeric) below show an overall high mean.
+
+```{r}
+skimr::skim(lab_survey)
+
+```
+
+## Job Position
+
+The majority of respondents were graduate students. However, research staff looking to increase their data science skills were a close second.
+
+The "Other" group included a program officer, an economist, and a government official.
+
+```{r}
+lab_survey %>%
+  select(position) %>%
+  mutate(position=fct_rev(fct_infreq(position))) %>%
+  ggplot() + aes(x=position) +
+  geom_bar() +
+  theme(axis.text.x = element_text(angle=90)) +
+  coord_flip()
+```
+
+## Other positions
+
+```{r}
+lab_survey %>%
+  tidyr::drop_na(other_position) %>%
+  select(other_position) %>%
+  DT::datatable(options=opts)
+
+```
+
+## Likert Questions
+
+Overall, very strong response to the course, with the majority of students agreeing with the statements in the likert questions.
+
+
+
+```{r fig.height=8}
+myColors <- c("Strongly Agree"= "darkgreen", 
+                  "Agree"= "green", 
+                  "Neutral"= "orange",
+                  "Disagree"= "red",
+                  "Strongly Disagree" = "darkred")
+
+test <- lab_survey %>% mutate(knowledgable = round(knowledgable)) %>% select(id, knowledgable, environment, recommend, skills) %>%
+  pivot_longer(-id, names_to = "question", values_to = "likert") %>% mutate(likert = round(likert)) %>% 
+  mutate(likert = ordered(likert, levels=c(1,2,3,4,5))) %>%
+  mutate(likert = fct_recode(likert, "Strongly Disagree"="1", "Disagree"="2", "Neutral"="3", "Agree"="4", "Strongly Agree" = "5")) %>% 
+  mutate(question = fct_recode(question,"The course gave me skills\n I can use in my work"="skills", "The Instructor was knowledgable"="knowledgable", "I would recommend this course\n to others"="recommend", "The course provided a good\n learning environment"="environment")) 
+
+test %>% ggplot() +
+  aes(x=likert, fill=likert) +
+  geom_bar() +
+  facet_wrap(~question, scales="free_y") +
+  theme(axis.text.x=element_text(angle=90)) +
+      scale_fill_manual(values=myColors) +
+  coord_flip()
+
+```
+
+
+```{r fig.width=8}
+num_responses = nrow(lab_survey)
+
+test <- lab_survey %>% mutate(knowledgable = round(knowledgable)) %>% select(knowledgable, environment, recommend, skills) %>%
+  pivot_longer(everything(), names_to = "question", values_to = "likert") %>% mutate(likert = round(likert)) %>% 
+  mutate(likert = ordered(likert, levels=c(1,2,3,4,5))) %>%
+  mutate(likert = fct_recode(likert, "Strongly Disagree"="1", "Disagree"="2", "Neutral"="3", "Agree"="4", "Strongly Agree" = "5")) %>% 
+  mutate(question = fct_recode(question,"The course gave me skills\n I can use in my work"="skills", "The Instructor was knowledgable"="knowledgable", "I would recommend this course\n to others"="recommend", "The course provided a good\n learning environment"="environment")) %>%
+  mutate(likert=fct_rev(likert)) %>%
+  group_by(likert, question) %>%
+  summarize(percent=n()/num_responses * 100) 
+
+myColors <- c("darkgreen","green","orange","red","darkred","black")
+
+  ggplot(test) + aes(x=question,  y=percent, fill=likert) +
+     geom_bar(stat="identity") + coord_flip() +
+    scale_fill_manual(values=myColors) +
+    labs(title=paste0("External Survey Responses (n=", num_responses, ")"))
+```
+
+## Heatmap of Likert Scores
+
+```{r}
+test <- lab_survey  %>% select(id, knowledgable, environment, recommend, skills)
+
+rownames(test) <- test$id
+test <- test %>% select(-id) %>%
+  tidyr::drop_na()
+
+heatmaply::heatmaply(as.matrix(test), scale_fill_gradient_fun = scale_fill_gradient2(low = "red", mid = "white", high="blue", midpoint = 3)) 
+```
+
+
+## Self Talk
+
+> Free text question: If there was something you wanted to tell yourself before you started this course, what would it be?
+
+```{r}
+lab_survey %>%
+  select(self_talk) %>%
+  drop_na() %>%
+  DT::datatable(options=opts)
+```
+
+```{r}
+library(tidytext)
+library(wordcloud)
+
+build_word_cloud <- function(lab_survey, column){
+  
+  lab_survey %>%
+  select(text={{column}}) %>%
+  tidyr::drop_na(text) %>%
+  mutate(line=1:nrow(.)) %>%
+  unnest_tokens(output = "word", input = "text") %>%
+  anti_join(stop_words) %>%
+  count(word) %>%
+  dplyr::filter(!word %in% c("ted", "dear")) %>%
+  with(wordcloud(word, n, max.words = 100))
+  
+}
+
+build_word_cloud(lab_survey, self_talk)
+
+```
+
+
+## Accessibility
+
+> Question: We are dedicated to improving accessibility for our courses. Please let us know if you have any suggestions to make the course more accessible.
+
+```{r}
+lab_survey %>%
+  select(accessibility) %>%
+  drop_na() %>%
+  DT::datatable(options=opts)
+```
+
+
+
+## Dear Ted
+
+> Question: Dear Ted: Is there anything else about your learning experience that you would like me to know? Start the note as "Dear Ted".
+
+```{r}
+lab_survey %>%
+  select(dear_ted) %>%
+  drop_na() %>%
+  DT::datatable(options=opts)
+
+
+build_word_cloud(lab_survey, dear_ted)
+```
+
+```{r}
+lab_survey %>% pivot_longer(cols=c(self_talk, accessibility, dear_ted), names_to="question", values_to = "text") %>%
+  build_word_cloud(text)
+
+```
+
+## Bigram Analysis
+
+```{r eval=FALSE}
+lab_survey %>% pivot_longer(cols=c(self_talk, accessibility, dear_ted), names_to="question", values_to = "text") %>%
+  unnest_tokens(bigram, text, token ="ngrams", n=2) %>%
+  count(bigram, sort = TRUE) %>%
+  separate(bigram, c("word1", "word2"), sep = " ") %>%
+  filter(!word1 %in% stop_words$word) %>%
+  filter(!word2 %in% stop_words$word) %>%
+   count(word1, word2, sort = TRUE)
+```

@@ -1,0 +1,9 @@
+Step,Function,Data_type
+Imputing missing data,step_knnimpute(),"all_numeric(), all_nominal()"
+Transform variables for skewness,"step_BoxCox(), step_log()",all_numeric()
+Discretize continuous variables,"step_cut(), step_discretize()",all_numeric()
+"Normalize data (center, scale, etc)",step_normalize(),all_numeric()
+Create Dummy Variables,step_dummy(),all_nominal()
+Identify highly correlated variables,step_corr(),all_numeric()
+Create Interactions,step_interact(),"all_numeric(), all_nominal()"
+Multivariate transformation,"step_pca(), step_ica()",all_numeric()
