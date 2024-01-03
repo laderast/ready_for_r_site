@@ -8,17 +8,16 @@ output:
     fig_caption: false
 ---
 
-If you're external to OHSU, but you want access to the Ready for R course materials, please join our mailing list. We will update you when material and videos become available.
+If you want access to the Ready for R course materials, please join our mailing list. We will update you when material and videos become available.
 
 <iframe
 scrolling="no"
 style="width:100%!important;height:220px;border:1px #ccc solid !important"
-src="https://buttondown.email/ready4r?as_embed=true"
-></iframe><br /><br />
+src="https://buttondown.email/ready4r?as_embed=true"></iframe><br /><br />
 
 ## Course Material Distribution
  
-Here are some logistics about the online course for external folks.
+Here are some logistics about the online course.
 
 This is an experiment, so please be patient with me and with yourself. I know that a lot of you really want to learn R, but please know that I am only one person. But I want to help you learn.
 
